@@ -9,4 +9,4 @@ pipelines:
   default:
     - step:
         script: 
-          - mvn package
+          - mvn clean install -s settings.xml

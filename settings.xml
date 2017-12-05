@@ -1,0 +1,16 @@
+    <settings>
+      <profiles>
+        <profile>
+          <id>tycho-snapshots</id>
+          <pluginRepositories>
+            <pluginRepository>
+              <id>tycho-snapshots</id>
+              <url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
+            </pluginRepository>
+          </pluginRepositories>
+       </profile>
+      </profiles>
+      <activeProfiles>
+        <activeProfile>tycho-snapshots</activeProfile>
+      </activeProfiles>
+    </settings>
