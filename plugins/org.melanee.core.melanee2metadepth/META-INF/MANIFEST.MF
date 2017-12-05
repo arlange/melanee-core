@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Acceleo Melanee2metadepth Module Runtime Plug-in
+Bundle-SymbolicName: org.melanee.core.melanee2metadepth;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: org.melanee.core.melanee2metadepth.Activator
+Bundle-Vendor: Eclipse Modeling Project
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.acceleo.engine,
+ org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.core.resources,
+ org.melanee.core.models.plm
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Eclipse-LazyStart: true
+Export-Package: org.melanee.core.melanee2metadepth.main
+

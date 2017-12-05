@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Visualization Editor"
+            icon="icons/visualizer_transp.gif"
+            category="org.melanee.melaneecategory"
+            class="org.melanee.core.visualization.editor.views.VisualizationEditorView"
+            id="org.melanee.core.visualization.editor.views.VisualizationEditorView">
+      </view>
+   </extension>
+
+</plugin>

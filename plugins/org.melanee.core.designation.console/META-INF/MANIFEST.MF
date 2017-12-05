@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Console
+Bundle-SymbolicName: org.melanee.core.designation.console;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: org.melanee.core.designation.console.Activator
+Require-Bundle: org.melanee.core.models.plm,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.melanee.core.designation.service;bundle-version="1.0.0",
+ org.melanee.core.workbench;bundle-version="2.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

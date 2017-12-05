@@ -1,0 +1,49 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+«AROUND getTextMethod FOR gmfgen::GenPropertySheet»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public String getText(Object element) {
+		element = unwrap(element);
+«IF editorGen.navigator <> null-»
+		if (element instanceof «editorGen.navigator.getNavigatorGroupQualifiedClassName()») {
+			return ((«editorGen.navigator.getNavigatorGroupQualifiedClassName()») element).getGroupName();
+		}
+«ENDIF-»
+
+		org.eclipse.emf.ecore.EObject semanticElement = ((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)element).resolveSemanticElement();
+		
+		//No Clabject -> Show linguistic type
+		if (! (semanticElement instanceof org.melanee.core.models.plm.PLM.Clabject))
+		{
+			org.eclipse.gmf.runtime.emf.type.core.IElementType etype = getElementType(getView(element));
+			return etype == null ? "" : etype.getDisplayName();
+		}
+		
+		org.eclipse.emf.common.util.EList<org.melanee.core.models.plm.PLM.Classification> classifications = ((org.melanee.core.models.plm.PLM.Clabject)semanticElement).getClassificationsAsInstance();
+		
+		//No ontological type -> show linguistic type
+		if (classifications.size() == 0)
+		{
+			org.eclipse.gmf.runtime.emf.type.core.IElementType etype = getElementType(getView(element));
+			return etype == null ? "" : etype.getDisplayName();
+		}
+		
+		String typesAsString = "";
+		
+		for(org.melanee.core.models.plm.PLM.Classification i : classifications)
+			if (i.getType() instanceof org.melanee.core.models.plm.PLM.Entity)
+				typesAsString += i.getType().getName() + (classifications.indexOf(i) < classifications.size() - 1 ? ", " : "");
+			else
+				typesAsString += ((org.melanee.core.models.plm.PLM.Connection)i.getType()).getHumanReadableName() + (classifications.indexOf(i) < classifications.size() - 1 ? ", " : "");
+		
+		return typesAsString;
+	}
+«ENDAROUND»

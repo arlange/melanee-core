@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+/*******************************************************************************
+ * Copyright (c) 2014 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+ -->
+<?pde version="3.8"?>
+<target name="core-4.3.target" sequenceNumber="13">
+	<locations>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.sdk.ide" version="0.0.0"/>
+			<unit id="org.eclipse.acceleo.source.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.gmf.tooling.runtime.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.gmf.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.ocl.examples.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.ocl.all.sdk.feature.group" version="0.0.0"/>
+			<!--<unit id="org.eclipse.uml2.sdk.feature.group" version="0.0.0"/>--> <!--Requirement for OCL -->
+			<unit id="org.eclipse.emf.transaction.sdk.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.emf.validation.sdk.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.m2m.atl.sdk.feature.group" version="0.0.0"/>
+			<repository location="http://download.eclipse.org/releases/kepler/"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.eclipse.swtbot.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.swtbot.eclipse.feature.group" version="0.0.0"/>
+			<unit id="org.hamcrest.library.source" version="0.0.0"/>
+			<unit id="org.hamcrest.library" version="0.0.0"/>
+			<repository location="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<unit id="org.apache.log4j" version="0.0.0"/>
+			<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.eclipse.epsilon.emf.feature.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.epsilon.core.feature.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.epsilon.evl.emf.validation.feature.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.epsilon.core.dt.feature.feature.group" version="0.0.0"/> <!--Requirement for EVL -->
+			<repository location="http://download.eclipse.org/epsilon/updates/"/>
+		</location>
+	</locations>
+</target>

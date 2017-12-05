@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:PLM="http://melanee.org/PLM" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <PLM:Domain xmi:id="_1yO18O7WEeKcvKM243w_bQ">
+    <deepModel xmi:type="PLM:DeepModel" xmi:id="_3WjvcO7WEeKcvKM243w_bQ" name="ProductionSystemDeepModel">
+      <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_3Wp2EO7WEeKcvKM243w_bQ">
+        <attributes>name= default</attributes>
+        <attributes>expressed= default</attributes>
+        <attributes>relevant= default</attributes>
+        <attributes>fix= default</attributes>
+        <attributes>origin= default</attributes>
+        <attributes>visualizersShown= default</attributes>
+        <attributes>completness= default</attributes>
+        <attributes>showClassificationConnectionEndNames = false</attributes>
+      </visualizer>
+      <content xmi:type="PLM:Level" xmi:id="_63Pn8O7WEeKcvKM243w_bQ" name="ProductionSystem">
+        <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_63Pn8e7WEeKcvKM243w_bQ">
+          <attributes>name= default</attributes>
+          <attributes>expressed= default</attributes>
+          <attributes>relevant= default</attributes>
+          <attributes>fix= default</attributes>
+          <attributes>origin= default</attributes>
+          <attributes>visualizersShown= default</attributes>
+          <attributes>completness= default</attributes>
+        </visualizer>
+        <content xmi:type="PLM:Entity" xmi:id="_CQK9UO7XEeKcvKM243w_bQ" name="AbstractElement" potency="0">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_CQK9Ue7XEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_D1Qr0O7XEeKcvKM243w_bQ" name="procTime" durability="1" mutability="1" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_D1Qr0e7XEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <feature xmi:type="PLM:Attribute" xmi:id="_FSKHoO7XEeKcvKM243w_bQ" name="startTime" durability="1" mutability="1" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_FSKHoe7XEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <feature xmi:type="PLM:Attribute" xmi:id="_GPAKYO7XEeKcvKM243w_bQ" name="state" durability="1" mutability="1" datatype="states">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_GPAKYe7XEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+        </content>
+        <content xmi:type="PLM:Entity" xmi:id="_WmXaYO7XEeKcvKM243w_bQ" name="Machine">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_WmXaYe7XEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_e9NwkO7XEeKcvKM243w_bQ" name="name" durability="1" mutability="1" datatype="String">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_e9Nwke7XEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+        </content>
+        <content xmi:type="PLM:Entity" xmi:id="_hqHbsO7XEeKcvKM243w_bQ" name="Conveyor">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_hqHbse7XEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_Ia0FMO7YEeKcvKM243w_bQ" name="name" durability="1" mutability="1" datatype="String">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_Ia0FMe7YEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+        </content>
+        <content xmi:type="PLM:Connection" xmi:id="_krVxGO7XEeKcvKM243w_bQ" name="CM">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_krVxGe7XEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>transitive= default</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+            <attributes>collapsed= false</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_0FEeoO7YEeKcvKM243w_bQ" name="delay" durability="1" mutability="1" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_0FEeoe7YEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <connectionEnd xmi:type="PLM:ConnectionEnd" xmi:id="_krVxGu7XEeKcvKM243w_bQ" lower="1" destination="_hqHbsO7XEeKcvKM243w_bQ" moniker="inConv"/>
+          <connectionEnd xmi:type="PLM:ConnectionEnd" xmi:id="_krVxJO7XEeKcvKM243w_bQ" destination="_WmXaYO7XEeKcvKM243w_bQ" moniker="outMach"/>
+        </content>
+        <content xmi:type="PLM:Connection" xmi:id="_wveRU-7XEeKcvKM243w_bQ" name="MC">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_wveRVO7XEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>transitive= default</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+            <attributes>collapsed= false</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_vaqlAO7YEeKcvKM243w_bQ" name="delay" durability="1" mutability="1" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_vaqlAe7YEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <connectionEnd xmi:type="PLM:ConnectionEnd" xmi:id="_wveRVe7XEeKcvKM243w_bQ" lower="1" destination="_hqHbsO7XEeKcvKM243w_bQ" moniker="outConv"/>
+          <connectionEnd xmi:type="PLM:ConnectionEnd" xmi:id="_wveRX-7XEeKcvKM243w_bQ" destination="_WmXaYO7XEeKcvKM243w_bQ" moniker="inMach"/>
+        </content>
+        <content xmi:type="PLM:Entity" xmi:id="_Zw2j8O7YEeKcvKM243w_bQ" name="Part">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_Zw8qkO7YEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+          </visualizer>
+        </content>
+        <content xmi:type="PLM:Connection" xmi:id="_dflfmO7YEeKcvKM243w_bQ" name="CP">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_dflfme7YEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>transitive= default</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+            <attributes>collapsed= true</attributes>
+          </visualizer>
+          <connectionEnd xmi:type="PLM:ConnectionEnd" xmi:id="_dflfmu7YEeKcvKM243w_bQ" destination="_Zw2j8O7YEeKcvKM243w_bQ" moniker="parts"/>
+          <connectionEnd xmi:type="PLM:ConnectionEnd" xmi:id="_dflfpO7YEeKcvKM243w_bQ" upper="1" destination="_hqHbsO7XEeKcvKM243w_bQ" moniker="owner"/>
+        </content>
+        <content xmi:type="PLM:Inheritance" xmi:id="_VN-1YDvqEeOOJaDXmVrpQw">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_VN_ccDvqEeOOJaDXmVrpQw">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>disjoint= default</attributes>
+            <attributes>complete= default</attributes>
+            <attributes>intersection= default</attributes>
+            <attributes>collapsed= true</attributes>
+          </visualizer>
+          <supertype xmi:type="PLM:Supertype" xmi:id="_Yb6xADvqEeOOJaDXmVrpQw" supertype="_CQK9UO7XEeKcvKM243w_bQ"/>
+          <subtype xmi:type="PLM:Subtype" xmi:id="_WsTNgDvqEeOOJaDXmVrpQw" subtype="_hqHbsO7XEeKcvKM243w_bQ"/>
+          <subtype xmi:type="PLM:Subtype" xmi:id="_XYY3cDvqEeOOJaDXmVrpQw" subtype="_WmXaYO7XEeKcvKM243w_bQ"/>
+        </content>
+      </content>
+      <content xmi:type="PLM:Level" xmi:id="_7A4FEO7WEeKcvKM243w_bQ" name="AFactory">
+        <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_7A4FEe7WEeKcvKM243w_bQ">
+          <attributes>name= default</attributes>
+          <attributes>expressed= default</attributes>
+          <attributes>relevant= default</attributes>
+          <attributes>fix= default</attributes>
+          <attributes>origin= default</attributes>
+          <attributes>visualizersShown= default</attributes>
+          <attributes>completness= default</attributes>
+        </visualizer>
+        <content xmi:type="PLM:Entity" xmi:id="_BYW5oO7ZEeKcvKM243w_bQ" name="aMachine" potency="0">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_BYW5ou7ZEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_BYdAQO7ZEeKcvKM243w_bQ" name="name" value="m1" datatype="String">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_BYdAQe7ZEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <feature xmi:type="PLM:Attribute" xmi:id="_BYdAQu7ZEeKcvKM243w_bQ" name="procTime" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_BYdAQ-7ZEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <feature xmi:type="PLM:Attribute" xmi:id="_BYdARO7ZEeKcvKM243w_bQ" name="state" value="BUSY" datatype="states">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_BYdARe7ZEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <feature xmi:type="PLM:Attribute" xmi:id="_BYdARu7ZEeKcvKM243w_bQ" name="startTime" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_BYdAR-7ZEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+        </content>
+        <content xmi:type="PLM:Classification" xmi:id="_BYdASO7ZEeKcvKM243w_bQ" instance="_BYW5oO7ZEeKcvKM243w_bQ" type="_WmXaYO7XEeKcvKM243w_bQ"/>
+        <content xmi:type="PLM:Entity" xmi:id="_ctnlIO7aEeKcvKM243w_bQ" name="c1" potency="0">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_ctnlIu7aEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_ctnlI-7aEeKcvKM243w_bQ" name="name" value="" datatype="String">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_ctnlJO7aEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <feature xmi:type="PLM:Attribute" xmi:id="_ctnlJe7aEeKcvKM243w_bQ" name="procTime" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_ctnlJu7aEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <feature xmi:type="PLM:Attribute" xmi:id="_ctnlJ-7aEeKcvKM243w_bQ" name="state" value="BROKEN" datatype="states">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_ctnlKO7aEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <feature xmi:type="PLM:Attribute" xmi:id="_ctnlKe7aEeKcvKM243w_bQ" name="startTime" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_ctnlKu7aEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+        </content>
+        <content xmi:type="PLM:Classification" xmi:id="_ctnlK-7aEeKcvKM243w_bQ" instance="_ctnlIO7aEeKcvKM243w_bQ" type="_hqHbsO7XEeKcvKM243w_bQ"/>
+        <content xmi:type="PLM:Connection" xmi:id="_hSZ_CO7aEeKcvKM243w_bQ" potency="0">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_hSZ_Fe7aEeKcvKM243w_bQ">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>level= noshow</attributes>
+            <attributes>transitive= default</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= [](){0}</attributes>
+            <attributes>collapsed= false</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_hSZ_Fu7aEeKcvKM243w_bQ" name="delay" value="3.0" datatype="Real">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_hSZ_F-7aEeKcvKM243w_bQ">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+          <connectionEnd xmi:type="PLM:ConnectionEnd" xmi:id="_hSZ_Cu7aEeKcvKM243w_bQ" destination="_ctnlIO7aEeKcvKM243w_bQ" moniker=""/>
+          <connectionEnd xmi:type="PLM:ConnectionEnd" xmi:id="_hSZ_FO7aEeKcvKM243w_bQ" lower="1" upper="1" destination="_BYW5oO7ZEeKcvKM243w_bQ" moniker=""/>
+        </content>
+        <content xmi:type="PLM:Classification" xmi:id="_hSZ_GO7aEeKcvKM243w_bQ" instance="_hSZ_CO7aEeKcvKM243w_bQ" type="_wveRU-7XEeKcvKM243w_bQ"/>
+      </content>
+      <enumeration xmi:type="PLM:Enumeration" xmi:id="_8hMoUO7WEeKcvKM243w_bQ" name="states">
+        <literal>BUSY</literal>
+        <literal>IDLE</literal>
+        <literal>BROKEN</literal>
+      </enumeration>
+    </deepModel>
+  </PLM:Domain>
+</xmi:XMI>

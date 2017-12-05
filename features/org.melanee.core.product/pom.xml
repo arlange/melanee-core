@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.melanee.tycho.build</groupId>
+		<artifactId>features</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+	<groupId>org.melanee.tycho.build</groupId>
+	<artifactId>org.melanee.core.product</artifactId>
+	<packaging>eclipse-repository</packaging>
+	
+	<build>
+		<extensions>
+			<extension>
+					<groupId>org.apache.maven.wagon</groupId>
+					<artifactId>wagon-ssh</artifactId>
+					<version>1.0</version>
+			</extension>
+		</extensions>
+	</build>
+	
+	<profiles>
+		<!-- Profile for creating .zip files -->
+		<profile>
+			<id>package</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-director-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<executions>
+							<execution>
+								<id>materialize-products</id>
+								<goals>
+									<goal>materialize-products</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>archive-products</id>
+								<goals>
+									<goal>archive-products</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<products>
+								<product>
+									<id>org.melanee.core.product</id>
+									<rootFolder>Melanee</rootFolder>
+									<archiveFileName>melanee</archiveFileName>
+								</product>
+							</products>
+						</configuration>  
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<!-- Profile for publishing to remote ftp server -->
+		<profile>
+			<id>publish</id>
+			<properties>
+				<!-- sftp etc. i supported through the wagon-ssh extension 
+				see http://mojo.codehaus.org/wagon-maven-plugin/usage.html -->
+				<!--<remoteRepo.url>sftp://mirror.informatik.uni-mannheim.de/users/rgerbig</remoteRepo.url>-->
+				<remoteRepo.url>sftp://melanee.informatik.uni-mannheim.de/</remoteRepo.url>
+				<remoteRepo.targetDir>/srv/www/virtual/melanee/htdocs/p2/melanee20/melanee-core</remoteRepo.targetDir>
+				<remoteProduct.targetDir>/srv/www/virtual/melanee/htdocs/p2/melanee20/melanee-core/product</remoteProduct.targetDir>
+				<localRepo.path>${project.build.directory}/repository/</localRepo.path>
+				<localProduct.path>${project.build.directory}/products/</localProduct.path>
+			</properties>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<version>1.0-beta-4</version>
+						<executions>
+							<execution>
+								<id>upload-repo</id>
+								<phase>install</phase>
+								<goals>
+									<goal>upload</goal>
+								</goals>
+								<configuration>
+									<serverId>melanee.informatik</serverId>
+									<!-- Place the following in settings.xml
+									<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+									  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+										<servers>
+											<server>
+												<id>melanee.informatik</id>
+												<username></username>
+												<password></password>
+											</server>
+										</servers>
+									</settings>
+									-->
+									<fromDir>${localRepo.path}</fromDir>
+									<includes>**</includes>
+									<toDir>${remoteRepo.targetDir}</toDir>
+									<url>${remoteRepo.url}</url>
+								</configuration>
+							</execution>
+							<execution>
+								<id>upload-products</id>
+								<phase>install</phase>
+								<goals>
+									<goal>upload</goal>
+								</goals>
+								<configuration>
+									<serverId>melanee.informatik</serverId>
+									<fromDir>${localProduct.path}</fromDir>
+									<includes>*.zip</includes>
+									<toDir>${remoteProduct.targetDir}</toDir>
+									<url>${remoteRepo.url}</url>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

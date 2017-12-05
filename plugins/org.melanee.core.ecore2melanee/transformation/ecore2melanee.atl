@@ -1,0 +1,293 @@
+-- @nsURI ecore=http://www.eclipse.org/emf/2002/Ecore
+-- @path plm=/org.melanee.core.models.plm/model/PLM.ecore
+
+--*******************************************************************************
+--* Copyright (c) 2016 University of Mannheim: Chair for Software Engineering
+--* All rights reserved. This program and the accompanying materials
+--* are made available under the terms of the Eclipse Public License v1.0
+--* which accompanies this distribution, and is available at
+--* http://www.eclipse.org/legal/epl-v10.html
+--*
+--* Contributors:
+--*     - initial API and implementation and initial documentation
+--*    Frederik Schmitt
+--*******************************************************************************/
+
+module ecore2melanee;
+
+create OUT:plm from IN:ecore;
+
+entrypoint rule setupDeepModel(){
+	to 
+		domain : plm!Domain(
+			deepModel <- deepModel
+		),
+		deepModel : plm!DeepModel(
+			name <- 'fuml',
+			content <- Sequence{level},
+			visualizer <- vv
+		),
+		level : plm!Level(
+			name <- 'O0',
+			visualizer <- v
+		),
+		v : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		),
+		vv : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		)
+	do {
+		thisModule.levelO0 <- level;
+		thisModule.deepModel <- deepModel;
+	}
+}
+
+rule EPackage2Clabject{
+	from
+		s : ecore!EPackage
+	to
+		package : plm!Entity(
+			name <- s.name,
+			content <- s.eClassifiers->append(s.eSubpackages),
+			visualizer <- v
+		),
+		v : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		)
+	do {
+		if (s.eSuperPackage.oclIsUndefined()) {
+			thisModule.levelO0.content <- Sequence{package};
+		}
+	}
+}
+
+rule EEnum2Enumeration {
+	from
+		s: ecore!EEnum
+	using{
+		packageClabject : plm!Entity = thisModule.resolveTemp(s.ePackage, 'package'); 
+	}
+	to
+		enum: plm!Enumeration (
+			name <- s.name,
+			literal <- s.eLiterals->collect(iterator | iterator.name),
+			visualizer <- v
+		),
+		v : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		)
+	do {
+		packageClabject.content->excludes(enum);
+		thisModule.deepModel.enumeration <- Sequence{enum};
+	}
+}
+
+rule EClass2Entity {
+	from
+		s : ecore!EClass
+	using{
+		packageClabject : plm!Entity = thisModule.resolveTemp(s.ePackage, 'package');
+		inheritance : plm!Inheritance = OclUndefined;
+	}
+	to 
+		t : plm!Entity (
+			name <- s.name,
+			feature <- s.eAttributes->append(s.eOperations),
+			visualizer <- v
+		),
+		v : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		)
+	do{
+		
+		for(su in s.eSuperTypes){
+			inheritance <- thisModule.CreateInheritanceForSupertype(su);
+			inheritance.subtype <- inheritance.subtype->append(thisModule.CreateSubtypeForClabject(s));
+		}
+		
+		packageClabject.content <- packageClabject.content->append(t);
+	}
+}
+
+rule EAttribute2Attribute{
+	from
+		s : ecore!EAttribute
+	to
+		t : plm!Attribute(
+			name <- s.name,
+			datatype <- s.mapAttributeType,
+			durability <- 1,
+			mutability <- 1,
+			value <- s.mapDefaultValue,
+			visualizer <- v
+		),
+		v : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		)
+}
+
+rule EOperation2Method{
+	from
+		s : ecore!EOperation
+	to
+		t : plm!Method(
+			name <- s.name,
+			visualizer <- v
+		),
+		v : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		)
+}
+
+rule EReference2Connection{
+	from
+		s : ecore!EReference
+	using{
+		packageClabject : plm!Entity = thisModule.resolveTemp(s.eContainingClass.ePackage, 'package'); 
+	}
+	to
+		t : plm!Connection(
+			name <- s.eContainingClass.name + '.' + s.name + '.' + s.eType.name,
+			connectionEnd <- Sequence{sourceEnd, targetEnd},
+			visualizer <- v
+		),
+		sourceEnd : plm!ConnectionEnd(
+			lower <- 1,
+			upper <- 1,
+			destination <- s.eContainingClass,
+			moniker <- ''
+		),
+		targetEnd : plm!ConnectionEnd(
+			lower <- s.lowerBound,
+			upper <- s.upperBound,
+			moniker <- s.name,
+			kind <- s.mapAggregation,
+			destination <- s.eType
+		),
+		v : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		)
+	do {
+		packageClabject.content <- packageClabject.content->append(t);
+	}
+}
+
+unique lazy rule CreateInheritanceForSupertype{
+	from
+		superTypeEClass : ecore!EClass
+	using{
+		packageClabject : plm!Entity = thisModule.resolveTemp(superTypeEClass.ePackage, 'package');
+	}
+	to
+		inheritance : plm!Inheritance(
+			supertype <- supertype,
+			visualizer <- v
+		),
+		supertype : plm!Supertype(
+			supertype <- superTypeEClass,
+			inheritance <- inheritance
+		),
+		v : plm!LMLVisualizer (
+			attributes <- thisModule.getDefaultVisualizationValues(v)
+		)
+	do{
+		packageClabject.content <- packageClabject.content->append(inheritance);
+	}
+}
+
+lazy rule CreateSubtypeForClabject{
+	from
+		s : ecore!EClass
+	to
+		t : plm!Subtype(
+			subtype <- s
+		)
+}
+
+helper def : levelO0 : plm!Level = OclUndefined;
+helper def : deepModel : plm!DeepModel = OclUndefined;
+
+helper context ecore!EAttribute def : mapDefaultValue :  String = 
+	if self.defaultValue->oclIsUndefined() then
+		''
+	else 
+			self.defaultValue.toString()
+	endif;
+
+helper context ecore!EReference def : mapAggregation :  String = 
+	if self.containment = true then
+		'Aggregation'
+	else 
+		'Basic'
+	endif;
+
+helper context ecore!EAttribute def : mapAttributeType :  String = 
+	if self.eAttributeType.name = 'EString' then
+		'String'
+	else 
+		if self.eAttributeType.name = 'EBoolean' then
+			'Boolean'
+		else 
+			if self.eAttributeType.name = 'EInt' then
+				'Integer'
+			else 
+				self.eAttributeType.name
+			endif
+		endif
+	endif;
+
+helper def : getDefaultVisualizationValues(v:plm!LMLVisualizer) : Set(String) = 
+	-- Trait-related default values for all meta-model elements
+	let default:OrderedSet(String) = v.eContainer().eClass().eAllAttributes->collect(a | if a.name <> 'levelIndex' then a.name.concat('= default') else a.name.concat('= noshow') endif)->asOrderedSet()
+	in
+	-- Non trait-related default values for Entity
+if (v.eContainer().oclIsTypeOf(plm!Entity)) then
+	default->append('ProximityClassification= 1') -- @deprecated - Do not use anymore
+		->append('text= derived')
+		->append('graph= derived')
+		->append('form= derived')
+		->append('table= derived')
+		->append('app= derived')
+		->append('DSLRendering= false') -- @deprecated - Do not use anymore
+		->append('ProximityIndication= name:1')
+else
+	-- Non trait-related default values for Connection
+	if (v.eContainer().oclIsTypeOf(plm!Connection)) then
+		default->append('ProximityClassification= 1') -- @deprecated - Do not use anymore
+			->append('text= derived')
+			->append('graph= derived')
+			->append('form= derived')
+			->append('table= derived')
+			->append('app= derived')
+			->append('DSLRendering= false') -- @deprecated - Do not use anymore
+			->append('ProximityIndication= name:1')
+			->append('collapsed= false')
+	else
+		-- Non trait-related default values for Inheritance
+		if (v.eContainer().oclIsTypeOf(plm!Inheritance)) then
+				default->append('collapsed= false')
+		else
+			-- Non trait-related default values for DeepModel
+			if (v.eContainer().oclIsTypeOf(plm!DeepModel)) then
+				default->append('showClassificationConnectionEndNames = false')
+				->append('text= derived')
+				->append('graph= derived')
+				->append('form= derived')
+				->append('table= derived')
+				->append('app= derived')
+			-- Non trait-related default values for Level
+			else
+				if (v.eContainer().oclIsTypeOf(plm!Level)) then
+					default->append('text= derived')
+					->append('graph= derived')
+					->append('form= derived')
+					->append('table= derived')
+					->append('app= derived')
+				else
+					default
+				endif
+			endif
+		endif
+	endif
+endif;

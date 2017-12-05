@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.melanee.core.visualization.editor
+Bundle-SymbolicName: org.melanee.core.visualization.editor;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: org.melanee.core.visualization.editor.Activator
+Require-Bundle: org.melanee.core.modeleditor;bundle-version="1.0.0",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.4.1",
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.4.1",
+ org.melanee.core.models.plm.editor,
+ org.melanee.core.models.plm.editor
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.melanee.core.visualization.editor.views

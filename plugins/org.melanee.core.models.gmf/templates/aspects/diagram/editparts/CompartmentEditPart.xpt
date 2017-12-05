@@ -1,0 +1,176 @@
+/*******************************************************************************
+ * Copyright (c) 2014 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«EXTENSION xpt::diagram::editparts::Utils»
+
+/*****************************************************
+* Add remove the upper border depending on dsl value
+*****************************************************/
+«AROUND handleNotificationEvent FOR gmfgen::GenCompartment -»
+	«IF self.editPartClassName.startsWith('EntityEntityContentsCompartment')
+	or self.editPartClassName.startsWith('ConnectionConnectionContentsCompartment')»
+		«EXPAND handleNotification -»
+	«ENDIF»
+«ENDAROUND»
+
+«AROUND additions FOR gmfgen::GenCompartment -»
+	«IF self.editPartClassName.startsWith('EntityEntityContentsCompartment')
+	or self.editPartClassName.startsWith('ConnectionConnectionContentsCompartment')»
+		«EXPAND updateView-»
+		«EXPAND getCommandWithLocationSynchronization-»
+		«EXPAND listenToLMLVisualizerChanges-»
+	«ENDIF»
+	«IF self.editPartClassName.startsWith('LevelDomainElementsCompartment')»
+		«EXPAND getCommandWithLocationSynchronization-»
+	«ENDIF»
+	«EXPAND isSelectable»
+«ENDAROUND»
+
+/*******************************************************************************
+ * Listen to switches in LMLVisualizer (not children) e.g. change notation
+*******************************************************************************/
+«DEFINE listenToLMLVisualizerChanges FOR gmfgen::GenCompartment»
+	/**
+	 * Registers the Edipart to fire handleNotification on changes
+	 * in LMLVisualizer.
+	 *
+	 * BUG: Only runs on EditPartCrearion. Items which are added Afterwards are not
+	 * listened to.
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected void addSemanticListeners() {
+		super.addSemanticListeners();
+
+		org.melanee.core.models.plm.PLM.Element e = (org.melanee.core.models.plm.PLM.Element) resolveSemanticElement();
+
+		//Register for listening to LMLVisualizer changes
+		for (org.melanee.core.models.plm.PLM.LMLVisualizer v : e.getVisualizer())
+			addListenerFilter(v.toString().substring(0, v.toString().indexOf(" ")), this, v);
+	}
+«ENDDEFINE»
+
+«DEFINE getCommandWithLocationSynchronization FOR gmfgen::GenCompartment»
+/**
+ * Saves the location to the _request for later synchronization
+ * with the LMLVisualizer in the CreatCommand.
+ */
+@Override
+public org.eclipse.gef.commands.Command getCommand(org.eclipse.gef.Request _request) {
+	org.eclipse.gef.commands.Command result = super.getCommand(_request);
+	
+	//For create commands the location is saved as an parameter
+	if(_request instanceof org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest &&
+			result != null){
+		org.eclipse.draw2d.geometry.Point location = new org.eclipse.draw2d.geometry.Point(((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest) _request).getLocation());
+		getContentPane().translateToRelative(location);
+		_request.getExtendedData().put(org.melanee.core.modeleditor.custom.ModelEditorConstants.CREATE_COMMAND_LOCATION, location);
+	}
+	
+	return result;
+}
+«ENDDEFINE»
+
+«DEFINE isSelectable FOR gmfgen::GenCompartment»
+	/*
+	 * @generated
+	 */
+	@Override
+	public boolean isSelectable() {
+		//Things that are not viewed cannot be selected
+		//Throws an NullPointerException after import from
+		//remote model for clabjects
+		if(getViewer() == null)
+			return false;
+		
+		return super.isSelectable();
+	}
+«ENDDEFINE»
+«DEFINE handleNotification FOR gmfgen::GenCompartment-»
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification event) {
+		super.handleNotificationEvent(event);
+		
+		updateView();
+	}
+«ENDDEFINE»
+
+«DEFINE updateView FOR gmfgen::GenCompartment»
+	/**
+	 * @generated
+	 */
+	@Override
+	public void activate() {
+		super.activate();
+		
+		updateView();
+	}
+	
+	/**
+	 * @generated
+	 */
+	org.eclipse.draw2d.Border cachedBorder = null;
+	
+	/**
+	 * Remove the top border in DSL model
+	 *
+	 * @generated
+	 */
+	private void updateView(){
+		org.eclipse.draw2d.IFigure compartmentFigure = getFigure();
+		
+		if (cachedBorder == null && compartmentFigure.getBorder() != null)
+			cachedBorder = compartmentFigure.getBorder();
+		
+		
+		org.melanee.core.models.plm.PLM.Clabject self = (org.melanee.core.models.plm.PLM.Clabject)resolveSemanticElement();
+		if (getDSLRenderingValue())
+			compartmentFigure.setBorder(null);
+		else
+			compartmentFigure.setBorder(cachedBorder);
+	}
+	
+	/**
+	 * 
+	 * @return null if no DSLRendering infotmation is available, else true or false
+	 *
+	 * @generated
+	 */
+	public java.lang.Boolean getDSLRenderingValue() {
+
+		//********************************************************
+		//Find the LMLVisualizer attached to this element 
+		//********************************************************
+		org.melanee.core.models.plm.PLM.Element self = (org.melanee.core.models.plm.PLM.Element) this.resolveSemanticElement();
+
+		//No rendering information found => all Connection remains expanded
+		if (self.getVisualizer().size() == 0) {
+			//Hide external name label
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
+					.setVisible(false);
+
+			return null;
+		}
+
+		org.melanee.core.models.plm.PLM.LMLVisualizer r = self.getVisualizer().get(0);
+		String dslRenderingString = r.getValueForKey("DSLRendering");
+
+		if ("".equals(dslRenderingString))
+			return null;
+
+		return java.lang.Boolean.parseBoolean(dslRenderingString);
+	}
+«ENDDEFINE»

@@ -1,0 +1,453 @@
+«REM»***************************************************************************
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************«ENDREM»
+ 
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«EXTENSION xpt::diagram::Utils»
+
+«REM»**************************************************
+	 * 
+	 * This is a complete modification for create connectionEnd
+	 *
+	 **************************************************
+«ENDREM»
+«AROUND Main FOR gmfgen::GenLink»
+«IF createCommandClassName.startsWith('ConnectionEnd') -»
+«EXPAND xpt::Common::copyright FOR diagram.editorGen-»
+package «diagram.editCommandsPackageName»;
+
+«EXPAND xpt::Common::generatedClassComment»
+public class ConnectionEndCreateCommand extends org.melanee.core.modeleditor.custom.implicitconnection.commands.AbstractImplicitMiddleCreateCommand {
+	
+	/**
+	 * @generated
+	 */
+	private org.melanee.core.models.plm.PLM.ConnectionEnd implicitConnectionEnd;
+	
+	/**
+	 * @generated
+	 */
+	private org.eclipse.emf.ecore.EObject source;
+	
+	/**
+	 * @generated
+	 */
+	private org.eclipse.emf.ecore.EObject target;
+	
+	/**
+	 * @generated
+	 */
+	public ConnectionEndCreateCommand(org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest request, org.eclipse.emf.ecore.EObject source,
+			org.eclipse.emf.ecore.EObject target) {
+		super(request, source, target);
+		
+		this.source = source;
+		this.target = target;
+	}
+
+	/**
+	 * @generated
+	 */
+	@Override
+	protected boolean checkSource(org.eclipse.emf.ecore.EObject source) {
+		// This modification needs to be done to allow tool creation (SWTBot tests)
+		// source is alway null in this case.
+		return true;
+		//return source instanceof org.melanee.core.models.plm.PLM.Connection ||
+		//		(source instanceof org.melanee.core.models.plm.PLM.Entity && target instanceof org.melanee.core.models.plm.PLM.Entity);
+	}
+
+	/**
+	 * @generated
+	 */
+	@Override
+	protected boolean checkTarget(org.eclipse.emf.ecore.EObject target) {
+		//This is null when drawing from connection to entity..
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected org.eclipse.gmf.runtime.common.core.command.CommandResult doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor monitor,
+			org.eclipse.core.runtime.IAdaptable info) throws ExecutionException{
+		
+		if (source instanceof org.melanee.core.models.plm.PLM.Entity && target instanceof org.melanee.core.models.plm.PLM.Entity)
+			return doExecuteWithResultImplicitMiddle(monitor, info);
+		
+		org.melanee.core.models.plm.PLM.ConnectionEnd newElement = org.melanee.core.models.plm.PLM.PLMFactory.eINSTANCE
+				.createConnectionEnd();
+		((org.melanee.core.models.plm.PLM.Connection)source).getConnectionEnd().add(newElement);
+		newElement.setConnection((org.melanee.core.models.plm.PLM.Connection)source);
+		newElement.setDestination((org.melanee.core.models.plm.PLM.Clabject)target);
+		
+		//*************************************************************
+		// BEGIN CUSTOM CODE
+		//*************************************************************
+		org.melanee.core.models.plm.PLM.ConnectionEnd typeConnectionEnd = null;
+		//Is the connectionEnd created by a DSL tool? -> Initialize values
+		if (getRequest().getParameter(org.melanee.core.modeleditor.custom.implicitconnection.policy.ImplicitConnectionGraphicalNodeEditPolicy.DSL_TYPE) instanceof org.melanee.core.models.plm.PLM.ConnectionEnd &&
+				(typeConnectionEnd = (org.melanee.core.models.plm.PLM.ConnectionEnd)getRequest().getParameter(org.melanee.core.modeleditor.custom.implicitconnection.policy.ImplicitConnectionGraphicalNodeEditPolicy.DSL_TYPE)) != null) {
+			
+			newElement.setNavigable(typeConnectionEnd.isNavigable());
+			newElement.setMoniker(typeConnectionEnd.getMoniker());
+			newElement.setLower(typeConnectionEnd.getLower());
+			newElement.setUpper(typeConnectionEnd.getUpper());
+		}
+		//*************************************************************
+		// END CUSTOM CODE
+		//*************************************************************
+		
+		doConfigure(newElement, monitor, info);
+		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(newElement);
+		
+		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected org.eclipse.gmf.runtime.common.core.command.CommandResult doExecuteWithResultImplicitMiddle(org.eclipse.core.runtime.IProgressMonitor monitor,
+			org.eclipse.core.runtime.IAdaptable info) throws org.eclipse.core.commands.ExecutionException {
+		super.doExecuteWithResult(monitor, info);
+		
+		if (!canExecute()) {
+			throw new org.eclipse.core.commands.ExecutionException(
+					"Invalid arguments in create link command"); //$NON-NLS-1$
+		}
+
+		org.melanee.core.models.plm.PLM.ConnectionEnd newElement = org.melanee.core.models.plm.PLM.PLMFactory.eINSTANCE.createConnectionEnd();
+
+		newElement.setDestination((org.melanee.core.models.plm.PLM.Clabject)source);
+		((org.melanee.core.models.plm.PLM.Connection)middle).getConnectionEnd().add(newElement);
+		newElement.setConnection((org.melanee.core.models.plm.PLM.Connection)middle);
+		
+		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(newElement);
+		
+		if (getRequest().getParameter(org.melanee.core.modeleditor.custom.implicitconnection.policy.ImplicitConnectionGraphicalNodeEditPolicy.DSL_TYPE) != null)
+			instantiateDSLValues((org.melanee.core.models.plm.PLM.Connection)getRequest().getParameter(org.melanee.core.modeleditor.custom.implicitconnection.policy.ImplicitConnectionGraphicalNodeEditPolicy.DSL_TYPE),(org.melanee.core.models.plm.PLM.Connection)middle);
+		
+		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
+	}
+	
+	/**
+	 * Returns the ConnectionEnd pointing to 'destination'
+	 *
+	 * @generated
+	 */
+	private org.melanee.core.models.plm.PLM.ConnectionEnd getConnectionEndToDestination(org.melanee.core.models.plm.PLM.Connection connection, org.melanee.core.models.plm.PLM.Clabject destination) {
+		for(org.melanee.core.models.plm.PLM.ConnectionEnd connectionEnd : connection.getConnectionEnd()) {
+			if(connectionEnd.getDestination() == destination)
+				return connectionEnd;
+		}
+		
+		org.eclipse.core.runtime.Assert.isTrue(false); // should never be reached, coding error if it is reached
+		return null;
+	}
+	
+	/**
+	 * Determines whether the connection defined by 'connectionEnds' is directed (i.e. exactly one connectionEnd must be navigable)
+	 *
+	 * @generated
+	 */
+	private boolean isDirected(org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject> connectionEnds) {
+		org.eclipse.core.runtime.Assert.isTrue(connectionEnds.size() == 2);
+		return ((org.melanee.core.models.plm.PLM.ConnectionEnd)connectionEnds.get(0)).isNavigable() != ((org.melanee.core.models.plm.PLM.ConnectionEnd)connectionEnds.get(1)).isNavigable(); 
+	}
+	
+	/**
+	 * Returns the correct connectionEnd for 'instance' based on type checking. Returns null if no connectionEnd fits (should never
+	 * happen) or the type checking results are ambiguous.
+	 *
+	 * @generated
+	 */
+	private org.melanee.core.models.plm.PLM.ConnectionEnd getConnectionEndBasedOnType(org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject> connectionEnds, org.melanee.core.models.plm.PLM.Clabject instance) {
+		org.melanee.core.models.plm.PLM.ConnectionEnd result = null;
+		
+		for(org.eclipse.emf.ecore.EObject _connectionEnd : connectionEnds) {
+			org.melanee.core.models.plm.PLM.ConnectionEnd connectionEnd = (org.melanee.core.models.plm.PLM.ConnectionEnd)_connectionEnd;
+			org.melanee.core.models.plm.PLM.Clabject type = connectionEnd.getDestination();
+			if(instance.isInstanceOf(type)) {
+				if(result == null)
+					result = connectionEnd;
+				else
+					return null; // more than one connectionEnd fits based on type, result is ambiguous
+			}
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Returns the correct connectionEnd based on the direction. Should only be called if isDirected(connectionEnds) is true.
+	 *
+	 * @generated
+	 */
+	private org.melanee.core.models.plm.PLM.ConnectionEnd getConnectionEndBasedOnDirection(org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject> connectionEnds, boolean navigable) {
+		org.eclipse.core.runtime.Assert.isTrue(connectionEnds.size() == 2);
+		
+		for(org.eclipse.emf.ecore.EObject _connectionEnd : connectionEnds) {
+			org.melanee.core.models.plm.PLM.ConnectionEnd connectionEnd = (org.melanee.core.models.plm.PLM.ConnectionEnd)_connectionEnd;
+			if(connectionEnd.isNavigable() == navigable)
+				return connectionEnd;
+		}
+		
+		org.eclipse.core.runtime.Assert.isTrue(false); // should never be reached, coding error if it is reached
+		return null;
+	}
+	
+	/**
+	 * Returns the element from 'connectionEnds' which is not 'connectionEnd' (assumes there are only two elements in the list)
+	 *
+	 * @generated
+	 */
+	private org.melanee.core.models.plm.PLM.ConnectionEnd getComplementaryConnectionEnd(org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject> connectionEnds, org.melanee.core.models.plm.PLM.ConnectionEnd connectionEnd) {
+		org.eclipse.core.runtime.Assert.isTrue(connectionEnds.size() == 2);
+		return (connectionEnds.get(0) == connectionEnd ? (org.melanee.core.models.plm.PLM.ConnectionEnd)connectionEnds.get(1) : (org.melanee.core.models.plm.PLM.ConnectionEnd)connectionEnds.get(0));
+	}
+	
+	/**
+	 * @generated
+	 */
+	private void instantiateDSLValues(org.melanee.core.models.plm.PLM.Connection typeConnection, org.melanee.core.models.plm.PLM.Connection instanceConnection) {
+		//At first set up the instance connection
+		org.melanee.core.models.plm.PLM.PLMFactory.eINSTANCE.configureClabject(typeConnection, instanceConnection, null);
+
+		org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject> typeConnectionEnds = new org.eclipse.emf.common.util.BasicEList<org.eclipse.emf.ecore.EObject>(typeConnection.getAllConnectionEnd());
+		org.melanee.core.models.plm.PLM.ConnectionEnd[] typeConnectionEnd = new org.melanee.core.models.plm.PLM.ConnectionEnd[2]; // right now the graphical editor only allows to create a new connection between exactly two entities in a single user action
+		
+		// try to find the proper connectionEnd mappings based on type
+		typeConnectionEnd[0] = getConnectionEndBasedOnType(typeConnectionEnds, (org.melanee.core.models.plm.PLM.Clabject)source);
+		typeConnectionEnd[1] = getConnectionEndBasedOnType(typeConnectionEnds, (org.melanee.core.models.plm.PLM.Clabject)target);
+		
+		if((typeConnectionEnd[0] == null || typeConnectionEnd[1] == null) && typeConnectionEnds.size() != 2)
+			throw new RuntimeException("Cannot instantiate new connection: too many connectionEnds with ambiguous types");
+		
+		// fix mappings in case of ambiguity
+		if(typeConnectionEnd[0] == null && typeConnectionEnd[1] == null) {
+			if(isDirected(typeConnectionEnds)) { // type checking results are entirely ambiguous, try to use direction as criterion
+				typeConnectionEnd[0] = getConnectionEndBasedOnDirection(typeConnectionEnds, false);
+				typeConnectionEnd[1] = getConnectionEndBasedOnDirection(typeConnectionEnds, true);				
+			} else {
+				// last resort: mapping based on list order because all other criteria failed
+				typeConnectionEnd[0] = (org.melanee.core.models.plm.PLM.ConnectionEnd)typeConnectionEnds.get(0);
+				typeConnectionEnd[1] = (org.melanee.core.models.plm.PLM.ConnectionEnd)typeConnectionEnds.get(1);
+			}
+		} else if(typeConnectionEnd[0] == null && typeConnectionEnd[1] != null) { // only the result of one type check is ambiguous
+			typeConnectionEnd[0] = getComplementaryConnectionEnd(typeConnectionEnds, typeConnectionEnd[1]);
+		} else if(typeConnectionEnd[0] != null && typeConnectionEnd[1] == null) {
+			typeConnectionEnd[1] = getComplementaryConnectionEnd(typeConnectionEnds, typeConnectionEnd[0]);			
+		}
+		
+		// set values of newly created connectionEnds based on the mapping just created
+		for(int i = 0; i < typeConnectionEnds.size(); ++i) {
+			org.melanee.core.models.plm.PLM.Clabject destination = (org.melanee.core.models.plm.PLM.Clabject)(i == 0 ? source : target);
+			org.melanee.core.models.plm.PLM.ConnectionEnd instanceConnectionEnd = getConnectionEndToDestination(instanceConnection, destination);
+
+			instanceConnectionEnd.setMoniker(typeConnectionEnd[i].getMoniker());
+			instanceConnectionEnd.setLower(typeConnectionEnd[i].getLower());
+			instanceConnectionEnd.setNavigable(typeConnectionEnd[i].isNavigable());
+			instanceConnectionEnd.setUpper(typeConnectionEnd[i].getUpper());
+			instanceConnectionEnd.setKind(typeConnectionEnd[i].getKind());
+			instanceConnectionEnd.setType(typeConnectionEnd[i]);
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	@Override
+	protected org.melanee.core.modeleditor.custom.implicitconnection.commands.IElementTypeAwareAdapter createSemanticMiddle(
+			org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info)
+			throws org.eclipse.core.commands.ExecutionException {
+		
+		org.eclipse.emf.ecore.EObject container = (org.eclipse.emf.ecore.EObject)info.getAdapter(org.eclipse.emf.ecore.EObject.class);
+		org.melanee.core.modeleditor.custom.implicitconnection.commands.IElementTypeAwareAdapter result = null;
+		
+		//The Container is an entity
+		if (container instanceof org.melanee.core.models.plm.PLM.Entity){
+			org.melanee.core.models.plm.PLM.Connection c = org.melanee.core.models.plm.PLM.PLMFactory.eINSTANCE
+					.createConnection();
+			result = new org.melanee.core.modeleditor.custom.implicitconnection.commands.EObjectAndElementTypeAdapter(
+					c,
+					org.melanee.core.modeleditor.providers.PLMElementTypes.Connection_3111,
+					org.melanee.core.modeleditor.edit.parts.Connection2EditPart.VISUAL_ID);
+			invokeDefaultElementTypeConfiguration(result, monitor, info);
+			org.melanee.core.modeleditor.providers.ElementInitializers
+					.getInstance().init_Connection_3111(c);
+		}
+		//The container is a package
+		else if (container instanceof org.melanee.core.models.plm.PLM.Package){
+			org.melanee.core.models.plm.PLM.Connection c = org.melanee.core.models.plm.PLM.PLMFactory.eINSTANCE
+					.createConnection();
+			result = new org.melanee.core.modeleditor.custom.implicitconnection.commands.EObjectAndElementTypeAdapter(
+					c,
+					org.melanee.core.modeleditor.providers.PLMElementTypes.Connection_3127,
+					org.melanee.core.modeleditor.edit.parts.Connection3EditPart.VISUAL_ID);
+			invokeDefaultElementTypeConfiguration(result, monitor, info);
+			org.melanee.core.modeleditor.providers.ElementInitializers
+					.getInstance().init_Connection_3127(c);
+		}
+		//The container is a model
+		else if (container instanceof org.melanee.core.models.plm.PLM.Level){
+			org.melanee.core.models.plm.PLM.Connection c = org.melanee.core.models.plm.PLM.PLMFactory.eINSTANCE
+					.createConnection();
+			result = new org.melanee.core.modeleditor.custom.implicitconnection.commands.EObjectAndElementTypeAdapter(
+					c,
+					org.melanee.core.modeleditor.providers.PLMElementTypes.Connection_3099,
+					org.melanee.core.modeleditor.edit.parts.ConnectionEditPart.VISUAL_ID);
+			invokeDefaultElementTypeConfiguration(result, monitor, info);
+			org.melanee.core.modeleditor.providers.ElementInitializers
+					.getInstance().init_Connection_3099(c);
+		}
+		else
+			throw new RuntimeException("Not implemented for container!");
+		
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	@Override
+	protected org.melanee.core.modeleditor.custom.implicitconnection.commands.IElementTypeAwareAdapter createImplicitTargetLink(
+			org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info)
+			throws org.eclipse.core.commands.ExecutionException {
+
+		implicitConnectionEnd = org.melanee.core.models.plm.PLM.PLMFactory.eINSTANCE.createConnectionEnd();
+		return new org.melanee.core.modeleditor.custom.implicitconnection.commands.EObjectAndElementTypeAdapter(implicitConnectionEnd, org.melanee.core.modeleditor.providers.PLMElementTypes.ConnectionEnd_4036, org.melanee.core.modeleditor.edit.parts.ConnectionEndEditPart.VISUAL_ID);
+	}
+
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void setupSemanticConnections(org.eclipse.emf.ecore.EObject source,
+			org.melanee.core.modeleditor.custom.implicitconnection.commands.IElementTypeAwareAdapter middle, org.eclipse.emf.ecore.EObject target) {
+		
+		org.melanee.core.models.plm.PLM.Connection connection = (org.melanee.core.models.plm.PLM.Connection)middle.getAdapter(org.eclipse.emf.ecore.EObject.class);
+		
+		implicitConnectionEnd.setDestination((org.melanee.core.models.plm.PLM.Clabject)target);
+		connection.getConnectionEnd().add(implicitConnectionEnd);
+		implicitConnectionEnd.setConnection(connection);
+		
+		if (connection.eContainer() == null){
+			if (source.eContainer() instanceof org.melanee.core.models.plm.PLM.Level)
+				((org.melanee.core.models.plm.PLM.Level) source.eContainer()).getContent().add(connection);
+			else if (source.eContainer() instanceof org.melanee.core.models.plm.PLM.Clabject)
+				((org.melanee.core.models.plm.PLM.Clabject) source.eContainer()).getContent().add(connection);
+			else if (source.eContainer() instanceof org.melanee.core.models.plm.PLM.Package)
+				((org.melanee.core.models.plm.PLM.Package) source.eContainer()).getContent().add(connection);
+			else
+				throw new RuntimeException("Not implemented for container!");
+		}
+	}
+	
+	/**
+	 * @generated
+	 */
+	protected void doConfigure(
+			org.melanee.core.models.plm.PLM.ConnectionEnd newElement,
+			org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info)
+			throws org.eclipse.core.commands.ExecutionException {
+		org.eclipse.gmf.runtime.emf.type.core.IElementType elementType = ((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest())
+				.getElementType();
+		org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest configureRequest = new org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest())
+				.getClientContext());
+		configureRequest.addParameters(getRequest().getParameters());
+		configureRequest.setParameter(org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest.SOURCE,
+				source);
+		configureRequest.setParameter(org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest.TARGET,
+				target);
+		org.eclipse.gmf.runtime.common.core.command.ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
+		if (configureCommand != null && configureCommand.canExecute()) {
+			configureCommand.execute(monitor, info);
+		}
+	}
+}
+«ELSE»
+	//self.modelFacet.metaClass.ecoreClass.name
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
+
+«REM»
+/*******************************************************************************
+ * This is used for setting up connections after createing them from the palette
+ *******************************************************************************/
+«AROUND execute(link : gmfgen::GenLink) FOR gmfgen::TypeLinkModelFacet»
+«IF self.metaClass.ecoreClass.name.startsWith('ConnectionEnd')-»
+«IF (if sourceMetaFeature = null then containmentMetaFeature.ecoreFeature.changeable else sourceMetaFeature.ecoreFeature.changeable endif) and targetMetaFeature.ecoreFeature.changeable-»
+		«EXPAND MetaModel::NewInstance('newElement') FOR metaClass-»
+		«EXPAND MetaModel::modifyFeature((if hasContainerOtherThanSource(self) then 'getContainer()' else 'getSource()' endif), containmentMetaFeature.genClass, 'newElement') FOR containmentMetaFeature-»
+		«IF sourceMetaFeature <> null-»
+			«EXPAND MetaModel::modifyFeature('newElement', metaClass, 'getSource()') FOR sourceMetaFeature-»
+		«ENDIF-»
+		«EXPAND MetaModel::modifyFeature('newElement', metaClass, 'getTarget()') FOR targetMetaFeature-»
+		«IF hasExplicitChildFeature(self)-»
+			«IF sourceMetaFeature <> null-»
+				«EXPAND MetaModel::modifyFeature('getContainer()', containmentMetaFeature.genClass, 'newElement') FOR childMetaFeature-»
+			«ELSE-»
+				«EXPAND MetaModel::modifyFeature('getSource()', getSourceType(), 'newElement') FOR childMetaFeature-»
+			«ENDIF-»
+		«ENDIF-»
+		«EXPAND initialize(link, 'newElement')-»
+		
+		//*************************************************************
+		// BEGIN CUSTOM CODE
+		//*************************************************************
+		org.melanee.core.modeleditor.part.PLMDiagramEditor editor = (org.melanee.core.modeleditor.part.PLMDiagramEditor) org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getActiveEditor();
+		
+		//Is the connectionEnd created by a DSL tool? -> Initialize values
+		if (editor.getPalette().getActiveTool().getId().startsWith("dsl."))
+		{
+			String typeConnectionEndID = editor.getPalette().getActiveTool().getId().replace("dsl.", "").replaceAll("<<.*?>>", "").replace(".CreationTool", "");			
+			org.melanee.core.models.plm.PLM.ConnectionEnd typeConnectionEnd = null;
+			
+			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(source).eAllContents();
+			while (iter.hasNext()) {
+				org.eclipse.emf.ecore.EObject current = iter.next();
+				if (org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(current).equals(typeConnectionEndID)) 
+					typeConnectionEnd = (org.melanee.core.models.plm.PLM.ConnectionEnd)current;
+			}
+			
+			if (typeConnectionEnd != null){
+				newElement.setNavigable(typeConnectionEnd.isNavigable());
+				newElement.setExpressedConnectionEndName(typeConnectionEnd.getExpressedConnectionEndName());
+				newElement.setLower(typeConnectionEnd.getLower());
+				newElement.setUpper(typeConnectionEnd.getUpper());
+			}
+		}
+		//*************************************************************
+		// END CUSTOM CODE
+		//*************************************************************
+		
+		doConfigure(newElement, monitor, info);
+		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(«EXPAND MetaModel::DowncastToEObject('newElement') FOR metaClass»);
+		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
+«ELSE-»
+		throw new UnsupportedOperationException();
+«ENDIF-»
+«ELSE»
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
+
+«DEFINE initialize(gmfgen::GenLink link, String newElementVar) FOR gmfgen::TypeModelFacet»
+	«EXPAND xpt::providers::ElementInitializers::initMethodCall(self, newElementVar) FOR link»
+«ENDDEFINE»
+«ENDREM»

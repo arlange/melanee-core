@@ -1,0 +1,154 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«EXTENSION xpt::diagram::Utils»
+«EXTENSION xpt::OclMigrationProblems»
+
+/*
+ * Used for checking wheter a DSL entity can be added or not
+ */
+
+«AROUND canExecuteMethod FOR gmfgen::GenNode-»
+«IF self.createCommandClassName.startsWith('Entity')»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public boolean canExecute() {
+		org.melanee.core.modeleditor.part.PLMDiagramEditor editor = (org.melanee.core.modeleditor.part.PLMDiagramEditor)org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		String typeName = editor.getPalette().getActiveTool().getLabel();
+		String typeToolId = editor.getPalette().getActiveTool().getId();
+		
+		//check if we have a dsl element -> if we have no dsl element we can create
+		if (!typeToolId.startsWith("dsl."))
+			return true;
+		
+		org.melanee.core.models.plm.PLM.Level m = getElementToEdit() instanceof org.melanee.core.models.plm.PLM.Level ?
+				(org.melanee.core.models.plm.PLM.Level) getElementToEdit()
+				: ((org.melanee.core.models.plm.PLM.Clabject)getElementToEdit()).getLevel();
+		
+		
+		org.melanee.core.models.plm.PLM.DeepModel ont = (org.melanee.core.models.plm.PLM.DeepModel)m.eContainer();
+		
+		//We cannot create an instance on the highest ontological layer
+		if (ont.getContent().indexOf(m) < 1)
+			return false;
+		
+		org.melanee.core.models.plm.PLM.Level typeLevel = ont.getContent().get(ont.getContent().indexOf(m) - 1);
+		
+				org.melanee.core.models.plm.PLM.Clabject type = null;
+		
+		java.util.Iterator<org.eclipse.emf.ecore.EObject> contentIterator = typeLevel.eAllContents();
+		while (contentIterator.hasNext()){
+			org.eclipse.emf.ecore.EObject obj = contentIterator.next(); 
+			//We found the type -> allowed to create an instance here
+			if (obj instanceof org.melanee.core.models.plm.PLM.Clabject
+					&& ((org.melanee.core.models.plm.PLM.Clabject) obj).getName() != null
+					&& ((org.melanee.core.models.plm.PLM.Clabject) obj).getName().equals(typeName)){
+				type = (org.melanee.core.models.plm.PLM.Clabject)obj;
+				break;
+			}
+		}
+
+		//no type found
+		if (type == null)
+			return false;
+		
+		//owned in level, not contained and added to model => OK
+		if (type.eContainer() instanceof org.melanee.core.models.plm.PLM.Level
+				|| type.eContainer() instanceof org.melanee.core.models.plm.PLM.Package
+				&& type.getComposite() == null
+				&& getElementToEdit() instanceof org.melanee.core.models.plm.PLM.Level)
+			return true;
+
+		if ((type.getComposite() != null || (type.getAggregates().size()  > 0))
+				&& getElementToEdit() instanceof org.melanee.core.models.plm.PLM.Clabject){
+			
+			//Type is part of a composite
+			if (type.getComposite() != null
+					&& ((org.melanee.core.models.plm.PLM.Clabject) getElementToEdit()).getClassificationTreeAsInstance().contains((org.melanee.core.models.plm.PLM.Clabject) type.getComposite()))
+			return true;
+			
+			for (org.melanee.core.models.plm.PLM.Clabject a : type.getAggregates()){
+				if(((org.melanee.core.models.plm.PLM.Clabject) getElementToEdit()).isInstanceOf((org.melanee.core.models.plm.PLM.Clabject) a))
+					return true;
+			}
+		}
+				
+		//We found no type -> not allowed to create an instance here
+		return false;
+	}
+«ELSE»
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
+
+
+/********************************************************
+* This allows to create preconfigured model-elements
+* Also location can be set at creation to LMLVisualzier
+********************************************************/
+«AROUND doExecuteWithResultMethod FOR gmfgen::GenNode-»
+«IF self.createCommandClassName.startsWith('Entity')
+	or self.createCommandClassName.startsWith('Connection')
+	or self.createCommandClassName.startsWith('Inheritance')»
+	«EXPAND xpt::Common::generatedMemberComment»
+	protected org.eclipse.gmf.runtime.common.core.command.CommandResult doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info) throws org.eclipse.core.commands.ExecutionException {
+«IF modelFacet.isPhantomElement()-»
+		«EXPAND xpt::diagram::commands::CreateNodeCommand::phantomElementCreation(self, 'newElement') FOR modelFacet»
+«ELSE-»
+		«EXPAND normalElementCreation2(self, 'newElement') FOR modelFacet»
+«ENDIF»
+		«EXPAND xpt::diagram::commands::CreateNodeCommand::initialize(self, 'newElement') FOR modelFacet-»
+«IF true/*FIXME boolean needsExternalConfiguration*/»
+		doConfigure(newElement, monitor, info);
+«ENDIF»
+		//Set the location			
+		if (getRequest().getParameter(org.melanee.core.modeleditor.custom.ModelEditorConstants.CREATE_COMMAND_LOCATION) != null){
+			org.eclipse.draw2d.geometry.Point location = (org.eclipse.draw2d.geometry.Point) getRequest().getParameter(org.melanee.core.modeleditor.custom.ModelEditorConstants.CREATE_COMMAND_LOCATION);
+			((org.melanee.core.models.plm.PLM.Element)newElement).getVisualizer().get(0).setXLocation(location.x);
+			((org.melanee.core.models.plm.PLM.Element)newElement).getVisualizer().get(0).setYLocation(location.y);
+		}
+		
+		((org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest()).setNewElement(«EXPAND MetaModel::DowncastToEObject('newElement') FOR modelFacet.metaClass»);
+		return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult(newElement);
+	}
+«ELSE»
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
+
+/********************************************************
+* Modified to allow creation preconfigured model-elements
+********************************************************/	
+«DEFINE normalElementCreation2(node : gmfgen::GenNode, varName : String) FOR gmfgen::TypeModelFacet-»
+	«EXPAND MetaModel::NewInstance(varName) FOR metaClass»
+	//Set the location to the visualizer
+	if(getRequest().getParameter(org.melanee.core.modeleditor.custom.ModelEditorConstants.CREATE_COMMAND_PRECONFIGURED_ELEMENT) != null)
+		«IF node.createCommandClassName.startsWith('Entity')-»
+		newElement = (org.melanee.core.models.plm.PLM.Entity)getRequest().getParameter(org.melanee.core.modeleditor.custom.ModelEditorConstants.CREATE_COMMAND_PRECONFIGURED_ELEMENT);
+		«ELSEIF node.createCommandClassName.startsWith('Connection')-»
+		newElement = (org.melanee.core.models.plm.PLM.Connection)getRequest().getParameter(org.melanee.core.modeleditor.custom.ModelEditorConstants.CREATE_COMMAND_PRECONFIGURED_ELEMENT);
+		«ELSEIF node.createCommandClassName.startsWith('Inheritance')-»
+		newElement = (org.melanee.core.models.plm.PLM.Inheritance)getRequest().getParameter(org.melanee.core.modeleditor.custom.ModelEditorConstants.CREATE_COMMAND_PRECONFIGURED_ELEMENT);
+		«ENDIF»
+	
+«IF containmentMetaFeature <> null-»
+	«EXPAND MetaModel::DeclareAndAssign('owner', 'getElementToEdit()') FOR containmentMetaFeature.genClass»
+	«EXPAND MetaModel::modifyFeature('owner', containmentMetaFeature.genClass, varName) FOR containmentMetaFeature-»
+«ELSE-»
+	//
+	// FIXME no containment feature found in the genmodel, toolsmith need to manually write code here to add «varName» to a parent
+	//
+«ENDIF»
+«IF hasExplicitChildFeature(self)-»
+	«EXPAND MetaModel::DeclareAndAssign('childHolder', 'getElementToEdit()') FOR childMetaFeature.genClass»
+	«EXPAND MetaModel::modifyFeature('childHolder', childMetaFeature.genClass, varName) FOR childMetaFeature»
+«ENDIF-»
+«ENDDEFINE»

@@ -1,0 +1,55 @@
+/*******************************************************************************
+ * Copyright (c) 2013 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+ 
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«IMPORT 'http://www.eclipse.org/emf/2002/Ecore'»
+«EXTENSION xpt::editor::palette::Utils»
+
+«AROUND createGroup FOR gmfgen::ToolGroup»
+public static String «self.id.replace('"','').toUpper()»ID = «id»;
+«targetDef.proceed()»
+«ENDAROUND»
+
+«AROUND setIdentity(toolVarName : String) FOR gmfgen::EntryBase»
+«REM»
+Use static variable instead of hard coding the value here.
+This is needed for the app dsl implementation.
+«ENDREM»
+«IF self.oclIsTypeOf(gmfgen::ToolGroup)»
+«toolVarName».setId(«self.id.replace('"','').toUpper()»ID);«IF id.isQuoted('\"')»«EXPAND xpt::Common::nonNLS»«ENDIF»
+«ELSE»
+«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
+
+«REM»This allows drag drop of palette elements«ENDREM»
+«AROUND nodeToolEntry FOR gmfgen::Palette»
+	«EXPAND xpt::Common::generatedClassComment»
+	private static class NodeToolEntry extends org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry {
+
+		«EXPAND xpt::Common::generatedMemberComment»
+		private final «EXPAND CodeStyle::G('java.util.List', 'org.eclipse.gmf.runtime.emf.type.core.IElementType') FOR diagram» elementTypes;
+
+		«EXPAND xpt::Common::generatedMemberComment»
+		private NodeToolEntry(String title, String description, «EXPAND CodeStyle::G('java.util.List', 'org.eclipse.gmf.runtime.emf.type.core.IElementType') FOR diagram» elementTypes) {
+			super(null, title, null);
+			super.setDescription(description);
+			this.elementTypes = elementTypes;
+		}
+
+		«EXPAND xpt::Common::generatedMemberComment»
+		public org.eclipse.gef.Tool createTool() {
+			org.eclipse.gef.Tool tool = new org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool(elementTypes);
+			tool.setProperties(getToolProperties());
+			return tool;
+		}
+	}
+«ENDAROUND»

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.melanee.core.common
+Bundle-SymbolicName: org.melanee.core.common
+Bundle-Version: 2.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Export-Package: org.melanee.core.common.emf.ocl,
+ org.melanee.core.emf,
+ org.melanee.core.helpers
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.ocl.ecore;bundle-version="3.3.100";visibility:=reexport,
+ org.melanee.core.models.plm;bundle-version="2.0.0"

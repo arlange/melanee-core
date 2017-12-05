@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.melanee.core.graphdsl.service" name="Graphical Visualization Service" schema="schema/org.melanee.core.graphdsl.service.exsd"/>
+   <extension-point id="org.melanee.core.reasoning.service" name="Reasoning Service" schema="schema/org.melanee.core.reasoning.service.exsd"/>
+   <extension-point id="org.melanee.core.emendation.service" name="Emendation Service" schema="schema/org.melanee.core.emendation.service.exsd"/>
+   <extension-point id="org.melanee.core.designation.service" name="Proximity Indication" schema="schema/org.melanee.core.designation.service.exsd"/>
+   <extension-point id="org.melanee.core.dsl.service" name="Graphical Domain Specific Languages" schema="schema/org.melanee.core.dsl.service.exsd"/>
+   <extension-point id="org.melanee.core.popupbarbuttons.provider" name="Pop Up Bar Button Provider" schema="schema/org.melanee.core.popupbarbuttons.provider.exsd"/>
+   <extension-point id="org.melanee.core.autolayout.service" name="Auto Layout Service" schema="schema/org.melanee.core.autolayout.service.exsd"/>
+   <extension-point id="org.melanee.core.textdsl.service" name="Textual Visualization Service" schema="schema/org.melanee.core.textdsl.service.exsd"/>
+   <extension-point id="org.melanee.core.validation.service" name="Validation Service" schema="schema/org.melanee.core.validation.servive.exsd"/>
+   <extension-point id="org.melanee.core.constraints.service" name="Melanee Constraint Evaluation Service" schema="schema/org.melanee.core.constraints.service.exsd"/>
+   <extension-point id="org.melanee.core.appdsl.service" name="Application Visualization Service" schema="schema/org.melanee.core.appdsl.service.exsd"/>
+   <extension-point id="org.melanee.core.constraintlanguage.service" name="Constraint Language Service" schema="schema/org.melanee.core.constraintlanguage.service.exsd"/>
+   <extension-point id="org.melanee.core.formdsl.service" name="Form Visualization Service" schema="schema/org.melanee.core.formdsl.service.exsd"/>
+   <extension-point id="org.melanee.core.tabledsl.service" name="Tabular Visualization Servive" schema="schema/org.melanee.core.tabledsl.service.exsd"/>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.melanee.core.modeleditor.general"
+            class="org.melanee.core.workbench.preferences.MelaneeWorkbenchPreferences"
+            id="org.melanee.core.workbench.preferences.MelaneeWorkbenchPreferences"
+            name="Workbench">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.melanee.core.workbench.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <commandParameterType
+            converter="org.melanee.core.workbench.commandparameterconverter.EObjectCommandParameterConverter"
+            id="org.melanee.core.workbench.eobjectcommandparametertype">
+      </commandParameterType>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.melanee.core.workbench.perspective.MelaneePerspectiveFactory"
+            icon="icons/melanee16.gif"
+            id="org.melanee.core.workbench.melaneeperspective"
+            name="Melanee">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.melanee.core.workbench.melaneeperspective">
+         <newWizardShortcut
+               id="org.melanee.core.modeleditor.part.PLMCreationWizardID">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            menuGroupId="org.melanee.melaneecategory"
+            type="new"
+            wizardId="org.melanee.core.modeleditor.part.PLMCreationWizardID">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            menuGroupId="org.melanee.melaneecategory"
+            type="new"
+            wizardId="org.melanee.core.workbench.newprojectwizzard">
+         <enablement></enablement>
+      </commonWizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.melanee.melaneecategory"
+            name="Melanee">
+      </category>
+      <wizard
+            category="org.melanee.melaneecategory"
+            class="org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard"
+            icon="icons/newMelanee16.gif"
+            id="org.melanee.core.workbench.newprojectwizzard"
+            name="Melanee Project"
+            project="true">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <category
+            id="org.melanee.melaneecategory"
+            name="Melanee">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="org.melanee.melaneecategory"
+            name="Melanee">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.melanee.melaneecategory"
+            name="Melanee">
+      </category>
+   </extension>
+
+</plugin>

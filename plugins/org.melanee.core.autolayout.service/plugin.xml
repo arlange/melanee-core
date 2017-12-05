@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.melanee.core.autolayout.service">
+      <service
+            class="org.melanee.core.autolayout.service.AutoLayoutService"
+            id="org.melanee.autolayout.autolayoutservice">
+      </service>
+   </extension>
+   <extension
+         point="org.melanee.core.popupbarbuttons.provider">
+      <provider
+            class="org.melanee.core.autolayout.service.popupbartools.PopupToolBarProvider"
+            id="org.melanee.autolayout.popuptoolbarprovider">
+      </provider>
+   </extension>
+
+</plugin>

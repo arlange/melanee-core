@@ -1,0 +1,87 @@
+/*******************************************************************************
+ * Copyright (c) 2016 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Stefan Leicht - initial API and implementation and initial documentation
+ *    Ralph Gerbig - bug fixes and additions
+ *******************************************************************************/
+
+@cached
+operation isMetaDepthMode():Boolean{
+	return Domain.allInstances()->first().complianceKind = ComplianceKind#MetaDepth;
+}
+
+context Clabject {
+
+	guard: isMetaDepthMode()
+	
+	constraint potencyZeroNoSubtypes {
+		check: self.potency = 0 implies self.getSubtypes()->isEmpty()
+		message: '\'' + self.name + '\' potency is \'0\' but has subtypes'
+	}
+	
+	constraint noSupertypeWhenTypeUndefined {
+		check: self.getSupertypes()->size() > 0 implies self.getSupertypes()->collect(s | s.getTypes())->includingAll(self.getSupertypes()->collect(s | s.getTypes())->flatten()->collect(t | t.getSubtypes()))->flatten()->includesAll(self.getDirectTypes())
+		message: 'Supertypes need to be compatible'
+	}
+	
+	constraint definedOpertionsAreZero {
+		check: self.getDefinedMethods()->size() = 0
+		message: '\''+ self.name + '\' operations must be empty'
+	}
+	
+	constraint onlyOneClassification {
+		check: self.getDirectTypes()->size() <= 1
+		message: '\''+ self.name + '\' has no direct supertypes'
+	}
+	
+	constraint owning {
+		check: self.content->size() = 0
+		message: '\''+ self.name + '\' is not allowed to be a containment'
+	}
+	
+}
+
+context Attribute {
+
+	guard: isMetaDepthMode()
+
+	constraint mutabilityNotHigherDurability {
+		check: self.durability = self.mutability
+		message: 'The mutability of feature \'' + self.name + '\' cannot be higher than the durability of the feature or the other way round'
+	}
+}
+
+context Inheritance {
+
+	guard: isMetaDepthMode()
+
+	constraint superAndSubtypesGreaterOne{
+		check : self.disjoint.isUndefined() and self.complete.isUndefined()
+		message : 'Disjoint and complete must be null if more than one super AND sub types exist.'
+	}
+}
+
+context ConnectionEnd {
+
+	guard: isMetaDepthMode()
+
+	constraint kindMustTypeBasic {
+		check: self.kind = ConnectionEndKind#Basic
+		message: '\''+ self.moniker + '\' kind must type \'Basic\'!'
+	}
+}
+
+context Package {
+
+	guard: isMetaDepthMode()
+
+	constraint packageExistens {
+		check: false
+		message: '\''+ self.name + '\' packages not allowed to exist!'
+	}
+}

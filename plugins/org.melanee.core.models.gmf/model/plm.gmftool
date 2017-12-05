@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmftool:ToolRegistry
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
+  <palette
+      title="PLMPalette">
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="DeepModel Definition"
+        collapsible="true">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Deep Model"
+          description="Creates a new Deep Model">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/ontology16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/ontology16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Level"
+          description="Creates a new Level">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/model16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/model16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Enumeration"
+          description="Creates a new Enumeration">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/enumeration16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/enumeration16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Package"
+          description="Creates a new Package"/>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Domain Definition"
+        collapsible="true">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Entity"
+          description="Creates a new Entity">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/clabject16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/clabject16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Connection / Role"
+          description="Creates a new Connection when dragged between two Entities. When dragged from a connection the user is queried whether to create a Role or Connection.">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/connection16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/connection16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Attribute"
+          description="Creates a new Attribute.">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/field16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/field16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Method"
+          description="Creates a new Method.">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/method16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/method16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+    </tools>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Correlation Definition"
+        collapsible="true"
+        stack="true">
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Classification"
+          description="Creates a new Classification">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/classification16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/classification16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Inheritance"
+          description="Create a new Generalisation">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/inheritance16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/inheritance16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Super-/Subtype"
+          description="Create a new Supertype or Subtype">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/superType16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/superType16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Complement"
+          description="Creates a new Complement">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/setRelationship16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/setRelationship16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Equal"
+          description="Creates a new Equal">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/setRelationship16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/setRelationship16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Inversion"
+          description="Creates a new Inversion">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/setRelationship16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="/icons/setRelationship16.gif"
+            bundle="org.melanee.core.models.gmf"/>
+      </tools>
+    </tools>
+  </palette>
+</gmftool:ToolRegistry>

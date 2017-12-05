@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.intro">
+      <introProductBinding
+            introId="org.melanee.core.intro.intro"
+            productId="org.melanee.core.rcp.product">
+      </introProductBinding>
+      <intro
+            class="org.melanee.core.intro.MelaneeIntroPart"
+            icon="icons/melanee16.gif"
+            id="org.melanee.core.intro.intro"
+            label="Welcome to Melanee 2.0">
+      </intro>
+   </extension>
+
+</plugin>

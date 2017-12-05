@@ -1,0 +1,145 @@
+[comment encoding = UTF-8 /]
+[module generateMetadepth('http://melanee.org/PLM')]
+
+[query private getFileName(anDeepModel : DeepModel) : String = 
+	anDeepModel.name.replace(' ', '') 
+/]
+
+[comment returns either the linguistic type or the ontological one if it exists/]
+[query private getModelType(aModel : Level) : String = 
+	if (aModel.getLevel() = 0) then
+		'Level'
+	else
+		-- Here aModel.getLevel() works because it gives returns the level based on 0 as first index not one
+		aModel.eContainer().oclAsType(DeepModel).content->at(aModel.getLevel()).name
+	endif
+ /]
+
+[query private getEnumerations(aModel : Level) : OrderedSet(Enumeration) =
+	-- Enumerations are put to the highest ontlogical level by default
+	if (aModel.getLevel() <> 0) then
+		OrderedSet(Level){}
+	else
+		aModel.eContainer().oclAsType(DeepModel).enumeration
+	endif
+/]
+
+[query private getAbstract(anEntity : Entity) : String =
+	if (anEntity.potency = 0 and anEntity.getSubtypes()->size() > 0) then
+		'abstract '
+	else
+	 	''
+	 endif
+/]
+
+[query private getAttributeDatatype(anAttribute : Attribute) : String =
+	if (anAttribute.datatype.oclIsUndefined()) then
+		'' 
+	else
+		' : ' + convertDatatypeToMetaDetph(anAttribute)
+	endif
+/]
+
+[query private convertDatatypeToMetaDetph(anAttribute : Attribute) : String =
+	if (anAttribute.datatype = 'Real') then 
+		'double' 
+	else
+		if(anAttribute.datatype = 'Integer') then 
+			'int'
+		else
+			if(anAttribute.datatype = 'boolean') then 
+				'boolean'
+			else
+				if (anAttribute.getClabject().getDeepModel().enumeration.name->exists(n | n = anAttribute.datatype)) then
+					anAttribute.datatype
+				else
+					'String'
+				endif
+			endif 
+		endif 
+	endif
+/]
+
+[query private getAttributeValue(anAttribute : Attribute) : String =
+	if (anAttribute.value.oclIsUndefined()) then
+		'' 
+	else
+		' = ' + anAttribute.value
+	endif
+/]
+
+[query private getReferenceDatatype(anConnectionEnd : ConnectionEnd) : String = 
+		' : ' + anConnectionEnd.destination.name
+/]
+
+[query private getMultiplicity(anConnectionEnd : ConnectionEnd) : String = 
+	if (anConnectionEnd.lower = 0 and anConnectionEnd.upper = -1) then
+		'*'
+	else
+		if (anConnectionEnd.lower = anConnectionEnd.upper) then
+			multiplicityPartToString(anConnectionEnd.lower)
+		else
+			multiplicityPartToString(anConnectionEnd.lower) + '..' + multiplicityPartToString(anConnectionEnd.upper)
+		endif
+	endif 
+/]
+
+[query public multiplicityPartToString(part : Integer) : String = 
+	if (part = -1) then '*' else part.toString() endif
+/]
+
+[template public generateDeepModel(anDeepModel : DeepModel)]
+
+[comment Create a metadeptp file out of an ontology/]
+[comment @main/]
+[file (anDeepModel.getFileName() + '.mdepth', false, 'UTF-8')]
+[for (m : Level | anDeepModel.content)][m.generateModel()/]
+[/for]
+[/file]
+[/template]
+
+[comment translate melanee models to metadepth models /]
+[template private generateModel(aModel: Level)]
+[aModel.getModelType()/] [aModel.name/]{
+[comment at first place we do have enumerartion/]
+[for (enumeration : Enumeration | aModel.getEnumerations())]
+	[enumeration.generateEnumeration()/]
+[/for]
+[comment generate all in the model contained nodes /]
+[for (entity : Entity | aModel.getEntities())]
+	[entity.generateNode()/]
+
+[/for]
+[comment generate all in the model contained connections /]
+[for (connection : Connection | aModel.getConnections())]
+	[connection.generateEdge()/]
+[/for]
+
+}//End[aModel.name/]
+
+[/template]
+
+[template private generateEnumeration(anEnumration : Enumeration)]
+enum [anEnumration.name/]{
+	[for (literal : String | anEnumration.literal) separator(',\n\t')][literal/][/for]
+}[/template]
+
+[template private generateNode(anEntity : Entity)][anEntity.getAbstract()/][anEntity.getClabjectType()/] [anEntity.name/]{
+[for(attribute : Attribute | anEntity.getDefinedAttributes())][if attribute.durability = 0 implies not attribute.value.oclIsUndefined() and attribute.value.size() > 0]['\t' + attribute.generateAttribute() +'\t'/]
+[/if]
+[/for]
+[for(connectionEnd : ConnectionEnd | anEntity.getDefinedNavigations())][if not connectionEnd.moniker.oclIsUndefined() and connectionEnd.moniker.size() > 0]['\t' + connectionEnd.generateReference()+'\t'/]
+[/if]
+[/for]
+}[/template]
+[comment Attributes with durabitlity 0 do not show the datatype, only the value. Attributes with durability 0 and without value are not shown. /]
+[template private generateAttribute(anAttribute : Attribute)][anAttribute.name/][if anAttribute.durability <> 0][anAttribute.getAttributeDatatype()/][/if][anAttribute.getAttributeValue()/];
+[/template]
+[template private generateReference(anConnectionEnd : ConnectionEnd)][anConnectionEnd.moniker()/][anConnectionEnd.getReferenceDatatype()/]['[' + anConnectionEnd.getMultiplicity() + ']'/];
+[/template]
+[template public generateEdge(aConnection : Connection)][aConnection.getClabjectType()/][if (not aConnection.name.oclIsUndefined() and aConnection.name.size() > 0)][aConnection.name + ' '/][/if]([for (connectionEnd : ConnectionEnd | aConnection.connectionEnd) separator (',')][connectionEnd.destination.name/][if not connectionEnd.moniker.oclIsUndefined() and connectionEnd.moniker.size() > 0]['.' + connectionEnd.moniker/][/if][/for]){[for (attribute : Attribute | aConnection.getDefinedAttributes())][attribute.generateAttribute()/][/for]}
+[/template]
+
+[comment returns either the linguistic type or the ontological one if it exists/]
+[template private getClabjectType(aClabject : Clabject)][if (aClabject.getDirectTypes()->size() = 0)][if (aClabject.oclIsTypeOf(Entity))]Node[else]Edge[/if][else][for (type : Clabject | aClabject.getDirectTypes()) separator (',')][type.name/][/for][/if]
+[/template]

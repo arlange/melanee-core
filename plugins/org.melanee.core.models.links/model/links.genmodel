@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.melanee.core.models.links/src" modelPluginID="org.melanee.core.models.links"
+    templateDirectory="org.melanee.core.models.links/templates" dynamicTemplates="true"
+    modelName="Links" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../org.melanee.core.models.plm/model/PLM.genmodel#//PLM" operationReflection="true"
+    importOrganizing="true">
+  <foreignModel>links.ecore</foreignModel>
+  <genPackages prefix="Links" basePackage="org.melanee.core.models.links" disposableProviderFactory="true"
+      ecorePackage="links.ecore#/">
+    <genClasses ecoreClass="links.ecore#//LinkingModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference links.ecore#//LinkingModel/remoteModels"/>
+    </genClasses>
+    <genClasses ecoreClass="links.ecore#//RemoteModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference links.ecore#//RemoteModel/links"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//RemoteModel/URL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//RemoteModel/path"/>
+    </genClasses>
+    <genClasses ecoreClass="links.ecore#//Link">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//Link/revision"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference links.ecore#//Link/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//Link/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute links.ecore#//Link/sourceLocation"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,1520 @@
+/*******************************************************************************
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+//**************************************************************
+//ADDITIONS
+//handle notifictaion is overriden later in this transformation
+//**************************************************************
+«AROUND additions FOR gmfgen::GenNode»
+//Gives the option to diplay a Connection/Inheritance/Specialization as black rectangle
+«IF self.editPartClassName.startsWith('Connection') 
+	or self.editPartClassName.startsWith('Inheritance')»
+	
+	«EXPAND setBounds-»
+	«EXPAND getToggleValue-»
+	«EXPAND toggle-»
+«ENDIF»
+«IF self.editPartClassName.startsWith('Entity')
+		or self.editPartClassName.startsWith('Connection')
+		or self.editPartClassName.startsWith('DeepModel')
+		or self.editPartClassName.startsWith('Level')
+		or self.editPartClassName.startsWith('Inheritance')
+		or self.editPartClassName.startsWith('Attribute')
+		or self.editPartClassName.startsWith('Method')»
+	«EXPAND getCommand-»
+«ENDIF»
+«IF self.editPartClassName.startsWith('Entity')
+		or self.editPartClassName.startsWith('Connection')
+		or self.editPartClassName.startsWith('Inheritance')
+		or self.editPartClassName = 'LevelEditPart'
+		or self.editPartClassName = 'DeepModelEditPart'»
+		
+
+	«EXPAND activate-»
+	«EXPAND registerToHandleNotificationForChildren-»
+«ENDIF»
+«ENDAROUND»
+
+//**************************************************************
+//HANDLE NOTIFICATION
+//**************************************************************
+«AROUND handleNotificationEvent FOR gmfgen::GenNode-»
+«IF self.editPartClassName.startsWith('Connection')
+	or self.editPartClassName.startsWith('Inheritance')
+	or self.editPartClassName.startsWith('Entity')
+	or self.editPartClassName = 'LevelEditPart'
+	or self.editPartClassName = 'DeepModelEditPart'»
+
+	«EXPAND handleNotificationEventForClabjectLogicElement-»
+«ENDIF»
+«ENDAROUND»
+
+«DEFINE handleNotificationEventForClabjectLogicElement FOR gmfgen::GenNode»
+	/**
+	 * Updates the connections after a value was set and does elision
+	 *
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+
+		//visualizer -> notation
+		if(notification.getNotifier() instanceof org.melanee.core.models.plm.PLM.LMLVisualizer){
+			String featureName = ((org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature()).getName();
+			if (featureName.equals("xLocation") 
+					|| featureName.equals("yLocation")
+					|| featureName.equals("width")
+					|| featureName.equals("height")){
+				synchronizeVisualizerAndNotationModel();
+				return;
+			}
+		}
+
+		«IF self.editPartClassName.startsWith('Connection')
+				or self.editPartClassName.startsWith('Entity')»
+		//*************************************************************************
+		//We want to update the DSL notation for Entities
+		//*************************************************************************
+		if (notification.getNotifier() instanceof org.melanee.core.models.plm.PLM.Attribute
+				&& ((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals("value"))
+			updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+		«ENDIF»
+		
+		if (notification.getNotifier() instanceof org.melanee.core.models.plm.PLM.LMLVisualizer
+				//This filter is needed as on a change a remove many and
+				//add many is executed
+				&& notification.getEventType() == org.eclipse.emf.common.notify.Notification.ADD) {
+			«IF self.editPartClassName.startsWith('Inheritance')»
+			updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+			«ENDIF»
+			
+			«IF self.editPartClassName.startsWith('Connection')
+					or self.editPartClassName.startsWith('Entity')
+					or self.editPartClassName = 'LevelEditPart'
+					or self.editPartClassName = 'DeepModelEditPart'»
+			//*************************************************************************
+			// Update view of container (DeepModel, Level, Entity, Connection) content 
+			// if a notation is changed in any format
+			//*************************************************************************
+			String format = notification.getNewStringValue().split("=")[0].trim();
+			
+			//If the format is not graph it can produce strange results to call
+			//updateView on all children
+			if(! "graph".equals(format)){
+				updateView(format);
+				return;
+			}
+			
+			org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iterator = resolveSemanticElement().eAllContents();
+			
+			while(iterator.hasNext()){
+				org.eclipse.emf.ecore.EObject current = iterator.next();
+				
+				if(current instanceof org.melanee.core.models.plm.PLM.Clabject){
+					Object editPart = findEditPart(this, current);
+					if(editPart == null)
+						continue;
+					
+					org.melanee.core.modeleditor.custom.wrappers.ClabjectEditPartWrapper wrapper = new org.melanee.core.modeleditor.custom.wrappers.ClabjectEditPartWrapper(editPart);
+					wrapper.updateView(notification.getNewStringValue().split("=")[0]
+							.trim());
+				}
+			}
+			«ENDIF»
+			
+			«IF self.editPartClassName.startsWith('Connection')
+					or self.editPartClassName.startsWith('Entity')»
+			//*************************************************************************
+			//Update view if a notation is changed in any format
+			//*************************************************************************
+			updateView(notification.getNewStringValue().split("=")[0].trim());
+			
+			//*************************************************************************
+			//Manage the classifications view state according to designation
+			//*************************************************************************
+			org.eclipse.gmf.runtime.notation.View v = this.getNotationView();
+			org.melanee.core.models.plm.PLM.LMLVisualizer LMLVisualizer = (org.melanee.core.models.plm.PLM.LMLVisualizer) notification
+					.getNotifier();
+
+			java.util.HashSet<org.eclipse.gmf.runtime.notation.View> outgoingEdges = new java.util.HashSet<org.eclipse.gmf.runtime.notation.View>();
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL
+					.newInstance();
+
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl
+					.createOCLHelper();
+			helper.setContext(org.eclipse.gmf.runtime.notation.NotationPackage.Literals.VIEW);
+
+			try {
+				//Need to take care to only select classification - plm::Classification is not known here..
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
+						.createQuery("Edge.allInstances()->select(e | e.source = self)->select(e | e.element.oclIsUndefined() <> true)");
+				outgoingEdges = ((java.util.HashSet<org.eclipse.gmf.runtime.notation.View>) ocl.evaluate(v, q));
+			} catch (org.eclipse.ocl.ParserException e) {
+				e.printStackTrace();
+			}
+			
+			java.util.LinkedList<org.eclipse.gmf.runtime.notation.View> outgoingClassificationEdges = new java.util.LinkedList<org.eclipse.gmf.runtime.notation.View>();
+			
+			//Only take views of Classifications
+			for (org.eclipse.gmf.runtime.notation.View c : outgoingEdges)
+				if (c.getElement() instanceof  org.melanee.core.models.plm.PLM.Classification)
+					outgoingClassificationEdges.add(c);
+			
+			//This has currently no support for multiple classifications
+			if (outgoingClassificationEdges.size() > 0) {
+				if ("1".equals(LMLVisualizer
+						.getValueForKey("ProximityClassification")))
+					outgoingClassificationEdges.get(0).setVisible(false);
+				else
+					outgoingClassificationEdges.get(0).setVisible(true);
+
+				org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart edgeEP = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart) getViewer()
+						.getEditPartRegistry().get(outgoingClassificationEdges.get(0));
+
+				if (edgeEP != null)
+					edgeEP.performRequest(new org.eclipse.gef.Request(
+							org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+				//In cases where there is no editpart, refresh both ends to get it created
+				else{
+					org.eclipse.gmf.runtime.notation.Edge classView = (org.eclipse.gmf.runtime.notation.Edge)outgoingClassificationEdges.get(0);
+					((org.eclipse.gef.EditPart)getViewer().getEditPartRegistry().get(classView.getTarget())).refresh();
+					((org.eclipse.gef.EditPart)getViewer().getEditPartRegistry().get(classView.getSource())).refresh();
+				}
+			}
+			«ENDIF»
+		}
+		
+		«IF self.editPartClassName.startsWith('Entity')
+			or self.editPartClassName.startsWith('Connection')»
+		org.eclipse.emf.ecore.EStructuralFeature changedFeature = (org.eclipse.emf.ecore.EStructuralFeature)notification.getFeature();
+		if (notification.getNotifier() instanceof org.melanee.core.models.plm.PLM.Element)
+		{
+			«IF self.editPartClassName.startsWith('Entity')
+					or self.editPartClassName.startsWith('Connection')»
+			if (changedFeature.getName().equals("potency"))
+			{
+				for(org.eclipse.emf.ecore.EObject eObj : ((org.melanee.core.models.plm.PLM.Clabject)resolveSemanticElement()).getFeature())
+				{
+					findEditPart(this, eObj).performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+				}
+			}
+			
+			if (changedFeature.getName().equals("name")
+				&& notification.getNotifier() instanceof org.melanee.core.models.plm.PLM.Entity) {
+					org.melanee.core.modeleditor.part.PLMDiagramEditor plmEditor = (org.melanee.core.modeleditor.part.PLMDiagramEditor) ((org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain)((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)this).getDiagramEditDomain()).getEditorPart();
+
+					org.melanee.core.models.plm.PLM.Entity changedEntity = (org.melanee.core.models.plm.PLM.Entity)notification.getNotifier();
+					for(org.melanee.core.models.plm.PLM.Clabject instance : changedEntity.getInstances()) {
+						java.util.List featureEditParts = plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(instance),org.eclipse.gef.NodeEditPart.class);
+					
+					 	if (featureEditParts.size() > 0)
+					 	{
+							org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart featureEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)featureEditParts.get(0);
+							if(featureEditPart instanceof org.melanee.core.modeleditor.edit.parts.EntityEditPart)
+								((org.melanee.core.modeleditor.edit.parts.EntityEditPart)featureEditPart).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+							else if(featureEditPart instanceof org.melanee.core.modeleditor.edit.parts.Entity2EditPart)
+								((org.melanee.core.modeleditor.edit.parts.Entity2EditPart)featureEditPart).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+							else if(featureEditPart instanceof org.melanee.core.modeleditor.edit.parts.Entity3EditPart)
+								((org.melanee.core.modeleditor.edit.parts.Entity3EditPart)featureEditPart).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+						}
+					}				
+			}
+			«ENDIF»
+			«IF self.editPartClassName.startsWith('Entity')»
+			if (changedFeature.getName().equals("name"))
+			{
+				org.melanee.core.models.plm.PLM.Feature[] feature = new org.melanee.core.models.plm.PLM.Feature[] {};
+			
+				org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
+				org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+				helper.setContext(org.melanee.core.models.plm.PLM.PLMPackage.Literals.DOMAIN);
+				
+				try {
+					org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper
+							.createQuery("Feature.allInstances()");
+					feature = ((java.util.HashSet<org.melanee.core.models.plm.PLM.Feature>) ocl
+							.evaluate(org.eclipse.emf.ecore.util.EcoreUtil
+									.getRootContainer(resolveSemanticElement()), q))
+							.toArray(new org.melanee.core.models.plm.PLM.Feature[] {});
+				} catch (org.eclipse.ocl.ParserException e) {
+					e.printStackTrace();
+				}
+			
+				//We found feature
+				if (feature.length > 0) {
+					org.melanee.core.modeleditor.part.PLMDiagramEditor plmEditor = (org.melanee.core.modeleditor.part.PLMDiagramEditor) ((org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain)((org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)this).getDiagramEditDomain()).getEditorPart();
+
+					for (org.melanee.core.models.plm.PLM.Feature f : feature) 
+					{	
+						//if a attribute is hidden via the notational model it cannot be resolved
+						java.util.List featureEditParts = 
+							 plmEditor.getDiagramGraphicalViewer().findEditPartsForElement(org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(f),org.eclipse.gef.NodeEditPart.class);
+					
+					 	if (featureEditParts.size() > 0)
+					 	{
+							 org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart featureEditPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)featureEditParts.get(0);
+							 featureEditPart.performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+						}
+					}
+				}
+			}
+			«ENDIF»
+			
+			«IF self.editPartClassName.startsWith('Entity')
+					or self.editPartClassName.startsWith('Connection')»
+			if(changedFeature.getName().equals("feature") && notification.getNewValue() instanceof org.melanee.core.models.plm.PLM.Attribute) {
+				makeCompartmentsVisible(COMPARTMENT_ATTRIBUTES);
+				
+				// add a new listener so that each clabject is notified of changes of its attributes (would require saving and reloading a diagram without these two lines)
+				org.melanee.core.models.plm.PLM.Feature f = (org.melanee.core.models.plm.PLM.Feature)notification.getNewValue();
+				addListenerFilter(f.toString().substring(0, f.toString().indexOf(" ")), this, f);
+			}
+
+			if (changedFeature.getName().equals("content") || changedFeature.getName().equals("feature"))
+					updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+			«ENDIF»
+		}
+		«ENDIF»
+	}
+	
+//	/**
+//	 * 
+//	 * @return null if no DSLRendering infotmation is available, else true or false
+//	 *
+//	 * @generated
+//	 */
+//	public String getDSLRenderingValue(String format) {
+//		//boolean collapse = false;
+//
+//		//********************************************************
+//		//Find the LMLVisualizer attached to this element 
+//		//********************************************************
+//		org.melanee.core.models.plm.PLM.Element self = (org.melanee.core.models.plm.PLM.Element) this
+//				.resolveSemanticElement();
+//
+//		//This can happen on delete
+//		if(self == null)
+//			return null;
+//
+//		//No rendering information found => all Connection remains expanded
+//		if (self.getVisualizer().size() == 0) {
+//			//Hide external name label
+//			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
+//			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
+//					.setVisible(false);
+//
+//			return null;
+//		}
+//
+//		org.eclipse.emf.ecore.EObject container = self;
+//		String dslRenderingString = null;
+//		
+//		//Search until a not derived notation is found
+//		while(container.eContainer() != null
+//				&& ! (container.eContainer() instanceof org.melanee.core.models.plm.PLM.Domain)){
+//			org.melanee.core.models.plm.PLM.LMLVisualizer r = ((org.melanee.core.models.plm.PLM.Element)container).getVisualizer().get(0);
+//			dslRenderingString = r.getValueForKey(format);
+//			
+//			if(!dslRenderingString.equals(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_DERIVED))
+//				break;
+//			
+//			container = container.eContainer();
+//		}
+//		
+//		//If all notations are derived use LML notation
+//		if (dslRenderingString.equals(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_DERIVED))
+//			return org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_LML;
+//
+//		return dslRenderingString;
+//	}
+	
+	/**
+	 * @generated
+	 */
+	public void updateView(String format)
+	{
+		«IF self.editPartClassName.startsWith('Connection')
+			or self.editPartClassName.startsWith('Entity')
+			or self.editPartClassName.startsWith('Level')
+			or self.editPartClassName.startsWith('DeepModel')»
+		java.lang.String notation = org.melanee.core.dsl.service.visualizationsearchalgorithm.AspectAwareVisualizationSearchAlgorithm.searchNotationForElement((org.melanee.core.models.plm.PLM.Element)this.resolveSemanticElement(), format);
+		
+		//*******************************************
+		//BEGIN Apply the form rendering if requested
+		//*******************************************
+		if(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_FORM.equals(format)
+				|| org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_TEXT.equals(format)
+				|| org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_APP.equals(format)
+				|| org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_TABLE.equals(format)){
+			try {
+				if(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_FORM.equals(format)){
+					org.melanee.core.workbench.interfaces.IFormVisualizationService service = org.melanee.core.workbench.ExtensionPointService.Instance().getActiveFormVisualizationService();
+					if(service != null)
+						service.run(this, notation, true);
+				}
+				else if(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_TEXT.equals(format)){
+					org.melanee.core.workbench.interfaces.ITextualVisualizationService service = org.melanee.core.workbench.ExtensionPointService.Instance().getActiveTextualVisualizationService();
+					if(service != null)
+						service.run(this, notation, true);
+				}
+				else if(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_APP.equals(format)){
+					org.melanee.core.workbench.interfaces.IApplicationVisualizationService service = org.melanee.core.workbench.ExtensionPointService.Instance().getActiveApplicationVisualizationService();
+					if(service != null)
+						service.run(this, notation, true);
+				}
+				else if(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_TABLE.equals(format)){
+					org.melanee.core.workbench.interfaces.ITableVisualizationService service = org.melanee.core.workbench.ExtensionPointService.Instance().getActiveTableVisualizationService();
+					if(service != null)
+						service.run(this, notation, true);
+				}
+			} catch (org.eclipse.core.runtime.CoreException e) {
+				e.printStackTrace();
+			}
+			
+			return;
+		}
+		//*******************************************
+		//END Apply the form rendering if requested
+		//*******************************************
+		«ENDIF»
+		
+		
+		«IF self.editPartClassName.startsWith('Connection')
+				or self.editPartClassName.startsWith('Entity')»
+			
+		«IF self.editPartClassName.startsWith('Connection')»
+		org.melanee.core.models.plm.PLM.Element self = (org.melanee.core.models.plm.PLM.Element)resolveSemanticElement();
+		boolean hasCompositeAggregate = false;
+		
+		//*******************************************
+		// BEGING Show hide depending on containment
+		//*******************************************
+		for (org.melanee.core.models.plm.PLM.ConnectionEnd p : ((org.melanee.core.models.plm.PLM.Connection)self).getConnectionEnd())
+			if(p.getKind() != org.melanee.core.models.plm.PLM.ConnectionEndKind.BASIC)
+				hasCompositeAggregate = true;
+		
+		if(hasCompositeAggregate){
+			// Containment/Aggregation 
+			java.util.List<org.melanee.core.models.plm.PLM.Clabject> participants = ((org.melanee.core.models.plm.PLM.Connection)self).getParticipants();
+			
+			if((participants.get(0).getContent().contains(participants.get(1))
+					|| participants.get(1).getContent().contains(participants.get(0))
+				)
+			){
+				if(!getNotationView().isVisible())
+					return;
+				
+				//Set Notation view to invisble so that it does not appear in the command stack
+				org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain domain = (org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain) getEditingDomain();
+
+				java.util.Map<java.lang.String, java.lang.Boolean> commandOptions = java.util.Collections.singletonMap(org.eclipse.emf.transaction.Transaction.OPTION_NO_UNDO,
+								java.lang.Boolean.TRUE);
+
+				try {
+					if (domain.getActiveTransaction() != null
+						&& domain.getActiveTransaction().isReadOnly())
+							domain.getActiveTransaction().commit();
+				
+					domain.startTransaction(false, commandOptions);
+					getNotationView().setVisible(false);
+					domain.getActiveTransaction().commit();
+				} catch (java.lang.InterruptedException e) {
+					e.printStackTrace();
+				} catch (org.eclipse.emf.transaction.RollbackException e) {
+					e.printStackTrace();
+				}
+				
+				return;
+			}
+		}
+		//*******************************************
+		// END Show hide depending on containment
+		//*******************************************		
+		
+		if (sourceConnections != null){
+			//ConnectionEnd need to be updated
+			for (java.lang.Object ep : sourceConnections)
+				if (ep instanceof org.melanee.core.modeleditor.edit.parts.ConnectionEndEditPart)
+					((org.melanee.core.modeleditor.edit.parts.ConnectionEndEditPart)ep).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+		}
+		«ENDIF»
+		
+		if (notation != null
+				&& notation.length() > 0
+				&& ! notation.equals(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_LML))
+		{
+			«IF self.editPartClassName.startsWith('Connection')»  
+			toggle();
+			«ELSE»
+			updateDSL(format, notation);
+			«ENDIF»
+			
+			return;
+		}
+		«ENDIF»
+	
+		«IF self.editPartClassName.startsWith('Connection')
+				or self.editPartClassName.startsWith('Entity')»
+		org.melanee.core.models.plm.PLM.Clabject c = (org.melanee.core.models.plm.PLM.Clabject)resolveSemanticElement();
+		«ENDIF»
+		
+		«IF not(
+				self.editPartClassName.startsWith('Entity')
+					or self.editPartClassName = 'LevelEditPart'
+					or self.editPartClassName = 'DeepModelEditPart'
+				)»
+		java.lang.Boolean toggleValue = getToggleValue();
+		
+		//We do toggle the connection
+		if (toggleValue != null)
+			toggle();
+		«ENDIF»
+		
+		«IF self.editPartClassName.startsWith('Connection')»
+		//We can change expressed as long as connection is not elided and not toggled
+		if ((toggleValue == null || toggleValue == false)){
+			makeCompartmentsVisible(COMPARTMENT_AUTOMATIC); // hide all empty compartments
+		}
+		«ELSEIF self.editPartClassName.startsWith('Entity')»
+		//If not Elided and not in DSL mode it makes sense to update the name compartment
+		updateGPL();
+		updateNameCompartment();
+		makeCompartmentsVisible(COMPARTMENT_AUTOMATIC); // hide all empty compartments
+		«ENDIF»
+	}
+	«IF self.editPartClassName.startsWith('Entity')
+			or self.editPartClassName.startsWith('Connection')»
+	/**
+	 * @generated
+	 */
+	private void updateNameCompartment(){
+		try {
+		
+			org.melanee.core.models.plm.PLM.Clabject self = (org.melanee.core.models.plm.PLM.Clabject)resolveSemanticElement();
+			
+			//No visualization information available
+			if (self.getVisualizer().size() == 0)
+				return;
+				
+			org.melanee.core.workbench.interfaces.IDesignationService designationService = org.melanee.core.workbench.ExtensionPointService.Instance().getActiveDesignationService();
+			
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel classificationDesignationWrappingLabel = 
+				«IF self.editPartClassName.startsWith('Entity')»
+				((org.melanee.core.modeleditor.edit.parts.«self.editPartClassName».EntityFigure)getPrimaryShape()).getFigureEntityProximityClassificationFigure();
+				«ELSE»
+				((org.melanee.core.modeleditor.edit.parts.«self.editPartClassName».ConnectionFigure) getPrimaryShape()).getFigureConnectionProximityClassificationFigure();
+				«ENDIF»
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel inheritanceDesignationWrappingLabel = 
+				«IF self.editPartClassName.startsWith('Entity')»
+				((org.melanee.core.modeleditor.edit.parts.«self.editPartClassName».EntityFigure)getPrimaryShape()).getFigureEntityProximityInheritanceFigure();
+				«ELSE»
+				((org.melanee.core.modeleditor.edit.parts.«self.editPartClassName».ConnectionFigure) getPrimaryShape()).getFigureConnectionProximityInheritanceFigure();
+				«ENDIF»
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel containmentDesignationWrappingLabel = 
+				«IF self.editPartClassName.startsWith('Entity')»
+				((org.melanee.core.modeleditor.edit.parts.«self.editPartClassName».EntityFigure)getPrimaryShape()).getFigureEntityProximityContainmentFigure();
+				«ELSE»
+				((org.melanee.core.modeleditor.edit.parts.«self.editPartClassName».ConnectionFigure) getPrimaryShape()).getFigureConnectionProximityContainmentFigure();
+				«ENDIF»	
+			org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel identifierDesignationWrappingLabel = 
+				«IF self.editPartClassName.startsWith('Entity')»
+				((org.melanee.core.modeleditor.edit.parts.«self.editPartClassName».EntityFigure)getPrimaryShape()).getFigureEntityNameFigure();
+				«ELSE»
+				((org.melanee.core.modeleditor.edit.parts.«self.editPartClassName».ConnectionFigure) getPrimaryShape()).getFigureConnectionNameFigure();
+				«ENDIF»	
+				
+			String designationRequest = self.getVisualizer().get(0).getValueForKey("ProximityIndication");
+			
+			classificationDesignationWrappingLabel.setText(designationService.createClassificationDesignationString(self, designationRequest));
+			inheritanceDesignationWrappingLabel.setText(designationService.createHeritageDesignationString(self, designationRequest));
+			containmentDesignationWrappingLabel.setText(designationService.createLocationDesignationString(self, designationRequest));
+			
+			String newIdentification = designationService.createIdenficationDesignationString(self, designationRequest);
+			if(newIdentification.equals("~"))
+				newIdentification = self.getName();
+			identifierDesignationWrappingLabel.setText(newIdentification);
+		} catch (org.eclipse.core.runtime.CoreException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static final int COMPARTMENT_AUTOMATIC = 0;
+	public static final int COMPARTMENT_ATTRIBUTES = 1;
+	public static final int COMPARTMENT_METHODS = 2;
+	public static final int COMPARTMENT_CONTENT = 4;
+
+	/**
+	 * Makes the compartments specified by 'compartments' visible. Bitwise-Or combinations of COMPARTMENT_ATTRIBUTES
+	 * COMPARTMENT_METHODS and COMPARTMENT_CONTENT are valid values for this parameter. Forcing compartments to be
+	 * is neither implemented nor currently intended. COMPARTMENT_AUTOMATIC is making the compartments with content
+	 * visible. 
+	 */
+	public void makeCompartmentsVisible(int compartments) {
+		org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain domain = (org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain)getEditingDomain();
+		
+		java.util.Map<java.lang.String, java.lang.Boolean> commandOptions = java.util.Collections.singletonMap(org.eclipse.emf.transaction.Transaction.OPTION_NO_UNDO, java.lang.Boolean.TRUE);
+				
+		if (domain.getActiveTransaction() != null && domain.getActiveTransaction().isReadOnly())
+			return;
+
+		try {
+			org.melanee.core.models.plm.PLM.Clabject self = (org.melanee.core.models.plm.PLM.Clabject)resolveSemanticElement();
+			
+			domain.startTransaction(false, commandOptions);
+		
+			// manage attributes compartment visibility
+			if ((compartments & COMPARTMENT_ATTRIBUTES) != 0)
+				getAttributesCompartmentView().setVisible(true);
+			else if (self.getDefinedAttributes().size() == 0 && getAttributesCompartment() != null)
+				getAttributesCompartmentView().setVisible(false);
+			
+			// manage methods compartment visibility
+			if ((compartments & COMPARTMENT_METHODS) != 0)
+				getMethodsCompartmentView().setVisible(true);
+			else if (self.getDefinedMethods().size() == 0 && getMethodsCompartment() != null)
+				getMethodsCompartmentView().setVisible(false);
+
+			// manage content compartment visibility
+			if ((compartments & COMPARTMENT_CONTENT) != 0)
+				getContentsCompartmentView().setVisible(true);
+			else if (self.getContent().size() == 0 && getContentsCompartment() != null)
+				getContentsCompartmentView().setVisible(false);
+			
+			domain.getActiveTransaction().commit();
+		} catch (java.lang.InterruptedException e) {
+			e.printStackTrace();
+		} catch (org.eclipse.emf.transaction.RollbackException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public org.eclipse.gmf.runtime.diagram.ui.editparts.IResizableCompartmentEditPart getAttributesCompartment(){
+		for (Object ep : getChildren())
+			if (ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»AttributesCompartmentEditPart
+					|| ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»AttributesCompartment2EditPart
+					|| ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»AttributesCompartment3EditPart)
+				return (org.eclipse.gmf.runtime.diagram.ui.editparts.IResizableCompartmentEditPart) ep;
+		
+		return null;
+	}
+	
+	private org.eclipse.gmf.runtime.notation.View getAttributesCompartmentView(){
+		for (org.eclipse.gmf.runtime.notation.View v : (java.util.List<org.eclipse.gmf.runtime.notation.View>)getNotationView().getChildren())	
+			if (v instanceof org.eclipse.gmf.runtime.notation.BasicCompartment) {
+				try {
+					int type = (new Integer(v.getType())).intValue();
+					if(org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»AttributesCompartmentEditPart.VISUAL_ID == type 
+						|| org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»AttributesCompartment2EditPart.VISUAL_ID == type
+						|| org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»AttributesCompartment3EditPart.VISUAL_ID == type)
+						return v;
+				} catch(java.lang.NumberFormatException e) {
+					e.printStackTrace();
+				}
+			}
+
+		return null;
+	}
+	
+	public org.eclipse.gmf.runtime.diagram.ui.editparts.IResizableCompartmentEditPart getMethodsCompartment(){
+		for (Object ep : getChildren())
+			if (ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»MethodsCompartmentEditPart
+					|| ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»MethodsCompartment2EditPart
+					|| ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»MethodsCompartment3EditPart)
+				return (org.eclipse.gmf.runtime.diagram.ui.editparts.IResizableCompartmentEditPart) ep;
+		
+		return null;
+	}
+	
+	private org.eclipse.gmf.runtime.notation.View getMethodsCompartmentView(){
+		for (org.eclipse.gmf.runtime.notation.View v : (java.util.List<org.eclipse.gmf.runtime.notation.View>)getNotationView().getChildren())	
+			if (v instanceof org.eclipse.gmf.runtime.notation.BasicCompartment) {
+				try {
+					int type = (new Integer(v.getType())).intValue();
+					if(org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»MethodsCompartmentEditPart.VISUAL_ID == type 
+						|| org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»MethodsCompartment2EditPart.VISUAL_ID == type
+						|| org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»MethodsCompartment3EditPart.VISUAL_ID == type)
+						return v;
+				} catch(java.lang.NumberFormatException e) {
+					e.printStackTrace();
+				}
+			}
+
+		return null;
+	}
+	
+	public org.eclipse.gmf.runtime.diagram.ui.editparts.IResizableCompartmentEditPart getContentsCompartment(){
+		for (Object ep : getChildren())
+			if (ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»ContentsCompartmentEditPart
+					|| ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»ContentsCompartment2EditPart
+					|| ep instanceof org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»ContentsCompartment3EditPart)
+				return (org.eclipse.gmf.runtime.diagram.ui.editparts.IResizableCompartmentEditPart) ep;
+		
+		return null;
+	}
+	
+	private org.eclipse.gmf.runtime.notation.View getContentsCompartmentView(){
+		for (org.eclipse.gmf.runtime.notation.View v : (java.util.List<org.eclipse.gmf.runtime.notation.View>)getNotationView().getChildren())	
+			if (v instanceof org.eclipse.gmf.runtime.notation.BasicCompartment) {
+				try {
+					int type = (new Integer(v.getType())).intValue();
+					if(org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»ContentsCompartmentEditPart.VISUAL_ID == type 
+						|| org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»ContentsCompartment2EditPart.VISUAL_ID == type
+						|| org.melanee.core.modeleditor.edit.parts.«self.getDomainMetaClass().ecoreClass.name»«self.getDomainMetaClass().ecoreClass.name»ContentsCompartment3EditPart.VISUAL_ID == type)
+						return v;
+				} catch(java.lang.NumberFormatException e) {
+					e.printStackTrace();
+				}
+			}
+
+		return null;
+	}	
+	«ENDIF»
+	«IF self.editPartClassName.startsWith('Entity')»
+				
+	/** This is a cache to restore the old GPL figure **/
+	private org.eclipse.draw2d.IFigure compartmentParentCache = null;
+	private org.eclipse.draw2d.IFigure compartmentCache = null;
+	
+	/**
+	 * Manages the DSL rendering of the EditPart
+	 *
+	 * @generated
+	 */
+	public void updateDSL(String format, String notation) {
+		
+		if(format.equals(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH)){
+			org.melanee.core.models.plm.PLM.Clabject self = (org.melanee.core.models.plm.PLM.Clabject)resolveSemanticElement();
+			
+			org.melanee.core.workbench.interfaces.IGraphicalVisualizationService transformator = null;
+			
+			try {
+				transformator = org.melanee.core.workbench.ExtensionPointService.Instance().getActiveGraphicalVisualizationService();
+			} catch (org.eclipse.core.runtime.CoreException e) {
+				e.printStackTrace();
+			}
+			
+			org.melanee.core.models.plm.PLM.AbstractDSLVisualizer dslVisualizer = transformator.findDSLVisualizerForElement(self, notation, true);
+			
+			//GPL rendering is used if no dsl rendering is found
+			if (dslVisualizer == null){
+				updateGPL();
+				return;
+			}
+			
+			if (
+					//If not content -> no compartment
+					getContentsCompartment() != null
+					// Check needed because caches are changing after setting onlogocial values
+					// This is not good because they are used to restore the original gpl figure
+					// Thus this code shall only be called when switching from GPL to DSL
+					&&	compartmentCache == null && compartmentParentCache == null) {
+				compartmentCache = getContentPaneFor(getContentsCompartment());
+				compartmentParentCache = compartmentCache.getParent();
+			}
+			
+			
+			//The dsl figure
+			org.eclipse.draw2d.IFigure customFigure = null;
+			
+			//If not content -> no compartment
+			if(getContentsCompartment() != null)
+				//Start transformation with content edit part provided
+				customFigure = (org.eclipse.draw2d.IFigure) transformator.run(dslVisualizer, self,
+						getContentPaneFor(getContentsCompartment()));
+			else
+				//Start transformation with content edit part provided
+				customFigure = (org.eclipse.draw2d.IFigure) transformator.run(dslVisualizer, self,
+						null);
+			
+			//It is important to only take the content of the DefaultSizeNode and 
+			//BorderItemContainer. Everything else will break the diagram
+			
+			org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure sourceDFN = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)figure.getChildren().get(0); 
+			org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure sourceBICF = (org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure)figure.getChildren().get(1); 
+			
+			//Clear the DefaultSizeNodeFigure children
+			sourceDFN.getChildren().clear();
+			//Clear the BorderItemContainer children
+			sourceBICF.getChildren().clear();
+			
+			if (customFigure instanceof org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure){
+				org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure targetDFN = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)customFigure;  
+				
+				//Add customFigure children to the DefaultSizeNodeFigure
+				for(org.eclipse.draw2d.IFigure f : (java.util.List<org.eclipse.draw2d.IFigure>)targetDFN.getChildren()){
+					f.setParent(sourceDFN);
+					sourceDFN.add(f);
+				}
+			} else if (customFigure instanceof org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure){
+				
+				org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure targetDFN = (org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)customFigure.getChildren().get(0); 
+				org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure targetBICF = (org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure)customFigure.getChildren().get(1); 
+				
+				//Add customFigure children to the DefaultSizeNodeFigure
+				for(org.eclipse.draw2d.IFigure f : (java.util.List<org.eclipse.draw2d.IFigure>)targetDFN.getChildren()){
+					f.setParent(sourceDFN);
+					sourceDFN.add(f);
+				}
+				
+				//Add customFigure children to the BorderItemContainer
+				for (org.eclipse.draw2d.IFigure f : (java.util.List<org.eclipse.draw2d.IFigure>)targetBICF.getChildren()){
+					org.melanee.core.modeleditor.edit.parts.ConnectionNameExternalLabelEditPart ep = new org.melanee.core.modeleditor.edit.parts.ConnectionNameExternalLabelEditPart(
+							org.eclipse.gmf.runtime.notation.impl.NotationFactoryImpl.eINSTANCE.createNode());
+					org.melanee.core.modeleditor.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure borderFig = (org.melanee.core.modeleditor.edit.parts.ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure) ep
+							.getFigure();
+					borderFig.setText(((org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel) f).getText());
+					
+					org.melanee.core.modeleditor.custom.borders.CenteredBorderItemLocator oldLocator = 
+							(org.melanee.core.modeleditor.custom.borders.CenteredBorderItemLocator) (f.getParent().getLayoutManager().getConstraint(f) instanceof org.melanee.core.modeleditor.custom.borders.CenteredBorderItemLocator?f.getParent().getLayoutManager().getConstraint(f):null);
+					
+					org.melanee.core.modeleditor.custom.borders.CenteredBorderItemLocator newLocator = null;
+					
+					//We need to do this as the main figure is not right when build up in LMLVisualizer
+					if (oldLocator != null
+							&& oldLocator instanceof org.melanee.core.modeleditor.custom.borders.CenteredBorderItemLocator)
+					{
+						newLocator = new org.melanee.core.modeleditor.custom.borders.CenteredBorderItemLocator(
+								getMainFigure(), oldLocator.getPreferredSideOfParent());
+						newLocator.setInitialOffset(oldLocator.getInitialOffset());
+					}
+					else if (oldLocator == null
+							|| !(oldLocator instanceof org.melanee.core.modeleditor.custom.borders.CenteredBorderItemLocator))
+						newLocator = new org.melanee.core.modeleditor.custom.borders.CenteredBorderItemLocator(
+								getMainFigure(), org.eclipse.draw2d.PositionConstants.SOUTH);
+					
+					sourceBICF.add(borderFig, newLocator);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Manages the GPL rendering of the EditPart
+	 *
+	 * @generated
+	 */
+	private void updateGPL(){
+		//The figure
+		org.eclipse.draw2d.IFigure defaultSizeNodeFigure = getMainFigure();
+		//the container that contains the border items
+		org.eclipse.draw2d.IFigure borderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
+		
+		//An empty dsl visualizer can create the case where children.size = 0
+		if(defaultSizeNodeFigure.getChildren().size() > 0)
+			defaultSizeNodeFigure.getChildren().remove(0);
+		
+		defaultSizeNodeFigure.getChildren().add(0, getPrimaryShape());
+		getPrimaryShape().setParent(defaultSizeNodeFigure);
+		
+		if (compartmentCache != null && compartmentParentCache != null){
+			compartmentCache.getParent().remove(compartmentCache);
+			compartmentCache.setParent(null);
+			
+			compartmentParentCache.add(compartmentCache);
+			compartmentCache.setParent(compartmentParentCache);
+			
+			compartmentCache = null;
+			compartmentParentCache = null;
+		}
+
+		//Refresh only, resizing would also affect the DSL view which should retain its size
+		//org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
+		//performRequest(rr);
+		performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+		
+	}
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE setBounds FOR gmfgen::GenNode»
+	/**
+	 * set new bounds so that the center of 'rect' matches the center of the new bounds
+	 *
+	 * @generated
+	 */
+	private void setBounds(org.eclipse.draw2d.geometry.Rectangle rect, int newWidth, int newHeight) {
+		org.eclipse.draw2d.geometry.Rectangle _rect = rect.getCopy();
+		_rect.setLocation(rect.getCenter().x - (newWidth / 2), rect.getCenter().y - (newHeight / 2));
+		_rect.setSize(newWidth, newHeight);
+		org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand sbc = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(this.getEditingDomain(), "change size",new org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter((org.eclipse.gmf.runtime.notation.View) this.getModel()), _rect);
+		getEditDomain().getCommandStack().execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(sbc));
+	}
+«ENDDEFINE»
+
+«DEFINE getToggleValue FOR gmfgen::GenNode»
+	/**
+	 * 
+	 * @return null if no toggling information is available, else true or false
+	 *
+	 * @generated
+	 */
+	private Boolean getToggleValue()
+	{
+		//boolean collapse = false;
+		
+		//********************************************************
+		//Find the LMLVisualizer attached to this element 
+		//********************************************************
+		org.melanee.core.models.plm.PLM.Element self = (org.melanee.core.models.plm.PLM.Element) this
+				.resolveSemanticElement();
+
+		//No rendering information found => all Connection remains expanded
+		if (self.getVisualizer().size() == 0) {
+			//Hide external name label
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
+					.setVisible(false);
+
+			return null;
+		}
+		
+		org.melanee.core.models.plm.PLM.LMLVisualizer r = self.getVisualizer().get(0);
+		String collapsedString = r.getValueForKey("collapsed");
+		
+		return java.lang.Boolean.parseBoolean(collapsedString);
+	}
+«ENDDEFINE»
+
+«DEFINE toggle FOR gmfgen::GenNode»
+	
+	/**
+	 *
+	 * Tracks the editPartsToggledState
+	 * 
+	 * @generated
+	 */
+	private boolean inToggeledState = false;
+	
+	/**
+	 * This renders the ConnectionEditPart based on information
+	 * in the model. Collapsed means that the Connection is rendered as small 
+	 * black rectangle. Collapsed means that the Connection will rendered as
+	 * hexagon, its default figure.
+	 * 
+	 * @generated
+	 */
+	private void toggle() {
+		java.lang.Boolean collapse = getToggleValue();
+		
+		//expand element
+		if (collapse == null || !collapse) {
+
+			this.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
+					org.eclipse.swt.SWT.COLOR_WHITE));
+
+			// get current location (as part of the bounds)
+			org.eclipse.draw2d.geometry.Rectangle rect = figure.getClientArea().getCopy();
+
+			//remove previous shape
+			getMainFigure().getChildren().remove(0);
+			//add default figure
+			getMainFigure().getChildren().add(0, getPrimaryShape());
+			
+			//Hide external name label
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure)figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0))
+					.setVisible(false);
+
+			//Allow Resizing
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
+					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy());
+
+			//When we come from read only context / addNotify the size should be in the
+			//notation model
+			if (getEditingDomain() instanceof org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain
+					&& 
+					//No transaction is running or no readonly transaction is running
+					(
+						((org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain) getEditingDomain()).getActiveTransaction() == null
+						|| !((org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain) getEditingDomain()).getActiveTransaction().isReadOnly()
+					)
+				)
+			{
+				//Auto resize with the new shape
+				org.eclipse.gef.Request rr = new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_AUTOSIZE);
+				performRequest(rr);
+			}
+			
+			// get current bounds of expanded figure (primarily: get size)
+			org.eclipse.draw2d.geometry.Dimension dim = ((org.eclipse.draw2d.IFigure) getMainFigure().getChildren().get(0)).getPreferredSize().getCopy();
+			
+			//A client rectangle existed
+			if (rect != null && (rect.width != 0 && rect.height != 0 && rect.x != 0 && rect.y != 0)) {
+				
+				//Set the new location based on center of the shape
+				setBounds(rect, dim.width, dim.height);
+			}
+
+			inToggeledState = false;
+			
+			return;
+		}
+		//collapse element
+		else {
+			//**************************************************
+			//Create the new figure (Rectangle with black background)
+			//**************************************************
+			
+			//if already toggled -> return
+			if (inToggeledState == true)
+				return;
+			
+			org.eclipse.draw2d.geometry.Rectangle rect = (figure.getClientArea() != null) ? figure
+					.getClientArea().getCopy() : null;
+
+			((org.eclipse.draw2d.IFigure)figure.getChildren().get(0)).getChildren().clear();
+
+			org.eclipse.draw2d.RectangleFigure rf = new org.eclipse.draw2d.RectangleFigure();
+
+			rf.setBackgroundColor(org.eclipse.swt.widgets.Display.getDefault().getSystemColor(
+					org.eclipse.swt.SWT.COLOR_BLACK));
+			rf.setBorder(new org.eclipse.draw2d.LineBorder(org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().getSystemColor(org.eclipse.swt.SWT.COLOR_WHITE), 2));	
+			
+			getMainFigure().getChildren().add(0, rf);
+			rf.setParent(getMainFigure());
+
+			//Hide external name label
+			org.eclipse.draw2d.IFigure boderItemContainer = (org.eclipse.draw2d.IFigure) figure.getChildren().get(1);
+			((org.eclipse.draw2d.IFigure) boderItemContainer.getChildren().get(0)).setVisible(true);
+
+			//A client rectangle existed
+			if (rect != null
+					&& (rect.width != 0 && rect.height != 0 && rect.x != 0 && rect.y != 0)) {
+				
+				//Set the new location based on center of the shape
+				setBounds(rect, 8, 8);
+			}
+			//A client rectangle does not exist -> called from activate
+			else {
+				rf.setSize(8, 8);
+			}
+
+			removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE,
+					new org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx());
+					
+			inToggeledState = true;
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE activate FOR gmfgen::GenNode»
+	@Override
+	public void activate() {
+		super.activate();
+		
+		//Entity EditParts do not have a outer BorderItemContainer in contrast
+		//to Connections etc. as those have external labels
+		
+		//synchronizeVisualizerAndNotationModel();
+		
+		createLinkedModelElementDecoration();
+		
+		updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+	}
+	
+	/**
+	 * This method synchronizes the visualizer and the notation view. The
+	 * method can be configured whether to write from notation model to 
+	 * visualizer or the other way around. Writing to notation model is
+	 * e.g. used when opening the editor or editing the visualizer. Writing
+	 * to the visualizer is e.g. used when changes in the graphical editor
+	 * occur.
+	 * 
+	 * @param notationModel True -> write from notation model to visualizer;
+	 * 							false -> write from visualizer to notation model
+	 */
+	private void synchronizeVisualizerAndNotationModel(){
+		try{
+			org.melanee.core.models.plm.PLM.Element self = (org.melanee.core.models.plm.PLM.Element)resolveSemanticElement();
+			org.melanee.core.models.plm.PLM.LMLVisualizer visualizer = self.getVisualizer().get(0);
+			
+			org.eclipse.gmf.runtime.notation.Node node  = (org.eclipse.gmf.runtime.notation.Node)getNotationView();
+			org.eclipse.gmf.runtime.notation.Bounds bounds = (org.eclipse.gmf.runtime.notation.Bounds)node.getLayoutConstraint();
+			org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain domain = (org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain)getEditingDomain();
+			
+			try {
+				//A location is different to notation -> change in notation model
+				if(bounds.getX() != visualizer.getXLocation() || bounds.getY() != visualizer.getYLocation()
+						|| bounds.getWidth() != visualizer.getWidth() || bounds.getHeight() != visualizer.getHeight()){
+					//Write X and Y value to notation model
+					//If a transaction is active the command stack has to be used
+					if(domain.getActiveTransaction() != null){
+						org.eclipse.emf.common.command.CompoundCommand compoundCommand = new org.eclipse.emf.common.command.CompoundCommand();
+						org.eclipse.emf.common.command.Command xCommand = org.eclipse.emf.edit.command.SetCommand.create(domain, bounds, org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getLocation_X(), visualizer.getXLocation());
+						compoundCommand.append(xCommand);
+						org.eclipse.emf.common.command.Command yCommand = org.eclipse.emf.edit.command.SetCommand.create(domain, bounds, org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getLocation_Y(), visualizer.getYLocation());
+						compoundCommand.append(yCommand);
+						org.eclipse.emf.common.command.Command widthCommand = org.eclipse.emf.edit.command.SetCommand.create(domain, bounds, org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getSize_Width(), visualizer.getWidth());
+						compoundCommand.append(widthCommand);
+						org.eclipse.emf.common.command.Command heightCommand = org.eclipse.emf.edit.command.SetCommand.create(domain, bounds, org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getSize_Height(), visualizer.getHeight());
+						compoundCommand.append(heightCommand);
+						domain.getCommandStack().execute(compoundCommand);
+						return;
+					}
+					else{
+						domain.startTransaction(false, java.util.Collections.EMPTY_MAP);
+						bounds.setX(visualizer.getXLocation());
+						bounds.setY(visualizer.getYLocation());
+						bounds.setWidth(visualizer.getWidth());
+						bounds.setHeight(visualizer.getHeight());
+						domain.getActiveTransaction().commit();
+					}
+				}
+			} catch (java.lang.InterruptedException e) {
+				e.printStackTrace();
+			} catch (org.eclipse.emf.transaction.RollbackException e) {
+				e.printStackTrace();
+			}
+		}
+		catch(java.lang.IllegalStateException e){
+			//Who cares?!
+		}
+	}
+	
+	/**
+	 * Searches for a link to a remote model
+	 * 
+	 * @return Returns the link, null otherwise
+	 */
+	private org.melanee.core.models.links.links.Link getRemoteModelLink(){
+		//Check if this is a linked model element
+		org.eclipse.emf.ecore.EObject self = resolveSemanticElement();
+		org.eclipse.emf.ecore.resource.Resource containingResource = self.eResource();
+		org.melanee.core.models.links.links.LinkingModel linkingModel = null;
+		
+		for(org.eclipse.emf.ecore.EObject obj : containingResource.getContents())
+			if(obj instanceof org.melanee.core.models.links.links.LinkingModel)
+				linkingModel = (org.melanee.core.models.links.links.LinkingModel)obj;
+				
+		if(linkingModel == null)
+			return null;
+		
+		org.melanee.core.models.links.links.Link linkToRemoteObject = null;
+		java.util.Iterator<org.eclipse.emf.ecore.EObject> linkingModelIterator = linkingModel.eAllContents();
+		while(linkingModelIterator.hasNext()){
+			org.eclipse.emf.ecore.EObject next = linkingModelIterator.next();
+			
+			if(next instanceof org.melanee.core.models.links.links.Link
+					&& ((org.melanee.core.models.links.links.Link)next).getTarget() == self)
+				linkToRemoteObject = (org.melanee.core.models.links.links.Link)next;
+		}
+		
+		return linkToRemoteObject;
+	}
+	
+	//This variable stores the link decoration
+	org.eclipse.gmf.runtime.diagram.ui.services.decorator.Decoration linkDecoration = null;
+	
+	/**
+	 * Creates a decoration at the lower right if
+	 * the model element is linked from a remote 
+	 * model
+	 */
+	public void createLinkedModelElementDecoration(){
+		if(linkDecoration != null)
+			return;
+	
+		org.melanee.core.models.links.links.Link remoteLink = getRemoteModelLink();
+		if(remoteLink == null)
+			return;
+		
+		org.melanee.core.models.links.links.RemoteModel remoteModel = (org.melanee.core.models.links.links.RemoteModel)remoteLink.eContainer();
+		
+		org.eclipse.swt.graphics.Image image = org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin.getInstance().getBundledImage("icons/link.gif");
+		boolean isVolatile = true;
+		int margin = -2;
+		//Create a Decoration. This code is from DecorationEditPolicy
+		org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode mm = org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil.getMapMode(getFigure());
+		org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ImageFigureEx figure = new org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ImageFigureEx();
+		figure.setImage(image);
+		figure.setSize(mm.DPtoLP(image.getBounds().width), mm.DPtoLP(image.getBounds().height));
+		
+		
+		linkDecoration = new org.eclipse.gmf.runtime.diagram.ui.services.decorator.Decoration();
+		linkDecoration.add(figure);
+		linkDecoration.setSize(figure.getSize());
+        String tooltipText = "Link to " + remoteModel.getURL() + "/" + remoteModel.getPath();
+		linkDecoration.setToolTip(new org.melanee.core.modeleditor.custom.tooltip.ToolTip(tooltipText));
+		
+		org.eclipse.gef.GraphicalEditPart ownerEditPart = (org.eclipse.gef.GraphicalEditPart) getAdapter(org.eclipse.gef.GraphicalEditPart.class);
+        linkDecoration.setOwnerFigure(ownerEditPart.getFigure());
+        
+        org.eclipse.draw2d.Locator locator =  new org.eclipse.gmf.runtime.gef.ui.internal.figures.RelativeToBorderLocator(
+				((org.eclipse.gef.GraphicalEditPart) getAdapter(org.eclipse.gef.GraphicalEditPart.class)).getFigure(), org.eclipse.draw2d.PositionConstants.SOUTH_EAST, margin);
+        
+		linkDecoration.setLocator(locator);
+        
+        // Register this figure with it's owner editpart so mouse events
+        // will be propagated to it's host.
+        ownerEditPart.getViewer().getVisualPartMap().put(linkDecoration, ownerEditPart);
+
+        org.eclipse.draw2d.IFigure pane = getLayer(isVolatile ? org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart.DECORATION_UNPRINTABLE_LAYER
+			: org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart.DECORATION_PRINTABLE_LAYER);
+
+		pane.add(linkDecoration);
+	}
+«ENDDEFINE»
+
+«/* Manages to show hide LMLVisualizers when setting LMLVisualizersShown trait */»
+«DEFINE showHideLMLVisualizers FOR gmfgen::GenNode»
+			org.melanee.core.models.plm.PLM.Context container = (org.melanee.core.models.plm.PLM.Context) notification.getNotifier();
+
+			org.melanee.core.models.plm.PLM.LMLVisualizer[] LMLVisualizers = new org.melanee.core.models.plm.PLM.LMLVisualizer[] {};
+
+			//find all LMLVisualizers in the model
+			org.eclipse.ocl.ecore.OCL ocl = org.eclipse.ocl.ecore.OCL.newInstance();
+			org.eclipse.ocl.helper.OCLHelper<org.eclipse.emf.ecore.EClassifier, ?, ?, org.eclipse.ocl.ecore.Constraint> helper = ocl.createOCLHelper();
+			
+			«IF self.editPartClassName = 'LevelEditPart'»
+			helper.setContext(org.melanee.core.models.plm.PLM.PLMPackage.Literals.LEVEL);
+			«ELSEIF self.editPartClassName = 'DeepModelEditPart'»
+			helper.setContext(org.melanee.core.models.plm.PLM.PLMPackage.Literals.DEEP_MODEL);
+			«ELSEIF self.editPartClassName.startsWith('Entity')»
+			helper.setContext(org.melanee.core.models.plm.PLM.PLMPackage.Literals.ENTITY);
+			«ELSEIF self.editPartClassName.startsWith('Connection')»
+			helper.setContext(org.melanee.core.models.plm.PLM.PLMPackage.Literals.CONNECTION);
+			«ENDIF»
+			
+			try 
+			{
+			    «IF self.editPartClassName = 'LevelEditPart'»
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.LMLVisualizer)");
+				«ELSEIF self.editPartClassName = 'DeepModelEditPart'»
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.content->collect(c | c.LMLVisualizer)->union(self.LMLVisualizer->collect(r|r))");
+				«ELSEIF self.editPartClassName.startsWith('Entity')»
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->collect(f | f.LMLVisualizer)");
+				«ELSEIF self.editPartClassName.startsWith('Connection')»
+				org.eclipse.ocl.expressions.OCLExpression<org.eclipse.emf.ecore.EClassifier> q = helper.createQuery("self.feature->collect(f | f.LMLVisualizer)");
+				«ENDIF»
+				
+				LMLVisualizers = ((java.util.ArrayList<org.melanee.core.models.plm.PLM.LMLVisualizer>) ocl.evaluate(resolveSemanticElement(), q)).toArray(new org.melanee.core.models.plm.PLM.LMLVisualizer[] {});
+			}
+			catch (org.eclipse.ocl.ParserException e) 
+			{
+				e.printStackTrace();
+			}
+			
+			//find the notational elements for the LMLVisualizers
+			for(org.melanee.core.models.plm.PLM.LMLVisualizer r : LMLVisualizers)
+			{
+				org.eclipse.emf.common.util.TreeIterator<org.eclipse.emf.ecore.EObject> iter = (getNotationView().eAllContents());
+				
+				while (iter.hasNext())
+				{
+					org.eclipse.emf.ecore.EObject obj = iter.next();
+					
+					if (obj instanceof org.eclipse.gmf.runtime.notation.Node)
+					{
+						org.eclipse.gmf.runtime.notation.Node n = (org.eclipse.gmf.runtime.notation.Node)obj;
+						
+						if (n.getElement() == r)
+						{
+							if (container.getVisualizersShown().equalsIgnoreCase("none"))
+								n.setVisible(false);
+							else
+								n.setVisible(true);
+							
+							break;
+						}
+					}
+				}
+			}
+			
+			performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+
+«ENDDEFINE»
+
+«DEFINE getCommand FOR gmfgen::GenNode»
+	«IF self.editPartClassName.startsWith('Attribute')
+			or self.editPartClassName.startsWith('Method')»
+		
+		@Override
+		public org.eclipse.gef.commands.Command getCommand(org.eclipse.gef.Request _request) {
+			if (_request instanceof org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest
+					&& (((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest) _request).getElementTypes()
+							.contains(org.melanee.core.modeleditor.providers.PLMElementTypes.ConnectionEnd_4036))) {
+
+				if(((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest) _request).getTargetEditPart() == this)
+					((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest) _request).setTargetEditPart(getParent().getParent());
+				
+				if(((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest) _request).getSourceEditPart() == this)
+					((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest) _request).setSourceEditPart(getParent().getParent());
+				
+				return getParent().getParent().getCommand(_request);
+			}
+			return super.getCommand(_request);
+		}
+	«ENDIF»
+	
+	
+	«REM»Delegate level creation requests to the deepmodel and entity creation requests to the content compartment«ENDREM»
+	«IF self.editPartClassName.startsWith('Level')»
+		@Override
+	public org.eclipse.gef.commands.Command getCommand(org.eclipse.gef.Request _request) {
+		getFigure().invalidateTree(); // ensure that the LevelDomainElementsCompartment's figure has properly set bounds
+		org.eclipse.gef.commands.Command cmd = super.getCommand(_request);
+		
+		if(cmd == null && _request instanceof org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest) {
+			org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest createUnspecifiedTypeRequest = (org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest)_request;
+			
+			if(createUnspecifiedTypeRequest.getElementTypes().contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Entity_3105)
+				|| createUnspecifiedTypeRequest.getElementTypes().contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Package_3125)){
+				org.eclipse.gef.EditPart levelDomainElementsCompartment = getLevelDomainElementsCompartment();
+				cmd = levelDomainElementsCompartment.getCommand(createUnspecifiedTypeRequest);
+			}
+			else if(createUnspecifiedTypeRequest.getElementTypes().contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Level_3097)) {
+				// Level creation request detected, build new request to prevent an exception
+				java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> types = new java.util.ArrayList<org.eclipse.gmf.runtime.emf.type.core.IElementType>();
+				types.add(org.melanee.core.modeleditor.providers.PLMElementTypes.Level_3097);				
+				org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint prefHint = getDiagramPreferencesHint();
+				org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest createLevelRequest = new org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest(types, prefHint);
+
+				// send new request to the LevelCompartment
+				org.eclipse.gef.EditPart levelCompartment = getParent();
+				while(!(levelCompartment instanceof org.melanee.core.modeleditor.edit.parts.DeepModelDeepModelLevelCompartmentEditPart))
+					levelCompartment = levelCompartment.getParent();
+				cmd = levelCompartment.getCommand(createLevelRequest);				
+			}
+		}
+		
+		return cmd;
+	}
+	
+	/**
+	 * returns the EditPart of the LevelDomainElementsCompartment of a Level
+	 * 
+	 * @param level the Level
+	 * @return the LevelDomainElementsCompartment
+	 */
+	public org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart getLevelDomainElementsCompartment() {
+		for(Object child : getChildren())
+			if(child instanceof org.melanee.core.modeleditor.edit.parts.LevelDomainElementsCompartmentEditPart)
+				return (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)child;
+
+		return null;
+	}
+	«ENDIF»
+
+	«REM»Delegate commands on deep model to level, which allows creation of levels when clicking on deep model
+	and not only the levels compartment«ENDREM»
+	«IF self.editPartClassName.startsWith('DeepModel')»
+	@Override
+	public org.eclipse.gef.commands.Command getCommand(org.eclipse.gef.Request _request) {
+
+		org.eclipse.gef.commands.Command cmd = super.getCommand(_request);		
+		if(cmd == null && _request instanceof org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest) {
+			// Hand over requests which cannot be handled to the LevelComparment. Allows adding
+			// Levels by clicking on the empty space below all existing Levels.
+			
+			org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart levelCompartment = getLevelCompartment();
+			return levelCompartment.getCommand(_request);
+		}
+		
+		return cmd;
+	}
+	
+	/**
+	 * returns the EditPart of the LevelCompartment of a DeepModel
+	 * 
+	 * @param deepModel the DeepModel
+	 * @return the LevelCompartment
+	 */
+	public org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart getLevelCompartment() {
+		for(Object child : getChildren())
+			if(child instanceof org.melanee.core.modeleditor.edit.parts.DeepModelDeepModelLevelCompartmentEditPart)
+				return (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)child;		
+				
+		return null;
+	}
+	«ENDIF»
+		
+	«IF self.editPartClassName.startsWith('Entity')
+		or self.editPartClassName.startsWith('Connection')»
+	/** 
+	 * 
+	 * @generated
+	 */
+	@Override
+	public org.eclipse.gef.commands.Command getCommand(org.eclipse.gef.Request _request) {
+	
+	
+		//*******************************************
+		// Hands requests for Creating Entities and 
+	 	// connections over to the contentEditPart.
+	 	//******************************************* 
+		if (_request instanceof org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest
+				&& (
+						((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest)_request).getElementTypes().contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Entity_3120)
+						|| ((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeRequest)_request).getElementTypes().contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Connection_3099)
+					)
+			)
+			return getContentsCompartment().getCommand(_request);
+			
+		org.eclipse.gef.commands.Command cmd = super.getCommand(_request);
+		
+		if (_request instanceof org.eclipse.gef.requests.ChangeBoundsRequest
+				&& 
+					//This shall prevent the execution of this code on element
+					//creation as this is true on move by mouse.
+					//This will break instantiation with content otherwise
+					((org.eclipse.gef.requests.ChangeBoundsRequest)_request).isSnapToEnabled()) {
+			if (cmd == null)
+				return cmd;
+			
+			org.eclipse.draw2d.geometry.Rectangle oldBounds = getFigure().getBounds();
+			org.eclipse.gef.requests.ChangeBoundsRequest changeRequest = (org.eclipse.gef.requests.ChangeBoundsRequest) _request;
+			org.eclipse.draw2d.geometry.Rectangle newBounds = changeRequest.getTransformedRectangle(oldBounds);
+
+			org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain domain = (org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain) getEditingDomain();
+			final org.melanee.core.models.plm.PLM.LMLVisualizer visualizer = ((org.melanee.core.models.plm.PLM.Element) resolveSemanticElement()).getVisualizer().get(0);
+			final org.eclipse.gmf.runtime.notation.Node notationView = (org.eclipse.gmf.runtime.notation.Node) getNotationView();
+
+			org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand changeVisualizerBoundsCommand = new org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand(domain,
+					"Change Visulizer",
+					java.util.Collections.singletonList(org.eclipse.emf.workspace.util.WorkspaceSynchronizer.getFile(visualizer.eResource()))) {
+
+				@Override
+				protected org.eclipse.gmf.runtime.common.core.command.CommandResult doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info)
+						throws org.eclipse.core.commands.ExecutionException {
+					org.eclipse.gmf.runtime.notation.Bounds b = (org.eclipse.gmf.runtime.notation.Bounds) notationView.getLayoutConstraint();
+
+					//If in synch nothing has to be done
+					if (visualizer.getXLocation() == b.getX() && visualizer.getYLocation() == b.getY()
+							&& visualizer.getHeight() == b.getHeight() && visualizer.getWidth() == b.getWidth())
+						return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult();
+
+					visualizer.setXLocation(b.getX());
+					visualizer.setYLocation(b.getY());
+					visualizer.setHeight(b.getHeight());
+					visualizer.setWidth(b.getWidth());
+					return org.eclipse.gmf.runtime.common.core.command.CommandResult.newOKCommandResult();
+				}
+
+			};
+
+			((org.eclipse.gef.commands.CompoundCommand) cmd).add(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(changeVisualizerBoundsCommand));
+		}
+
+		return cmd;
+	}
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE registerToHandleNotificationForChildren FOR gmfgen::GenNode»
+	«IF self.editPartClassName.startsWith('Connection')
+			or self.editPartClassName.startsWith('Entity')»
+			
+	private org.eclipse.emf.common.notify.Adapter visualizerListener = new VisualizerAdapter();
+	
+	/**
+	 * Used to listen for changes in an entire tree of elements 
+	 */
+	private class VisualizerAdapter extends org.eclipse.emf.ecore.util.EContentAdapter {
+		@Override
+		public void notifyChanged(org.eclipse.emf.common.notify.Notification notification) {
+			super.notifyChanged(notification);
+			
+			//Do nothing on remove of listener
+			if(notification.getEventType() == org.eclipse.emf.common.notify.Notification.REMOVING_ADAPTER)
+				return;
+			
+			//This happens when toggeling between dsl and gpl mode and is already
+			//handled via code in handle notification
+			if (notification.getNotifier() instanceof org.melanee.core.models.plm.PLM.LMLVisualizer
+					|| !(resolveSemanticElement() instanceof org.melanee.core.models.plm.PLM.Clabject)
+				)
+				return;
+			
+			updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+					
+			org.melanee.core.models.plm.PLM.Clabject c = (org.melanee.core.models.plm.PLM.Clabject)resolveSemanticElement();
+			java.util.List<org.melanee.core.models.plm.PLM.Clabject> instances = c.getClassificationTreeAsType();
+			for (org.melanee.core.models.plm.PLM.Clabject i : instances){
+				org.eclipse.gef.EditPart ep = findEditPart(getRoot(), i);
+				if (ep instanceof org.melanee.core.modeleditor.edit.parts.EntityEditPart)
+					((org.melanee.core.modeleditor.edit.parts.EntityEditPart)ep).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+				else if (ep instanceof org.melanee.core.modeleditor.edit.parts.Entity2EditPart)
+					((org.melanee.core.modeleditor.edit.parts.Entity2EditPart)ep).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+				else if (ep instanceof org.melanee.core.modeleditor.edit.parts.Entity3EditPart)
+					((org.melanee.core.modeleditor.edit.parts.Entity3EditPart)ep).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+				else if (ep instanceof org.melanee.core.modeleditor.edit.parts.ConnectionEditPart)
+					((org.melanee.core.modeleditor.edit.parts.ConnectionEditPart)ep).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+				else if (ep instanceof org.melanee.core.modeleditor.edit.parts.Connection2EditPart)
+					((org.melanee.core.modeleditor.edit.parts.Connection2EditPart)ep).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+				else if (ep instanceof org.melanee.core.modeleditor.edit.parts.Connection3EditPart)
+					((org.melanee.core.modeleditor.edit.parts.Connection3EditPart)ep).updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+			}
+		}
+	}
+	«ENDIF»
+
+	@Override
+	public void deactivate() {
+		«REM»This was only added to connections and entities before«ENDREM»
+		«IF self.editPartClassName.startsWith('Connection')
+				or self.editPartClassName.startsWith('Entity')»
+		org.melanee.core.models.plm.PLM.Element e = (org.melanee.core.models.plm.PLM.Element) resolveSemanticElement();
+		
+		//if a model element gets deleted there is no
+		//way to remove adapters anymore
+		if (e != null)
+			for (org.melanee.core.models.plm.PLM.LMLVisualizer v : e.getVisualizer())
+				v.eAdapters().remove(visualizerListener);
+		«ENDIF»
+		
+		//Remove the cached decoration code from DecorationEditPolicy
+		if (linkDecoration != null) {
+			((org.eclipse.draw2d.IFigure) linkDecoration).getParent().remove((org.eclipse.draw2d.IFigure) linkDecoration);
+			org.eclipse.gef.GraphicalEditPart ownerEditPart = (org.eclipse.gef.GraphicalEditPart) getAdapter(org.eclipse.gef.GraphicalEditPart.class);
+	        ownerEditPart.getViewer().getVisualPartMap().remove(linkDecoration);
+	        linkDecoration = null;
+		}
+		
+		super.deactivate();
+	}
+		
+	/**
+	 * Registers the Edipart to fire handleNotification on changes
+	 * in LMLVisualizer.
+	 *
+	 * BUG: Only runs on EditPartCrearion. Items which are added Afterwards are not
+	 * listened to.
+	 * 
+	 * @generated
+	 */
+	@Override
+	protected void addSemanticListeners() {
+		super.addSemanticListeners();
+		
+		org.melanee.core.models.plm.PLM.Element e = (org.melanee.core.models.plm.PLM.Element) resolveSemanticElement();
+		
+		//Register for listening to LMLVisualizer changes
+		for (org.melanee.core.models.plm.PLM.LMLVisualizer v : e.getVisualizer())
+			addListenerFilter(v.toString().substring(0, v.toString().indexOf(" ")), this, v);
+		
+		«IF self.editPartClassName.startsWith('Connection')
+				or self.editPartClassName.startsWith('Entity')»
+		//To listen the whole tree of an visualizer an Adapter is used instead of a diagram event broker
+		for (org.melanee.core.models.plm.PLM.LMLVisualizer v : e.getVisualizer()){
+			v.eAdapters().add(visualizerListener);
+		}
+		
+		//Register to listen for feature changes
+		for (org.melanee.core.models.plm.PLM.Feature f : ((org.melanee.core.models.plm.PLM.Clabject)e).getFeature())
+			addListenerFilter(f.toString().substring(0, f.toString().indexOf(" ")), this, f);
+		«ENDIF»
+	}
+«ENDDEFINE»

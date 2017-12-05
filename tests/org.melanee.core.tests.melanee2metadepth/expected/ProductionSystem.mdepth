@@ -1,0 +1,45 @@
+Level ProductionSystem {
+
+  enum States {
+    BUSY, 
+    IDLE,
+    BROKEN
+  }
+
+  abstract Node AbstractElement {
+    procTime : double = 10.0;
+    startTime : double = 3.0;
+    state : States;
+  }
+
+  Node Machine : AbstractElement {
+    name    : String;
+    inConv  : Conveyor[1..*];
+    outConv : Conveyor[1..*];
+  }
+  
+  Node Conveyor : AbstractElement{
+    outMach : Machine[*];
+    inMach  : Machine[*];
+    parts   : Part[*];
+  }
+  
+  Node Part{
+    owner : Conveyor[0..1];
+  }
+  
+  Edge MC (Machine.outConv, Conveyor.inMach) { delay : double; }
+  Edge CM (Conveyor.outMach, Machine.inConv) { delay : double; }     
+  Edge CP (Part.owner, Conveyor.parts) {}        
+}
+
+ProductionSystem AFactory {
+  Machine aMachine {
+     name = "m1";
+     state = BUSY;
+  }
+  Conveyor c1 {
+     state = BROKEN;
+  }
+  MC(aMachine, c1) { delay = 3.0; }
+}

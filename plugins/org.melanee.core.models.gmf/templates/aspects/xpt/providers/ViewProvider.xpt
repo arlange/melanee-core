@@ -1,0 +1,153 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«EXTENSION xpt::diagram::Utils»
+«EXTENSION xpt::diagram::ViewmapAttributesUtils»
+«EXTENSION xpt::diagram::editpolicies::LinkUtils»
+
+/**
+  *
+  * Hide Classifications on creation accoring to designation of instance
+  *
+  */
+«AROUND createEdgeMethod FOR gmfgen::GenLink-»
+«/* Show/Hide classifications when adding them. */»
+«IF getUniqueIdentifier().startsWith('Classification_')»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public org.eclipse.gmf.runtime.notation.Edge create«getUniqueIdentifier()»(«IF isTypeLink()»org.eclipse.emf.ecore.EObject domainElement, «ENDIF»org.eclipse.gmf.runtime.notation.View containerView, int index, boolean persisted, org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint preferencesHint) {
+	«IF viewmap.isFixedForeground()-»
+		org.eclipse.gmf.runtime.notation.Edge edge = org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createEdge();
+		edge.getStyles().add(org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createRoutingStyle());
+	«ELSE-»
+		org.eclipse.gmf.runtime.notation.Connector edge = org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createConnector();
+	«ENDIF-»
+	«IF not viewmap.isFixedFont()-»
+		edge.getStyles().add(org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createFontStyle());
+	«ENDIF-»
+		«EXPAND xpt::diagram::views::Utils::addCustomStyles('edge.getStyles()')-»
+		org.eclipse.gmf.runtime.notation.RelativeBendpoints bendpoints = org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createRelativeBendpoints();
+		«EXPAND CodeStyle::newGenericInstance('points', 'java.util.ArrayList', 'org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint')»(2);
+		points.add(new org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint());
+		points.add(new org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint());
+		bendpoints.setPoints(points);
+		edge.setBendpoints(bendpoints);
+		org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.insertChildView(containerView, edge, index, persisted);
+		edge.setType(«EXPAND xpt::editor::VisualIDRegistry::typeMethodCall»);
+		edge.setElement(«IF isTypeLink()»domainElement«ELSE»null«ENDIF»);
+		// initializePreferences
+		final org.eclipse.jface.preference.IPreferenceStore prefStore = (org.eclipse.jface.preference.IPreferenceStore) preferencesHint.getPreferenceStore();
+		«EXPAND initializeStyles('edge', 'prefStore', not viewmap.isFixedForeground(), false, not viewmap.isFixedFont())-»
+		org.eclipse.gmf.runtime.notation.Routing routing = org.eclipse.gmf.runtime.notation.Routing.get(prefStore.getInt(org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants.PREF_LINE_STYLE));
+		if (routing != null) {
+			org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.setStructuralFeatureValue(edge, org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getRoutingStyle_Routing(), routing);
+		}
+«EXPAND initLabel('edge', 'prefStore') FOREACH labels-»
+
+		//**********************
+		//Custom Code
+		//**********************
+		
+		//Check if proximity indication is used -> hide classification
+		org.melanee.core.models.plm.PLM.Classification i = (org.melanee.core.models.plm.PLM.Classification)domainElement;
+		if (i.getInstance().getVisualizer().size()>0)
+		{
+			org.melanee.core.models.plm.PLM.LMLVisualizer v = i.getInstance().getVisualizer().get(0);
+			if ("1".equals(v.getValueForKey("ProximityClassification")))
+					edge.setVisible(false);
+		}
+		
+		return edge;
+	}
+«ELSE»
+	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
+
+// FIXME check if there's need for a variable name, see initCompartment for a hint
+«DEFINE initLabel(String nodeVar, String prefStoreVar) FOR gmfgen::GenLabel-»
+«LET 'label' + self.visualID.repr() AS labelVar-»
+		org.eclipse.gmf.runtime.notation.Node «labelVar» = createLabel(«nodeVar», «EXPAND xpt::editor::VisualIDRegistry::typeMethodCall»);
+		«EXPAND xpt::diagram::views::Utils::addTextStyle(labelVar + '.getStyles()') FOR modelFacet-»
+		«EXPAND xpt::diagram::views::Utils::addCustomStyles(labelVar + '.getStyles()')-»
+«IF self.oclIsKindOf(gmfgen::GenExternalNodeLabel) or self.oclIsKindOf(gmfgen::GenLinkLabel)-»
+		«labelVar».setLayoutConstraint(org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createLocation());
+		«EXPAND xpt::diagram::views::Utils::offset(labelVar)-»
+«ENDIF-»
+		«EXPAND initializeStyles(labelVar, prefStoreVar, false, false, false)-»
+«ENDLET-»
+«ENDDEFINE»
+
+// looks for Font/Line/Fill styles in customStyles and initializes, if any (may be forced with boolean params)
+// params has*Style are to force respective style initialization (when callee knows certain style was added)  
+«DEFINE initializeStyles(String viewVar, String prefStoreVar, Boolean hasLineStyle, Boolean hasFillStyle, Boolean hasFontStyle) FOR gmfgen::GenCommonBase-»
+«IF hasLineStyle or self.hasLineStyleInCustom()-»
+	«REM»FIXME ColorAttributes is deprecated, should remove and clean the second branch of the disjunction«ENDREM»
+	«IF viewmap.isFixedForeground() or viewmap.attributes[gmfgen::ColorAttributes]->notEmpty()-»
+		«EXPAND xpt::diagram::views::Utils::foregroundColour(viewVar) FOR viewmap-»
+	«ELSE-»
+		«EXPAND initForegroundFromPrefs(viewVar, prefStoreVar)-»
+	«ENDIF-»
+«ENDIF-»
+«IF (hasFontStyle or self.hasFontStyleInCustom()) and not viewmap.isFixedFont()-»
+		«EXPAND initFontFromPrefs(viewVar, prefStoreVar)-»
+«ENDIF-»
+«IF hasFillStyle or self.hasFillStyleInCustom()-»
+	«IF viewmap.isFixedBackground() or viewmap.attributes[gmfgen::ColorAttributes]->notEmpty()-»
+		«EXPAND xpt::diagram::views::Utils::backgroundColour(viewVar) FOR viewmap-»
+	«ELSE-»
+		«EXPAND initBackgroundFromPrefs(viewVar, prefStoreVar)-»
+	«ENDIF-»
+«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE initCompartment(String nodeVar, String prefStoreVar) FOR gmfgen::GenCompartment-»
+«LET 'compartment' + self.visualID.repr() AS compartmentVar-»
+		«IF styles->notEmpty() or isStoringChildPositions(getLayoutType())»org.eclipse.gmf.runtime.notation.Node «compartmentVar» = «ENDIF»createCompartment(«nodeVar», «EXPAND xpt::editor::VisualIDRegistry::typeMethodCall», «canCollapse», «needsTitle», «listLayout», «listLayout»);
+		«EXPAND xpt::diagram::views::Utils::addCustomStyles(compartmentVar + '.getStyles()')-»
+«IF isStoringChildPositions(getLayoutType())-»
+	«IF viewmap.canUseShapeStyle()-»
+		«compartmentVar».add(org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createShapeStyle());
+	«ELSE-»
+«REM»Intentionally not adding Description style, as it deemed to be useless for compartments (can't avoid for ShapeStyle - benefits of a single style overwheight drawbacks of Description presence)«ENDREM»
+		«EXPAND xpt::diagram::views::Utils::addFontLineFillStylesConditionally(compartmentVar + '.getStyles()') FOR viewmap-»
+	«ENDIF-»
+		«compartmentVar».setLayoutConstraint(org.eclipse.gmf.runtime.notation.NotationFactory.eINSTANCE.createBounds());
+		«EXPAND initializeStyles(compartmentVar, prefStoreVar, not viewmap.isFixedForeground(), not viewmap.isFixedBackground(), not viewmap.isFixedFont())-»
+«ELSE-»
+		«EXPAND initializeStyles(compartmentVar, prefStoreVar, false, false, false)-»
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE initForegroundFromPrefs(String viewVar, String prefStoreVar) FOR gmfgen::GenCommonBase-»
+	org.eclipse.swt.graphics.RGB lineRGB = org.eclipse.jface.preference.PreferenceConverter.getColor(«prefStoreVar», org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants.PREF_LINE_COLOR);
+	org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.setStructuralFeatureValue(«viewVar», org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getLineStyle_LineColor(), org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities.RGBToInteger(lineRGB));
+«ENDDEFINE»
+
+«DEFINE initBackgroundFromPrefs(String viewVar, String prefStoreVar) FOR gmfgen::GenCommonBase-»
+	org.eclipse.swt.graphics.RGB fillRGB = org.eclipse.jface.preference.PreferenceConverter.getColor(«prefStoreVar», org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants.PREF_FILL_COLOR);
+	org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.setStructuralFeatureValue(«viewVar», org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getFillStyle_FillColor(), org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities.RGBToInteger(fillRGB));
+«ENDDEFINE»
+
+«DEFINE initFontFromPrefs(String viewVar, String prefStoreVar) FOR gmfgen::GenCommonBase-»
+	org.eclipse.gmf.runtime.notation.FontStyle «viewVar»FontStyle = (org.eclipse.gmf.runtime.notation.FontStyle) «viewVar».getStyle(org.eclipse.gmf.runtime.notation.NotationPackage.Literals.FONT_STYLE);
+	if («viewVar»FontStyle != null) {«REM»Given this template is invoked only when FontStyle is present, no need to check fontStyle for null, but at least this gives a scope for fontData var«ENDREM»
+		org.eclipse.swt.graphics.FontData fontData = org.eclipse.jface.preference.PreferenceConverter.getFontData(«prefStoreVar», org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants.PREF_DEFAULT_FONT);
+		«viewVar»FontStyle.setFontName(fontData.getName());
+		«viewVar»FontStyle.setFontHeight(fontData.getHeight());
+		«viewVar»FontStyle.setBold((fontData.getStyle() & org.eclipse.swt.SWT.BOLD) != 0);
+		«viewVar»FontStyle.setItalic((fontData.getStyle() & org.eclipse.swt.SWT.ITALIC) != 0);
+		org.eclipse.swt.graphics.RGB fontRGB = org.eclipse.jface.preference.PreferenceConverter.getColor(«prefStoreVar», org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants.PREF_FONT_COLOR);
+		«viewVar»FontStyle.setFontColor(org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities.RGBToInteger(fontRGB).intValue());
+	}
+«ENDDEFINE»

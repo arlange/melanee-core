@@ -1,0 +1,55 @@
+-- @nsURI genmodel=http://www.eclipse.org/emf/2002/GenModel
+
+--*******************************************************************************
+--* Copyright (c) 2015 University of Mannheim: Chair for Software Engineering
+--* All rights reserved. This program and the accompanying materials
+--* are made available under the terms of the Eclipse Public License v1.0
+--* which accompanies this distribution, and is available at
+--* http://www.eclipse.org/legal/epl-v10.html
+--*
+--* Contributors:
+--*     - initial API and implementation and initial documentation
+--*******************************************************************************/
+
+--********************************************************
+--!!IMPORTANT!!
+--plugin.properties needs to be deleted before genmodel 
+--generation in order to get updated feature descriptions
+--********************************************************
+module GenmodelRefinement;
+
+create OUT:genmodel refining IN:genmodel;
+
+--helper context genmodel!GenFeature def  : getDescription : String =
+--	if (self.ecoreFeature.name = 'name') then
+--		'Sets the element\'s name.'
+--	else 
+--		if (self.ecoreFeature.name = 'isJoinPoint') then
+--			'Specifies whether this is a JoinPoint (true) or aspect (false)'
+--		else
+--			''
+--		endif
+--	endif;
+
+-- Sets the basePackage
+rule RefineGenPackage{
+	from 
+		s : genmodel!GenPackage
+	to
+		o : genmodel!GenPackage(
+			basePackage <- 'org.melanee.core.models.links'
+		)
+}
+
+-- Sets the basePackage operationReflection
+rule RefineGenModel{
+	from
+		s : genmodel!GenModel
+	to
+		o : genmodel!GenModel(
+			operationReflection <- true,
+			dynamicTemplates <- true,
+			templateDirectory <- 'org.melanee.core.models.links/templates',
+			complianceLevel <- #JDK60
+		)
+}

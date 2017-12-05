@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Welcome to Melanee 2.0</title>
+    <style>
+        @font-face {
+            font-family: 'BRLNSR';
+            src: url('font/BRLNSR.eot');
+            src: local('BRLNSR'), url('font/BRLNSR.woff') format('woff'), url('font/BRLNSR.ttf') format('truetype');
+        }
+
+        a.header{
+            display:block;
+        }
+
+        a{
+            text-decoration:none;
+            color:black;
+        }
+
+        a.Button{
+            float:left; 
+            width:300px;
+            cursor:pointer;
+            border-bottom-width:3px;
+            border-bottom-style:solid;
+            border-bottom-color:white;
+        }
+
+        a.Button:hover{
+            border-bottom-color:black;
+            border-bottom-style:solid;
+            border-bottom-width:3px;
+            overflow:auto;
+        }
+
+        a.Button > *{
+            vertical-align:middle;
+        }
+
+            a.Button div.image {
+                display:inline-block;
+                background-repeat: no-repeat;
+                width: 70px;
+                height: 70px;
+            }
+
+            a.Button div.description {
+                display:inline-block;
+                font-family: "BRLNSR";
+                width: 220px;
+                margin-left: 5px;
+                text-align:justify;
+            }
+
+        a.ButtonFirstLeft {
+            margin-right:10px;
+        }
+
+        a.ButtonFirstRight {
+        }
+
+        a.ButtonLeft{
+            margin-top:20px;
+            margin-right:10px;
+        }
+
+        a.ButtonRight {
+            margin-top: 20px;
+        }
+
+        div.body {
+            overflow: auto;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body style="background-color:white;">
+    <div id="page" style="width:610px; margin:auto">
+        <a id="head" class="header" href="http://www.melanee.org" target="_blank" style="background-image:url(./img/melanee.png); height:145px; background-repeat:no-repeat; background-position: center;">
+            <!--<div id="Title" style="text-align:center">Melanee</div>
+            <div id="SubTitle" style="text-align:center">The Deep Domain-specific Modeling Language Workbench</div>-->
+        </a>
+        <div id="body" class="body">
+            <a id="Tutorials" class="Button ButtonFirstLeft" href="http://www.melanee.org/tutorials/" target="_blank">
+                <div class="image" style="background-image:url(img/tutorial.png);">
+                </div>
+                <div class="description">
+                    <b>Tutorials and First Steps</b><br />
+                    Discover Melanee by visiting our Tutorials and First Steps section.
+                </div>
+
+            </a>
+            <a id="Screencasts" class="Button ButtonFirstRight" href="http://www.melanee.org/videos/" target="_blank">
+                <div class="image" style="background-image:url(img/screencasts.png);">
+                </div>
+                <div class="description">
+                    <b>Screencasts</b><br />
+                    Watch our latest screencasts to see Melanee in action.
+                </div>
+            </a>
+            <a id="Github" class="Button ButtonLeft" href="https://github.com/deep-modeling" target="_blank">
+                <div class="image" style="background-image:url(img/github.png);">
+                </div>
+                <div class="description">
+                    <b>Melanee at Github</b><br />
+                    Get the source code now!
+                </div>
+            </a>
+            <a id="SWT" class="Button ButtonRight" href="http://swt.informatik.uni-mannheim.de/" target="_blank">
+                <div class="image" style="background-image:url(img/swt.png);">
+                </div>
+                <div class="description">
+                    <b>About us</b><br />
+                    Visit the University of Mannheim: Software Engineering Group.
+                </div>
+            </a>
+        </div>
+        <div id="headMenu" style="position:absolute; bottom:10px; right:10px;">
+            <a class="Button" href="action:addfeatures" style="width:auto">
+                <div class="image" style="background-image:url(img/add_feature.png); width:30px; height:30px;">
+                </div>
+                <div class="description" style="width:auto; margin-right:20px;">
+                    Add Features!
+                </div>
+            </a>
+            <a class="Button" href="action:gotoworkbench" style="width:auto">
+                <div class="image" style="background-image:url(img/jump.png); width:30px; height:30px;">
+                </div>
+                <div class="description" style="width:auto">
+                    Go to Workbench!
+                </div>
+            </a>
+        </div>
+        <!--<div id="footer" style="position:absolute; bottom:10px">
+            <a style="color:black" href="http://swt.informatik.uni-mannheim.de/de/impressum/">Impressum</a>
+        </div>-->
+    </div>
+</body>
+</html>

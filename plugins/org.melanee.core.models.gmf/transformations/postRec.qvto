@@ -1,0 +1,282 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+modeltype GMFGEN uses gmfgen('http://www.eclipse.org/gmf/2009/GenModel');
+	
+transformation postRec(inout gmfgenModel : GMFGEN);
+
+property genNavigator : GenNavigator = null;
+property genStandardPrefencePage : GenStandardPreferencePage = null;
+property genPlugIn : GenPlugin = null;
+property genEditorGenerator : GenEditorGenerator = null;
+property genDiagram : GenDiagram = null;
+property genPropertySheet : GenPropertySheet = null;
+
+property copyRightText : String = 
+'*******************************************************************************
+Copyright (c) 2011 - 2015 University of Mannheim: Chair for Software Engineering
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+     - initial API and implementation and initial documentation
+*******************************************************************************'; 
+
+ 
+main() {
+	
+	--Needed for Attribute/Method Resize when LMLVisualizers are shown/hidden Bug 344104
+	gmfgenModel.objectsOfType(GenChildNode)->asOrderedSet()
+		->select(c | c.editPartClassName.startsWith("Attribute") 
+			or c.editPartClassName.startsWith("Method")
+			or c.editPartClassName.startsWith("Enumeration"))->forEach(node)
+		{
+			var defaultSize := new DefaultSizeAttributes();
+			defaultSize.height := 20;
+			defaultSize.width := 0;
+			node.viewmap.attributes := Sequence{defaultSize};
+		};
+	
+	--gmfgenModel.objectsOfType(GenChildNode)->asOrderedSet()
+	--	->select(c | c.editPartClassName.startsWith("Level"))->forEach(node)
+	--	{
+	--		var defaultSize := new DefaultSizeAttributes();
+	--		defaultSize.height := 100;
+	--		defaultSize.width := 0;
+	--		node.viewmap.attributes := Sequence{defaultSize};
+	--	};
+	
+	--Set ListLayout for Level(Clabject) Compartment
+	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
+				->select(c | c.editPartClassName = "DeepModelDeepModelLevelCompartmentEditPart")->first()
+				.listLayout := false;
+	
+	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
+				->select(c | c.editPartClassName.find("Attributes") > 0)->forEach(comp)
+				{
+					comp.listLayout := true;
+				};
+	
+	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
+				->select(c | c.editPartClassName.find("Methods") > 0)->forEach(comp)
+				{
+					comp.listLayout := true;
+				};
+				
+	gmfgenModel.objectsOfType(GenCompartment)->asOrderedSet()
+				->select(c | c.editPartClassName.find("Contents") > 0)->forEach(comp)
+				{
+					comp.listLayout := false;
+				};
+	
+	--Fix the Create Undefined Bug 354467 
+	gmfgenModel.objectsOfType(GenLink)->asOrderedSet()
+				->select(l | l.elementType.oclIsTypeOf(SpecializationType) and l.elementType.displayName = 'Undefined')->forEach(link)
+				{
+					link.elementType.displayName := link.modelFacet.oclAsType(FeatureLinkModelFacet).metaFeature.ecoreFeature.name.firstToUpper();
+				};
+	
+	--Setup the GenEditorGenerator
+	this.genEditorGenerator := gmfgenModel.objectsOfType(GenEditorGenerator)->asOrderedSet()->first();
+	genEditorGenerator.sameFileForDiagramAndModel := true;
+	genEditorGenerator.dynamicTemplates := true;
+	genEditorGenerator.templateDirectory := "/org.melanee.core.models.gmf/templates";
+	genEditorGenerator.diagramFileExtension := "lml";
+	genEditorGenerator.modelID := "LML";
+	genEditorGenerator.packageNamePrefix := 'org.melanee.core.modeleditor';
+	genEditorGenerator.copyrightText := copyRightText;
+	genEditorGenerator.editor.iconPath := "icons/melanee16.gif";
+	
+	--Setup the GenDiagram
+	genDiagram
+		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->first();
+	genDiagram.validationEnabled := true;
+	genDiagram.validationDecorators := true;
+	genDiagram.validationProviderPriority := ProviderPriority::Medium;
+	genDiagram.validationDecoratorProviderPriority := ProviderPriority::Medium;
+	genDiagram.creationWizardCategoryID := "org.melanee.melaneecategory";
+	genDiagram.creationWizardIconPath := "icons/melanee16.gif";
+	
+	
+	--Setup the GenPlugin
+	this.genPlugIn := gmfgenModel.objectsOfType(GenPlugin)->asOrderedSet()->first();
+	genPlugIn.iD := "org.melanee.core.modeleditor";
+	genPlugIn.provider := "University of Mannheim: Chair for Software Engineering";
+	genPlugIn.name := "Melanee - Multi-levEl modeLing And oNtology Engineering Environment Plugin";
+	genPlugIn.version := "2.0.0.qualifier";
+	genPlugIn.printingEnabled := true;
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('de.itemis.gmf.runtime.extensions');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.eclipse.gmf.runtime.diagram.ui.actions');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.melanee.core.models.gmf');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.melanee.core.workbench');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.melanee.core.common');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.melanee.core.models.links');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.melanee.core.modelexplorer');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.melanee.core.emendation.service');
+	genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.melanee.core.dsl.service');
+	--genPlugIn.requiredPlugins := genPlugIn.requiredPlugins->append('org.melanee.graphdsl.models.definition');
+	
+	genDiagram.links->select(l | l.editPartClassName.startsWith('ConnectionEnd'))->forEach(connectionEnd){
+		connectionEnd.incomingCreationAllowed := true;
+	};
+	
+	--Set the properties for the Prefrence Page (Window -> Preferences)
+	this.genStandardPrefencePage := gmfgenModel.objectsOfType(GenStandardPreferencePage)->asOrderedSet()->first();
+	genStandardPrefencePage.name := "Melanee";
+	genStandardPrefencePage.iD := "org.melanee.core.modeleditor.general";
+	
+	--Setup the linguistic properties view
+	this.genPropertySheet := gmfgenModel.objectsOfType(GenPropertySheet)->asOrderedSet()->first();
+	genPropertySheet.tabs := genPropertySheet.tabs->selectByType(GenCustomPropertyTab);
+	-- Modify the linguistic property tab
+	var domainPropertyTab : GenCustomPropertyTab := genPropertySheet.tabs->select(t | t.iD = 'domain')->first().oclAsType(GenCustomPropertyTab);
+	domainPropertyTab.label := 'Linguistic';
+	domainPropertyTab.filter := object CustomTabFilter{className := 'org.melanee.core.modeleditor.custom.propertysheet.LinguisticPropertiesSectionFilter'};
+	
+	--Add the visualiztion property tab
+	var visualizationPropertyTab : GenCustomPropertyTab := object GenCustomPropertyTab{
+		label := 'Visualization';
+		iD := 'visualization';
+		filter := object CustomTabFilter{className := 'org.melanee.core.modeleditor.custom.propertysheet.VisualizationPropertiesSectionFilter'};
+		generateBoilerplate := false;
+	};
+	genPropertySheet.tabs := genPropertySheet.tabs->append(visualizationPropertyTab);
+	visualizationPropertyTab.className := 'org.melanee.core.modeleditor.custom.propertysheet.VisualizationPropertySectionAbstractPropertySection';
+	
+	--Add the constraint property tab
+	var constraintPropertyTab : GenCustomPropertyTab := object GenCustomPropertyTab{
+		label := 'Constraints';
+		iD := 'constraints';
+		filter := object CustomTabFilter{className := 'org.melanee.core.modeleditor.custom.propertysheet.ConstraintPropertiesSectionFilter'};
+		generateBoilerplate := false;
+	};
+	genPropertySheet.tabs := genPropertySheet.tabs->append(constraintPropertyTab);
+	constraintPropertyTab.className := 'org.melanee.core.modeleditor.custom.propertysheet.ConstraintPropertySectionAbstractPropertySection';
+	
+	--Add the ontological property tab
+	var ontologicalPropertyTab : GenCustomPropertyTab := object GenCustomPropertyTab{
+		label := 'Ontological';
+		iD := 'ontological';
+		filter := object CustomTabFilter{className := 'org.melanee.core.modeleditor.custom.propertysheet.OntologicalPropertiesSectionFilter'};
+		generateBoilerplate := false;
+	};
+	genPropertySheet.tabs := genPropertySheet.tabs->append(ontologicalPropertyTab);
+	ontologicalPropertyTab.className := 'org.melanee.core.modeleditor.custom.propertysheet.OntologicalPropertySectionAbstractPropertySection';
+	
+	--*****************************************
+	--Build up the navigation structure
+	--*****************************************
+	/*
+	this.genNavigator := gmfgenModel.objectsOfType(GenNavigator)->asOrderedSet()->first();
+
+	--Clear all child entries
+	this.genNavigator.childReferences := OrderedSet{};
+
+	--Root group for the LMLSpace container
+	var LMLSpaceChildReference 
+		:= new GenNavigatorChildReference();
+	LMLSpaceChildReference.child 
+		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "DomainEditPart")->first();
+	
+	--Group for all Ontologies
+	var ontologyChildReference 
+		:= xmap createChildReference("DeepModelEditPart", "DomainEditPart", "Deep Models", "icons/ontology16.gif");
+	ontologyChildReference.parent 
+		:= gmfgenModel.objectsOfType(GenDiagram)->asOrderedSet()->select(n | n.editPartClassName = "DomainEditPart")->first();
+	--Group for the LMLVisualizers of the ontology
+	var ontLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer10EditPart", "DeepModelEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
+	
+	--Group for all Models
+	var modelChildReference 
+		:= xmap createChildReference("LevelEditPart", "DeepModelEditPart", "Levels", "icons/model16.gif");
+	--Group for all ModelLMLVisualizers
+	var modelLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer2EditPart", "ModelEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
+	
+	--Group for all Entities
+	var entityChildReference 
+		:= xmap createChildReference("EntityEditPart", "ModelEditPart", "Entities", "icons/clabject16.gif");
+		--s for Entities that describe rendering of ontologies
+	var entityAttributeChildReference 
+		:= xmap createChildReference("Attribute2EditPart", "EntityEditPart", "Attributes", "icons/field16.gif");
+	--Methods for Entities that describe rendering of ontologies
+	var entityMethodChildReference
+		:= xmap createChildReference("MethodEditPart", "EntityEditPart", "Methods", "icons/method16.gif");
+	var entityLMLVisualizerChildReference
+		:= xmap createChildReference("LMLVisualizer9EditPart", "EntityEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
+	
+	--Group for all Connections
+	var connectionChildReference 
+		:= xmap createChildReference("ConnectionEditPart", "ModelEditPart", "Connections", "icons/connection16.gif");
+	--Group for all ConnectionAttributes
+	var connectionAttributeChildReference 
+		:= xmap createChildReference("AttributeEditPart", "ConnectionEditPart", "Attributes", "icons/field16.gif");
+	--Group for all ConnectionLMLVisualizers
+	var connectionLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizerEditPart", "ConnectionEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
+	
+	--Group for all Inharitances
+	var inheritanceChildReference 
+		:= xmap createChildReference("InheritanceEditPart", "ModelEditPart", "Inheritances", "icons/inheritance16.gif");
+	--Group for all InheritanceLMLVisualizers
+	var inheritanceLMLVisualizerChildReference
+		:= xmap createChildReference("LMLVisualizer8EditPart", "InheritanceEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
+	
+	--Group for all ComplementSetRelationships
+	var complementChildReference 
+		:= xmap createChildReference("ComplementEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
+	--Group for all ComplementSetRelationshipLMLVisualizers
+	var complementLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer3EditPart", "ComplementEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
+		
+	--Group for all EqualSetRelationships
+	var equalChildReference 
+		:= xmap createChildReference("EqualityEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
+	--Group for all EqualSetRelationships
+	var equalLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer4EditPart", "EqualityEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");		
+	
+	--Group for all InversionSetRelationships
+	var inversionChildReference 
+		:= xmap createChildReference("InversionEditPart", "ModelEditPart", "Set Relationships", "icons/setRelationship16.gif");
+	--Group for all InversionSetRelationshipLMLVisualizers
+	var inversionLMLVisualizerChildReference 
+		:= xmap createChildReference("LMLVisualizer5EditPart", "InversionEditPart", "LMLVisualizers", "icons/LMLVisualizer16.gif");
+	
+	this.genNavigator.childReferences += 
+		OrderedSet{LMLSpaceChildReference, --rootEnitiyChildReference, rootChildReference, rootMethodChildReference,
+					 ontologyChildReference, ontLMLVisualizerChildReference, modelChildReference, modelLMLVisualizerChildReference,
+					entityChildReference, entityLMLVisualizerChildReference, entityAttributeChildReference, 
+					entityMethodChildReference, connectionChildReference, connectionLMLVisualizerChildReference, 
+					connectionAttributeChildReference, --connectionFieldMethodChildReference
+					inheritanceChildReference, inheritanceLMLVisualizerChildReference,
+					complementChildReference, complementLMLVisualizerChildReference, 
+					equalChildReference, equalLMLVisualizerChildReference,
+					inversionChildReference, inversionLMLVisualizerChildReference};
+*/	
+	--fix BUG 331875
+	gmfgenModel.objectsOfType(ExpressionLabelParser)->forEach(parser)
+	{
+		parser.className := parser.className.concat(parser._uses->first().container().oclAsType(GenCommonBase).visualID.toString());
+	};
+}
+
+mapping createChildReference(childEditPartName:String, parentEditPartName:String, groupName:String, icon:String): GenNavigatorChildReference
+{
+	result.child := gmfgenModel.objectsOfType(GenNode)->asOrderedSet()->select(n | n.editPartClassName = childEditPartName)->first();
+	result.parent := gmfgenModel.objectsOfType(GenNode)->asOrderedSet()->select(n | n.editPartClassName = parentEditPartName)->first();
+	result.hideIfEmpty := false;
+	result.groupName := groupName;
+	result.groupIcon := icon;
+}

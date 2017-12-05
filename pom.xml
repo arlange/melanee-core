@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.melanee.tycho.build</groupId>
+	<artifactId>parent</artifactId>
+	<version>2.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<tycho.version>0.25.0</tycho.version>
+
+		<!-- p2 Update Sites -->
+		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
+		<epsilon-repo.url>http://download.eclipse.org/epsilon/updates/</epsilon-repo.url>
+		<swtbot-repo.url> http://download.eclipse.org/technology/swtbot/releases/latest/</swtbot-repo.url>
+		
+		<!-- Maven plugin repositories -->
+		<tycho-maven-snapshots-repo.url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</tycho-maven-snapshots-repo.url>
+		<acceleo-maven-repo.url>https://raw.github.com/eclipse/acceleo/master/maven/repository/releases/indigo</acceleo-maven-repo.url>
+		
+		<!-- Release related information -->
+		<!-- 
+			Call with  mvn tycho-versions:set-version to set the
+			version of all MANIFEST.MF, pom.xml to the in 
+			${release.version} specified version.
+		-->
+		<release.version>2.0.0-SNAPSHOT</release.version>
+		<release.targetPlatform>core-4.6</release.targetPlatform>
+	</properties>
+
+	<modules>
+		<module>plugins</module>
+		<module>features</module>
+		
+		<module>tests</module>
+	</modules>
+
+	<!--<repositories>
+		<repository>
+			<id>eclipse-kepler</id>
+			<url>${eclipse-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>eclipse-swtbot</id>
+			<url>${swtbot-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>eclipse-epsilon</id>
+			<url>${epsilon-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>-->
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-acceleo</id>
+			<url>${acceleo-maven-repo.url}</url>
+		</pluginRepository>
+		<!-- Tycho 0.25 is not a snapshot -->
+		<!-- <pluginRepository>
+			<id>maven-tycho-snapshots</id>
+			<url>${tycho-maven-snapshots-repo.url}</url>
+		</pluginRepository> -->
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-versions-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<newVersion>${release.version}</newVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>org.melanee.tycho.build</groupId>
+							<artifactId>${release.targetPlatform}</artifactId>
+							<version>2.0.0-SNAPSHOT</version>
+						</artifact>
+					</target>
+					<!--<pomDependencies>consider</pomDependencies>
+					<filters>
+						<filter>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.jdt.core</id>
+								<restrictTo>-->
+								<!-- this is the version for Kepler SR1, have to adapt for other release trains/service releases -->
+								<!-- <version>3.10.0.v20140902-0626</version>
+							</restrictTo>
+						</filter>
+					</filters>-->
+
+					<!--<target>
+						<artifact>
+							<groupId>org.melanee.tycho.build</groupId>
+							<artifactId>org.melanee.core.target</artifactId>
+							<version>${release.version}</version>
+							<classifier>${release.targetPlatform}</classifier>
+						</artifact>
+					</target>-->
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<product>org.eclipse.sdk.ide</product>
+					<application>org.eclipse.ui.ide.workbench</application>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- This is needed to run the acceleo build with mvn clean install-->
+				<plugin>
+					<groupId>org.eclipse.acceleo</groupId>
+					<artifactId>maven</artifactId>
+					<version>3.2.1</version>
+					<executions>
+						<execution>
+							<id>acceleo-compile</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>acceleo-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				
+				<!-- Prevent the p2 metadata generation from being late -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<executions>
+						<execution>
+							<id>p2-metadata</id>
+							<phase>package</phase>
+							<goals>
+								<goal>p2-metadata</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<defaultP2Metadata>false</defaultP2Metadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

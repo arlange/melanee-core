@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+*******************************************************************************
+Copyright (c) 2011 - 2015 University of Mannheim: Chair for Software Engineering
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+     - initial API and implementation and initial documentation
+*******************************************************************************
+-->
+<plugin>
+
+   <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+      <?gmfgen generated="true"?>
+      <fileTypes type="text" extension="lml"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
+      <?gmfgen generated="true"?>
+      <parser
+         type="lml"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors" id="gmf-editor">
+      <?gmfgen generated="true"?>
+      <editor
+         id="org.melanee.core.modeleditor.part.PLMDiagramEditorID"
+         name="%editorName"
+         icon="icons/melanee16.gif"
+         extensions="lml"
+         default="true"
+         class="org.melanee.core.modeleditor.part.PLMDiagramEditor"
+         matchingStrategy="org.melanee.core.modeleditor.part.PLMMatchingStrategy"
+         contributorClass="org.melanee.core.modeleditor.part.PLMDiagramActionBarContributor">
+      </editor>
+   </extension>
+   
+   <extension point="org.eclipse.ui.contexts" id="ui-context">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="org.melanee.core.modeleditor.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+      <?gmfgen generated="true"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/melanee16.gif"
+  	     category="org.melanee.melaneecategory"
+  	     class="org.melanee.core.modeleditor.part.PLMCreationWizard"
+  	     id="org.melanee.core.modeleditor.part.PLMCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="org.melanee.core.modeleditor.InitDiagram"
+            nameFilter="*.plm"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="org.melanee.core.modeleditor.part.PLMInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="org.melanee.core.modeleditor.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="LMLPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="org.melanee.core.modeleditor.part.PLMDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="save">
+               </GlobalActionId>
+            </ElementType>        
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.printing.render.providers.DiagramWithPrintGlobalActionHandlerProvider"
+         id="LMLPresentationPrint">
+         <Priority name="Lowest"/>
+         <ViewId id="org.melanee.core.modeleditor.part.PLMDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="print"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="LMLPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="org.melanee.core.modeleditor.part.PLMDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="LMLRender">
+         <Priority name="Lowest"/>
+         <ViewId id="org.melanee.core.modeleditor.part.PLMDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="org.melanee.core.modeleditor.providers.PLMMarkerNavigationProvider">
+         <MarkerType name="org.melanee.core.modeleditor.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+
+   <extension id="diagnostic" name="Melanee - Multi-levEl modeLing And oNtology Engineering Environment Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension>   
+
+   <extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="org.melanee.core.modeleditor.providers.PLMValidationDecoratorProvider">
+         <Priority name="Medium"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+   <extension point="org.eclipse.core.runtime.preferences" id="prefs">
+      <?gmfgen generated="true"?>
+      <initializer class="org.melanee.core.modeleditor.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages" id="prefpages">
+      <?gmfgen generated="true"?>
+      <page
+            id="org.melanee.core.modeleditor.general"
+            name="%prefpage.org.melanee.core.modeleditor.general"
+            class="org.melanee.core.modeleditor.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="org.melanee.core.models.plm.diagram.appearance"
+            name="%prefpage.org.melanee.core.models.plm.diagram.appearance"
+            category="org.melanee.core.modeleditor.general"
+            class="org.melanee.core.modeleditor.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="org.melanee.core.models.plm.diagram.connections"
+            name="%prefpage.org.melanee.core.models.plm.diagram.connections"
+            category="org.melanee.core.modeleditor.general"
+            class="org.melanee.core.modeleditor.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="org.melanee.core.models.plm.diagram.printing"
+            name="%prefpage.org.melanee.core.models.plm.diagram.printing"
+            category="org.melanee.core.modeleditor.general"
+            class="org.melanee.core.modeleditor.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="org.melanee.core.models.plm.diagram.rulersAndGrid"
+            name="%prefpage.org.melanee.core.models.plm.diagram.rulersAndGrid"
+            category="org.melanee.core.modeleditor.general"
+            class="org.melanee.core.modeleditor.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="org.melanee.core.modeleditor"
+            labelProvider="org.melanee.core.modeleditor.sheet.PLMSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="org.melanee.core.modeleditor">
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+          <propertyTab
+             category="extra"
+             id="property.tab.visualization"
+             label="%tab.visualization"/>
+          <propertyTab
+             category="extra"
+             id="property.tab.constraints"
+             label="%tab.constraints"/>
+          <propertyTab
+             category="extra"
+             id="property.tab.ontological"
+             label="%tab.ontological"/>
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="org.melanee.core.modeleditor">
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            filter="org.melanee.core.modeleditor.custom.propertysheet.LinguisticPropertiesSectionFilter"
+            class="org.melanee.core.modeleditor.sheet.PLMPropertySection">
+         </propertySection>
+         <propertySection
+            id="property.section.visualization" 
+            tab="property.tab.visualization"
+            filter="org.melanee.core.modeleditor.custom.propertysheet.VisualizationPropertiesSectionFilter"
+            class="org.melanee.core.modeleditor.custom.propertysheet.VisualizationPropertySectionAbstractPropertySection">
+         </propertySection>
+         <propertySection
+            id="property.section.constraints" 
+            tab="property.tab.constraints"
+            filter="org.melanee.core.modeleditor.custom.propertysheet.ConstraintPropertiesSectionFilter"
+            class="org.melanee.core.modeleditor.custom.propertysheet.ConstraintPropertySectionAbstractPropertySection">
+         </propertySection>
+         <propertySection
+            id="property.section.ontological" 
+            tab="property.tab.ontological"
+            filter="org.melanee.core.modeleditor.custom.propertysheet.OntologicalPropertiesSectionFilter"
+            class="org.melanee.core.modeleditor.custom.propertysheet.OntologicalPropertySectionAbstractPropertySection">
+         </propertySection>
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
+      <?gmfgen generated="true"?>
+      <viewProvider class="org.melanee.core.modeleditor.providers.PLMViewProvider">
+         <Priority name="Lowest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="LML"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2005,3123,3097,3099,3100,3102,3105,3106,3108,3111,3124,3122,3120,3125,3126,3127,3128,3129"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4026,4034,4035,4036"/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="org.melanee.core.modeleditor.providers.PLMEditPartProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
+            <method name="getType()" value="LML"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
+            <method name="getType()" value="2005,3123,3097,3099,3100,3102,3105,3106,3108,3111,3124,3122,3120,3125,3126,3127,3128,3129"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
+            <method name="getType()" value="4026,4034,4035,4036"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
+            <method name="getType()" value="5331,5332,5353,5329,5330,5320,5321,5294,5295,5296,5297,5298,5299,5254,5255,5256,5257,5258,5261,5262,5263,5264,5288,5289,5290,5291,5292,5293,5269,5270,5271,5272,5273,5276,5277,5278,5279,5282,5283,5284,5285,5286,5287,5333,5334,5335,5326,5327,5328,5314,5315,5316,5317,5318,5319,5336,5337,5338,5339,5340,5341,5342,5343,5344,5345,5346,5347,5348,5349,5350,5351,5352"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
+            <method name="getType()" value="7061,7062,7046,7047,7048,7049,7051,7052,7053,7054,7055,7056,7058,7059,7060,7063,7064,7065,7066,7067,7068,7069,7070"/>
+         </object>
+         <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
+      </editpartProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="org.melanee.core.modeleditor.providers.PLMModelingAssistantProvider">
+         <Priority name="Lowest"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.DomainEditPart" id="Domain_1000"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.DeepModelEditPart" id="DeepModel_2005"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.EnumerationEditPart" id="Enumeration_3123"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.LevelEditPart" id="Level_3097"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.ConnectionEditPart" id="Connection_3099"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.AttributeEditPart" id="Attribute_3100"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.MethodEditPart" id="Method_3102"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.EntityEditPart" id="Entity_3105"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Attribute2EditPart" id="Attribute_3106"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Method2EditPart" id="Method_3108"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Connection2EditPart" id="Connection_3111"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.InheritanceEditPart" id="Inheritance_3124"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Inheritance2EditPart" id="Inheritance_3122"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Entity2EditPart" id="Entity_3120"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.PackageEditPart" id="Package_3125"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Entity3EditPart" id="Entity_3126"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Connection3EditPart" id="Connection_3127"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Inheritance3EditPart" id="Inheritance_3128"/>
+         <object class="org.melanee.core.modeleditor.edit.parts.Package2EditPart" id="Package_3129"/>
+         <context elements="Domain_1000,DeepModel_2005,Enumeration_3123,Level_3097,Connection_3099,Attribute_3100,Method_3102,Entity_3105,Attribute_3106,Method_3108,Connection_3111,Inheritance_3124,Inheritance_3122,Entity_3120,Package_3125,Entity_3126,Connection_3127,Inheritance_3128,Package_3129"/>
+      </modelingAssistantProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
+      <?gmfgen generated="true"?>
+      <IconProvider class="org.melanee.core.modeleditor.providers.PLMIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="org.melanee.core.modeleditor.providers.PLMParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes" id="element-types">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Domain_1000"
+               name="%metatype.name.Domain_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Domain"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.DomainEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.DeepModel_2005"
+               name="%metatype.name.DeepModel_2005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="DeepModel"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.DeepModelEditHelper">
+            <param name="semanticHint" value="2005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Enumeration_3123"
+               name="%metatype.name.Enumeration_3123"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Enumeration"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.EnumerationEditHelper">
+            <param name="semanticHint" value="3123"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Level_3097"
+               name="%metatype.name.Level_3097"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Level"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.LevelEditHelper">
+            <param name="semanticHint" value="3097"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Connection_3099"
+               name="%metatype.name.Connection_3099"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Connection"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.ConnectionEditHelper">
+            <param name="semanticHint" value="3099"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Attribute_3100"
+               name="%metatype.name.Attribute_3100"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Attribute"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.AttributeEditHelper">
+            <param name="semanticHint" value="3100"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Method_3102"
+               name="%metatype.name.Method_3102"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Method"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.MethodEditHelper">
+            <param name="semanticHint" value="3102"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Entity_3105"
+               name="%metatype.name.Entity_3105"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Entity"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.EntityEditHelper">
+            <param name="semanticHint" value="3105"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Attribute_3106"
+               name="%metatype.name.Attribute_3106"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Attribute_3100"/>
+            <param name="semanticHint" value="3106"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Method_3108"
+               name="%metatype.name.Method_3108"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Method_3102"/>
+            <param name="semanticHint" value="3108"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Connection_3111"
+               name="%metatype.name.Connection_3111"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Connection_3099"/>
+            <param name="semanticHint" value="3111"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Inheritance_3124"
+               name="%metatype.name.Inheritance_3124"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Inheritance"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.InheritanceEditHelper">
+            <param name="semanticHint" value="3124"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Inheritance_3122"
+               name="%metatype.name.Inheritance_3122"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Inheritance_3124"/>
+            <param name="semanticHint" value="3122"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Entity_3120"
+               name="%metatype.name.Entity_3120"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Entity_3105"/>
+            <param name="semanticHint" value="3120"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Package_3125"
+               name="%metatype.name.Package_3125"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Package"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.PackageEditHelper">
+            <param name="semanticHint" value="3125"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Entity_3126"
+               name="%metatype.name.Entity_3126"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Entity_3105"/>
+            <param name="semanticHint" value="3126"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Connection_3127"
+               name="%metatype.name.Connection_3127"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Connection_3099"/>
+            <param name="semanticHint" value="3127"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Inheritance_3128"
+               name="%metatype.name.Inheritance_3128"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Inheritance_3124"/>
+            <param name="semanticHint" value="3128"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <specializationType
+               id="org.melanee.core.modeleditor.Package_3129"
+               name="%metatype.name.Package_3129"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.melanee.core.modeleditor.Package_3125"/>
+            <param name="semanticHint" value="3129"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Classification_4026"
+               name="%metatype.name.Classification_4026"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Classification"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.ClassificationEditHelper">
+            <param name="semanticHint" value="4026"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Supertype_4034"
+               name="%metatype.name.Supertype_4034"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Supertype"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.SupertypeEditHelper">
+            <param name="semanticHint" value="4034"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.Subtype_4035"
+               name="%metatype.name.Subtype_4035"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Subtype"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.SubtypeEditHelper">
+            <param name="semanticHint" value="4035"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://melanee.org/PLM">
+         <metamodelType
+               id="org.melanee.core.modeleditor.ConnectionEnd_4036"
+               name="%metatype.name.ConnectionEnd_4036"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ConnectionEnd"
+               edithelper="org.melanee.core.modeleditor.edit.helpers.ConnectionEndEditHelper">
+            <param name="semanticHint" value="4036"/>
+         </metamodelType>
+      </metamodel>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="org.melanee.core.modeleditor.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="org.melanee.core.modeleditor.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="org.melanee.core.modeleditor.TypeContext">
+         <elementType ref="org.melanee.core.modeleditor.Domain_1000"/>
+         <elementType ref="org.melanee.core.modeleditor.DeepModel_2005"/>
+         <elementType ref="org.melanee.core.modeleditor.Enumeration_3123"/>
+         <elementType ref="org.melanee.core.modeleditor.Level_3097"/>
+         <elementType ref="org.melanee.core.modeleditor.Connection_3099"/>
+         <elementType ref="org.melanee.core.modeleditor.Attribute_3100"/>
+         <elementType ref="org.melanee.core.modeleditor.Method_3102"/>
+         <elementType ref="org.melanee.core.modeleditor.Entity_3105"/>
+         <elementType ref="org.melanee.core.modeleditor.Attribute_3106"/>
+         <elementType ref="org.melanee.core.modeleditor.Method_3108"/>
+         <elementType ref="org.melanee.core.modeleditor.Connection_3111"/>
+         <elementType ref="org.melanee.core.modeleditor.Inheritance_3124"/>
+         <elementType ref="org.melanee.core.modeleditor.Inheritance_3122"/>
+         <elementType ref="org.melanee.core.modeleditor.Entity_3120"/>
+         <elementType ref="org.melanee.core.modeleditor.Package_3125"/>
+         <elementType ref="org.melanee.core.modeleditor.Entity_3126"/>
+         <elementType ref="org.melanee.core.modeleditor.Connection_3127"/>
+         <elementType ref="org.melanee.core.modeleditor.Inheritance_3128"/>
+         <elementType ref="org.melanee.core.modeleditor.Package_3129"/>
+         <elementType ref="org.melanee.core.modeleditor.Classification_4026"/>
+         <elementType ref="org.melanee.core.modeleditor.Supertype_4034"/>
+         <elementType ref="org.melanee.core.modeleditor.Subtype_4035"/>
+         <elementType ref="org.melanee.core.modeleditor.ConnectionEnd_4036"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+   
+
+<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.melanee.core.modeleditor.edit.parts.toggleconnectioneditpart"
+            objectClass="org.melanee.core.modeleditor.edit.parts.ConnectionEditPart">
+         <action
+               class="org.melanee.core.modeleditor.custom.menucontributions.ToggleNodeAction"
+               id="org.melanee.core.modeleditor.custom.toggledomainconnectionationaction"
+               label="Toggle">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.melanee.core.modeleditor.edit.parts.togglebinaryinheritanceeditpart"
+            objectClass="org.melanee.core.modeleditor.edit.parts.InheritanceEditPart">
+         <action
+               class="org.melanee.core.modeleditor.custom.menucontributions.ToggleNodeAction"
+               id="org.melanee.core.modeleditor.custom.toggledomainconnectionationaction"
+               label="Toggle">
+         </action>
+      </objectContribution>
+       <objectContribution
+             adaptable="false"
+             id="org.melanee.core.modeleditor.edit.parts.dsl"
+             objectClass="org.melanee.core.modeleditor.edit.parts.EntityEditPart">
+          <action
+                class="org.melanee.core.modeleditor.custom.menucontributions.DSLAction"
+                id="org.melanee.core.modeleditor.custom.addvisualizationaction"
+                label="DSL">
+          </action>
+       </objectContribution>
+       <objectContribution
+             adaptable="false"
+             id="org.melanee.core.modeleditor.edit.parts.dsl"
+             objectClass="org.melanee.core.modeleditor.edit.parts.ConnectionEditPart">
+          <action
+                class="org.melanee.core.modeleditor.custom.menucontributions.DSLAction"
+                id="org.melanee.core.modeleditor.custom.addvisualizationaction"
+                label="DSL">
+          </action>
+       </objectContribution>
+   </extension>
+   
+   		
+
+
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isURIEditorInput">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="org.melanee.core.modeleditor.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="org.melanee.core.modeleditor"
+           properties="isURIEditorInput"
+           class="org.melanee.core.modeleditor.part.PLMUriEditorInputTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="org.melanee.core.modeleditor.resourceContent"/>
+			<contentExtension pattern="org.melanee.core.modeleditor.domainResourceContent"/>
+            <contentExtension pattern="org.melanee.core.modeleditor.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="org.melanee.core.modeleditor.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="org.melanee.core.modeleditor.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="org.melanee.core.modeleditor.navigator.PLMNavigatorContentProvider" 
+            labelProvider="org.melanee.core.modeleditor.navigator.PLMNavigatorLabelProvider"
+            icon="icons/melanee16.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="lml"/>
+               </and>
+               <instanceof value="org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem"/>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="org.melanee.core.modeleditor.navigatorSorter" 
+               class="org.melanee.core.modeleditor.navigator.PLMNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="lml"/>
+                  </and>
+                  <instanceof value="org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="org.melanee.core.modeleditor.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="org.melanee.core.modeleditor.navigator.PLMDomainNavigatorContentProvider" 
+            labelProvider="org.melanee.core.modeleditor.navigator.PLMDomainNavigatorLabelProvider"
+            icon="icons/melanee16.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="plm"/>
+               </and>
+               <instanceof value="org.melanee.core.modeleditor.navigator.PLMDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="org.melanee.core.modeleditor.navigator.PLMDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="org.melanee.core.modeleditor.navigatorActionProvider"
+            class="org.melanee.core.modeleditor.navigator.PLMNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem"/>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+	   <extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="org.melanee.core.modeleditor.navigatorLinkHelper"
+            class="org.melanee.core.modeleditor.navigator.PLMNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="org.melanee.core.modeleditor.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+   <extension point="org.eclipse.emf.validation.constraintProviders">
+      <?gmfgen generated="true"?>
+            <category id="org.melanee.core.auditcontainer" mandatory="false" name="MelaneeAuditContainer">
+         <![CDATA[!!!!! THIS CONTAINER IS NEEDED SO THAT A CLIENT CONTEXT FOR GENERATION IS GENERATED !!!!!!]]>
+      </category>
+      <constraintProvider cache="true">
+         <package namespaceUri="http://melanee.org/PLM"/>
+               <constraints categories="org.melanee.core.auditcontainer">
+                  <constraint id="org.melanee.core.emptyrule"
+            lang="OCL"
+            name="EMPTY AUDIT RULE"
+            mode="Batch"
+            severity="ERROR" statusCode="200">
+            <![CDATA[true]]>
+            <description><![CDATA[EMPTY AUDIT RULE]]></description>
+            <message><![CDATA[EMPTY AUDIT RULE]]></message>
+            <target class="PLM.Domain"/>
+         </constraint>
+                  </constraints>
+      </constraintProvider>
+   </extension>
+
+   <extension point="org.eclipse.emf.validation.constraintBindings">
+      <?gmfgen generated="true"?>
+      <clientContext default="false" id="org.melanee.core.modeleditorDefaultCtx">
+         <selector class="org.melanee.core.modeleditor.providers.PLMValidationProvider$DefaultCtx"/>
+      </clientContext>
+      <binding context="org.melanee.core.modeleditorDefaultCtx">
+                  <constraint ref="org.melanee.core.modeleditor.org.melanee.core.emptyrule"/>
+               </binding>
+
+   </extension>
+
+
+   <extension point="org.eclipse.ui.commands" id="update-cmd">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="org.melanee.core.modeleditor.part.PLMDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="org.melanee.core.modeleditor.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="org.melanee.core.modeleditor.updateDiagram"
+         contextId="org.melanee.core.modeleditor.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus" id="context-menus">
+      <?gmfgen generated="true"?>
+      <!-- menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=">
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=">
+      </menuContribution -->
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="org.melanee.core.modeleditor.LoadResourceAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="org.melanee.core.modeleditor.part.PLMDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="org.melanee.core.modeleditor.edit.parts.DomainEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands" id="menu-commands">
+      <?gmfgen generated="true"?>
+      <category id="org.melanee.core.modeleditor.part.PLMDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <command id="org.melanee.core.modeleditor.LoadResourceAction"
+         name="Load Resource"
+         categoryId="org.melanee.core.modeleditor.part.PLMDiagramEditorID"
+         defaultHandler="org.melanee.core.modeleditor.part.LoadResourceAction"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers" id="menu-handlers">
+      <?gmfgen generated="true"?>
+   </extension>
+
+   <!-- optionally, specify keybindings -->
+</plugin>

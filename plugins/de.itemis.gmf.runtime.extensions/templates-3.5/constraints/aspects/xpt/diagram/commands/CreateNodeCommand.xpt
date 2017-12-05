@@ -1,0 +1,40 @@
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«EXTENSION xpt::diagram::Utils»
+
+«AROUND canExecuteMethod FOR gmfgen::GenNode-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public boolean canExecute() {
+«IF modelFacet.isPhantomElement()-»
+		org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest request = (org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest();
+		return de.itemis.gmf.runtime.constrainthook.NodeConstraintDefintionResolver.canCreateNode(«visualID», request.getContainer());
+«ELSE-»
+	«EXPAND xpt::diagram::commands::CreateNodeCommand::canExecute_Normal(self) FOR modelFacet»
+«ENDIF-»
+	}
+«ENDAROUND»
+
+«DEFINE canExecute_Normal(genNode : gmfgen::GenNode) FOR gmfgen::TypeModelFacet-»
+«IF containmentMetaFeature.ecoreFeature.upperBound.oclAsType(Integer) > 0 or (childMetaFeature <> containmentMetaFeature and childMetaFeature.ecoreFeature.upperBound.oclAsType(Integer) > 0)-»
+	«EXPAND MetaModel::DeclareAndAssign('container', 'getElementToEdit()') FOR containmentMetaFeature.genClass-»
+	«IF containmentMetaFeature.ecoreFeature.upperBound.oclAsType(Integer) > 0-»
+			«IF containmentMetaFeature.ecoreFeature.upperBound.oclAsType(Integer) = 1»
+		if («EXPAND MetaModel::getFeatureValue('container', containmentMetaFeature.genClass) FOR containmentMetaFeature» != null) {
+			«ELSE-»
+		if («EXPAND MetaModel::getFeatureValue('container', containmentMetaFeature.genClass) FOR containmentMetaFeature».size() >= «containmentMetaFeature.ecoreFeature.upperBound.oclAsType(Integer)») {
+			«ENDIF-»
+			return false;
+		}
+		«ENDIF-»
+		«IF childMetaFeature <> containmentMetaFeature and childMetaFeature.ecoreFeature.upperBound.oclAsType(Integer) > 0-»
+			«IF childMetaFeature.ecoreFeature.upperBound.oclAsType(Integer) = 1-»
+		if («EXPAND MetaModel::getFeatureValue('container', containmentMetaFeature.genClass) FOR childMetaFeature» != null) {
+			«ELSE-»
+		if («EXPAND MetaModel::getFeatureValue('container', containmentMetaFeature.genClass) FOR childMetaFeature».size() >= «childMetaFeature.ecoreFeature.upperBound.oclAsType(Integer)») {
+			«ENDIF-»
+			return false;
+		}
+	«ENDIF-»
+«ENDIF-»
+		org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest request = (org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest) getRequest();
+		return de.itemis.gmf.runtime.constrainthook.NodeConstraintDefintionResolver.canCreateNode(«genNode.visualID», request.getContainer());
+«ENDDEFINE»

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <!-- <extension
+         id="org.melanee.core.emendation.service.commands"
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.melanee.core.emendation.service.handlers.DeleteClabjectCommand"
+            id="org.melanee.core.emendation.service.commands.deleteclabjectcommand"
+            name="Delete Clabject">
+         <commandParameter
+               id="clabject"
+               name="clabject"
+               optional="true"
+               typeId="org.melanee.core.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="org.melanee.core.emendation.service.handlers.AddFeatureToClabjectCommand"
+            id="org.melanee.core.emendation.service.commands.addfearuretoclabjectcommand"
+            name="Add Feature">
+         <commandParameter
+               id="clabject"
+               name="clabject"
+               optional="true"
+               typeId="org.melanee.core.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="org.melanee.core.emendation.service.handlers.DeleteFeatureCommand"
+            id="org.melanee.core.emendation.service.commands.deletefeaturecommand"
+            name="Delete Feature">
+         <commandParameter
+               id="feature"
+               name="feature"
+               optional="true"
+               typeId="org.melanee.core.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="org.melanee.core.emendation.service.handlers.RenameFeatureCommand"
+            id="org.melanee.core.emendation.service.commands.renamefeaturecommand"
+            name="Rename Feature">
+         <commandParameter
+               id="feature"
+               name="feature"
+               optional="true"
+               typeId="org.melanee.core.workbench.eobjectcommandparametertype">
+         </commandParameter>
+         <commandParameter
+               id="oldValue"
+               name="oldValue"
+               optional="true">
+         </commandParameter>
+         <commandParameter
+               id="newValue"
+               name="newValue"
+               optional="true">
+         </commandParameter>
+         <commandParameter
+               id="attributeToChange"
+               name="attributeToChange"
+               optional="true"
+               typeId="org.melanee.core.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="org.melanee.core.emendation.service.handlers.RenameFeatureCommand"
+            id="org.melanee.core.emendation.service.commands.changefeaturepotencycommand"
+            name="Change Potency">
+         <commandParameter
+               id="feature"
+               name="feature"
+               optional="true"
+               typeId="org.melanee.core.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+      <command
+            defaultHandler="org.melanee.core.emendation.service.handlers.ChangeFeatureDurabilityCommand"
+            id="org.melanee.core.emendation.service.commands.changefeaturedurabilitycommand"
+            name="Change Feature Durability">
+         <commandParameter
+               id="feature"
+               name="feature"
+               optional="true"
+               typeId="org.melanee.core.workbench.eobjectcommandparametertype">
+         </commandParameter>
+      </command>
+   </extension> -->
+   <extension
+         point="org.melanee.core.emendation.service">
+      <service
+            class="org.melanee.core.emendation.service.BasicEmendationService"
+            id="org.melanee.core.emendation.service">
+      </service>
+   </extension>
+
+</plugin>

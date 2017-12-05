@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.melanee.tycho.build</groupId>
+  <artifactId>plugins</artifactId>
+  <version>2.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <parent>
+		<groupId>org.melanee.tycho.build</groupId>
+		<artifactId>parent</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+  
+  <modules>
+    <module>de.itemis.gmf.runtime.extensions</module>
+    <module>org.melanee.core.autolayout.service</module>
+    <module>org.melanee.core.common</module>
+    <module>org.melanee.core.dsl.service</module>
+    <module>org.melanee.core.emendation.service</module>
+    <module>org.melanee.core.models.gmf</module>
+	<module>org.melanee.core.models.links</module>
+    <module>org.melanee.core.models.plm</module>
+    <module>org.melanee.core.models.plm.edit</module>
+    <module>org.melanee.core.models.plm.editor</module>
+    <module>org.melanee.core.models.plm.validation</module>
+    <module>org.melanee.core.modeleditor</module>
+	<module>org.melanee.core.modelexplorer</module>
+    <module>org.melanee.core.proximityindication.service</module>
+    <module>org.melanee.core.melanee2metadepth</module>
+    <module>org.melanee.core.visualization.editor</module>
+    <module>org.melanee.core.workbench</module>
+	<module>org.melanee.core.target</module>
+	<module>org.melanee.core.designation.console</module>
+	<module>org.melanee.core.designation.service</module>
+	<module>org.melanee.core.intro</module>
+  </modules>
+  
+</project>

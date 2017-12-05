@@ -1,0 +1,217 @@
+/*******************************************************************************
+ * Copyright (c) 2011-2013 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *    Bastian Kennel - extensions
+ *******************************************************************************/
+ context Enumeration{
+	constraint noAnonymousEnumeration{
+		check: not (self.name.isUndefined() or self.name = '')
+		message: 'Anonymous enumerations are not supported!'
+	}
+}
+ 
+context Clabject {
+
+	constraint potencyNotNegative {
+		check: self.potency > -2
+		message: '\'' + self.name + '\' potency cannot be negative'
+		fix {
+			title: 'Set potency to *'
+			do {self.potency := -1;}
+		}
+		fix {
+			title: 'Compute the potency based on types'
+			do {
+				--tbd
+			}
+		}
+	}
+	
+	--An instance of a clabject that is not star potency cannot have a star potency
+	constraint nonStartInstanceNonStarPotency {
+		check: self.getTypes()->select(c | c.potency > -1)->size() > 0 implies self.potency > -1
+		message: '\'' + self.name + '\' potency cannot be star because its type is not having star potency'
+	}
+	
+	constraint featureNameUnique {
+		guard: self.feature->size() > 0
+		check {
+		 var names =  self.feature->collect(f|f.name);
+		 return names->forAll(n|names.count(n) = 1);
+		}
+		message: '\''+ self.name + '\' defines features with duplicate names'
+	}
+	
+	constraint onlyOneClassification {
+		check: self.getClassificationsAsInstance()->select(inst|inst.kind = ClassificationKind#instantiation)->size() <= 1
+		message: 'There can be only one classification per instantiated Clabject. Change kind of/remove redundant Classification(s).'
+	}
+
+	-- #############################################
+	-- ## Level Constraints
+	-- #############################################
+	constraint levelNotNegative {
+		check: self.levelindex > -1
+		message: '\'' + self.name + '\' level cannot be negative'
+		fix {
+			title: 'Set the level to the level of the model.'
+			do {self.levelIndex := self.getLevel().getLevel();}
+		}
+	}
+	
+	constraint levelNotModel {
+		guard: self.levelIndex > -1
+		check: self.levelIndex = self.getLevel().getLevel()
+		message: '\'' + self.name + '\' level does not match level of the containing model'
+		fix {
+			title: 'Set the level to the level of the containing model'
+			do {self.levelIndex := self.getLevel().getLevel();}
+		}
+	}
+
+	-- #############################################
+	-- ## Multiplicity Constraints
+	-- #############################################
+	constraint multiplicityNotViolated{
+		check: not self.violatesMultiplicityConstraints
+		message: 'Check multiplicities of Clabject\'s connections'
+	}
+}
+
+context Entity {
+	critique noNameButPotencyGreaterZero{
+		check: (self.name.isUndefined() or self.name = '') implies (self.potency = 0)
+		message: 'Anonymous types can cause problems with the "DSL Element"" palette'
+	}
+}
+
+context Feature {
+	constraint durabilityNotNegative {
+		check: self.durability > -2
+		message: 'The durability of feature \'' + self.name + '\' cannot be negative'
+		fix {
+			title: 'Set durability to the potency of the Clabject'
+			do{self.durability := self.getClabject().potency;}
+		} 
+	}
+}
+
+context Attribute {
+	
+	constraint mutabilityNotHigherDurability {
+		check: (self.durability = -1) or ((self.mutability <= self.durability) and (self.mutability > -1))
+		message: 'The mutability of feature \'' + self.name + '\' cannot be higher than the durability of the feature'
+		fix {
+			title: 'Set the feature\'s mutability to its the durability'
+			do {self.mutability := self.durability;}
+		}
+	}
+	
+	constraint primitiveDatatypeValueMismatch {
+		guard: self.getClabject().getDeepModel().getPrimitiveDatatypes()->includes(self.datatype)
+		check
+		{
+			var datatype = self.datatype;
+			var regularExpression = self.getClabject().getDeepModel().getRegexForPrimitiveDatatype(datatype);
+			if (not (regularExpression == null) and not (self.value == null))
+				return self.value.matches(regularExpression);
+			else
+				return true;
+		}
+		message: 'Value "' + self.value + '" does not conform to datatype "' + self.datatype + '".'
+					+ 'The value must be of format "' + self.getClabject().getDeepModel().getRegexForPrimitiveDatatype(datatype) + '"' 
+	}
+	
+	constraint enumDatatypeValueMismatch {
+		guard: self.getClabject().getDeepModel().enumeration->collect(e | e.name)->includes(self.datatype) and self.value <> null and self.value <> '' 
+		check: self.getClabject().getDeepModel().enumeration->select(e | e.name = self.datatype)->collect(e | e.literal)->flatten()->includes(self.value)
+		message: 'Value "' + self.value + '" does not conform to datatype "' + self.datatype + '".'
+					+ 'The value must be one of the following "' + self.getClabject().getDeepModel().enumeration->select(e | e.name = self.datatype)->collect(e | e.literal)->concat(',') + '"' 
+	}
+	
+	constraint mutabilityNotNegative {
+		check: self.mutability > -2
+		message: 'The mutability of feature \'' + self.name + '\' cannot be negative'
+	}
+}
+
+context Method {
+
+}
+
+context Correlation {
+	
+}
+
+context Element {
+	constraint nameNotEmpty {
+		check: self.name.size() > 0
+		message: 'The name of an element cannot be empty'
+	}
+}
+
+context Connection {
+	constraint monikerUnique {
+		check{
+			var names = self.connectionEnd->select(r | not r.hasDefaultMoniker())->collect(r | r.moniker());
+		 	return names->forAll(n|names.count(n) = 1);
+		}
+		message: 'The connectionEnd names of connection \'' + self.name + '\' are not unique'
+	}
+
+	constraint connectOneLevel {
+		check :self.connectionEnd->asSequence()->forAll(r|r.destination.level = self.level)
+		message : 'The Connection \'' + self.name + '\' connects the clabject\'s {'+ self.connectionEnd->select(r | r.destination.level <> self.level)->collect(r | r.destination.name)->concat(',')  +'} from another level'
+	}
+	
+--	constraint notConnectLowerPotency {
+--		check: self.connectionEnd->asSequence()->forAll(r|(self.potency = -1 or r.destination.potency = -1) or (r.destination.potency >= self.potency))
+--		message: 'The Connection \'' + self.name + '\' has participants of lower a potency lower than the connection\'s potency'
+--		fix {
+--			title: 'Adjust the potency of the connection to the highest potency of its participants'
+--			do {
+--				self.potency := self.connectionEnd->collect(r | r.destination)->sortedBy(potency)->last().potency;
+--			}
+--		}
+--		fix {
+--			title: 'Adjust the participant\'s potency to the Connection\'s potency'
+--			do {
+--				for (r in self.connectionEnd->select(r|r.destination.potency < self.potency)) {
+--					r.destination.potency := self.potency;
+--				}
+--			}
+--		}
+--	}
+	
+	constraint multiplicitySanity {
+		guard: self.potency <> 0
+		check: self.connectionEnd->forAll(r|(r.lower > -2 and r.upper > -2) -- We are not allowed to be negative
+											and ((r.lower <= r.upper) -- Not star
+													or(r.upper = -1 and r.lower >= 0 )) -- If upper -1 we do not care about lower
+									)
+		message: '\'' + self.name + '\' has wrong multiplicities. The following must be fulfilled lower <= upper.'
+	}
+	
+	constraint atLeastTwoConnectionEndsForNotInheritedConnections{
+		guard: Inheritance.allInstances()->forAll(g | not g.subtype.subtype->contains(self)) -- check only connections which do not have a super type
+		check: self.connectionEnd->size() > 1
+		message: "A not inherited connection does need at least two connectionEnds."
+	}
+}
+
+context Inheritance {
+		 constraint superAndSubtypesGreaterOne{
+			check : (self.subtype->size() > 1 and self.supertype->size() > 1) implies (self.disjoint.isUndefined() and self.complete.isUndefined())
+			message : 'Disjoint and complete must be null if more than one super AND sub types exist.'
+		}
+		constraint disjointCompleteMoreThanOneSubType{
+			check : (self.disjoint.isDefined() or self.complete.isDefined()) implies (self.supertype->size()  = 1 and self.subtype->size() > 1)
+			message: 'MORE than ONE sub AND ONE super type needed if disjoint or complete is set.' 
+		}
+	}

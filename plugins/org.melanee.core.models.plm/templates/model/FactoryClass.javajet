@@ -1,0 +1,1380 @@
+<%@ jet package="org.eclipse.emf.codegen.ecore.templates.model" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="FactoryClass" version="$Id: FactoryClass.javajet,v 1.38 2011/01/25 19:10:42 emerks Exp $" %>
+<%
+/*******************************************************************************
+ * Copyright (c) 2011-2013 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+%>
+<%GenPackage genPackage = (GenPackage)((Object[])argument)[0]; GenModel genModel=genPackage.getGenModel(); /* Trick to import java.util.* without warnings */Iterator.class.getName();%>
+<%boolean isInterface = Boolean.TRUE.equals(((Object[])argument)[1]); boolean isImplementation = Boolean.TRUE.equals(((Object[])argument)[2]);%>
+<%String publicStaticFinalFlag = isImplementation ? "public static final " : "";%>
+<%@ include file="../Header.javajetinc"%>
+<%if (isInterface || genModel.isSuppressInterfaces()) {%>
+package <%=genPackage.getReflectionPackageName()%>;
+<%} else {%>
+package <%=genPackage.getClassPackageName()%>;
+<%}%>
+
+<%if (isImplementation) {%>
+<%genModel.addPseudoImport("org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container");%>
+<%genModel.addPseudoImport("org.eclipse.emf.ecore.impl.MinimalEObjectImpl.Container.Dynamic");%>
+<%genModel.addImport("org.eclipse.emf.ecore.EClass");%>
+<%genModel.addImport("org.eclipse.emf.ecore.EObject");%>
+
+
+<%/*
+**************************************************************************************
+BEGIN CUSTOM IMPORT
+FIX this imports if parameters of custom factory cannot be resolved
+**************************************************************************************
+*/%>
+<%genModel.addImport("java.util.*");%>
+<%/*
+**************************************************************************************
+END CUSTOM IMPORT
+**************************************************************************************
+*/%>
+
+
+<%if (!genPackage.hasJavaLangConflict() && !genPackage.hasInterfaceImplConflict() && !genPackage.getClassPackageName().equals(genPackage.getInterfacePackageName())) genModel.addImport(genPackage.getInterfacePackageName() + ".*");%>
+<%}%>
+<%genModel.markImportLocation(stringBuffer);%>
+
+<%if (isInterface) {%>
+
+
+<%/*
+**************************************************************************************
+BEGIN CUSTOM IMPORT
+FIX this imports if parameters of custom factory cannot be resolved
+**************************************************************************************
+*/%>
+
+<%genModel.addImport("org.eclipse.emf.ecore.util.EcoreUtil");%>
+
+<%/*
+**************************************************************************************
+END CUSTOM IMPORT
+**************************************************************************************
+*/%>
+
+
+/**
+ * <!-- begin-user-doc -->
+ * The <b>Factory</b> for the model.
+ * It provides a create method for each non-abstract class of the model.
+ * <!-- end-user-doc -->
+<%if (!genModel.isSuppressEMFMetaData()) {%>
+ * @see <%=genPackage.getQualifiedPackageInterfaceName()%>
+<%}%>
+ * @generated
+ */
+<%} else {%>
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model <b>Factory</b>.
+ * <!-- end-user-doc -->
+ * @generated
+ */
+<%}%>
+<%if (isImplementation) {%>
+public class <%=genPackage.getFactoryClassName()%> extends <%=genModel.getImportedName("org.eclipse.emf.ecore.impl.EFactoryImpl")%><%if (!genModel.isSuppressInterfaces()) {%> implements <%=genPackage.getImportedFactoryInterfaceName()%><%}%>
+<%} else {%>
+public interface <%=genPackage.getFactoryInterfaceName()%><%if (!genModel.isSuppressEMFMetaData()) {%> extends <%=genModel.getImportedName("org.eclipse.emf.ecore.EFactory")%><%}%>
+<%}%>
+{
+<%if (genModel.hasCopyrightField()) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	<%=publicStaticFinalFlag%><%=genModel.getImportedName("java.lang.String")%> copyright = <%=genModel.getCopyrightFieldLiteral()%>;<%=genModel.getNonNLS()%>
+
+<%}%>
+<%if (isImplementation && (genModel.isSuppressEMFMetaData() || genModel.isSuppressInterfaces())) {%>
+	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	<%=publicStaticFinalFlag%><%=genPackage.getFactoryClassName()%> eINSTANCE = init();
+
+<%}%>
+<%if (isInterface && genModel.isSuppressEMFMetaData()) {%>
+	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	<%=publicStaticFinalFlag%><%=genPackage.getFactoryInterfaceName()%> INSTANCE = <%=genPackage.getQualifiedFactoryClassName()%>.eINSTANCE;
+
+<%} else if (isInterface && !genModel.isSuppressInterfaces()) {%>
+	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	<%=publicStaticFinalFlag%><%=genPackage.getFactoryInterfaceName()%> eINSTANCE = <%=genPackage.getQualifiedFactoryClassName()%>.init();
+
+<%}%>
+<%if (isImplementation) {%>
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+<%String factoryType = genModel.isSuppressEMFMetaData() ? genPackage.getFactoryClassName() : genPackage.getImportedFactoryInterfaceName();%>
+	public static <%=factoryType%> init()
+	{
+		try
+		{
+			<%=factoryType%> the<%=genPackage.getFactoryName()%> = (<%=factoryType%>)<%=genModel.getImportedName("org.eclipse.emf.ecore.EPackage")%>.Registry.INSTANCE.getEFactory("<%=genPackage.getNSURI()%>");<%=genModel.getNonNLS()%> 
+			if (the<%=genPackage.getFactoryName()%> != null)
+			{
+				return the<%=genPackage.getFactoryName()%>;
+			}
+		}
+		catch (Exception exception)
+		{
+			<%=genModel.getImportedName("org.eclipse.emf.ecore.plugin.EcorePlugin")%>.INSTANCE.log(exception);
+		}
+		return new <%=genPackage.getImportedFactoryClassName()%>();
+	}
+
+	/**
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=genPackage.getFactoryClassName()%>()
+	{
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
+	public EObject create(EClass eClass)
+	{
+		switch (eClass.getClassifierID())
+		{
+<%for (GenClass genClass : genPackage.getGenClasses()) {%>
+<%if (!genClass.isAbstract()) {%>
+			case <%=genPackage.getImportedPackageInterfaceName()%>.<%=genClass.getClassifierID()%>: return <%=!genClass.isEObjectExtension() ? "(EObject)" : "" %>create<%=genClass.getName()%>();
+<%}%>
+<%}%>
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+		}
+	}
+
+<%if (!genPackage.getAllGenDataTypes().isEmpty()) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
+	public Object createFromString(<%=genModel.getImportedName("org.eclipse.emf.ecore.EDataType")%> eDataType, String initialValue)
+	{
+		switch (eDataType.getClassifierID())
+		{
+<%for (GenDataType genDataType : genPackage.getAllGenDataTypes()) {%>
+  <%if (genDataType.isSerializable()) {%>
+			case <%=genPackage.getImportedPackageInterfaceName()%>.<%=genDataType.getClassifierID()%>:
+				return create<%=genDataType.getName()%>FromString(eDataType, initialValue);
+  <%}%>
+<%}%>
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
+	public String convertToString(<%=genModel.getImportedName("org.eclipse.emf.ecore.EDataType")%> eDataType, Object instanceValue)
+	{
+		switch (eDataType.getClassifierID())
+		{
+<%for (GenDataType genDataType : genPackage.getAllGenDataTypes()) {%>
+  <%if (genDataType.isSerializable()) {%>
+			case <%=genPackage.getImportedPackageInterfaceName()%>.<%=genDataType.getClassifierID()%>:
+				return convert<%=genDataType.getName()%>ToString(eDataType, instanceValue);
+  <%}%>
+<%}%>
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+		}
+	}
+
+<%}%>
+<%for (GenClass genClass : genPackage.getGenClasses()) {%>
+  <%if (!genClass.isAbstract()) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>()
+	{
+    <%if (genClass.isDynamic()) {%>
+		<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> <%=genClass.getSafeUncapName()%> = <%=genClass.getCastFromEObject()%>super.create(<%=genClass.getQualifiedClassifierAccessor()%>);
+    <%} else {%>
+		<%=genClass.getImportedClassName()%><%=genClass.getClassTypeArguments()%> <%=genClass.getSafeUncapName()%> = new <%=genClass.getImportedClassName()%><%=genClass.getClassTypeArguments()%>()<%if (genModel.isSuppressInterfaces() && !genPackage.getReflectionPackageName().equals(genPackage.getInterfacePackageName())) {%>{}<%}%>;
+    <%}%>
+		return <%=genClass.getSafeUncapName()%>;
+	}
+  <%}%>
+<%}%>
+<%for (GenDataType genDataType : genPackage.getAllGenDataTypes()) {%>
+  <%if (genDataType.isSerializable()) {%>
+<%if (genPackage.isDataTypeConverters()) { String eDataType = genDataType.getQualifiedClassifierAccessor();%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    <%if (genModel.useGenerics() && genDataType.isUncheckedCast()) {%>
+	@SuppressWarnings("unchecked")
+    <%}%>
+	public <%=genDataType.getImportedParameterizedInstanceClassName()%> create<%=genDataType.getName()%>(String literal)
+	{
+    <%if (genDataType instanceof GenEnum) {%>
+		<%=genDataType.getImportedInstanceClassName()%> result = <%=genDataType.getImportedInstanceClassName()%>.get(literal);
+		if (result == null) throw new IllegalArgumentException("The value '" + literal + "' is not a valid enumerator of '" + <%=eDataType%>.getName() + "'");<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
+		return result;
+    <%} else if (genDataType.getBaseType() != null) { GenDataType genBaseType = genDataType.getBaseType(); boolean isPrimitiveConversion = !genDataType.isPrimitiveType() && genBaseType.isPrimitiveType();%>
+      <%if (genBaseType.getGenPackage() == genPackage) {%>
+        <%if (isPrimitiveConversion && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+		return new <%=genDataType.getObjectInstanceClassName()%>(create<%=genBaseType.getName()%>(literal));
+        <%} else {%>
+		return create<%=genBaseType.getName()%>(literal);
+        <%}%>
+      <%} else if (genBaseType.getGenPackage().isDataTypeConverters()) {%>
+        <%if (isPrimitiveConversion && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+		return new <%=genDataType.getObjectInstanceClassName()%>(<%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.create<%=genBaseType.getName()%>(literal));
+        <%} else {%>
+		return <%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.create<%=genBaseType.getName()%>(literal);
+        <%}%>
+      <%} else {%>
+		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%><%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.createFromString(<%=genBaseType.getQualifiedClassifierAccessor()%>, literal);
+      <%}%>
+    <%} else if (genDataType.getItemType() != null) { GenDataType genItemType = genDataType.getItemType(); %>
+		if (literal == null) return null;
+		<%=genDataType.getImportedParameterizedInstanceClassName()%> result = new <%=genModel.getImportedName("java.util.ArrayList")%><%if (genModel.useGenerics()) {%><<%=genItemType.getObjectType().getImportedParameterizedInstanceClassName()%>><%}%>();
+      <%if (genModel.getRuntimeVersion().getValue() < GenRuntimeVersion.EMF26_VALUE) {%>
+		for (<%=genModel.getImportedName("java.util.StringTokenizer")%> stringTokenizer = new <%=genModel.getImportedName("java.util.StringTokenizer")%>(literal); stringTokenizer.hasMoreTokens(); )
+      <%} else {%>
+		for (String item : split(literal))
+      <%}%>
+		{
+      <%if (genModel.getRuntimeVersion().getValue() < GenRuntimeVersion.EMF26_VALUE) {%>
+			String item = stringTokenizer.nextToken();
+      <%}%>
+      <%if (genItemType.getGenPackage() == genPackage) {%>
+        <%if (genPackage.isDataTypeConverters()) { genItemType = genItemType.getObjectType();%>
+			result.add(create<%=genItemType.getName()%>(item));
+        <%} else {%>
+			result.add(create<%=genItemType.getName()%>FromString(<%=genItemType.getQualifiedClassifierAccessor()%>, item));
+        <%}%>
+      <%} else {%>
+        <%if (genItemType.getGenPackage().isDataTypeConverters()) { genItemType = genItemType.getObjectType();%>
+			result.add(<%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.create<%=genItemType.getName()%>(item));
+        <%} else {%>
+			result.add(<%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.createFromString(<%=genItemType.getQualifiedClassifierAccessor()%>, item));
+        <%}%>
+      <%}%>
+		}
+		return result;
+    <%} else if (!genDataType.getMemberTypes().isEmpty()) {%>
+		if (literal == null) return <%=genDataType.getStaticValue(null)%>;
+		<%=genDataType.getImportedInstanceClassName()%> result = <%=genDataType.getStaticValue(null)%>;
+		RuntimeException exception = null;
+      <%for (GenDataType genMemberType : genDataType.getMemberTypes()) {%>
+		try
+		{
+      <%if (genMemberType.getGenPackage() == genPackage) {%>
+        <%if (genPackage.isDataTypeConverters()) { if (!genDataType.isPrimitiveType()) genMemberType = genMemberType.getObjectType();%>
+			result = create<%=genMemberType.getName()%>(literal);
+        <%} else {%>
+			result = (<%=genDataType.getObjectInstanceClassName()%>)create<%=genMemberType.getName()%>FromString(<%=genMemberType.getQualifiedClassifierAccessor()%>, literal);
+        <%}%>
+      <%} else {%>
+        <%if (genPackage.isDataTypeConverters()) { if (!genDataType.isPrimitiveType()) genMemberType = genMemberType.getObjectType();%>
+			result = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.create<%=genMemberType.getName()%>(literal);
+        <%} else {%>
+			result = (<%=genDataType.getObjectInstanceClassName()%>)<%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.createFromString(<%=genMemberType.getQualifiedClassifierAccessor()%>, literal);
+        <%}%>
+      <%}%>
+			if (<%if (!genDataType.isPrimitiveType()) {%>result != null && <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.util.Diagnostician")%>.INSTANCE.validate(<%=eDataType%>, <%if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>new <%=genDataType.getObjectInstanceClassName()%>(result)<%} else {%>result<%}%>, null, null))
+			{
+				return result;
+			}
+		}
+		catch (RuntimeException e)
+		{
+			exception = e;
+		}
+      <%}%>
+		if (<%if (!genDataType.isPrimitiveType()) {%>result != null || <%}%>exception == null) return result;
+    
+		throw exception;
+    <%} else if (genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
+		return (<%=genDataType.getImportedParameterizedObjectInstanceClassName()%>)super.createFromString(literal);
+    <%} else if (genDataType.isArrayType()) {%>
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
+    <%} else if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+		return ((<%=genDataType.getObjectInstanceClassName()%>)super.createFromString(<%=eDataType%>, literal)).<%=genDataType.getPrimitiveValueFunction()%>();
+    <%} else {%>
+		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%>super.createFromString(<%=eDataType%>, literal);
+    <%}%>
+	}
+
+<%}%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    <%if (genModel.useGenerics() && genDataType.isUncheckedCast()) {%>
+	@SuppressWarnings("unchecked")
+    <%}%>
+	public <%=genDataType.getImportedParameterizedObjectInstanceClassName()%> create<%=genDataType.getName()%>FromString(<%=genModel.getImportedName("org.eclipse.emf.ecore.EDataType")%> eDataType, String initialValue)
+	{
+    <%if (genDataType instanceof GenEnum) {%>
+      <%if (genPackage.isDataTypeConverters()) {%>
+		return create<%=genDataType.getName()%>(initialValue);
+      <%} else {%>
+		<%=((GenEnum)genDataType).getImportedInstanceClassName()%> result = <%=((GenEnum)genDataType).getImportedInstanceClassName()%>.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
+		return result;
+      <%}%>
+    <%} else if (genDataType.getBaseType() != null) { GenDataType genBaseType = genDataType.getBaseType(); %>
+      <%if (genBaseType.getGenPackage() == genPackage) {%>
+		return <%if (!genDataType.getObjectInstanceClassName().equals(genBaseType.getObjectInstanceClassName())) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%>create<%=genBaseType.getName()%>FromString(<%=genBaseType.getQualifiedClassifierAccessor()%>, initialValue);
+      <%} else {%>
+		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%><%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.createFromString(<%=genBaseType.getQualifiedClassifierAccessor()%>, initialValue);
+      <%}%>
+    <%} else if (genDataType.getItemType() != null) { GenDataType genItemType = genDataType.getItemType(); %>
+      <%if (genPackage.isDataTypeConverters()) {%>
+		return create<%=genDataType.getName()%>(initialValue);
+      <%} else {%>
+		if (initialValue == null) return null;
+		<%=genDataType.getImportedParameterizedObjectInstanceClassName()%> result = new <%=genModel.getImportedName("java.util.ArrayList")%><%if (genModel.useGenerics()) {%><<%=genItemType.getObjectType().getImportedParameterizedInstanceClassName()%>><%}%>();
+        <%if (genModel.getRuntimeVersion().getValue() < GenRuntimeVersion.EMF26_VALUE) {%>
+		for (<%=genModel.getImportedName("java.util.StringTokenizer")%> stringTokenizer = new <%=genModel.getImportedName("java.util.StringTokenizer")%>(initialValue); stringTokenizer.hasMoreTokens(); )
+        <%} else {%>
+		for (String item : split(initialValue))
+        <%}%>
+		{
+        <%if (genModel.getRuntimeVersion().getValue() < GenRuntimeVersion.EMF26_VALUE) {%>
+			String item = stringTokenizer.nextToken();
+        <%}%>
+      <%if (genItemType.getGenPackage() == genPackage) {%>
+			result.add(create<%=genItemType.getName()%>FromString(<%=genItemType.getQualifiedClassifierAccessor()%>, item));
+      <%} else {%>
+			result.add(<%if (!genItemType.isObjectType()) {%>(<%=genItemType.getObjectInstanceClassName()%>)<%}%><%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.createFromString(<%=genItemType.getQualifiedClassifierAccessor()%>, item));
+      <%}%>
+		}
+		return result;
+      <%}%>
+    <%} else if (!genDataType.getMemberTypes().isEmpty()) {%>
+      <%if (genPackage.isDataTypeConverters()) {%>
+        <%if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+		return new <%=genDataType.getObjectInstanceClassName()%>(create<%=genDataType.getName()%>(initialValue));
+        <%} else {%>
+		return create<%=genDataType.getName()%>(initialValue);
+        <%}%>
+      <%} else {%>
+		if (initialValue == null) return null;
+		<%=genDataType.getObjectInstanceClassName()%> result = null;
+		RuntimeException exception = null;
+      <%for (GenDataType genMemberType : genDataType.getMemberTypes()) {%>
+		try
+		{
+      <%if (genMemberType.getGenPackage() == genPackage) {%>
+			result = <%if (!genDataType.isObjectType() && !genDataType.getObjectInstanceClassName().equals(genMemberType.getObjectInstanceClassName())) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%>create<%=genMemberType.getName()%>FromString(<%=genMemberType.getQualifiedClassifierAccessor()%>, initialValue);
+      <%} else {%>
+			result = <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%><%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.createFromString(<%=genMemberType.getQualifiedClassifierAccessor()%>, initialValue);
+      <%}%>
+			if (result != null && <%=genModel.getImportedName("org.eclipse.emf.ecore.util.Diagnostician")%>.INSTANCE.validate(eDataType, result, null, null))
+			{
+				return result;
+			}
+		}
+		catch (RuntimeException e)
+		{
+			exception = e;
+		}
+      <%}%>
+		if (result != null || exception == null) return result;
+    
+		throw exception;
+      <%}%>
+    <%} else if (genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
+		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getImportedParameterizedObjectInstanceClassName()%>)<%}%>super.createFromString(initialValue);
+    <%} else if (genDataType.isArrayType()) {%>
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
+    <%} else {%>
+		return <%if (!genDataType.isObjectType()) {%>(<%=genDataType.getObjectInstanceClassName()%>)<%}%>super.createFromString(eDataType, initialValue);
+    <%}%>
+	}
+
+<%if (genPackage.isDataTypeConverters()) { String eDataType = genDataType.getQualifiedClassifierAccessor();%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convert<%=genDataType.getName()%>(<%=genDataType.getImportedBoundedWildcardInstanceClassName()%> instanceValue)
+	{
+    <%if (genDataType instanceof GenEnum) {%>
+		return instanceValue == null ? null : instanceValue.toString();
+    <%} else if (genDataType.getBaseType() != null) { GenDataType genBaseType = genDataType.getBaseType(); boolean isPrimitiveConversion = !genDataType.isPrimitiveType() && genBaseType.isPrimitiveType();%>
+      <%if (genBaseType.getGenPackage() == genPackage) {%>
+        <%if (isPrimitiveConversion) {%>
+		return instanceValue == null ? null : convert<%=genBaseType.getName()%>(instanceValue<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>.<%=genBaseType.getPrimitiveValueFunction()%>()<%}%>);
+        <%} else {%>
+		return convert<%=genBaseType.getName()%>(instanceValue);
+        <%}%>
+      <%} else if (genBaseType.getGenPackage().isDataTypeConverters()) {%>
+		return <%=genBaseType.getGenPackage().getQualifiedFactoryInstanceAccessor()%>.convert<%=genBaseType.getName()%>(instanceValue);
+      <%} else {%>
+		return <%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genBaseType.getQualifiedClassifierAccessor()%>, instanceValue);
+      <%}%>
+    <%} else if (genDataType.getItemType() != null) { GenDataType genItemType = genDataType.getItemType(); %>
+		if (instanceValue == null) return null;
+		if (instanceValue.isEmpty()) return "";
+		<%=genModel.getImportedName("java.lang.StringBuffer")%> result = new <%=genModel.getImportedName("java.lang.StringBuffer")%>();
+        <%String item; if (!genModel.useGenerics()) { item = "i.next()"; %>
+		for (<%=genModel.getImportedName("java.util.Iterator")%> i = instanceValue.iterator(); i.hasNext(); )
+        <%} else { item = "item";%>
+		for (<%=genModel.getImportedName("java.lang.Object")%> item : instanceValue)
+        <%}%>
+		{
+      <%if (genItemType.getGenPackage() == genPackage) {%>
+        <%if (genPackage.isDataTypeConverters()) { genItemType = genItemType.getObjectType();%>
+			result.append(convert<%=genItemType.getName()%>((<%=genItemType.getObjectInstanceClassName()%>)<%=item%>));
+        <%} else {%>
+			result.append(convert<%=genItemType.getName()%>ToString(<%=genItemType.getQualifiedClassifierAccessor()%>, <%=item%>));
+        <%}%>
+      <%} else {%>
+        <%if (genItemType.getGenPackage().isDataTypeConverters()) { genItemType = genItemType.getObjectType();%>
+			result.append(<%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convert<%=genItemType.getName()%>((<%=genItemType.getObjectInstanceClassName()%>)<%=item%>));
+        <%} else {%>
+			result.append(<%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genItemType.getQualifiedClassifierAccessor()%>, <%=item%>));
+        <%}%>
+      <%}%>
+			result.append(' ');
+		}
+		return result.substring(0, result.length() - 1);
+    <%} else if (!genDataType.getMemberTypes().isEmpty()) {%>
+      <%if (!genDataType.isPrimitiveType()) {%>
+		if (instanceValue == null) return null;
+        <%for (GenDataType genMemberType : genDataType.getMemberTypes()) {%>
+		if (<%=genMemberType.getQualifiedClassifierAccessor()%>.isInstance(instanceValue))
+		{
+			try
+			{
+          <%if (genMemberType.getGenPackage() == genPackage) {%>
+            <%if (genPackage.isDataTypeConverters()) {%>
+              <%if (genMemberType.getQualifiedInstanceClassName().equals(genDataType.getQualifiedInstanceClassName())) {%>
+				String value = convert<%=genMemberType.getName()%>(instanceValue);
+              <%} else if (genMemberType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+				String value = convert<%=genMemberType.getName()%>(((<%=genMemberType.getObjectType().getImportedInstanceClassName()%>)instanceValue).<%=genMemberType.getPrimitiveValueFunction()%>());
+              <%} else {%>
+				String value = convert<%=genMemberType.getName()%>((<%=genMemberType.getObjectType().getImportedBoundedWildcardInstanceClassName()%>)instanceValue);
+              <%}%>
+            <%} else {%>
+				String value = convert<%=genMemberType.getName()%>ToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, instanceValue);
+            <%}%>
+          <%} else {%>
+            <%if (genMemberType.getGenPackage().isDataTypeConverters()) { genMemberType = genMemberType.getObjectType();%>
+				String value = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convert<%=genMemberType.getName()%>((<%=genMemberType.getObjectInstanceClassName()%>)instanceValue);
+            <%} else {%>
+				String value = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, instanceValue);
+            <%}%>
+          <%}%>
+				if (value != null) return value;
+			}
+			catch (Exception e)
+			{
+				// Keep trying other member types until all have failed.
+			}
+		}
+        <%}%>
+      <%} else {%>
+        <%for (GenDataType genMemberType : genDataType.getMemberTypes()) {%>
+		try
+		{
+          <%if (genMemberType.getGenPackage() == genPackage) {%>
+            <%if (genPackage.isDataTypeConverters()) {%>
+			String value = convert<%=genMemberType.getName()%>(instanceValue);
+            <%} else {%>
+			String value = convert<%=genMemberType.getName()%>ToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, <%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>new <%=genMemberType.getObjectInstanceClassName()%>(instanceValue)<%} else {%>instanceValue<%}%>);
+            <%}%>
+          <%} else {%>
+            <%if (genMemberType.getGenPackage().isDataTypeConverters()) {%>
+			String value = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convert<%=genMemberType.getName()%>(instanceValue);
+            <%} else {%>
+			String value = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, <%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>new <%=genMemberType.getObjectInstanceClassName()%>(instanceValue)<%} else {%>instanceValue<%}%>);
+            <%}%>
+          <%}%>
+			if (value != null) return value;
+		}
+		catch (Exception e)
+		{
+			// Keep trying other member types until all have failed.
+		}
+        <%}%>
+      <%}%>
+		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+<%=eDataType%>.getName());
+    <%} else if (genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
+		return super.convertToString(instanceValue);
+    <%} else if (genDataType.isArrayType()) {%>
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
+    <%} else if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+		return super.convertToString(<%=eDataType%>, new <%=genDataType.getObjectInstanceClassName()%>(instanceValue));
+    <%} else {%>
+		return super.convertToString(<%=eDataType%>, instanceValue);
+    <%}%>
+	}
+
+<%}%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+    <%if (genModel.useGenerics() && genDataType.getItemType() != null && genPackage.isDataTypeConverters()) {%>
+	@SuppressWarnings("unchecked")
+    <%}%>
+	public String convert<%=genDataType.getName()%>ToString(<%=genModel.getImportedName("org.eclipse.emf.ecore.EDataType")%> eDataType, Object instanceValue)
+	{
+    <%if (genDataType instanceof GenEnum) {%>
+		return instanceValue == null ? null : instanceValue.toString();
+    <%} else if (genDataType.getBaseType() != null) { GenDataType genBaseType = genDataType.getBaseType(); %>
+      <%if (genBaseType.getGenPackage() == genPackage) {%>
+		return convert<%=genBaseType.getName()%>ToString(<%=genBaseType.getQualifiedClassifierAccessor()%>, instanceValue);
+      <%} else {%>
+		return <%=genBaseType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genBaseType.getQualifiedClassifierAccessor()%>, instanceValue);
+      <%}%>
+    <%} else if (genDataType.getItemType() != null) { GenDataType genItemType = genDataType.getItemType(); %>
+      <%if (genPackage.isDataTypeConverters()) {%>
+		return convert<%=genDataType.getName()%>((<%=genDataType.getImportedBoundedWildcardInstanceClassName()%>)instanceValue);
+      <%} else { final String singleWildcard = genModel.useGenerics() ? "<?>" : "";%>
+		if (instanceValue == null) return null;
+		<%=genModel.getImportedName("java.util.List")%><%=singleWildcard%> list = (<%=genModel.getImportedName("java.util.List")%><%=singleWildcard%>)instanceValue;
+		if (list.isEmpty()) return "";
+		<%=genModel.getImportedName("java.lang.StringBuffer")%> result = new <%=genModel.getImportedName("java.lang.StringBuffer")%>();
+        <%String item; if (!genModel.useGenerics()) { item = "i.next()"; %>
+		for (<%=genModel.getImportedName("java.util.Iterator")%> i = list.iterator(); i.hasNext(); )
+        <%} else { item = "item";%>
+		for (<%=genModel.getImportedName("java.lang.Object")%> item : list)
+        <%}%>
+		{
+        <%if (genItemType.getGenPackage() == genPackage) {%>
+			result.append(convert<%=genItemType.getName()%>ToString(<%=genItemType.getQualifiedClassifierAccessor()%>, <%=item%>));
+        <%} else {%>
+			result.append(<%=genItemType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genItemType.getQualifiedClassifierAccessor()%>, <%=item%>));
+        <%}%>
+			result.append(' ');
+		}
+		return result.substring(0, result.length() - 1);
+      <%}%>
+    <%} else if (!genDataType.getMemberTypes().isEmpty()) {%>
+      <%if (genPackage.isDataTypeConverters()) {%>
+        <%if (genDataType.isPrimitiveType()) {%>
+		return instanceValue == null ? null : convert<%=genDataType.getName()%>(((<%=genDataType.getObjectInstanceClassName()%>)instanceValue)<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>.<%=genDataType.getPrimitiveValueFunction()%>()<%}%>);
+        <%} else {%>
+		return convert<%=genDataType.getName()%>(instanceValue);
+        <%}%>
+      <%} else {%>
+		if (instanceValue == null) return null;
+        <%for (GenDataType genMemberType : genDataType.getMemberTypes()) {%>
+		if (<%=genMemberType.getQualifiedClassifierAccessor()%>.isInstance(instanceValue))
+		{
+			try
+			{
+        <%if (genMemberType.getGenPackage() == genPackage) {%>
+				String value = convert<%=genMemberType.getName()%>ToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, instanceValue);
+        <%} else {%>
+				String value = <%=genMemberType.getGenPackage().getQualifiedEFactoryInternalInstanceAccessor()%>.convertToString(<%=genMemberType.getQualifiedClassifierAccessor()%>, instanceValue);
+        <%}%>
+				if (value != null) return value;
+			}
+			catch (Exception e)
+			{
+				// Keep trying other member types until all have failed.
+			}
+		}
+        <%}%>
+		throw new IllegalArgumentException("Invalid value: '"+instanceValue+"' for datatype :"+eDataType.getName());
+      <%}%>
+    <%} else if (genModel.useGenerics() && (genDataType.isArrayType() || !genDataType.getEcoreDataType().getETypeParameters().isEmpty() || genDataType.getEcoreDataType().getInstanceTypeName().contains("<"))) {%>
+		return super.convertToString(instanceValue);
+    <%} else if (genDataType.isArrayType()) {%>
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new <%=genModel.getImportedName("java.lang.UnsupportedOperationException")%>();
+    <%} else {%>
+		return super.convertToString(eDataType, instanceValue);
+    <%}%>
+	}
+
+  <%}%>
+<%}%>
+<%} else {%>
+  <%for (GenClass genClass : genPackage.getGenClasses()) {%>
+    <%if (genClass.hasFactoryInterfaceCreateMethod()) {%>
+	/**
+	 * Returns a new object of class '<em><%=genClass.getFormattedName()%></em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em><%=genClass.getFormattedName()%></em>'.
+	 * @generated
+	 */
+	<%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>();
+
+    <%}%>
+  <%}%>
+  <%if (genPackage.isDataTypeConverters()) {%>
+    <%for (GenDataType genDataType : genPackage.getAllGenDataTypes()) {%>
+      <%if (genDataType.isSerializable()) {%>
+	/**
+	 * Returns an instance of data type '<em><%=genDataType.getFormattedName()%></em>' corresponding the given literal.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal a literal of the data type.
+	 * @return a new instance value of the data type.
+	 * @generated
+	 */
+	<%=genDataType.getImportedParameterizedInstanceClassName()%> create<%=genDataType.getName()%>(String literal);
+
+	/**
+	 * Returns a literal representation of an instance of data type '<em><%=genDataType.getFormattedName()%></em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param instanceValue an instance value of the data type.
+	 * @return a literal representation of the instance value.
+	 * @generated
+	 */
+	String convert<%=genDataType.getName()%>(<%=genDataType.getImportedBoundedWildcardInstanceClassName()%> instanceValue);
+
+      <%}%>
+    <%}%>
+  <%}%>
+<%}%>
+<%if (!isImplementation && !genModel.isSuppressEMFMetaData()) {%>
+	/**
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the package supported by this factory.
+	 * @generated
+	 */
+	<%=genPackage.getPackageInterfaceName()%> get<%=genPackage.getBasicPackageName()%>();
+
+<%} else if (isImplementation) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=genPackage.getImportedPackageInterfaceName()%> get<%=genPackage.getBasicPackageName()%>()
+	{
+		return (<%=genPackage.getImportedPackageInterfaceName()%>)getEPackage();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @deprecated
+	 * @generated
+	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Deprecated
+  <%}%>
+	public static <%=genPackage.getImportedPackageInterfaceName()%> getPackage()
+	{
+		return <%=genPackage.getImportedPackageInterfaceName()%>.eINSTANCE;
+	}
+
+<%}%>
+
+<%/*
+**************************************************************************************
+BEGIN CUSTOM CREATE METHODS
+**************************************************************************************
+*/%>
+<%if (genPackage.getEcorePackage().getName().equals("PLM") && (isImplementation || isInterface)){%>
+	
+	/**
+	 * This methods creates a clabject from a template. All features and LMLVisualizers
+	 * are copied to the new clabject and the potency is calculated base on the new
+	 * clabjects parent. In case the newClabject is on the level below of template a
+	 * Classification relationship is created. Does not copy bounds.
+	 * 
+	 * @param template the clabject which hold all values for creation
+	 * @param newParent the parent in which the clabject is placed in 
+	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	<%if (isInterface){%>
+	public Clabject createClabjectFromTemplate(Clabject template, Element newParent);
+	<%}else{%>
+	public Clabject createClabjectFromTemplate(Clabject template, Element newParent) {
+		return createClabjectFromTemplate(template, newParent, false, true);	
+	}
+	<%}%>
+	
+	/**
+	 * This methods creates a clabject from a template. All features and LMLVisualizers
+	 * are copied to the new clabject and the potency is calculated base on the new
+	 * clabjects parent. In case the newClabject is on the level below of template a
+	 * Classification relationship is created
+	 * 
+	 * @param template the clabject which hold all values for creation
+	 * @param newParent the parent in which the clabject is placed in 
+	 * @param copyLocation copy X/Y location
+	 * @param copySize width and height
+	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	<%if (isInterface){%>
+	public Clabject createClabjectFromTemplate(Clabject template, Element newParent, boolean copyLocation, boolean copySize);
+	<%}else{%>
+	public Clabject createClabjectFromTemplate(Clabject template, Element newParent, boolean copyLocation, boolean copySize) {
+		if(template.getPotency() == 0 || newParent == null)
+			return null;
+			
+		Clabject result = template instanceof Entity ? PLMFactory.eINSTANCE.createEntity() : PLMFactory.eINSTANCE.createConnection();
+		configureClabject(template, result, newParent, copyLocation, copySize);
+		return result;	
+	}
+	<%}%>
+	
+	/**
+	 * Does not copy location but size.<br />
+	 * Does not initialize attributes with default values 
+	 *
+	 * @param template the template to "instantiate"
+	 * @param newClabject the clabject which is the "instance"
+	 *
+	 * @generated
+	 */
+	 <%if (isInterface){%>
+	public void configureClabject(Clabject template, Clabject newClabject);
+	<%}else{%>
+	public void configureClabject(Clabject template, Clabject newClabject){
+		configureClabject(template, newClabject, null, false);
+	}
+	<%}%>
+	
+	/**
+	 * Does not copy location but size.<br />
+	 *
+	 * @param template the template to "instantiate"
+	 * @param newClabject the clabject which is the "instance"
+	 * @param initializeAttributes initializes the ontological attributes of a clabject:
+	 * 			<ul><li>string = [attribute.name]</li><li>numeric = 0</li><li>boolean = false</li><li>others are not initialized</li></ul>
+	 *
+	 * @generated
+	 */
+	 <%if (isInterface){%>
+	public void configureClabject(Clabject template, Clabject newClabject, boolean initializeAttributes);
+	<%}else{%>
+	public void configureClabject(Clabject template, Clabject newClabject, boolean initializeAttributes){
+		configureClabject(template, newClabject, null, initializeAttributes, false, true);
+	}
+	<%}%>
+	
+	/**
+	 * Does not copy location but size.<br />
+	 * Does not initialize attributes with default values
+	 * 
+	 * @param template
+	 * @param newClabject
+	 * @param newParent null if newClabject has already a model set or no parent exists
+	 * 			the method will ignore the parent or use one if it can find one to calculate
+	 * 			values. Possible values are Models, Connections or Entities as they can 
+	 * 			contain clabjects. Can be null to not set a new parent. This is needed in 
+	 * 			cases where this could raise a read/write transaction exception. If the 
+	 * 			new parten is null, the potency is calculated by substracting one from
+	 * 			the type potency.
+	 *
+	 * @generated
+	 */
+	<%if (isInterface){%>
+	public void configureClabject(Clabject template, Clabject newClabject, Element newParent);
+	<%}else{%>
+	public void configureClabject(Clabject template, Clabject newClabject, Element newParent){
+		configureClabject(template, newClabject, newParent, false, false, true);
+	}
+	<%}%>
+	
+	/**
+	 * Does not copy bounds 
+	 * @param template
+	 * @param newClabject
+	 * @param newParent null if newClabject has already a model set or no parent exists
+	 * 			the method will ignore the parent or use one if it can find one to calculate
+	 * 			values. Possible values are Models, Connections or Entities as they can 
+	 * 			contain clabjects. Can be null to not set a new parent. This is needed in 
+	 * 			cases where this could raise a read/write transaction exception. If the 
+	 * 			new parten is null, the potency is calculated by substracting one from
+	 * 			the type potency.
+	 * @param initializeAttributes initializes the ontological attributes of a clabject:
+	 * 			<ul><li>string = [attribute.name]</li><li>numeric = 0</li><li>boolean = false</li><li>others are not initialized</li></ul>
+	 *
+	 *
+	 * @generated
+	 */
+	<%if (isInterface){%>
+	public void configureClabject(Clabject template, Clabject newClabject, Element newParent, boolean initializeAttributes);
+	<%}else{%>
+	public void configureClabject(Clabject template, Clabject newClabject, Element newParent, boolean initializeAttributes){
+		configureClabject(template, newClabject, newParent, initializeAttributes, false, true);
+	}
+	<%}%>
+	
+	/**
+	 * 
+	 * @param template
+	 * @param newClabject
+	 * @param newParent null if newClabject has already a model set or no parent exists
+	 * 			the method will ignore the parent or use one if it can find one to calculate
+	 * 			values. Possible values are Models, Connections or Entities as they can 
+	 * 			contain clabjects. Can be null to not set a new parent. This is needed in 
+	 * 			cases where this could raise a read/write transaction exception. If the 
+	 * 			new parten is null, the potency is calculated by substracting one from
+	 * 			the type potency.
+	 * @param copyLocation copy X/Y location
+	 * @param copySize width and height
+	 *
+	 * @generated
+	 */
+	<%if (isInterface){%>
+	public void configureClabject(Clabject template, Clabject newClabject, Element newParent, boolean copyLocation, boolean copySize);
+	<%}else{%>
+	public void configureClabject(Clabject template, Clabject newClabject, Element newParent, boolean copyLocation, boolean copySize){
+		configureClabject(template, newClabject, newParent, false, copyLocation, copySize);
+	}
+	<%}%>
+		
+	/**
+	 * 
+	 * @param template
+	 * @param newClabject
+	 * @param newParent null if newClabject has already a model set or no parent exists
+	 * 			the method will ignore the parent or use one if it can find one to calculate
+	 * 			values. Possible values are Models, Connections or Entities as they can 
+	 * 			contain clabjects. Can be null to not set a new parent. This is needed in 
+	 * 			cases where this could raise a read/write transaction exception. If the 
+	 * 			new parten is null, the potency is calculated by substracting one from
+	 * 			the type potency.
+	 * @param copyLocation copy X/Y location
+	 * @param copySize width and height
+	 *
+	 * @generated
+	 */
+	<%if (isInterface){%>
+	public void configureClabject(Clabject template, Clabject newClabject, Element newParent, boolean initializeAttributes, boolean copyLocation, boolean copySize);
+	<%}else{%>
+	public void configureClabject(Clabject template, Clabject newClabject, Element newParent, boolean initializeAttributes, boolean copyLocation, boolean copySize){
+
+		//No new Parent is provided for clabject and it has not been set yet.
+		if (newParent == null && newClabject.eContainer() != null)
+			newParent = (Element)newClabject.eContainer();
+		
+		//Add the Entity to the newParent if not already done
+		if (newParent != null 
+				&& newParent != newClabject.eContainer())
+			if (newParent instanceof Level)
+				((Level)newParent).getContent().add(newClabject);
+			else if (newParent instanceof Clabject)
+				((Clabject)newParent).getContent().add(newClabject);
+		
+		//******************************
+		// Copy traits
+		//******************************
+		//Level is now derived
+		//if (newParent != null)
+		//	newClabject.setLevel(newParent.getLevel());
+		
+		//******************************
+		// Copy LML Visualizers
+		//******************************
+		if (template.getVisualizer().size() > 0){
+			//Quick hack to get a visualizer from type in
+			LMLVisualizer instanceVisualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
+			LMLVisualizer typeVisualizer = template.getVisualizer().get(0);
+					
+			/*instanceVisualizer.setTemplate(typeVisualizer.getTemplate());
+			instanceVisualizer.setDurability(
+				//This check is to simple needs to be enhanced once the visualizer
+				//durability is fully supported
+				typeVisualizer.getDurability() == 0 
+					|| typeVisualizer.getDurability() == -1 ?
+							typeVisualizer.getDurability() 
+								: typeVisualizer.getDurability() - 1
+			);*/
+				
+			instanceVisualizer.getAttributes().addAll(typeVisualizer.getAttributes());
+			
+			if(copySize){
+				instanceVisualizer.setWidth(typeVisualizer.getWidth());
+				instanceVisualizer.setHeight(typeVisualizer.getHeight());
+			}
+			
+			if(copyLocation){
+				instanceVisualizer.setXLocation(typeVisualizer.getXLocation());
+				instanceVisualizer.setYLocation(typeVisualizer.getYLocation());
+			}
+			
+			newClabject.getVisualizer().clear();
+			newClabject.getVisualizer().add(instanceVisualizer);
+		}
+		//There is no visualizer present at the moment. This can happen in case the
+		// template element is created via GMF and not initialized yet. Happens in
+		// emendation service
+		else{
+			LMLVisualizer visualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
+			newClabject.getVisualizer().add(visualizer);
+			visualizer.getAttributes().addAll(visualizer.getDefaultVisualizationValues());
+		}
+					
+					
+		//****************************
+		// Calculate the new potency
+		//****************************
+		if (template.getPotency() == -1)
+			newClabject.setPotency(-1);
+		else if (newParent == null)
+			newClabject.setPotency(template.getPotency() - 1);
+		else{
+			int levelDifference = template.getLevelIndex() - newClabject.getLevelIndex();
+			newClabject.setPotency(template.getPotency() + levelDifference);
+		}
+					
+		if (newClabject.getPotency() < -1)
+			throw new RuntimeException("Clabjects with a negative potency cannot exist.");
+				
+					
+		//*****************************
+		// Copy the features
+		//*****************************
+		List<Feature> features = new LinkedList<Feature>();
+					
+		for (Feature f : template.getAllFeatures()) {
+			if (f.getDurability() == 0)
+				continue;
+					
+			Feature newFeature = createFeature(f, newClabject, initializeAttributes);
+					
+			features.add(newFeature);
+		}
+		
+		newClabject.getFeature().addAll(features);
+				
+				
+		//******************************************************
+		// Create a classification to the template if possible
+		//******************************************************
+		if (newParent != null &&
+				template.getLevelIndex() == newClabject.getLevelIndex() - 1){
+			Classification i = PLMFactoryImpl.eINSTANCE.createClassification();
+			i.setType(template);
+			i.setInstance(newClabject);
+			if (newParent instanceof Level)
+				((Level)newParent).getContent().add(i);
+			else if(newParent instanceof Clabject)
+				((Clabject)newParent).getLevel().getContent().add(i);
+			
+		}
+		
+		//******************************************************
+		// Create a connection to the composite/aggregate
+		//******************************************************
+		if (newParent instanceof Clabject
+				&& template.getLevelIndex() == newClabject.getLevelIndex() - 1
+				&& (
+						template.getComposite() != null
+							|| template.getAggregates().size() > 0
+					)
+			){
+			//Find the connection to instantiate
+			List<Clabject> compositesAndAggregates = new ArrayList<Clabject>();
+			if(template.getComposite() != null)
+				compositesAndAggregates.add(template.getComposite());
+			compositesAndAggregates.addAll(template.getAggregates());
+			
+			Connection typeConnection = null;
+			
+			for(Clabject c : compositesAndAggregates){
+				
+				//Found the type of the container
+				if(c.getClassificationTreeAsType().contains(newParent)){
+					
+					//Find the connection pointing to the type of the content
+					outer: for (Connection con : c.getConnections()){
+						for(ConnectionEnd p : con.getConnectionEnd()){
+							if(p.getDestination() == template
+									|| p.getDestination().getSubtypes().contains(template)){
+								typeConnection = con;
+								break outer;
+							}
+						}
+					}
+				}
+			}
+			
+			Connection c = createConnectionWithLMLVisualizer();
+			configureClabject(typeConnection, c, newParent);
+			
+			((Clabject) newParent).getContent().add(c);
+			ConnectionEnd toPart = createConnectionEnd();
+			c.getConnectionEnd().add(toPart);
+			toPart.setDestination(newClabject);
+			ConnectionEnd toContainer = createConnectionEnd();
+			toContainer.setDestination((Clabject)newParent);
+			c.getConnectionEnd().add(toContainer);
+			
+			//instantiate the values for the connectionEnds
+			//this code assumes two connectionEnds only
+			outter: for(ConnectionEnd p : typeConnection.getConnectionEnd()){
+				
+				List<Clabject> destinations = new ArrayList<Clabject>();
+				destinations.add(p.getDestination());
+				destinations.addAll(p.getDestination().getSubtypes());
+				
+				for(Clabject d : destinations){
+					//The connectionEnd to the part was found
+					if(d.getClassificationTreeAsType().contains(newClabject)){
+						toPart.setNavigable(p.isNavigable());
+						toPart.setLower(p.getLower());
+						toPart.setUpper(p.getUpper());
+						toPart.setMoniker(p.getMoniker());
+						toPart.setKind(p.getKind());
+						toPart.setType(p);
+						
+						//continue with the next connectionEnd
+						continue outter;
+					}
+				}
+				
+				//The connectionEnd to the part was not found -> connectionEnd to container
+				toContainer.setNavigable(p.isNavigable());
+				toContainer.setLower(p.getLower());
+				toContainer.setUpper(p.getUpper());
+				toContainer.setMoniker(p.getMoniker());
+				toContainer.setKind(p.getKind());
+				toContainer.setType(p);
+			}
+		}
+	}
+	<%}%>
+	
+	/**
+	 * Creates a new feature from the template.
+	 * Does not initialize attributes.
+	 * 
+	 * @param template the template to create from
+	 * @param newParent null if it shall not be added to a parent by this method
+	 * @return
+	 *
+	 * @generated
+	 */
+	 <%if (isInterface){%>
+	public Feature createFeature(Feature template, Clabject newParent);
+	<%}else{%>
+	public Feature createFeature(Feature template, Clabject newParent){
+		return createFeature(template, template.getClabject() , newParent, false);
+	}
+	<%}%>
+	
+	/**
+	 * Creates a new feature from the template
+	 * 
+	 * @param template the template to create from
+	 * @param newParent null if it shall not be added to a parent by this method
+	 * @param initializeAttributes initialized the ontological attributes of a clabject:
+	 * 			<ul><li>string = [attribute.name]</li><li>numeric = 0</li><li>boolean = false</li><li>others are not initialized</li></ul>
+	 * @return
+	 *
+	 * @generated
+	 */
+	 <%if (isInterface){%>
+	public Feature createFeature(Feature template, Clabject newParent, boolean initializeAttribute);
+	<%}else{%>
+	public Feature createFeature(Feature template, Clabject newParent, boolean initializeAttribute){
+		return createFeature(template, template.getClabject() , newParent, initializeAttribute, true);
+	}
+	<%}%>
+
+	/**
+	 * Creates a new feature from the template
+	 * Does not initialize attributes.
+	 * 
+	 * @param template
+	 * @param newParent
+	 * @param initializeAttributes initialized the ontological attributes of a clabject:
+	 * 			<ul><li>string = [attribute.name]</li><li>numeric = 0</li><li>boolean = false</li><li>others are not initialized</li></ul>
+	 * 
+	 * @return
+	 *
+	 * @generated
+	 */
+	<%if (isInterface){%>
+	public Feature createFeature(Feature template, Clabject templateParent, Clabject newParent, boolean addNewElementToParent);
+	<%}else{%>
+	public Feature createFeature(Feature template, Clabject templateParent, Clabject newParent, boolean addNewElementToParent){
+		return createFeature(template, templateParent, newParent, false, addNewElementToParent);
+	}
+	<%}%>
+	
+	/**
+	 * Creates a new feature from the template
+	 * 
+	 * @param template
+	 * @param newParent
+	 * @param initializeAttributes initialized the ontological attributes of a clabject:
+	 * 			<ul><li>string = [attribute.name]</li><li>numeric = 0</li><li>boolean = false</li><li>others are not initialized</li></ul>
+	 * 
+	 * @return
+	 *
+	 * @generated
+	 */
+	<%if (isInterface){%>
+	public Feature createFeature(Feature template, Clabject templateParent, Clabject newParent, boolean initializeAttribute, boolean addNewElementToParent);
+	<%}else{%>
+	public Feature createFeature(Feature template, Clabject templateParent, Clabject newParent, boolean initializeAttribute, boolean addNewElementToParent){
+		Feature result = template instanceof Attribute ? PLMFactory.eINSTANCE.createAttribute() : PLMFactory.eINSTANCE.createMethod();
+		
+		if (addNewElementToParent)
+			newParent.getFeature().add(result);
+		
+		result.setName(template.getName());
+		
+		
+		if(result instanceof Attribute && template instanceof Attribute)
+			((Attribute) result).setValue(((Attribute)template).getValue());
+			
+		//***************************************
+		// Calculate the durability
+		//***************************************
+		if (template.getDurability() == -1)
+			result.setDurability(-1);
+		else{
+			int levelDifference = newParent.getLevelIndex();
+			//This happens if the clabject containing the feature does not belong to
+			//to a level for this case it is intended to substract one, as if
+			//the clabject is instantiated on the next level.
+			if(levelDifference != -1)
+			 levelDifference = templateParent.getLevelIndex() - newParent.getLevelIndex();
+
+			result.setDurability(template.getDurability() + levelDifference);
+		}
+			
+		if (result.getDurability() < -1)
+			throw new RuntimeException("Clabjects with a negative potency cannot exist.");
+
+			
+		//********************
+		// Copy LMLVisualizer
+		//********************
+		if (template.getVisualizer().size() > 0){
+			//Quick hack to get a visualizer from type in
+			LMLVisualizer instanceVisualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
+			LMLVisualizer typeVisualizer = template.getVisualizer().get(0);
+			
+			/*instanceVisualizer.setTemplate(typeVisualizer.getTemplate());
+			instanceVisualizer.setDurability(
+					//This check is to simple needs to be enhanced once the visualizer
+					//durability is fully supported
+					typeVisualizer.getDurability() == 0 
+						|| typeVisualizer.getDurability() == -1 ?
+								typeVisualizer.getDurability() 
+								: typeVisualizer.getDurability() - 1
+				);*/
+			
+			instanceVisualizer.getAttributes().addAll(typeVisualizer.getAttributes());
+	
+			result.getVisualizer().clear();
+			result.getVisualizer().add(instanceVisualizer);
+		}
+		//There is no visualizer present at the moment. This can happen in case the
+		// template element is created via GMF and not initialized yet. Happens in
+		// emendation service
+		else{
+			LMLVisualizer visualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
+			result.getVisualizer().add(visualizer);
+			visualizer.getAttributes().addAll(visualizer.getDefaultVisualizationValues());
+		}
+		
+		
+		return result instanceof Attribute ? configureAttribute((Attribute)template, templateParent, (Attribute)result, newParent, initializeAttribute) : configureMethod(template, result); 
+	}
+	<%}%>
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	<%if (isImplementation){%>
+	private Feature configureMethod(Feature template, Feature result) {
+		return result;
+	}
+	<%}%>
+	
+	/**
+	 * @param initializeAttributes initialized the ontological attributes of a clabject:
+	 * 			<ul><li>string = [attribute.name]</li><li>numeric = 0</li><li>boolean = false</li><li>others are not initialized</li></ul>
+	 *
+	 * @generated
+	 */
+	<%if (isImplementation){%>
+	private Feature configureAttribute(Attribute template, Clabject templateParent, Attribute result, Clabject resultParent, boolean initializeAttribute) {
+		result.setDatatype(template.getDatatype());
+		
+		//***************************
+		// Calculate mutability
+		//***************************
+		if (template.getMutability() == -1)
+			result.setMutability(-1);
+		else if (template.getMutability() == 0
+					&& templateParent.getLevelIndex() <= resultParent.getLevelIndex()){
+			result.setMutability(0); 
+		}
+		else{
+			int levelDifference = resultParent.getLevelIndex();
+			//This happens if the clabject containing the feature does not belong to
+			//to a level for this case it is intended to substract one, as if
+			//the clabject is instantiated on the next level.
+			if(levelDifference != -1)
+			 levelDifference = templateParent.getLevelIndex() - resultParent.getLevelIndex();
+
+			result.setMutability(template.getMutability() + levelDifference);
+		}
+		
+		//**********************************************************************************
+		// If both template and result have mutability = 0 they need to have the same value
+		//**********************************************************************************
+		if (template.getMutability() == 0 && result.getMutability() == 0)
+			result.setValue(template.getValue());
+		
+		//**********************************************************************************
+		// Initialize attributes
+		//**********************************************************************************
+		if(initializeAttribute &&
+				result.getValue() == null ){
+			List<String> primitiveDataTypes = result.getPrimitiveDataTypes();
+
+			if(!(primitiveDataTypes.contains("String")
+					|| primitiveDataTypes.contains("Real")
+					|| primitiveDataTypes.contains("Integer")
+					|| primitiveDataTypes.contains("Natural")
+					|| primitiveDataTypes.contains("Boolean")
+					|| primitiveDataTypes.contains("Percent")
+					|| primitiveDataTypes.contains("Probability")
+					|| primitiveDataTypes.contains("Money")))
+				throw new RuntimeException("Datatypes in factory not in synch with annotation in models");
+			
+			List<String> numericDatatypes = Arrays.asList("Real", "Integer", "Natural", "Percent", "Probability", "Money");
+			
+			if(numericDatatypes.contains(result.getDatatype()))
+				result.setValue("0");
+			else if("String".equals(result.getDatatype()))
+				result.setValue(result.getName());
+			else if("Boolean".equals(result.getDatatype()))
+				result.setValue("false");
+		}
+		
+		return result;
+	}
+	<%}%>
+<%}%>
+<%genModel.emitSortedImports();%>
+<%/*
+**************************************************************************************
+END CUSTOM CREATE METHODS
+**************************************************************************************
+*/%>
+<%for (GenClass genClass : genPackage.getGenClasses()) {%>
+	<%if (!genClass.isAbstract()) {%>
+		<%/*****************************************************************************
+	  	 * BEGIN CUSTOM CODE CREATION WITH VISUALIZER
+	  	 *****************************************************************************/%>
+		<% 
+			boolean generateCode = false;
+			for (org.eclipse.emf.ecore.EClass clazz : genClass.getEcoreClass().getEAllSuperTypes()){
+				if(clazz.getName().equals("Element"))
+				generateCode = true;
+			}
+			if (generateCode)
+			{%>
+				<%if (isImplementation){%>
+				/**
+				 * <!-- begin-user-doc -->
+				 * <!-- end-user-doc -->
+			 	* @generated
+			 	*/
+				public <%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>WithLMLVisualizer(){
+			
+					//Execute the default factory code
+					<%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> newObject = create<%=genClass.getName()%>();
+				
+					//Add a visualizer
+					LMLVisualizer <%=genClass.getName()%>Visualizer = createLMLVisualizer();
+					newObject.getVisualizer().add(<%=genClass.getName()%>Visualizer);
+					<%=genClass.getName()%>Visualizer.getAttributes().addAll(<%=genClass.getName()%>Visualizer.getDefaultVisualizationValues());
+				
+					return newObject;
+				}
+				<%} else {%>
+				public <%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>WithLMLVisualizer();
+				<%}%>
+			<%}%>
+		<%}%>
+<%/*****************************************************************************
+   * END CUSTOM CODE CREATION WITH VISUALIZER
+   *****************************************************************************/%>  
+<%}%>
+} //<%=isInterface ? genPackage.getFactoryInterfaceName() : genPackage.getFactoryClassName()%>

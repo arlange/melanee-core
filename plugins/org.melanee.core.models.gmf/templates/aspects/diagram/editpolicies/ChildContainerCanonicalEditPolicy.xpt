@@ -1,0 +1,51 @@
+﻿«REM»
+/*******************************************************************************
+ * Copyright (c) 2012 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+//********************************************************
+// Automatically hides empty attribute/method compartments
+// of entities/connections
+//********************************************************
+«AROUND refreshSemanticMethod FOR gmfgen::GenChildContainer-»
+«EXPAND xpt::Common::generatedMemberComment»
+«IF self.editPartClassName.startsWith('EntityMethodsCompartment') or self.editPartClassName.startsWith('EntityAttributesCompartment')
+	or self.editPartClassName.startsWith('ConnectionMethodsCompartment') or self.editPartClassName.startsWith('ConnectionAttributesCompartment')»
+protected void refreshSemantic() {
+	if (resolveSemanticElement() == null) {
+		return;
+	}
+	
+	//No views are inside
+	if («EXPAND xpt::diagram::updater::DiagramUpdater::getSemanticChildrenMethodCall»((org.eclipse.gmf.runtime.notation.View) getHost().getLevel()).size() == 0){
+		host().getFigure().setVisible(false);
+//		org.eclipse.gmf.runtime.notation.View v = host().getNotationView();
+//		org.eclipse.emf.edit.domain.EditingDomain domain = host().getEditingDomain();
+//		org.eclipse.emf.common.command.Command cmd = org.eclipse.emf.edit.command.SetCommand.create(domain, v, org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getView_Visible(), false);
+//		domain.getCommandStack().execute(cmd);
+			
+	} else {
+		host().getFigure().setVisible(true);
+//		org.eclipse.gmf.runtime.notation.View v = host().getNotationView();
+//		org.eclipse.emf.edit.domain.EditingDomain domain = host().getEditingDomain();
+//		org.eclipse.emf.common.command.Command cmd = org.eclipse.emf.edit.command.SetCommand.create(domain, v, org.eclipse.gmf.runtime.notation.NotationPackage.eINSTANCE.getView_Visible(), true);
+//		domain.getCommandStack().execute(cmd);
+	}
+	
+	«EXPAND CodeStyle::newGenericInstance('createdViews', 'java.util.LinkedList', 'org.eclipse.core.runtime.IAdaptable')»();
+	«EXPAND impl::diagram::update::CanonicalUpdate::refreshSemanticChildren('createdViews', getDiagram().editorGen.diagramUpdater)-»
+	«EXPAND impl::diagram::update::CanonicalUpdate::executeLayoutCommand('createdViews')-»
+	
+	makeViewsImmutable(createdViews);
+}
+«ELSE»
+«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»«ENDREM»

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.melanee.core.workbench
+Bundle-SymbolicName: org.melanee.core.workbench;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: org.melanee.core.workbench.Activator
+Require-Bundle: org.melanee.core.models.plm,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.draw2d,
+ org.eclipse.ui.ide
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.melanee.core.workbench,org.melanee.core.workbench.
+ interfaces,org.melanee.core.workbench.preferences

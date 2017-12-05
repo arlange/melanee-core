@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.melanee.core.models.plm/src" modelPluginID="org.melanee.core.models.plm"
+    templateDirectory="org.melanee.core.models.plm/templates" dynamicTemplates="true"
+    modelName="PLM" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>PLM.ecore</foreignModel>
+  <genPackages prefix="PLM" basePackage="org.melanee.core.models.plm" disposableProviderFactory="true"
+      ecorePackage="PLM.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="PLM.ecore#//ConnectionEndKind">
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ConnectionEndKind/Basic"/>
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ConnectionEndKind/Aggregation"/>
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ConnectionEndKind/Composition"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="PLM.ecore#//ClassificationKind">
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ClassificationKind/instance"/>
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ClassificationKind/isonym"/>
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ClassificationKind/hyponym"/>
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ClassificationKind/instantiation"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="PLM.ecore#//ComplianceKind">
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ComplianceKind/Melanee"/>
+      <genEnumLiterals ecoreEnumLiteral="PLM.ecore#//ComplianceKind/MetaDepth"/>
+    </genEnums>
+    <genClasses ecoreClass="PLM.ecore#//Domain">
+      <genFeatures createChild="false" propertyDescription="Sets the element's name."
+          ecoreFeature="ecore:EAttribute PLM.ecore#//Domain/name"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Domain/deepModel"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EAttribute PLM.ecore#//Domain/plmVersion"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Domain/complianceKind"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//Element">
+      <genFeatures createChild="false" propertyDescription="Sets the element's name."
+          ecoreFeature="ecore:EAttribute PLM.ecore#//Element/name"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Element/visualizer"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Element/behavior"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Element/constraint"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Level">
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Level/content"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getAllInheritances"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getClabjects"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getEntities"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getConnections"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getClassifications"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getDeepModel"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getClassifiedLevel"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getClassifyingLevel"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/getLevel"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/isRootLevel"/>
+      <genOperations ecoreOperation="PLM.ecore#//Level/isLeafLevel"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//DeepModel">
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//DeepModel/content"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//DeepModel/enumeration"/>
+      <genOperations ecoreOperation="PLM.ecore#//DeepModel/getLevelAtIndex">
+        <genParameters ecoreParameter="PLM.ecore#//DeepModel/getLevelAtIndex/level"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//DeepModel/getPrimitiveDatatypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//DeepModel/getRegexForPrimitiveDatatype">
+        <genParameters ecoreParameter="PLM.ecore#//DeepModel/getRegexForPrimitiveDatatype/type"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//DeepModel/getAllDatatypes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//OwnedElement">
+      <genOperations ecoreOperation="PLM.ecore#//OwnedElement/getLevel"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//Correlation"/>
+    <genClasses ecoreClass="PLM.ecore#//Inheritance">
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Inheritance/supertype"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Inheritance/subtype"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Inheritance/disjoint"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Inheritance/complete"/>
+      <genOperations ecoreOperation="PLM.ecore#//Inheritance/isDisjoint"/>
+      <genOperations ecoreOperation="PLM.ecore#//Inheritance/isComplete"/>
+      <genOperations ecoreOperation="PLM.ecore#//Inheritance/isIntersection"/>
+      <genOperations ecoreOperation="PLM.ecore#//Inheritance/represent"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Supertype">
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference PLM.ecore#//Supertype/supertype"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Supertype/inheritance"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Subtype">
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference PLM.ecore#//Subtype/subtype"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Subtype/inheritance"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Classification">
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference PLM.ecore#//Classification/instance"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference PLM.ecore#//Classification/type"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Classification/kind"/>
+      <genOperations ecoreOperation="PLM.ecore#//Classification/represent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//Clabject">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Clabject/potency"/>
+      <genFeatures property="Readonly" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EAttribute PLM.ecore#//Clabject/levelIndex"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Clabject/content"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Clabject/feature"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDeepModel"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getSupertypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getSupertypes.1">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getSupertypes.1/immediateResult"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDirectSupertypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getSubtypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getHollowSubtypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getHollowSupertypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getClassificationsAsInstance"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getClassificationsAsType"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getInstances"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getTypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDirectTypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getLevelTypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedClassificationTreeAsInstance"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getClassificationTreeAsInstance"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedInstances"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedClassificationTreeAsType"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getClassificationTreeAsType"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getClassificationTreeAsType.1">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getClassificationTreeAsType.1/distance"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getClassificationTreeAsType.2">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getClassificationTreeAsType.2/min"/>
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getClassificationTreeAsType.2/max"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getAllFeatures"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getAllAttributes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedAttributes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedAttributeByName">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getDefinedAttributeByName/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getAllMethods"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedMethods"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/isInstanceOf">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/isInstanceOf/type"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/isTypeOf">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/isTypeOf/type"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/isContainerOf">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/isContainerOf/clabject"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getComposite"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getAggregates"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getParts"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getPartsForMoniker">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getPartsForMoniker/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedConnections"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getConnections"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getInheritedConnections"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getLevelCompleteTypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getLevelIncompleteTypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getBlueprint"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getOffspring"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getIsonyms"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getHyponyms"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDomainForConnection">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getDomainForConnection/connection"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getPossibleDomainSpecificVisualizers"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getInheritancesAsSubtype"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getInheritancesAsSupertype"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedNavigations"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getInheritedNavigations"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getAllNavigations"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDomainMonikers"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDomainForMoniker">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getDomainForMoniker/moniker"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getAllNavigationsForMoniker">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getAllNavigationsForMoniker/moniker"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getAllNavigationsAsDestination"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedNavigationsAsDestination"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getInheritedNavigationsAsDestination"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/represent"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getFeatureForName">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getFeatureForName/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getPotencyAsString"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDisjointSiblings"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getAttributeByName">
+        <genParameters ecoreParameter="PLM.ecore#//Clabject/getAttributeByName/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/violatesMultiplicityConstraints"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getDefinedInheritances"/>
+      <genOperations ecoreOperation="PLM.ecore#//Clabject/getOwnedClabjects"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//Feature">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Feature/durability"/>
+      <genOperations ecoreOperation="PLM.ecore#//Feature/getClabject"/>
+      <genOperations ecoreOperation="PLM.ecore#//Feature/getDurabilityAsString"/>
+      <genOperations ecoreOperation="PLM.ecore#//Feature/represent"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Entity">
+      <genOperations ecoreOperation="PLM.ecore#//Entity/represent"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Connection">
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Connection/connectionEnd"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getDomain"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getNotDomain"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getHumanReadableName"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getParticipants"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getMoniker"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getDomain.1">
+        <genParameters ecoreParameter="PLM.ecore#//Connection/getDomain.1/source"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getMonikerForParticipant">
+        <genParameters ecoreParameter="PLM.ecore#//Connection/getMonikerForParticipant/source"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getLowerForMoniker">
+        <genParameters ecoreParameter="PLM.ecore#//Connection/getLowerForMoniker/rN"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getUpperForMoniker">
+        <genParameters ecoreParameter="PLM.ecore#//Connection/getUpperForMoniker/rN"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/isNavigableForMoniker">
+        <genParameters ecoreParameter="PLM.ecore#//Connection/isNavigableForMoniker/rN"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getOrder"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getInheritedConnectionEnd"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getAllConnectionEnd"/>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/getParticipantForMoniker">
+        <genParameters ecoreParameter="PLM.ecore#//Connection/getParticipantForMoniker/rN"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//Connection/represent"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//ConnectionEnd">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//ConnectionEnd/lower"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//ConnectionEnd/upper"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//ConnectionEnd/navigable"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference PLM.ecore#//ConnectionEnd/destination"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//ConnectionEnd/connection"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//ConnectionEnd/moniker.1"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//ConnectionEnd/kind"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference PLM.ecore#//ConnectionEnd/type"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//ConnectionEnd/multiplicity"/>
+      <genOperations ecoreOperation="PLM.ecore#//ConnectionEnd/getHumanReadableConnectionEndName"/>
+      <genOperations ecoreOperation="PLM.ecore#//ConnectionEnd/hasDefaultMoniker"/>
+      <genOperations ecoreOperation="PLM.ecore#//ConnectionEnd/represent"/>
+      <genOperations ecoreOperation="PLM.ecore#//ConnectionEnd/moniker"/>
+      <genOperations ecoreOperation="PLM.ecore#//ConnectionEnd/representMultiplicity"/>
+      <genOperations ecoreOperation="PLM.ecore#//ConnectionEnd/getConnectionEndName"/>
+      <genOperations ecoreOperation="PLM.ecore#//ConnectionEnd/conforms">
+        <genParameters ecoreParameter="PLM.ecore#//ConnectionEnd/conforms/connectionEnd"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//LMLVisualizer">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//LMLVisualizer/attributes"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//LMLVisualizer/dslVisualizer"/>
+      <genFeatures createChild="false" propertyDescription="Sets the element's name."
+          ecoreFeature="ecore:EAttribute PLM.ecore#//LMLVisualizer/name"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//LMLVisualizer/xLocation"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//LMLVisualizer/yLocation"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//LMLVisualizer/width"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//LMLVisualizer/height"/>
+      <genOperations ecoreOperation="PLM.ecore#//LMLVisualizer/getDefaultVisualizationValues"/>
+      <genOperations ecoreOperation="PLM.ecore#//LMLVisualizer/getValueForKey">
+        <genParameters ecoreParameter="PLM.ecore#//LMLVisualizer/getValueForKey/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="PLM.ecore#//LMLVisualizer/getContainingElement"/>
+      <genOperations ecoreOperation="PLM.ecore#//LMLVisualizer/EOperation0"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//Property"/>
+    <genClasses ecoreClass="PLM.ecore#//Attribute">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Attribute/value"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Attribute/mutability"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Attribute/datatype"/>
+      <genOperations ecoreOperation="PLM.ecore#//Attribute/getMutabilityAsString"/>
+      <genOperations ecoreOperation="PLM.ecore#//Attribute/represent"/>
+      <genOperations ecoreOperation="PLM.ecore#//Attribute/getPossibleDataTypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Attribute/getPrimitiveDataTypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Attribute/getEnumerationDataTypes"/>
+      <genOperations ecoreOperation="PLM.ecore#//Attribute/isEnumeration"/>
+      <genOperations ecoreOperation="PLM.ecore#//Attribute/getEnumeration"/>
+      <genOperations ecoreOperation="PLM.ecore#//Attribute/getLiterals"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Method">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Method/body"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Method/parameter"/>
+      <genOperations ecoreOperation="PLM.ecore#//Method/represent"/>
+      <genOperations ecoreOperation="PLM.ecore#//Method/getInput"/>
+      <genOperations ecoreOperation="PLM.ecore#//Method/getOutput"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Enumeration">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Enumeration/literal"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//Parameter">
+      <genFeatures createChild="false" propertyDescription="Sets the element's name."
+          ecoreFeature="ecore:EAttribute PLM.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Parameter/expression"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Parameter/output"/>
+      <genOperations ecoreOperation="PLM.ecore#//Parameter/getClabject"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//ClabjectParameter">
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference PLM.ecore#//ClabjectParameter/datatype"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//PrimitiveParameter">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//PrimitiveParameter/datatype"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Multiplicity">
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Multiplicity/lower"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Multiplicity/upper"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//Multiplicity/potency"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Multiplicity/connectionend"/>
+    </genClasses>
+    <genClasses ecoreClass="PLM.ecore#//Package">
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference PLM.ecore#//Package/content"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//AbstractDSLVisualizer">
+      <genFeatures createChild="false" propertyDescription="Apply to instance level or type level only"
+          ecoreFeature="ecore:EAttribute PLM.ecore#//AbstractDSLVisualizer/instanceLevel"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EAttribute PLM.ecore#//AbstractDSLVisualizer/notation"/>
+      <genOperations ecoreOperation="PLM.ecore#//AbstractDSLVisualizer/format"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//AbstractBehavior">
+      <genFeatures createChild="false" propertyDescription="Sets the element's name."
+          ecoreFeature="ecore:EAttribute PLM.ecore#//AbstractBehavior/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PLM.ecore#//AbstractConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PLM.ecore#//AbstractConstraint/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

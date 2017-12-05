@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Service
+Bundle-SymbolicName: org.melanee.core.designation.service;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: org.melanee.core.designation.service.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.melanee.core.models.plm;bundle-version="2.0.0",
+ org.melanee.core.workbench
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: org.melanee.core.designation.service

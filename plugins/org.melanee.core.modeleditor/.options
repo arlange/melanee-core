@@ -1,0 +1,7 @@
+# Tracing options for the org.melanee.core.modeleditor plug-in
+
+# Common issues
+org.melanee.core.modeleditor/debug=false
+
+# Visual IDs
+org.melanee.core.modeleditor/debug/visualID=false

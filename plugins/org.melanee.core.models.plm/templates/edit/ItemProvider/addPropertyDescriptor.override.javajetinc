@@ -1,0 +1,170 @@
+<%@ jet package="org.eclipse.emf.codegen.ecore.templates.edit" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="ItemProvider" %>
+<%
+/*******************************************************************************
+ * Copyright (c) 2013 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+%>
+<%/*
+   * This template is responsible for the choice for datatype and value trait
+*/%>
+<%//Custom Code datatype%>
+<%if (genPackage.getEcorePackage().getName().equalsIgnoreCase("PLM") && genFeature.getCapName().equalsIgnoreCase("Datatype")){%>
+	itemPropertyDescriptors.add
+			(new org.eclipse.emf.edit.provider.ItemPropertyDescriptor
+				(((<%=genModel.getImportedName("org.eclipse.emf.edit.provider.ComposeableAdapterFactory")%>)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_feature"),<%=genModel.getNonNLS()%>
+  <%if (genFeature.getPropertyDescription() == null || genFeature.getPropertyDescription().length() == 0) {%>
+				 getString("_UI_PropertyDescriptor_description", "_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_feature", "_UI_<%=genFeature.getGenClass().getName()%>_type"),<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
+  <%} else {%>
+				 getString("_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_description"),<%=genModel.getNonNLS()%>
+  <%}%>
+				 <%=genFeature.getQualifiedFeatureAccessor()%>,
+				 <%=genFeature.getProperty() == GenPropertyKind.EDITABLE_LITERAL ? "true" : "false"%>,
+				 <%=genFeature.isPropertyMultiLine() ? "true" : "false"%>,
+				 <%=genFeature.isPropertySortChoices() ? "true" : "false"%>,
+  <%if (genFeature.isReferenceType()) {%>
+				 null,
+  <%} else {%>
+				 <%=genModel.getImportedName("org.eclipse.emf.edit.provider.ItemPropertyDescriptor")%>.<%=genFeature.getPropertyImageName()%>,
+  <%}%>
+  <%if (genFeature.getPropertyCategory() == null || genFeature.getPropertyCategory().length() == 0) {%>
+				 null,
+  <%} else {%>
+				 getString("<%=genModel.getPropertyCategoryKey(genFeature.getPropertyCategory())%>"),<%=genModel.getNonNLS()%>
+  <%}%>
+  <%if (genFeature.getPropertyFilterFlags().isEmpty()) {%>
+				 null)
+  <%} else {%>
+				 new String[] {
+    <%for (Iterator<String> j = genFeature.getPropertyFilterFlags().iterator(); j.hasNext();) { String filterFlag = j.next();%>
+      <%if (filterFlag != null && filterFlag.length() > 0) {%>
+					"<%=filterFlag%>"<%if (j.hasNext()) {%>,<%}%><%=genModel.getNonNLS()%>
+      <%}%>
+    <%}%>
+				 })
+  <%}%>
+  {
+			@Override
+			public Collection<?> getChoiceOfValues(Object object) {
+				if (object instanceof org.melanee.core.models.plm.PLM.Feature)
+						return ((org.melanee.core.models.plm.PLM.Feature)object).getClabject().getDeepModel().getAllDatatypes();
+				if (object instanceof org.melanee.core.models.plm.PLM.PrimitiveParameter)
+					return ((org.melanee.core.models.plm.PLM.PrimitiveParameter)object).getClabject().getDeepModel().getAllDatatypes();
+				
+				return new java.util.ArrayList<Object>();
+			}
+		});
+<%}%>
+<%//Custom Code value%>
+<%else if (genPackage.getEcorePackage().getName().equalsIgnoreCase("PLM") && genFeature.getCapName().equalsIgnoreCase("Value")){%>
+	itemPropertyDescriptors.add
+			(new org.eclipse.emf.edit.provider.ItemPropertyDescriptor
+				(((<%=genModel.getImportedName("org.eclipse.emf.edit.provider.ComposeableAdapterFactory")%>)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_feature"),<%=genModel.getNonNLS()%>
+  <%if (genFeature.getPropertyDescription() == null || genFeature.getPropertyDescription().length() == 0) {%>
+				 getString("_UI_PropertyDescriptor_description", "_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_feature", "_UI_<%=genFeature.getGenClass().getName()%>_type"),<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
+  <%} else {%>
+				 getString("_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_description"),<%=genModel.getNonNLS()%>
+  <%}%>
+				 <%=genFeature.getQualifiedFeatureAccessor()%>,
+				 <%=genFeature.getProperty() == GenPropertyKind.EDITABLE_LITERAL ? "true" : "false"%>,
+				 <%=genFeature.isPropertyMultiLine() ? "true" : "false"%>,
+				 <%=genFeature.isPropertySortChoices() ? "true" : "false"%>,
+  <%if (genFeature.isReferenceType()) {%>
+				 null,
+  <%} else {%>
+				 <%=genModel.getImportedName("org.eclipse.emf.edit.provider.ItemPropertyDescriptor")%>.<%=genFeature.getPropertyImageName()%>,
+  <%}%>
+  <%if (genFeature.getPropertyCategory() == null || genFeature.getPropertyCategory().length() == 0) {%>
+				 null,
+  <%} else {%>
+				 getString("<%=genModel.getPropertyCategoryKey(genFeature.getPropertyCategory())%>"),<%=genModel.getNonNLS()%>
+  <%}%>
+  <%if (genFeature.getPropertyFilterFlags().isEmpty()) {%>
+				 null)
+  <%} else {%>
+				 new String[] {
+    <%for (Iterator<String> j = genFeature.getPropertyFilterFlags().iterator(); j.hasNext();) { String filterFlag = j.next();%>
+      <%if (filterFlag != null && filterFlag.length() > 0) {%>
+					"<%=filterFlag%>"<%if (j.hasNext()) {%>,<%}%><%=genModel.getNonNLS()%>
+      <%}%>
+    <%}%>
+				 })
+  <%}%>
+  {
+			@Override
+			public Collection<?> getChoiceOfValues(Object object) {
+				//First call of method is on EAttribute, second call on Attribute only happens 
+				//in case empty collection is returned.
+				if (! (object instanceof org.melanee.core.models.plm.PLM.Attribute))
+					return new java.util.ArrayList<String>();
+			
+				List<String> enumerations = new java.util.ArrayList<String>();
+				org.melanee.core.models.plm.PLM.Attribute attribute = (org.melanee.core.models.plm.PLM.Attribute)object;
+				
+				for (org.melanee.core.models.plm.PLM.Enumeration e : attribute.getClabject().getDeepModel().getEnumeration())
+					enumerations.add(e.getName());
+				
+				if (enumerations.contains(attribute.getDatatype())){
+					List<String> choices = new java.util.ArrayList<String>();
+					
+					for (org.melanee.core.models.plm.PLM.Enumeration e : ((org.melanee.core.models.plm.PLM.Feature)object).getClabject().getDeepModel().getEnumeration())
+						if(e.getName().equals(attribute.getDatatype())){
+							choices.addAll(e.getLiteral());
+							break;
+						}
+					
+					return choices;
+				}
+				else
+					return null;
+			}
+		});
+<%}%>
+<%//Default Code%>
+<%else {%>
+	itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((<%=genModel.getImportedName("org.eclipse.emf.edit.provider.ComposeableAdapterFactory")%>)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_feature"),<%=genModel.getNonNLS()%>
+  <%if (genFeature.getPropertyDescription() == null || genFeature.getPropertyDescription().length() == 0) {%>
+				 getString("_UI_PropertyDescriptor_description", "_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_feature", "_UI_<%=genFeature.getGenClass().getName()%>_type"),<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
+  <%} else {%>
+				 getString("_UI_<%=genFeature.getGenClass().getName()%>_<%=genFeature.getName()%>_description"),<%=genModel.getNonNLS()%>
+  <%}%>
+				 <%=genFeature.getQualifiedFeatureAccessor()%>,
+				 <%=genFeature.getProperty() == GenPropertyKind.EDITABLE_LITERAL ? "true" : "false"%>,
+				 <%=genFeature.isPropertyMultiLine() ? "true" : "false"%>,
+				 <%=genFeature.isPropertySortChoices() ? "true" : "false"%>,
+  <%if (genFeature.isReferenceType()) {%>
+				 null,
+  <%} else {%>
+				 <%=genModel.getImportedName("org.eclipse.emf.edit.provider.ItemPropertyDescriptor")%>.<%=genFeature.getPropertyImageName()%>,
+  <%}%>
+  <%if (genFeature.getPropertyCategory() == null || genFeature.getPropertyCategory().length() == 0) {%>
+				 null,
+  <%} else {%>
+				 getString("<%=genModel.getPropertyCategoryKey(genFeature.getPropertyCategory())%>"),<%=genModel.getNonNLS()%>
+  <%}%>
+  <%if (genFeature.getPropertyFilterFlags().isEmpty()) {%>
+				 null));
+  <%} else {%>
+				 new String[] {
+    <%for (Iterator<String> j = genFeature.getPropertyFilterFlags().iterator(); j.hasNext();) { String filterFlag = j.next();%>
+      <%if (filterFlag != null && filterFlag.length() > 0) {%>
+					"<%=filterFlag%>"<%if (j.hasNext()) {%>,<%}%><%=genModel.getNonNLS()%>
+      <%}%>
+    <%}%>
+				 }));
+  <%}%>
+<%}%>

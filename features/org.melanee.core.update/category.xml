@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.melanee.core.feature_1.0.0.qualifier.jar" id="org.melanee.core.feature" version="1.0.0.qualifier">
+      <category name="Melanee"/>
+   </feature>
+   <category-def name="Melanee" label="Melanee"/>
+</site>

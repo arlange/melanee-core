@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated links -->
+      <package
+            uri="http://melanee.org/links"
+            class="org.melanee.core.models.links.links.LinksPackage"
+            genModel="model/links.genmodel"/>
+   </extension>
+
+</plugin>

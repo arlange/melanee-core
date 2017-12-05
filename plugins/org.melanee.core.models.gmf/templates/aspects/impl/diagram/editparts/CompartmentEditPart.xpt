@@ -1,0 +1,128 @@
+/*******************************************************************************
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«EXTENSION xpt::diagram::editparts::Utils»
+
+/************************************************************
+* this is a fix for the NPE from MELCORE-61
+*************************************************************/
+«AROUND getTargetEditPartMethod FOR gmfgen::GenCompartment»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public org.eclipse.gef.EditPart getTargetEditPart(org.eclipse.gef.Request request) {
+		«IF self.childNodes->size() > 0-»
+			if (request instanceof org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest) {
+				org.eclipse.gmf.runtime.diagram.core.edithelpers.CreateElementRequestAdapter adapter = ((org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest) request).getViewAndElementDescriptor().getCreateElementRequestAdapter();
+				org.eclipse.gmf.runtime.emf.type.core.IElementType type = (org.eclipse.gmf.runtime.emf.type.core.IElementType) adapter.getAdapter(org.eclipse.gmf.runtime.emf.type.core.IElementType.class);
+			«FOREACH self.childNodes->asSequence() AS childNode-»
+				if (type == «EXPAND xpt::providers::ElementTypes::accessElementType FOR childNode») {
+					return this;
+				}
+			«ENDFOREACH-»
+				if(getParent() != null){
+					return getParent().getTargetEditPart(request);
+				}
+			}
+			if (request instanceof org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest) {
+				«IF haveOneOfChildNodesIncomimgLinks(self)-»
+				if (org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_CONNECTION_END.equals(request.getType())) {
+					for (Object type : ((org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest) request).getElementTypes()) {
+						if (type instanceof org.eclipse.gmf.runtime.emf.type.core.IElementType) {
+							org.eclipse.gmf.runtime.emf.type.core.IElementType elementType = (org.eclipse.gmf.runtime.emf.type.core.IElementType) type;
+							if («FOREACH collectIncomingLinks(self) AS link SEPARATOR ' || '»elementType.equals(«EXPAND xpt::providers::ElementTypes::accessElementType FOR link»)«ENDFOREACH»)
+								return super.getTargetEditPart(request);
+						}
+					}
+				}
+				«ENDIF-»
+				return getParent().getTargetEditPart(request);
+			}
+		«ENDIF-»
+		return super.getTargetEditPart(request);
+	}
+«ENDAROUND»
+
+/*******************************************************************************
+ * Hide the tooltip for compartments
+*******************************************************************************/
+«AROUND getCompartmentName FOR gmfgen::GenCompartment-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public String getCompartmentName() {
+		return null;
+	}
+«ENDAROUND»
+
+/*******************************************************************************
+ * Hide the border at the top of compartments
+*******************************************************************************/
+«AROUND createFigure FOR gmfgen::GenCompartment»
+	«IF self.editPartClassName = 'LevelDomainElementsCompartmentEditPart'»
+		«REM»or self.editPartClassName = 'DeepModelDeepModelLevelCompartmentEditPart'«ENDREM»
+		«REM»or self.editPartClassName = 'ConnectionLMLVisualizersCompartmentEditPart'»«ENDREM»
+		«REM»By default titles are shown even if there are no TitleStyle, we need to switch it off«ENDREM»«-»
+		«EXPAND xpt::Common::generatedMemberComment»
+		public org.eclipse.draw2d.IFigure createFigure() {
+			org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure result = (org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure) super.createFigure();
+			result.setTitleVisibility(false);
+			result.setBorder(null);
+			return result;
+		}
+	«ELSE»
+		«targetDef.proceed()»
+	«ENDIF»
+«ENDAROUND»
+
+
+/*******************************************************************************
+ * Install custom edit policy for PopupToolbar
+*******************************************************************************/
+«AROUND createDefaultEditPoliciesBody FOR gmfgen::GenCompartment-»
+	«IF self.editPartClassName = 'LevelDomainElementsCompartmentEditPart'
+		or self.editPartClassName = 'DeepModelDeepModelLevelCompartmentEditPart'
+		or self.editPartClassName.startsWith('EntityEntityContentsCompartment')
+		or self.editPartClassName.startsWith('PackagePackageContentCompartment')»
+		super.createDefaultEditPolicies();
+		«IF canCollapse-»
+			installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableCompartmentEditPolicy());
+		«ENDIF-»
+		«EXPAND xpt::diagram::editparts::Common::installSemanticEditPolicy-»
+		«IF childNodes->size() > 0-»
+			«IF self.editPartClassName.startsWith('EntityEntityContentsCompartment')»
+				installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CREATION_ROLE, new org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent(org.melanee.core.modeleditor.part.PLMVisualIDRegistry.TYPED_INSTANCE));
+			«ELSE»
+				installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CREATION_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy());
+			«ENDIF»
+			installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.DRAG_DROP_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy());
+		«ENDIF-»
+		«EXPAND xpt::diagram::editparts::Common::installCanonicalEditPolicy-»
+		«EXPAND xpt::diagram::editparts::Common::behaviour-»
+		
+		«EXPAND installAdditionalEditPolicies FOR self-»
+	«ELSE»
+		«targetDef.proceed()»
+	«ENDIF»
+«ENDAROUND»
+
+«DEFINE installAdditionalEditPolicies FOR gmfgen::GenCompartment»
+		«IF self.editPartClassName = 'LevelDomainElementsCompartmentEditPart'»
+			removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+			removeEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE, new org.melanee.core.modeleditor.custom.resizableswimlanes.editpolicies.SwimlaneLevelDomainElementsCompartmentLayoutEditPolicy());
+			//installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE, new org.melanee.core.modeleditor.custom.popupbartools.editpolicy.PLMModelElementPopupBarEditPolicy());
+		«ELSEIF self.editPartClassName = 'DeepModelDeepModelLevelCompartmentEditPart'»
+			removeEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE, new org.melanee.core.modeleditor.custom.resizableswimlanes.editpolicies.SwimlaneLevelCompartmentLayoutEditPolicy());
+		«ELSEIF self.editPartClassName.startsWith('EntityEntityContentsCompartment')
+					or self.editPartClassName.startsWith('PackagePackageContentCompartment')»
+			removeEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE);
+			installEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE, new org.melanee.core.modeleditor.custom.contentawarecontainer.ContentAwareContainerCompartmentLayoutEditPolicy());
+		«ENDIF»
+«ENDDEFINE»

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Modelexplorer
+Bundle-SymbolicName: org.melanee.core.modelexplorer;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: org.melanee.core.modelexplorer.Activator
+Require-Bundle: org.eclipse.jgit;bundle-version="3.4.1",
+ org.melanee.core.models.plm;bundle-version="2.0.0",
+ org.eclipse.emf.edit.ui;bundle-version="2.10.1",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.7.0",
+ org.melanee.core.models.links;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.melanee.core.modelexplorer

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            category="org.melanee.melaneecategory"
+            class="org.melanee.core.melanee2metadepth.wizards.Export2MetadepthWizard"
+            id="org.melanee.core.melanee2metadepth.wizard"
+            name="Metadepth">
+      </wizard>
+   </extension>
+
+</plugin>

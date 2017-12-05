@@ -1,0 +1,500 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«EXTENSION xpt::editor::Utils»
+
+«/*
+	- Validation on SelectionChanged
+	- Rebuild of DSL Palette on Selection Changed
+ */»
+
+«AROUND additions FOR gmfgen::GenEditorView-»
+
+	«EXPAND doSave»
+	
+	«EXPAND paletteExtensions»
+	
+	«EXPAND startEmendationService»
+	
+	«EXPAND createGraphicalViewer»
+	
+«ENDAROUND»
+
+«REM»
+*******************************************************************
+* Add validation to save command
+*******************************************************************
+«ENDREM»
+«DEFINE doSave FOR gmfgen::GenEditorView»
+/**
+ * @generated
+ */
+@Override
+public void doSave(org.eclipse.core.runtime.IProgressMonitor progressMonitor) {
+	org.melanee.core.modeleditor.part.ValidateAction.runValidation(this.getDiagram());
+	
+	super.doSave(progressMonitor);
+}
+«ENDDEFINE»
+
+«REM»
+*******************************************************************
+* Prevent "Save as" because this leads to corrupted diagrams
+*******************************************************************
+«ENDREM»
+«AROUND isSaveAsAllowed FOR gmfgen::GenEditorView-»
+	«EXPAND xpt::Common::generatedMemberComment»
+public boolean isSaveAsAllowed() {
+	//Prevent "Save as" because this leads to corrupted diagrams
+	return false;
+}
+«ENDAROUND»
+
+«AROUND doSaveAs FOR gmfgen::GenEditorView-»
+	«EXPAND xpt::Common::generatedMemberComment»
+public void doSaveAs() {
+	// Do nothing
+}
+«ENDAROUND»
+
+«REM»This code is not needed anymore«ENDREM»
+«AROUND performSaveAs FOR gmfgen::GenEditorView-»
+
+«ENDAROUND»
+
+«REM»
+*******************************************************************
+* This is responsible for managing the palette (DSL functions)
+*******************************************************************
+«ENDREM»
+«DEFINE paletteExtensions FOR gmfgen::GenEditorView»
+/**
+  * This listener is responsible for invoking the palette update process
+  * @generated
+  */
+private org.eclipse.ui.ISelectionListener selectionListener = new org.eclipse.ui.ISelectionListener() {
+	@Override
+	public void selectionChanged(org.eclipse.ui.IWorkbenchPart part, org.eclipse.jface.viewers.ISelection selection) {
+		if (	//Happens on startup
+				org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage() != null
+				&& part instanceof org.melanee.core.modeleditor.part.PLMDiagramEditor
+				&& selection instanceof org.eclipse.jface.viewers.StructuredSelection
+				&& ((org.eclipse.jface.viewers.IStructuredSelection)selection).getFirstElement() instanceof org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
+		{
+			
+			org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart editPart = (org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)((org.eclipse.jface.viewers.IStructuredSelection)selection).getFirstElement();
+			//Level validation on selection change
+			//ValidateAction.runValidation((org.eclipse.gmf.runtime.notation.View)org.eclipse.emf.ecore.util.EcoreUtil.getRootContainer(editPart.getNotationView()));
+			
+			//Debugcode
+			//System.out.println("Selected : " + editPart.getClass().getName());
+			
+			if (editPart.resolveSemanticElement() instanceof org.melanee.core.models.plm.PLM.Element)
+				managePalette((org.melanee.core.models.plm.PLM.Element)editPart.resolveSemanticElement());
+		}
+	}
+};
+	
+/**
+ * @generated
+ */
+@Override
+protected void startListening() {
+	super.startListening();
+	
+	org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().addPostSelectionListener(selectionListener);
+}
+	
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void stopListening() {
+		super.stopListening();
+		
+		//Can be null if exiting Eclipse with diagram open
+		if (org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)
+			org.eclipse.ui.PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().removePostSelectionListener(selectionListener);
+	}
+
+	/**
+	 * @generated
+	 */
+	public org.eclipse.gef.ui.palette.PaletteViewer getPalette()
+	{
+		return getEditDomain().getPaletteViewer();
+	}
+	
+	/**
+	 * @generated
+	 */
+	private org.eclipse.gef.palette.PaletteDrawer dslElementsGroup = null;
+	/**
+	 * @generated
+	 */
+	
+	
+	public static String dslElementsGroupID = "dslElementsGroup";
+	
+	/**
+	 * @generated
+	 */
+	private void managePalette(org.melanee.core.models.plm.PLM.Element selectedElement)
+	{
+		//Does the DSL Elements group alread exist? => Create it
+		if (dslElementsGroup == null)
+		{
+			org.eclipse.gef.palette.PaletteRoot root = getEditDomain().getPaletteViewer().getPaletteRoot();
+			
+			dslElementsGroup = new org.eclipse.gef.palette.PaletteDrawer("DSL Elements");
+			dslElementsGroup.setId("dslElementsGroup"); 
+			
+			root.add(dslElementsGroup);
+		}
+		
+		dslElementsGroup.getChildren().clear();
+		
+		//An deep model offers no context from which we can retrieve the DSL Elements
+		if (selectedElement instanceof org.melanee.core.models.plm.PLM.DeepModel)
+		{
+			dslElementsGroup.setVisible(false);
+			return;
+		}
+			
+		org.eclipse.emf.ecore.EObject container = selectedElement;
+		
+		//Find the containing model
+		while (container != null && !(container instanceof org.melanee.core.models.plm.PLM.Level))
+			container = container.eContainer();
+		
+		//No level found..
+		if (container == null)
+		{
+			dslElementsGroup.setVisible(false);
+			return;
+		}
+		
+		// search for the next higher level
+		org.melanee.core.models.plm.PLM.DeepModel d = (org.melanee.core.models.plm.PLM.DeepModel)container.eContainer();
+		
+		//We are at the highest level
+		if (d.getContent().indexOf(container) == 0)
+		{
+			dslElementsGroup.setVisible(false);
+			return;
+		}
+		else
+			dslElementsGroup.setVisible(true);
+		
+		org.melanee.core.models.plm.PLM.Level higherLevel = d.getContent().get(d.getContent().indexOf(container) - 1);
+		
+		
+		java.util.LinkedList<org.eclipse.gef.palette.ToolEntry> entries = new java.util.LinkedList<org.eclipse.gef.palette.ToolEntry>();
+		//Fill the palette
+		java.util.Iterator<org.eclipse.emf.ecore.EObject> contentIterator = higherLevel.eAllContents();
+		while (contentIterator.hasNext()) {
+			
+			org.eclipse.emf.ecore.EObject eObject = contentIterator.next();
+			if (! (eObject instanceof org.melanee.core.models.plm.PLM.Clabject) )
+				continue;
+			
+			org.melanee.core.models.plm.PLM.Element e = (org.melanee.core.models.plm.PLM.Element)eObject;
+			
+			//For entities we simply create the entry
+			if (e instanceof org.melanee.core.models.plm.PLM.Entity
+				&& ((org.melanee.core.models.plm.PLM.Clabject)e).getPotency() != 0 && e.getName() != null)
+			{
+			
+				java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> types = new java.util.ArrayList<org.eclipse.gmf.runtime.emf.type.core.IElementType>(2);
+				types.add(org.melanee.core.modeleditor.providers.PLMElementTypes.Entity_3120);
+				types.add(org.melanee.core.modeleditor.providers.PLMElementTypes.Entity_3105);
+				
+				org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry entry = new org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry(
+						e.getName(),
+						"Creates a new " + e.getName(),
+						types);
+				
+				entry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + ".CreationTool");
+				entry.setSmallIcon(org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin
+						.findImageDescriptor("/org.melanee.core.models.gmf/icons/clabject16.gif")); //$NON-NLS-1$
+				entry.setLargeIcon(org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin
+						.findImageDescriptor("/org.melanee.core.models.gmf/icons/clabject16.gif"));
+				
+				entries.add(entry);
+			}
+			
+			«REM»
+//For connections we also need to have the connecting lines
+else if (e instanceof org.melanee.core.models.plm.PLM.Connection 
+			&& ((org.melanee.core.models.plm.PLM.Clabject)e).getPotency() != 0)
+{
+	org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry entry = new org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry(
+			((org.melanee.core.models.plm.PLM.Connection)e).getHumanReadableName(),
+			"Creates a new " + ((org.melanee.core.models.plm.PLM.Connection)e).getHumanReadableName(),
+			java.util.Collections.singletonList(org.melanee.core.modeleditor.providers.PLMElementTypes.Connection_3060));
+	
+	entry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(e) + ".CreationTool");
+	entry.setSmallIcon(org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin
+			.findImageDescriptor("/org.melanee.core.models.gmf/icons/connection16.gif"));
+	entry.setLargeIcon(org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin
+			.findImageDescriptor("/org.melanee.core.models.gmf/icons/connection16.gif"));
+	
+	entries.add(entry);
+
+	//An entry for each connectionEnd must be added to the palette
+	for (org.melanee.core.models.plm.PLM.ConnectionEnd connectionEnd : ((org.melanee.core.models.plm.PLM.Connection)e).getConnectionEnd()){
+		org.melanee.core.modeleditor.part.PLMDiagramEditor.LinkToolEntry linkEntry = new org.melanee.core.modeleditor.part.PLMDiagramEditor.LinkToolEntry(
+				"<<" + connectionEnd.getHumanReadableConnectionEndName() + ">>" + ((org.melanee.core.models.plm.PLM.Connection)e).getHumanReadableName(),
+				"Creates a new " + "<<" + connectionEnd.getHumanReadableConnectionEndName() + ">>" + ((org.melanee.core.models.plm.PLM.Connection)e).getHumanReadableName(),
+				java.util.Collections.singletonList(org.melanee.core.modeleditor.providers.PLMElementTypes.ConnectionEnd_4036));
+				
+		linkEntry.setId("dsl." + org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil.getProxyID(connectionEnd) + "<<" + connectionEnd.getHumanReadableConnectionEndName() + ">>" + ".CreationTool");
+		linkEntry.setSmallIcon(org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin
+				.findImageDescriptor("/org.melanee.core.models.gmf/icons/connectionEnd16.gif"));
+		linkEntry.setLargeIcon(org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin
+				.findImageDescriptor("/org.melanee.core.models.gmf/icons/connectionEnd16.gif"));
+		
+		entries.add(linkEntry);
+	}
+}
+«ENDREM»
+		}
+		
+		//Connections are instantiated via context menu.
+		org.melanee.core.modeleditor.part.PLMDiagramEditor.LinkToolEntry entry = new org.melanee.core.modeleditor.part.PLMDiagramEditor.LinkToolEntry(
+				"Instantiate Connection",
+				"Instantiates / Creates a new connection.",
+				Collections
+						.singletonList(org.melanee.core.modeleditor.providers.PLMElementTypes.ConnectionEnd_4036));
+
+		//No leading "dsl." to apply dsl specific commands
+		entry.setId("connection.CreationTool");
+		entry.setSmallIcon(org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin
+				.findImageDescriptor("/org.melanee.core.models.gmf/icons/connection16.gif"));
+		entry.setLargeIcon(org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin
+				.findImageDescriptor("/org.melanee.core.models.gmf/icons/connection16.gif"));
+
+		entries.add(entry);
+		
+		java.util.Collections.sort(entries, new java.util.Comparator<org.eclipse.gef.palette.ToolEntry>() {
+
+			@Override
+			public int compare(org.eclipse.gef.palette.ToolEntry o1, org.eclipse.gef.palette.ToolEntry o2) {
+				//All Entities need to go to the top
+				if (o1 instanceof  org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry
+						&& ((org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry) o1).elementTypes.contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Entity_3105)) {
+					//We compare to a connection node or link entry -> We want to be first
+					if (o2 instanceof org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry
+							&& !((org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry) o2).elementTypes.contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Entity_3105)
+							|| o2 instanceof org.melanee.core.modeleditor.part.PLMDiagramEditor.LinkToolEntry)
+						return -1;
+					//We are two Entities -> Sort by name
+					else
+						return (o1.getLabel().compareToIgnoreCase(o2.getLabel()));
+
+				}
+				else if (o1 instanceof org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry
+						&& !((org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry) o1).elementTypes.contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Entity_3105)
+						|| o1 instanceof org.melanee.core.modeleditor.part.PLMDiagramEditor.LinkToolEntry){
+					//We compare to a connection node or link entry -> We want to be first
+					if (o2 instanceof org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry
+							&& ((org.melanee.core.modeleditor.part.PLMDiagramEditor.NodeToolEntry) o2).elementTypes.contains(org.melanee.core.modeleditor.providers.PLMElementTypes.Entity_3105))
+						return 1;
+					//We are two Connections -> Sort by name
+					else {
+						if ((o1.getLabel() == null || o1.getLabel().length() == 0) && (o2.getLabel() == null || o2.getLabel().length() == 0))
+							return 0;
+						else if ((o1.getLabel() == null || o1.getLabel().length() == 0) && (o2.getLabel() != null || o2.getLabel().length() != 0))
+							return 1;
+						else if ((o1.getLabel() != null || o1.getLabel().length() != 0) && (o2.getLabel() == null || o2.getLabel().length() == 0))
+							return -1;
+						else
+							//In order to get the entry tools sorted next to their connection tool
+							//their leading <<.*>> must be removed for comparison
+							return o1.getLabel().replaceAll("<<.*?>>", "").compareToIgnoreCase(
+									o2.getLabel().replaceAll("<<.*?>>", ""));
+					}
+				}
+				return 0;
+			}
+		});
+		
+		dslElementsGroup.addAll(entries);
+		
+		if (dslElementsGroup.getChildren().size() == 0)
+			dslElementsGroup.setVisible(false);
+	}
+	
+	/**
+	 * @generated
+	 */
+	private static class NodeToolEntry extends org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry {
+
+		/**
+		 * @generated
+		 */
+		private final java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> elementTypes;
+
+		/**
+		 * @generated
+		 */
+		private NodeToolEntry(String title, String description,
+				java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> elementTypes) {
+			super(null, title, null);
+			super.setDescription(description);
+			this.elementTypes = elementTypes;
+		}
+
+		/**
+		 * @generated
+		 */
+		public org.eclipse.gef.Tool createTool() {
+			org.eclipse.gef.Tool tool = new org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool(elementTypes);
+			tool.setProperties(getToolProperties());
+			return tool;
+		}
+	}
+	
+		/**
+	 * @generated
+	 */
+	private static class LinkToolEntry extends org.eclipse.gef.palette.ToolEntry {
+
+		/**
+		 * @generated
+		 */
+		private final java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> relationshipTypes;
+
+		/**
+		 * @generated
+		 */
+		private LinkToolEntry(String title, String description,
+				java.util.List<org.eclipse.gmf.runtime.emf.type.core.IElementType> relationshipTypes) {
+			super(title, description, null, null);
+			this.relationshipTypes = relationshipTypes;
+		}
+
+		/**
+		 * @generated
+		 */
+		public org.eclipse.gef.Tool createTool() {
+			org.eclipse.gef.Tool tool = new org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool(relationshipTypes);
+			tool.setProperties(getToolProperties());
+			return tool;
+		}
+	}
+«ENDDEFINE»
+
+«REM»
+*******************************************************************
+* This is responsible for managing the palette (DSL functions)
+*******************************************************************
+«ENDREM»
+«DEFINE startEmendationService FOR gmfgen::GenEditorView»
+/**
+ * @generated
+ */
+@Override
+public void createPartControl(org.eclipse.swt.widgets.Composite parent) {
+	super.createPartControl(parent);
+	
+	org.melanee.core.emendation.service.EmendationObserver.getInstance().startListening(getDiagram().getElement());
+	org.melanee.core.modeleditor.custom.resourcesetlisteners.ConstraintLanguageServiceResourceSetListener.getInstance().startListening(getDiagram().getElement());
+}
+«ENDDEFINE»
+
+«REM»
+*******************************************************************
+* This is an editor that supports actions above the diagram
+* itself
+*******************************************************************
+«ENDREM»
+«DEFINE createGraphicalViewer FOR gmfgen::GenEditorView»
+@Override
+protected void createGraphicalViewer(org.eclipse.swt.widgets.Composite parent) {
+    
+	//Create the composite which contains the toolbar and
+	//the flyout palette
+	org.eclipse.swt.widgets.Composite rootComposite = new org.eclipse.swt.widgets.Composite(parent.getParent(), org.eclipse.swt.SWT.NONE);
+	org.eclipse.swt.layout.GridLayout layout = new org.eclipse.swt.layout.GridLayout(1, true);
+    layout.verticalSpacing = 0;
+    layout.marginHeight = 0;
+    layout.marginWidth = 0;
+    rootComposite.setLayout(layout);
+		
+    //This composite contains the toolbar
+    org.eclipse.swt.widgets.Composite toolbarParent = new org.eclipse.swt.widgets.Composite(rootComposite, org.eclipse.swt.SWT.None);
+    toolbarParent.setLayoutData(new org.eclipse.swt.layout.GridData(org.eclipse.swt.layout.GridData.FILL_HORIZONTAL));
+    toolbarParent.setBackground(PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_WHITE));
+    toolbarParent.setLayout(new org.eclipse.swt.layout.RowLayout());
+
+    org.eclipse.swt.widgets.ToolBar toolBar = new org.eclipse.swt.widgets.ToolBar(toolbarParent, org.eclipse.swt.SWT.FLAT | org.eclipse.swt.SWT.WRAP | org.eclipse.swt.SWT.RIGHT);
+    org.eclipse.jface.action.ToolBarManager toolBarManager = new org.eclipse.jface.action.ToolBarManager(toolBar);
+
+    //These are the actions for alignment
+    org.eclipse.jface.action.Action alignLeft = new org.eclipse.gmf.runtime.diagram.ui.actions.AlignAction(this.getSite().getPage(), org.eclipse.gef.ui.actions.GEFActionConstants.ALIGN_LEFT, org.eclipse.draw2d.PositionConstants.LEFT, true);
+    toolBarManager.add(alignLeft);
+    org.eclipse.jface.action.Action alignCenter = new org.eclipse.gmf.runtime.diagram.ui.actions.AlignAction(this.getSite().getPage(), org.eclipse.gef.ui.actions.GEFActionConstants.ALIGN_CENTER, org.eclipse.draw2d.PositionConstants.CENTER, true);
+    toolBarManager.add(alignCenter);
+    org.eclipse.jface.action.Action alignRight = new org.eclipse.gmf.runtime.diagram.ui.actions.AlignAction(this.getSite().getPage(), org.eclipse.gef.ui.actions.GEFActionConstants.ALIGN_RIGHT, org.eclipse.draw2d.PositionConstants.RIGHT, true);
+    toolBarManager.add(alignRight);
+	    
+    toolBarManager.add(new org.eclipse.jface.action.Separator());
+	    
+    org.eclipse.jface.action.Action alignTop = new org.eclipse.gmf.runtime.diagram.ui.actions.AlignAction(this.getSite().getPage(), org.eclipse.gef.ui.actions.GEFActionConstants.ALIGN_TOP, org.eclipse.draw2d.PositionConstants.TOP, true);
+    toolBarManager.add(alignTop);
+    org.eclipse.jface.action.Action alignMiddle = new org.eclipse.gmf.runtime.diagram.ui.actions.AlignAction(this.getSite().getPage(), org.eclipse.gef.ui.actions.GEFActionConstants.ALIGN_MIDDLE, org.eclipse.draw2d.PositionConstants.MIDDLE, true);
+    toolBarManager.add(alignMiddle);
+    org.eclipse.jface.action.Action alignBottom = new org.eclipse.gmf.runtime.diagram.ui.actions.AlignAction(this.getSite().getPage(), org.eclipse.gef.ui.actions.GEFActionConstants.ALIGN_BOTTOM, org.eclipse.draw2d.PositionConstants.BOTTOM, true);
+    toolBarManager.add(alignBottom);
+	    
+    toolBarManager.add(new org.eclipse.jface.action.Separator());
+	    
+    //Show PropertiesView Action
+    org.eclipse.jface.action.Action showPropertiesView = new org.eclipse.gmf.runtime.diagram.ui.actions.ShowPropertiesViewAction(this);
+    toolBarManager.add(showPropertiesView);
+	    
+    toolBarManager.add(new org.eclipse.jface.action.Separator());
+	    
+    //The zooming action
+    org.eclipse.jface.action.ContributionItem zoom = new org.eclipse.gmf.runtime.diagram.ui.internal.actions.ZoomContributionItem(this.getSite().getPage());
+    toolBarManager.add(zoom);
+	
+	//Model exploring and linking
+	toolBarManager.add(new org.eclipse.jface.action.Separator());
+	org.eclipse.jface.action.Action modelExplorer = new org.melanee.core.modelexplorer.ModelExplorerAction();
+	toolBarManager.add(modelExplorer);
+	
+	//Compatibility Mode
+	toolBarManager.add(new org.eclipse.jface.action.Separator());
+	org.eclipse.jface.action.ContributionItem selectCompatibilityMode = new org.melanee.core.modeleditor.editortoolbaritems.SelectComplianceModeContributionItem(this.getSite().getPage(), (org.melanee.core.models.plm.PLM.Domain)getDiagram().getElement());		
+	toolBarManager.add(selectCompatibilityMode);
+	
+	//Model exploring and linking
+	org.eclipse.jface.action.Action validateModel = new org.melanee.core.modeleditor.editortoolbaritems.ValidateDeepModelAction((org.melanee.core.models.plm.PLM.Domain)getDiagram().getElement());
+	toolBarManager.add(validateModel);
+	
+    toolBarManager.update(true);
+	    
+        
+    //This is a seperator between editor and toolbar
+    org.eclipse.swt.widgets.Label separator = new org.eclipse.swt.widgets.Label(rootComposite, org.eclipse.swt.SWT.SEPARATOR | org.eclipse.swt.SWT.HORIZONTAL);
+    separator.setLayoutData(new org.eclipse.swt.layout.GridData(org.eclipse.swt.layout.GridData.FILL_HORIZONTAL));
+        
+    //This is the composite which contains the actual editors
+    parent.setParent(rootComposite);
+    org.eclipse.swt.layout.GridData gd3 = new org.eclipse.swt.layout.GridData(org.eclipse.swt.layout.GridData.FILL_BOTH);
+    gd3.grabExcessVerticalSpace = true;
+    parent.setLayoutData(gd3);
+		
+	super.createGraphicalViewer(parent);		
+}
+«ENDDEFINE»

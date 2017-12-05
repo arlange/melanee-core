@@ -1,0 +1,19 @@
+instructions.configure=\
+  addRepository(type:0,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-core/,name:MelanEE Core);\
+  addRepository(type:1,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-core/,name:MelanEE Core);\
+  addRepository(type:0,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-textdsl/,name:MelanEE Textual DSLs);\
+  addRepository(type:1,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-textdsl/,name:MelanEE Textual DSLs);\
+  addRepository(type:0,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-graphdsl/,name:MelanEE Graphical DSLs);\
+  addRepository(type:1,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-graphdsl/,name:MelanEE Graphical DSLs);\
+  addRepository(type:0,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-formdsl/,name:MelanEE Form DSLs);\
+  addRepository(type:1,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-formdsl/,name:MelanEE Form DSLs);\
+  addRepository(type:0,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-atl/,name:MelanEE ATL);\
+  addRepository(type:1,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-atl/,name:MelanEE ATL);\
+  addRepository(type:0,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-ocl/,name:MelanEE OCL);\
+  addRepository(type:1,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-ocl/,name:MelanEE OCL);\
+  addRepository(type:0,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-reasoning/,name:MelanEE Reasoning);\
+  addRepository(type:1,location:http${#58}//melanee.informatik.uni-mannheim.de/p2/melanee20/melanee-reasoning/,name:MelanEE Reasoning);\
+  addRepository(type:0,location:http${#58}//download.eclipse.org/eclipse/updates/4.5/,name:The Eclipse Project Updates);\
+  addRepository(type:1,location:http${#58}//download.eclipse.org/eclipse/updates/4.5/,name:The Eclipse Project Updates);\
+  addRepository(type:0,location:http${#58}//download.eclipse.org/releases/mars/,name:Eclipse Mars);\
+  addRepository(type:1,location:http${#58}//download.eclipse.org/releases/mars/,name:Eclipse Mars);\

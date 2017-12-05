@@ -1,0 +1,235 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+//**************************************************************
+//ADDITIONS
+//handle notifictaion is overriden later in this transformation
+//**************************************************************
+«AROUND additions FOR gmfgen::GenLink»
+//Sets the potency of instatiation ends
+«IF self.editPartClassName = 'ClassificationEditPart'»
+	«EXPAND updateSourcePotency-»
+	«EXPAND handleNotificationEventForClassification-»
+«ENDIF»
+«IF self.editPartClassName = 'ConnectionEndEditPart'»
+	«EXPAND addNotify-»
+	«EXPAND updateViewConnectionEnd-»
+«ENDIF»	
+«ENDAROUND»
+
+«DEFINE handleNotificationEventForClassification FOR gmfgen::GenLink»
+	/**
+	 * updates the potency of the source element
+	 *
+	 * @generated
+	 */
+	 @Override
+	 protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+
+		//Source is set before target, so now we can set the potency of the source with the one of the target - 1
+		if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName().equals(
+				"target"))
+		{
+			updateSourcePotency();
+			
+		}
+		else if (((org.eclipse.emf.ecore.EStructuralFeature) notification.getFeature()).getName()
+				.equals("source")
+				&& ((org.melanee.core.models.plm.PLM.Classification) resolveSemanticElement()).getType() != null)
+		{
+			updateSourcePotency();
+		}
+	}
+«ENDDEFINE»
+
+«DEFINE updateSourcePotency FOR gmfgen::GenLink»
+	/**
+	 * updates the potency of the source element
+	 *
+	 * @generated
+	 */
+	public void updateSourcePotency() {
+		org.melanee.core.models.plm.PLM.Classification i = (org.melanee.core.models.plm.PLM.Classification) resolveSemanticElement();
+
+		int newPotency = 0;
+
+		if (i.getType().getPotency() == -1)
+			newPotency = -1;
+		else if (i.getType().getPotency() > 0)
+			newPotency = i.getType().getPotency() - 1;
+
+		org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest request = new org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest(i.getInstance(),
+				org.melanee.core.models.plm.PLM.PLMPackage.eINSTANCE.getClabject_Potency(), newPotency);
+		org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand command = new org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand(request);
+		this.getViewer().getEditDomain().getCommandStack()
+				.execute(new org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy(command));
+	}
+«ENDDEFINE»
+
+«DEFINE updateViewConnectionEnd FOR gmfgen::GenLink»
+	/**
+	 * @generated
+	 */
+	@Override
+	protected void handleNotificationEvent(org.eclipse.emf.common.notify.Notification notification) {
+		super.handleNotificationEvent(notification);
+		
+		updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+	}
+
+	/**
+	 * @generated
+	 */
+	public void updateView(String format) {
+	
+		//This can happen on delete
+		if(resolveSemanticElement() == null)
+			return;
+	
+		org.melanee.core.modeleditor.edit.parts.ConnectionEndEditPart.ConnectionParticipationFigure connectionFigure = (org.melanee.core.modeleditor.edit.parts.ConnectionEndEditPart.ConnectionParticipationFigure)getFigure();
+		connectionFigure.getChildren().retainAll(java.util.Arrays.asList(new Object[]{connectionFigure.getFigureConnectionParticipationMultiplicityFigure(), connectionFigure.getFigureConnectionParticipationNameFigure()}));
+		
+		for (org.eclipse.gef.editparts.AbstractEditPart part : (java.util.List<org.eclipse.gef.editparts.AbstractEditPart>)getChildren())
+			part.refresh();
+		
+		java.lang.String notation = org.melanee.core.dsl.service.visualizationsearchalgorithm.AspectAwareVisualizationSearchAlgorithm.searchNotationForElement((org.melanee.core.models.plm.PLM.Element) this.resolveSemanticElement().eContainer(), format);
+		
+		if (notation != null
+				&& notation.length() > 0
+				&& ! notation.equals(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_LML)
+				//TODO: Derived not implmented -> LML
+				&& ! notation.equals(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_DERIVED))
+			updateDSLRenderingView(format, notation);
+		else
+			updateLMLRenderingView();
+			
+		//performRequest(new org.eclipse.gef.Request(org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.REQ_REFRESH));
+	}
+	
+	/**
+	 * @generated
+	 */
+	private void updateLMLRenderingView(){
+		org.melanee.core.models.plm.PLM.ConnectionEnd self = (org.melanee.core.models.plm.PLM.ConnectionEnd)resolveSemanticElement();
+		
+		//*****************************************************************
+		//Is navigable
+		//*****************************************************************
+		if (self.getKind() == org.melanee.core.models.plm.PLM.ConnectionEndKind.COMPOSITION
+				|| self.getKind() == org.melanee.core.models.plm.PLM.ConnectionEndKind.AGGREGATION){
+			org.eclipse.draw2d.PolygonDecoration decoration = new org.eclipse.draw2d.PolygonDecoration();
+			org.eclipse.draw2d.geometry.PointList decorationPointList = new org.eclipse.draw2d.geometry.PointList();
+			decorationPointList.addPoint(0,0);
+			decorationPointList.addPoint(-1,1);
+			decorationPointList.addPoint(-2,0);
+			decorationPointList.addPoint(-1,-1);
+			decoration.setTemplate(decorationPointList);
+			decoration.setSize(10, 10);
+			if(self.getKind() == org.melanee.core.models.plm.PLM.ConnectionEndKind.AGGREGATION)
+				decoration.setBackgroundColor(org.eclipse.ui.PlatformUI.getWorkbench().getDisplay().getSystemColor(org.eclipse.swt.SWT.COLOR_WHITE));
+			((org.eclipse.draw2d.PolylineConnection) getFigure()).setTargetDecoration(decoration);
+		}
+		//*****************************************************************
+		//Is navigable
+		//*****************************************************************
+		else if (self.isNavigable())
+			((org.eclipse.draw2d.PolylineConnection)getFigure()).setTargetDecoration(new org.eclipse.draw2d.PolylineDecoration());
+		else
+			((org.eclipse.draw2d.PolylineConnection)getFigure()).setTargetDecoration(null);
+			
+		//Reset line style
+		((org.eclipse.draw2d.PolylineConnection) getFigure()).setLineStyle(org.eclipse.swt.SWT.LINE_SOLID);
+	}
+	
+	/**
+	 * @generated
+	 */
+	private void updateDSLRenderingView(String format, String notation) 
+	{
+		org.melanee.core.models.plm.PLM.ConnectionEnd self = (org.melanee.core.models.plm.PLM.ConnectionEnd) resolveSemanticElement();
+		org.melanee.core.modeleditor.edit.parts.ConnectionEndEditPart.ConnectionParticipationFigure connectionFigure = (org.melanee.core.modeleditor.edit.parts.ConnectionEndEditPart.ConnectionParticipationFigure) getFigure();
+		org.melanee.core.workbench.interfaces.IGraphicalVisualizationService transformator = null;
+		
+		
+		try {
+			transformator = org.melanee.core.workbench.ExtensionPointService.Instance().getActiveGraphicalVisualizationService();
+		} catch (org.eclipse.core.runtime.CoreException e) {
+			e.printStackTrace();
+		}
+
+		if (transformator != null){
+			org.melanee.core.models.plm.PLM.AbstractDSLVisualizer v = getConnectionDSLVisualizer(transformator, notation);
+			
+			//No Visualizer was found for the requested => use LML rendering as fallback
+			if(v == null){
+				updateLMLRenderingView();
+				return;
+			}
+			
+			transformator.run(v, self, connectionFigure);
+		}
+	}
+	
+//	/**
+//	 * @generated
+//	 */
+//	public String getDSLRenderingValue(String format)
+//	{
+//		org.melanee.core.models.plm.PLM.ConnectionEnd self = (org.melanee.core.models.plm.PLM.ConnectionEnd) resolveSemanticElement();
+//		org.melanee.core.models.plm.PLM.Connection c = (org.melanee.core.models.plm.PLM.Connection)self.eContainer();
+//
+//		org.eclipse.emf.ecore.EObject container = c;
+//		String dslRenderingString = null;
+//		
+//		//Search until a not derived notation is found
+//		while(container.eContainer() != null
+//				&& ! (container.eContainer() instanceof org.melanee.core.models.plm.PLM.Domain)){
+//			org.melanee.core.models.plm.PLM.LMLVisualizer r = ((org.melanee.core.models.plm.PLM.Element)container).getVisualizer().get(0);
+//			dslRenderingString = r.getValueForKey(format);
+//			
+//			if(!dslRenderingString.equals(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_DERIVED))
+//				break;
+//			
+//			container = container.eContainer();
+//		}
+//		
+//		//If all notations are derived use LML notation
+//		if (dslRenderingString.equals(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_DERIVED))
+//			return org.melanee.core.workbench.interfaces.IVisualizationServiceBase.NOTATION_LML;
+//
+//		return dslRenderingString;
+//	}
+	
+	/**
+	 * @generated
+	 */
+	private org.melanee.core.models.plm.PLM.AbstractDSLVisualizer getConnectionDSLVisualizer(org.melanee.core.workbench.interfaces.IGraphicalVisualizationService transformator, String notation) 
+	{
+		org.melanee.core.models.plm.PLM.Connection containingConnection = (org.melanee.core.models.plm.PLM.Connection) resolveSemanticElement().eContainer();
+
+		return transformator.findDSLVisualizerForElement(containingConnection, notation, true);
+	}
+«ENDDEFINE»
+
+«DEFINE addNotify FOR gmfgen::GenLink»
+	/**
+	 * @generated
+	 */
+	@Override
+	public void addNotify() {
+		super.addNotify();
+
+		updateView(org.melanee.core.workbench.interfaces.IVisualizationServiceBase.FORMAT_GRAPH);
+	}
+«ENDDEFINE»

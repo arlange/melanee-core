@@ -1,0 +1,80 @@
+<%@ jet package="org.eclipse.emf.codegen.ecore.templates.edit" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.*" class="ItemProvider" %>
+<%
+/*******************************************************************************
+ * Copyright (c) 2013 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+%>
+<%/*
+   * This template is responsible for showing the calculated connection name for connections 
+*/%>
+
+
+<%//Custom Text Connection%>
+<%if (genPackage.getEcorePackage().getName().equalsIgnoreCase("PLM") && genClass.getImportedInterfaceName().equalsIgnoreCase("Connection")){%>
+		String label = ((Connection)object).getName();
+		return label == null || label.length() == 0 ?
+				getString("_UI_Connection_type") + " " + ((Connection)object).getHumanReadableName() :
+			getString("_UI_Connection_type") + " " + label;
+<%}%>
+<%//Show Monikers for ConnectionEnds%>
+<%else if (genPackage.getEcorePackage().getName().equalsIgnoreCase("PLM") && genClass.getImportedInterfaceName().equalsIgnoreCase("ConnectionEnd")){%>
+		ConnectionEnd connectionEnd = (ConnectionEnd)object;
+		return getString("_UI_ConnectionEnd_type") + " " + connectionEnd.getMoniker();
+<%}%>
+<%//Default Code%>
+<%else {%>
+<%if (genModel.isStyleProviders()) {%>
+		return ((<%=genModel.getImportedName("org.eclipse.emf.edit.provider.StyledString")%>)getStyledText(object)).getString();
+<%} else {%>
+<%if (genClass.isMapEntry()) {%>
+		<%=genClass.getImportedInterfaceName()%><%if (genModel.useGenerics()) {%><?, ?><%}%> <%=genClass.getSafeUncapName()%> = (<%=genClass.getImportedInterfaceName()%><%if (genModel.useGenerics()) {%><?, ?><%}%>)object;
+  <%if (!genClass.getMapEntryKeyFeature().isPropertyMultiLine() && !genClass.getMapEntryValueFeature().isPropertyMultiLine()) {%>
+		return "" + <%=genClass.getSafeUncapName()%>.getKey() + " -> " + <%=genClass.getSafeUncapName()%>.getValue();<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+  <%} else {%>
+    <%if (genClass.getMapEntryKeyFeature().isPropertyMultiLine()) {%>
+		String key = crop("" + <%=genClass.getSafeUncapName()%>.getKey());<%=genModel.getNonNLS()%>
+    <%} else {%>
+		String key = "" + <%=genClass.getSafeUncapName()%>.getKey();<%=genModel.getNonNLS()%>
+    <%}%>
+    <%if (genClass.getMapEntryValueFeature().isPropertyMultiLine()) {%>
+		String value = crop("" + <%=genClass.getSafeUncapName()%>.getValue());<%=genModel.getNonNLS()%>
+    <%} else {%>
+		String value = "" + <%=genClass.getSafeUncapName()%>.getValue();<%=genModel.getNonNLS()%>
+    <%}%>
+		return key + " -> " + value;<%=genModel.getNonNLS()%>
+  <%}%>
+<%} else if (genClass.getLabelFeature() != null) { GenFeature labelFeature = genClass.getLabelFeature();%>
+  <%if (labelFeature.isPrimitiveType() && !labelFeature.getGenClass().isDynamic() && !labelFeature.isSuppressedGetVisibility()) {%>
+		<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%> <%=genClass.getSafeUncapName()%> = (<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)object;
+		return getString("_UI_<%=genClass.getName()%>_type") + " " + <%=genClass.getSafeUncapName()%>.<%=genClass.getLabelFeature().getGetAccessor()%>();<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+  <%} else {%>
+    <%if (labelFeature.isStringType() && !labelFeature.getGenClass().isDynamic() && !labelFeature.isSuppressedGetVisibility()) {%>
+      <%if (labelFeature.isPropertyMultiLine()) {%>
+		String label = crop(((<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)object).<%=labelFeature.getGetAccessor()%>());
+      <%} else {%>
+		String label = ((<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)object).<%=labelFeature.getGetAccessor()%>();
+      <%}%>
+    <%} else {%>
+      <%if (labelFeature.isSuppressedGetVisibility() || labelFeature.getGenClass().isDynamic()) {%>
+		<%=genModel.getImportedName("java.lang.Object")%> labelValue = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%>)object).eGet(<%=labelFeature.getQualifiedFeatureAccessor()%>);
+      <%} else {%>
+		<%=labelFeature.getRawImportedType()%> labelValue = ((<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)object).<%=labelFeature.getGetAccessor()%>();
+      <%}%>
+		String label = labelValue == null ? null : labelValue.toString();
+    <%}%>
+		return label == null || label.length() == 0 ?
+			getString("_UI_<%=genClass.getName()%>_type") :<%=genModel.getNonNLS()%>
+			getString("_UI_<%=genClass.getName()%>_type") + " " + label;<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+  <%}%>
+<%} else {%>
+		return getString("_UI_<%=genClass.getName()%>_type");<%=genModel.getNonNLS()%>
+<%}%>
+<%}%>
+<%}%>

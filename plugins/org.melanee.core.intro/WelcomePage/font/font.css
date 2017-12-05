@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'BRLNSR';
+	src: url('./BRLNSR.eot');
+	src: local('BRLNSR'), url('./BRLNSR.woff') format('woff'), url('./BRLNSR.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_12421">Text with this font applied</p> */
+.fontsforweb_fontid_12421 {
+	font-family: 'BRLNSR' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */

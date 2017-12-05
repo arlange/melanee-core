@@ -1,0 +1,230 @@
+/*******************************************************************************
+ * Copyright (c) 2011 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+«EXTENSION xpt::diagram::ViewmapAttributesUtils»
+«EXTENSION xpt::diagram::editparts::Utils»
+«EXTENSION xpt::diagram::Utils»
+
+«AROUND addBorderItem FOR gmfgen::GenNode»
+	«IF self.editPartClassName = 'ConnectionEditPart' 
+		or self.editPartClassName = 'InheritanceEditPart'»
+		
+		protected void addBorderItem(org.eclipse.draw2d.IFigure borderItemContainer, org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart borderItemEditPart) {
+		«IF getExternalLabels(self)->size() > 0-»
+			«EXPAND xpt::Common::generatedMemberComment»
+			
+				if («FOREACH getExternalLabels(self) AS label SEPARATOR ' || '»borderItemEditPart instanceof «label.getEditPartQualifiedClassName()»«ENDFOREACH») {
+					org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator locator = new org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator(getMainFigure(), org.eclipse.draw2d.PositionConstants.SOUTH);
+					locator.setBorderItemOffset(new org.eclipse.draw2d.geometry.Dimension(0, -8));
+					borderItemContainer.add(borderItemEditPart.getFigure(), locator);
+				} else {
+					super.addBorderItem(borderItemContainer, borderItemEditPart);
+				}
+			}
+		«ENDIF-»
+	«ELSE»
+		«targetDef.proceed()»
+	«ENDIF»
+«ENDAROUND»
+
+«REM»
+*********************************************************************
+* Needed to have connections only starting in the middle of each side
+*********************************************************************
+«ENDREM»
+«AROUND setupNodePlate FOR gmfgen::GenNode»
+		«IF self.editPartClassName.startsWith('Connection')
+				or self.editPartClassName.startsWith('Inheritance')»
+		
+			if (true){
+				java.util.HashMap<String, org.eclipse.draw2d.geometry.PrecisionPoint> anchorLocations = new java.util.HashMap<String, org.eclipse.draw2d.geometry.PrecisionPoint>();
+				
+				anchorLocations.put("NORTH", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 0));
+				anchorLocations.put("EAST", new org.eclipse.draw2d.geometry.PrecisionPoint(1d, 0.5d));
+				anchorLocations.put("SOUTH", new org.eclipse.draw2d.geometry.PrecisionPoint(0.5d, 1d));
+				anchorLocations.put("WEST", new org.eclipse.draw2d.geometry.PrecisionPoint(0, 0.5d));
+		
+				result = new org.melanee.core.modeleditor.custom.figures.DefaultSizeNodeFixedAnchors(8, 8, anchorLocations);
+		
+				return result;
+			}
+		«ELSE»
+		«targetDef.proceed()»
+		«ENDIF»
+«ENDAROUND»
+
+«REM»
+******************************************************************************
+* Install the editpolicy for the toggle button in the popupbar
+* of connections and inheritances
+******************************************************************************
+«ENDREM»
+«AROUND createDefaultEditPoliciesBody FOR gmfgen::GenNode-»
+	«IF self.editPartClassName.startsWith('Entity')
+			or self.editPartClassName.startsWith('Connection')
+			or self.editPartClassName.startsWith('Inheritance')
+			or self.editPartClassName = 'DeepModelEditPart'
+			or self.editPartClassName = 'LevelEditPart'»
+		«EXPAND installCreationRolePolicy-»
+		super.createDefaultEditPolicies();
+		«EXPAND installPrimaryDragEditPolicy-»
+		«EXPAND xpt::diagram::editparts::Common::installSemanticEditPolicy-»
+		«IF needsGraphicalNodeEditPolicy(self)-»
+			installEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE, new «getGraphicalNodeEditPolicyQualifiedClassName()»());
+		«ENDIF-»
+		«IF not childNodes->isEmpty()-»
+			installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.DRAG_DROP_ROLE, new org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy());
+		«ENDIF-»
+		«EXPAND xpt::diagram::editparts::Common::installCanonicalEditPolicy-»
+		installEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+		«EXPAND xpt::diagram::editparts::Common::behaviour FOR self-»
+		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		
+		«EXPAND installAdditionalEditPolicies FOR self-»
+	«ELSE»
+		«targetDef.proceed()»
+		«EXPAND installAdditionalEditPolicies FOR self-»
+	«ENDIF»
+«ENDAROUND»
+
+
+«DEFINE installAdditionalEditPolicies FOR gmfgen::GenNode»
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+		//installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE, new org.melanee.core.modeleditor.custom.popupbartools.editpolicy.PLMModelElementPopupBarEditPolicy());
+		
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		
+		«REM»Edit policy for advanced connection creation«ENDREM»
+		«IF self.editPartClassName.startsWith('Entity')
+			or self.editPartClassName.startsWith('Connection')» 
+		removeEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE);
+		installEditPolicy(org.eclipse.gef.EditPolicy.GRAPHICAL_NODE_ROLE, new org.melanee.core.modeleditor.custom.implicitconnection.policy.ImplicitConnectionGraphicalNodeEditPolicy());
+		«ENDIF»
+		«IF self.editPartClassName.startsWith('Entity')
+			or self.editPartClassName.startsWith('Connection')»
+		installEditPolicy(org.eclipse.gef.editpolicies.SelectionEditPolicy.SELECTION_FEEDBACK_ROLE, new org.melanee.core.modeleditor.custom.selectioneditpolicies.EntityConnectionSelectionEditPolicy());
+		«ENDIF»		
+		«IF self.editPartClassName.startsWith('Entity')
+			or self.editPartClassName.startsWith('Connection')
+			or self.editPartClassName.startsWith('Package')»
+		removeEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE);
+		installEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE, new org.melanee.core.modeleditor.custom.contentawarecontainer.ContentAwareContainerEditPolicy());
+		«ENDIF»
+		«IF self.editPartClassName = 'LevelEditPart'»
+		removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+		installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.melanee.core.modeleditor.custom.resizableswimlanes.editpolicies.OneDirectionResizableEditPolicy(org.eclipse.draw2d.PositionConstants.SOUTH));
+		
+		installEditPolicy(org.eclipse.gef.editpolicies.SelectionEditPolicy.SELECTION_FEEDBACK_ROLE, new org.melanee.core.modeleditor.custom.selectioneditpolicies.ExtendableToolbarSelectionEditPolicy());
+		«ENDIF»
+		«IF self.editPartClassName.startsWith('Package')»
+		installEditPolicy(org.eclipse.gef.editpolicies.SelectionEditPolicy.SELECTION_FEEDBACK_ROLE, new org.melanee.core.modeleditor.custom.selectioneditpolicies.ExtendableToolbarSelectionEditPolicy());
+		«ENDIF»
+		«IF self.editPartClassName.startsWith('Method')»
+		installEditPolicy(org.eclipse.gef.editpolicies.SelectionEditPolicy.SELECTION_FEEDBACK_ROLE, new org.melanee.core.modeleditor.custom.selectioneditpolicies.ExtendableToolbarSelectionEditPolicy());
+		«ENDIF»
+		«IF self.editPartClassName = 'DeepModelEditPart'»
+		removeEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE);
+		installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, new org.melanee.core.modeleditor.custom.resizableswimlanes.editpolicies.OneDirectionResizableEditPolicy(org.eclipse.draw2d.PositionConstants.EAST));
+
+		removeEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE);
+		installEditPolicy(org.eclipse.gef.EditPolicy.LAYOUT_ROLE, new org.melanee.core.modeleditor.custom.resizableswimlanes.editpolicies.SwimlaneDeepModelLayoutEditPolicy());
+		
+		installEditPolicy(org.eclipse.gef.editpolicies.SelectionEditPolicy.SELECTION_FEEDBACK_ROLE, new org.melanee.core.modeleditor.custom.selectioneditpolicies.ExtendableToolbarSelectionEditPolicy());
+		«ENDIF»
+		«IF self.editPartClassName.startsWith('Inheritance')»
+		installEditPolicy(org.eclipse.gef.editpolicies.SelectionEditPolicy.SELECTION_FEEDBACK_ROLE, new org.melanee.core.modeleditor.custom.selectioneditpolicies.ExtendableToolbarSelectionEditPolicy());
+		«ENDIF»
+		
+«ENDDEFINE»
+
+
+«DEFINE installCreationRolePolicy FOR gmfgen::GenNode-»
+«IF self.childNodes->notEmpty() or hasChildrenInListCompartments(self)-»
+	installEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CREATION_ROLE, «EXPAND _creationEditPolicyNewInstance»);
+«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE _creationEditPolicyNewInstance FOR gmfgen::GenNode»new org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy()«ENDDEFINE»
+
+«DEFINE installPrimaryDragEditPolicy FOR gmfgen::GenNode»«ENDDEFINE»
+
+«DEFINE installPrimaryDragEditPolicy FOR gmfgen::GenChildSideAffixedNode-»
+		installEditPolicy(org.eclipse.gef.EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+«ENDDEFINE»
+«REM»
+******************************************************************************
+* END
+******************************************************************************
+«ENDREM»
+
+«REM»
+*******************************************************************************
+* Code to allow Connections to be drawn from the hande of an entity to another
+* entity
+*******************************************************************************
+«ENDREM»
+
+«REM»
+«DEFINE getMARelTypesOnSourceAndTarget FOR gmfgen::GenNode-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public «EXPAND CodeStyle::G('java.util.List', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')» getMARelTypesOnSourceAndTarget(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart targetEditPart) {
+		«EXPAND CodeStyle::newGenericInstance('types', 'java.util.LinkedList', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')»();
+		«FOREACH getAssistantOutgoingLinks(self) AS link-»
+			«FOREACH selectGenNodes(link.targets) AS target-»
+		if (targetEditPart instanceof «target.getEditPartQualifiedClassName()») {
+			types.add(«EXPAND xpt::providers::ElementTypes::accessElementType FOR link»);
+			//CUSTOM CODE - Maybe removed when Connection Incoming links == true in genmodel?
+			types.add(org.melanee.core.modeleditor.providers.PLMElementTypes.ConnectionEnd_4036);
+		}
+			«ENDFOREACH-»
+		«ENDFOREACH-»
+		return types;
+	}
+«ENDDEFINE»
+
+«DEFINE getMATypesForTarget FOR gmfgen::GenNode-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public «EXPAND CodeStyle::G('java.util.List', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')» getMATypesForTarget(org.eclipse.gmf.runtime.emf.type.core.IElementType relationshipType) {
+		«EXPAND CodeStyle::newGenericInstance('types', 'java.util.LinkedList', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')»();
+		«FOREACH getAssistantOutgoingLinks(self) AS link SEPARATOR ' else '-»
+		if (relationshipType == «EXPAND xpt::providers::ElementTypes::accessElementType FOR link»
+				|| relationshipType == org.melanee.core.modeleditor.providers.PLMElementTypes.ConnectionEnd_4036) {
+			«FOREACH selectGenNodes(link.targets) AS target-»
+			types.add(«EXPAND xpt::providers::ElementTypes::accessElementType FOR target»);
+			«ENDFOREACH-»
+		}
+		«ENDFOREACH-»
+				
+		return types;
+	}
+«ENDDEFINE»
+
+// pre: getAssistantOutgoingLinks(this).size() > 0
+«DEFINE getMARelTypesOnSource FOR gmfgen::GenNode-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public «EXPAND CodeStyle::G('java.util.List', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')» getMARelTypesOnSource() {
+		«EXPAND CodeStyle::newGenericInstance('types', 'java.util.ArrayList', 'org.eclipse.gmf.runtime.emf.type.core.IElementType')»(«getAssistantOutgoingLinks(self)->size() + 1»);
+		«FOREACH getAssistantOutgoingLinks(self) AS link-»
+		types.add(«EXPAND xpt::providers::ElementTypes::accessElementType FOR link»);
+		«ENDFOREACH-»
+		types.add(org.melanee.core.modeleditor.providers.PLMElementTypes.ConnectionEnd_4036);
+		
+		return types;
+	}
+«ENDDEFINE»
+«ENDREM»
+«REM»
+*******************************************************************************
+* END
+*******************************************************************************
+«ENDREM»

@@ -1,0 +1,103 @@
+/*******************************************************************************
+ * Copyright (c) 2011, 2012 University of Mannheim: Chair for Software Engineering
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     - initial API and implementation and initial documentation
+ *******************************************************************************/
+
+«IMPORT 'http://www.eclipse.org/gmf/2009/GenModel'»
+
+«EXTENSION xpt::StringOperations»
+
+«EXTENSION impl::parsers::expression»
+
+/*
+ *
+ * Parsing for Domain Entity/Connection Label -> Needed that name can be set via label.
+ * Workaround for BUG XXX
+ *
+ */
+ «AROUND body FOR gmfgen::ExpressionLabelParser»
+ «IF self.getQualifiedClassName().xpandSplit('\\.')->last() = 'EntityLabelExpressionLabelParser5314'
+ 		or self.getQualifiedClassName().xpandSplit('\\.')->last() = 'EntityLabelExpressionLabelParser5288'
+ 		or self.getQualifiedClassName().xpandSplit('\\.')->last() = 'EntityLabelExpressionLabelParser5337'
+		or self.getQualifiedClassName().xpandSplit('\\.')->last() = 'ConnectionLabelExpressionLabelParser5294'
+		or self.getQualifiedClassName().xpandSplit('\\.')->last() = 'ConnectionLabelExpressionLabelParser5282'
+		or self.getQualifiedClassName().xpandSplit('\\.')->last() = 'ConnectionLabelExpressionLabelParser5343'»
+
+«IF isViewExpressionDefinedAndOcl()-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	@Override	
+	protected String getExpressionBody() {
+		return «EXPAND impl::parsers::ExpressionLabelParser::getExpression(self, viewExpression) FOR viewExpression.provider».body();
+	}
+«ELSE-»
+	«EXPAND xpt::Common::generatedMemberComment»
+	public String getPrintString(org.eclipse.core.runtime.IAdaptable element, int flags) {
+		«EXPAND impl::parsers::ExpressionLabelParser::accessViewExpression-»
+	}
+
+	«EXPAND xpt::Common::generatedMemberComment»
+	public boolean isAffectingEvent(Object event, int flags) {
+		// XXX Any event is recognized as important, unless there's a way to extract this information from expression itself.
+		// TODO analyze expressions (e.g. using OCL parser) to find out structural features in use  
+		return true;
+	}
+«ENDIF-»
+
+	«EXPAND xpt::Common::generatedMemberComment»
+	public String getEditString(org.eclipse.core.runtime.IAdaptable element, int flags) {
+		«EXPAND impl::parsers::ExpressionLabelParser::accessEditExpression-»
+	}
+
+	«EXPAND xpt::Common::generatedMemberComment»
+	public org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus isValidEditString(org.eclipse.core.runtime.IAdaptable element, String editString) {
+		«EXPAND impl::parsers::ExpressionLabelParser::accessValidateExpression-»
+	}
+
+	«EXPAND xpt::Common::generatedMemberComment»
+	public org.eclipse.gmf.runtime.common.core.command.ICommand getParseCommand(org.eclipse.core.runtime.IAdaptable element, final String newString, int flags) {
+		final org.eclipse.emf.ecore.EObject target = (org.eclipse.emf.ecore.EObject) element.getAdapter(org.eclipse.emf.ecore.EObject.class);
+		if (!validateValues(target, newString)) {
+			return org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE;
+		}
+		org.eclipse.emf.transaction.TransactionalEditingDomain editingDomain = org.eclipse.emf.transaction.util.TransactionUtil.getEditingDomain(target);
+		if (editingDomain == null) {
+			return org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE;
+		}
+		org.eclipse.core.resources.IFile affectedFile = org.eclipse.emf.workspace.util.WorkspaceSynchronizer.getFile(target.eResource());
+		return new org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand(editingDomain, "Set Values", affectedFile == null ? null : java.util.Collections.singletonList(affectedFile)) {«EXPAND xpt::Common::nonNLS» 
+			protected org.eclipse.gmf.runtime.common.core.command.CommandResult doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor monitor, org.eclipse.core.runtime.IAdaptable info) throws org.eclipse.core.commands.ExecutionException {
+				return new org.eclipse.gmf.runtime.common.core.command.CommandResult(updateValues(target, newString));
+			}
+		};
+	}
+
+	«EXPAND xpt::Common::generatedMemberComment»
+	public org.eclipse.jface.text.contentassist.IContentAssistProcessor getCompletionProcessor(org.eclipse.core.runtime.IAdaptable element) {
+    	return null;
+	}
+	
+	«EXPAND xpt::Common::generatedMemberComment»
+	private boolean validateValues(org.eclipse.emf.ecore.EObject target, String newString) {
+		// TODO implement as needed«REM»with default 'true' I assume isValidEditString() has been called prior to getParseCommand and generally I don't need to do anything else here«ENDREM»
+		return true;
+	}
+
+	«EXPAND xpt::Common::generatedMemberComment»
+	private org.eclipse.core.runtime.IStatus updateValues(org.eclipse.emf.ecore.EObject target, String newString) throws org.eclipse.core.commands.ExecutionException {
+		//**************************************
+		// Custom code for setting name
+		//**************************************
+		((org.melanee.core.models.plm.PLM.Element) target).setName(newString);
+		return org.eclipse.core.runtime.Status.OK_STATUS;
+	}
+«EXPAND impl::parsers::ExpressionLabelParser::extraMethods-»
+«ELSE»
+	 	«targetDef.proceed()»
+«ENDIF»
+«ENDAROUND»
