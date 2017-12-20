@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     - initial API and implementation and initial documentation
+ *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/ --> 
 <associateSites>
 	<associateSite label="GMF"  url="http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/" />

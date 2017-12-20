@@ -7,7 +7,7 @@
  *
  * Contributors:
  *    Bastian Kennel, 
- *    				 - initial API and implementation and initial documentation
+ *    				Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/ 
 package org.melanee.core.proximityindication.service;
 
