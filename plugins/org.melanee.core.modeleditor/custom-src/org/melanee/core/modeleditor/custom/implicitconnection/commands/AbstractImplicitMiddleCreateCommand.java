@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Michael Golubev - initial API and implementation and initial documentation
+ *    Michael GolubevRalph Gerbig - initial API and implementation and initial documentation
  *        - extension
  *******************************************************************************/
 package org.melanee.core.modeleditor.custom.implicitconnection.commands;

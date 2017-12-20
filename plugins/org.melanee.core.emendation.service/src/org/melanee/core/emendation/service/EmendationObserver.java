@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     - initial API and implementation and initial documentation
+ *    Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
 package org.melanee.core.emendation.service;
 
