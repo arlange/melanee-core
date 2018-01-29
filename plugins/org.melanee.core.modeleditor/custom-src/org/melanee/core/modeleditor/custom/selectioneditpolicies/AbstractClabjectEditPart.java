@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *       Ralph Gerbig - initial API and implementation and initial documentation
+ *    Ralph Gerbig    - initial API and implementation and initial documentation
  *    Daniel Gritzner - moved to separate file, expanded API
  *******************************************************************************/
 package org.melanee.core.modeleditor.custom.selectioneditpolicies;

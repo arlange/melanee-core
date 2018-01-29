@@ -29,7 +29,7 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
 
 /**
  * 
- * @author  (rgerbig@rumms.uni-mannheim.de)
+ * @author Ralph Gerbig (rgerbig@rumms.uni-mannheim.de)
  *
  * This class is used to collapse/expand DomainConnections based on information
  * in the model. Collapsed means that the DomainConnection is rendered as small 

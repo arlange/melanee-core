@@ -26,7 +26,7 @@ import org.melanee.core.workbench.interfaces.IReasoningService;
 import org.melanee.core.workbench.interfaces.ITextualVisualizationService;
 
 /**
- * @author 
+ * @author Ralph Gerbig
  *
  * This class defines the standard LML perspective.
  */

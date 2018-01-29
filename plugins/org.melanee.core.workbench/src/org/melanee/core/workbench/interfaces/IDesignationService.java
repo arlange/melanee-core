@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    , Bastian KennelRalph Gerbig - initial API and implementation and initial documentation
+ *    Ralph Gerbig, Bastian Kennel - initial API and implementation and initial documentation
  *******************************************************************************/ 
 package org.melanee.core.workbench.interfaces;
 

@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     - Shaping up the code from 
+ *    Ralph Gerbig - Shaping up the code from 
  *    					http://gmfsamples.tuxfamily.org/wiki/doku.php?id=gmf_tutorial6 but
  *    
  * Idea from http://gmfsamples.tuxfamily.org/wiki/doku.php?id=gmf_tutorial6 but

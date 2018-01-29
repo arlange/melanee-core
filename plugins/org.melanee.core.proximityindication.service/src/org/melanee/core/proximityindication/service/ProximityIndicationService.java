@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Bastian Kennel, 
- *    				Ralph Gerbig - initial API and implementation and initial documentation
+ *    Bastian Kennel, Ralph Gerbig
+ *    				 - initial API and implementation and initial documentation
  *******************************************************************************/ 
 package org.melanee.core.proximityindication.service;
 

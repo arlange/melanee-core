@@ -23,7 +23,7 @@ import org.melanee.core.modeleditor.edit.parts.EntityEditPart;
 
 /**
  * 
- * @author  (rgerbig@rumms.uni-mannheim.de)
+ * @author Ralph Gerbig (rgerbig@rumms.uni-mannheim.de)
  *
  *
  */

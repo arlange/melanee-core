@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Aaron CHANGRalph Gerbig - initial API and implementation and initial documentation
+ *    Aaron CHANG - initial API and implementation and initial documentation
  *******************************************************************************/
 package org.melanee.core.modeleditor.custom.propertysheet;
 

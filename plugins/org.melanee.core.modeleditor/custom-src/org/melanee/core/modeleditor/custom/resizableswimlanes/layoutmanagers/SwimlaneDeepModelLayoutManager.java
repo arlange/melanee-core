@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Daniel GritznerRalph Gerbig - initial API and implementation and initial documentation
+ *    Daniel Gritzner - initial API and implementation and initial documentation
  *******************************************************************************/
 
 package org.melanee.core.modeleditor.custom.resizableswimlanes.layoutmanagers;
