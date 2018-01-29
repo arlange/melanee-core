@@ -11,6 +11,6 @@ Require-Bundle: org.melanee.core.models.plm,
  org.eclipse.draw2d,
  org.eclipse.ui.ide
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.melanee.core.workbench,org.melanee.core.workbench.
  interfaces,org.melanee.core.workbench.preferences

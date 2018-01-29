@@ -86,5 +86,5 @@ Bundle-ActivationPolicy: lazy
 «ENDAROUND»
 
 «DEFINE executionEnvironment FOR gmfgen::GenPlugin-»
-Bundle-RequiredExecutionEnvironment: «IF editorGen.jdkComplianceLevel() > 5»JavaSE-1.6«ELSE»J2SE-1.«editorGen.jdkComplianceLevel()»«ENDIF»
+Bundle-RequiredExecutionEnvironment: «IF editorGen.jdkComplianceLevel() > 5»JavaSE-1.8«ELSE»J2SE-1.«editorGen.jdkComplianceLevel()»«ENDIF»
 «ENDDEFINE»

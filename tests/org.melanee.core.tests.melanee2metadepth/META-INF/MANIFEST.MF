@@ -4,7 +4,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Melanee2metadepth
 Bundle-SymbolicName: org.melanee.core.tests.melanee2metadepth
 Bundle-Version: 2.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit,
  org.melanee.core.melanee2metadepth,
  org.eclipse.core.runtime,

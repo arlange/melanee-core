@@ -8,4 +8,4 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui,
  org.melanee.core.workbench,
  org.melanee.core.models.plm
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
