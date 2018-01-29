@@ -17,7 +17,7 @@
 			<extension>
 					<groupId>org.apache.maven.wagon</groupId>
 					<artifactId>wagon-ssh</artifactId>
-					<version>1.0</version>
+					<version>1.0-beta-6</version>
 			</extension>
 		</extensions>
 	</build>
@@ -67,11 +67,11 @@
 				<!-- sftp etc. i supported through the wagon-ssh extension 
 				see http://mojo.codehaus.org/wagon-maven-plugin/usage.html -->
 				<!--<remoteRepo.url>sftp://mirror.informatik.uni-mannheim.de/users/rgerbig</remoteRepo.url>-->
-				<remoteRepo.url>sftp://melanee.informatik.uni-mannheim.de/</remoteRepo.url>
+				<url>scp://melanee.informatik.uni-mannheim.de/</url>
 				<remoteRepo.targetDir>/srv/www/virtual/melanee/htdocs/p2/melanee20/melanee-core</remoteRepo.targetDir>
 				<remoteProduct.targetDir>/srv/www/virtual/melanee/htdocs/p2/melanee20/melanee-core/product</remoteProduct.targetDir>
 				<localRepo.path>${project.build.directory}/repository/</localRepo.path>
-				<localProduct.path>${project.build.directory}/products/</localProduct.path>
+				<fromDir>${project.build.directory}/products/</fromDir>
 			</properties>
 			
 			<build>
@@ -79,7 +79,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>wagon-maven-plugin</artifactId>
-						<version>1.0-beta-4</version>
+						<version>1.0-beta-6</version>
 						<executions>
 							<execution>
 								<id>upload-repo</id>
@@ -89,22 +89,20 @@
 								</goals>
 								<configuration>
 									<serverId>melanee.informatik</serverId>
-									<!-- Place the following in settings.xml
 									<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 									  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
 										<servers>
 											<server>
 												<id>melanee.informatik</id>
-												<username></username>
-												<password></password>
+												<username>swtweb</username>
+												<password>mmccxbth40.</password>
 											</server>
 										</servers>
 									</settings>
-									-->
 									<fromDir>${localRepo.path}</fromDir>
 									<includes>**</includes>
 									<toDir>${remoteRepo.targetDir}</toDir>
-									<url>${remoteRepo.url}</url>
+									<url>${url}</url>
 								</configuration>
 							</execution>
 							<execution>
@@ -118,7 +116,7 @@
 									<fromDir>${localProduct.path}</fromDir>
 									<includes>*.zip</includes>
 									<toDir>${remoteProduct.targetDir}</toDir>
-									<url>${remoteRepo.url}</url>
+									<url>${url}</url>
 								</configuration>
 							</execution>
 						</executions>

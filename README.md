@@ -10,3 +10,16 @@ The core components of Melanee these include
 - A simple autolayout service for connections and generalizations
 - An emendation service which supports changing a multi-level model
 - A designation service for customizing the designation part of the Level-agnostic Modeling Language
+
+## Builbing Melanee
+If you want to build Melanee for your local repository then do the following
+```
+cd melanee-core
+mvn clean install
+```
+If you want to build Melanee as an Eclipse product than do this
+```
+cd melanee-core/features/org.melanee.core.product
+mvn clean install -Ppackage
+```
+This will build packages (zip files) for the major operating systems.
