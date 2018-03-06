@@ -33,185 +33,193 @@ import org.melanee.core.modeleditor.providers.PLMModelingAssistantProvider;
  */
 public class PLMModelingAssistantProviderOfConnectionEditPart extends PLMModelingAssistantProvider {
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(PLMElementTypes.Attribute_3100);
-		types.add(PLMElementTypes.Method_3102);
-		return types;
-	}
+  public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+    List<IElementType> types = new ArrayList<IElementType>(2);
+    types.add(PLMElementTypes.Attribute_3100);
+    types.add(PLMElementTypes.Method_3102);
+    return types;
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnSource((ConnectionEditPart) sourceEditPart);
-	}
+  public List<IElementType> getRelTypesOnSource(IAdaptable source) {
+    IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
+        .getAdapter(IGraphicalEditPart.class);
+    return doGetRelTypesOnSource((ConnectionEditPart) sourceEditPart);
+  }
 
-	/**
-	* @generated
-	*/
-	public List<IElementType> doGetRelTypesOnSource(ConnectionEditPart source) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(PLMElementTypes.Classification_4026);
-		types.add(PLMElementTypes.ConnectionEnd_4036);
-		return types;
-	}
+  /**
+   * @generated
+   */
+  public List<IElementType> doGetRelTypesOnSource(ConnectionEditPart source) {
+    List<IElementType> types = new ArrayList<IElementType>(2);
+    types.add(PLMElementTypes.Classification_4026);
+    types.add(PLMElementTypes.ConnectionEnd_4036);
+    return types;
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnSourceAndTarget((ConnectionEditPart) sourceEditPart, targetEditPart);
-	}
+  public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
+    IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
+        .getAdapter(IGraphicalEditPart.class);
+    IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
+        .getAdapter(IGraphicalEditPart.class);
+    return doGetRelTypesOnSourceAndTarget((ConnectionEditPart) sourceEditPart, targetEditPart);
+  }
 
-	/**
-	* @generated
-	*/
-	public List<IElementType> doGetRelTypesOnSourceAndTarget(ConnectionEditPart source,
-			IGraphicalEditPart targetEditPart) {
-		List<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof ConnectionEditPart) {
-			types.add(PLMElementTypes.Classification_4026);
-		}
-		if (targetEditPart instanceof EntityEditPart) {
-			types.add(PLMElementTypes.Classification_4026);
-		}
-		if (targetEditPart instanceof Connection2EditPart) {
-			types.add(PLMElementTypes.Classification_4026);
-		}
-		if (targetEditPart instanceof Entity2EditPart) {
-			types.add(PLMElementTypes.Classification_4026);
-		}
-		if (targetEditPart instanceof Entity3EditPart) {
-			types.add(PLMElementTypes.Classification_4026);
-		}
-		if (targetEditPart instanceof Connection3EditPart) {
-			types.add(PLMElementTypes.Classification_4026);
-		}
-		if (targetEditPart instanceof ConnectionEditPart) {
-			types.add(PLMElementTypes.ConnectionEnd_4036);
-		}
-		if (targetEditPart instanceof EntityEditPart) {
-			types.add(PLMElementTypes.ConnectionEnd_4036);
-		}
-		if (targetEditPart instanceof Connection2EditPart) {
-			types.add(PLMElementTypes.ConnectionEnd_4036);
-		}
-		if (targetEditPart instanceof Entity2EditPart) {
-			types.add(PLMElementTypes.ConnectionEnd_4036);
-		}
-		if (targetEditPart instanceof Entity3EditPart) {
-			types.add(PLMElementTypes.ConnectionEnd_4036);
-		}
-		if (targetEditPart instanceof Connection3EditPart) {
-			types.add(PLMElementTypes.ConnectionEnd_4036);
-		}
-		return types;
-	}
+  /**
+   * @generated
+   */
+  public List<IElementType> doGetRelTypesOnSourceAndTarget(ConnectionEditPart source,
+      IGraphicalEditPart targetEditPart) {
+    List<IElementType> types = new LinkedList<IElementType>();
+    if (targetEditPart instanceof ConnectionEditPart) {
+      types.add(PLMElementTypes.Classification_4026);
+    }
+    if (targetEditPart instanceof EntityEditPart) {
+      types.add(PLMElementTypes.Classification_4026);
+    }
+    if (targetEditPart instanceof Connection2EditPart) {
+      types.add(PLMElementTypes.Classification_4026);
+    }
+    if (targetEditPart instanceof Entity2EditPart) {
+      types.add(PLMElementTypes.Classification_4026);
+    }
+    if (targetEditPart instanceof Entity3EditPart) {
+      types.add(PLMElementTypes.Classification_4026);
+    }
+    if (targetEditPart instanceof Connection3EditPart) {
+      types.add(PLMElementTypes.Classification_4026);
+    }
+    if (targetEditPart instanceof ConnectionEditPart) {
+      types.add(PLMElementTypes.ConnectionEnd_4036);
+    }
+    if (targetEditPart instanceof EntityEditPart) {
+      types.add(PLMElementTypes.ConnectionEnd_4036);
+    }
+    if (targetEditPart instanceof Connection2EditPart) {
+      types.add(PLMElementTypes.ConnectionEnd_4036);
+    }
+    if (targetEditPart instanceof Entity2EditPart) {
+      types.add(PLMElementTypes.ConnectionEnd_4036);
+    }
+    if (targetEditPart instanceof Entity3EditPart) {
+      types.add(PLMElementTypes.ConnectionEnd_4036);
+    }
+    if (targetEditPart instanceof Connection3EditPart) {
+      types.add(PLMElementTypes.ConnectionEnd_4036);
+    }
+    return types;
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
-		return doGetTypesForTarget((ConnectionEditPart) sourceEditPart, relationshipType);
-	}
+  public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
+    IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
+        .getAdapter(IGraphicalEditPart.class);
+    return doGetTypesForTarget((ConnectionEditPart) sourceEditPart, relationshipType);
+  }
 
-	/**
-	* @generated
-	*/
-	public List<IElementType> doGetTypesForTarget(ConnectionEditPart source, IElementType relationshipType) {
-		List<IElementType> types = new ArrayList<IElementType>();
-		if (relationshipType == PLMElementTypes.Classification_4026) {
-			types.add(PLMElementTypes.Connection_3099);
-			types.add(PLMElementTypes.Entity_3105);
-			types.add(PLMElementTypes.Connection_3111);
-			types.add(PLMElementTypes.Entity_3120);
-			types.add(PLMElementTypes.Entity_3126);
-			types.add(PLMElementTypes.Connection_3127);
-		} else if (relationshipType == PLMElementTypes.ConnectionEnd_4036) {
-			types.add(PLMElementTypes.Connection_3099);
-			types.add(PLMElementTypes.Entity_3105);
-			types.add(PLMElementTypes.Connection_3111);
-			types.add(PLMElementTypes.Entity_3120);
-			types.add(PLMElementTypes.Entity_3126);
-			types.add(PLMElementTypes.Connection_3127);
-		}
-		return types;
-	}
+  /**
+   * @generated
+   */
+  public List<IElementType> doGetTypesForTarget(ConnectionEditPart source,
+      IElementType relationshipType) {
+    List<IElementType> types = new ArrayList<IElementType>();
+    if (relationshipType == PLMElementTypes.Classification_4026) {
+      types.add(PLMElementTypes.Connection_3099);
+      types.add(PLMElementTypes.Entity_3105);
+      types.add(PLMElementTypes.Connection_3111);
+      types.add(PLMElementTypes.Entity_3120);
+      types.add(PLMElementTypes.Entity_3126);
+      types.add(PLMElementTypes.Connection_3127);
+    } else if (relationshipType == PLMElementTypes.ConnectionEnd_4036) {
+      types.add(PLMElementTypes.Connection_3099);
+      types.add(PLMElementTypes.Entity_3105);
+      types.add(PLMElementTypes.Connection_3111);
+      types.add(PLMElementTypes.Entity_3120);
+      types.add(PLMElementTypes.Entity_3126);
+      types.add(PLMElementTypes.Connection_3127);
+    }
+    return types;
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getRelTypesOnTarget(IAdaptable target) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnTarget((ConnectionEditPart) targetEditPart);
-	}
+  public List<IElementType> getRelTypesOnTarget(IAdaptable target) {
+    IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
+        .getAdapter(IGraphicalEditPart.class);
+    return doGetRelTypesOnTarget((ConnectionEditPart) targetEditPart);
+  }
 
-	/**
-	* @generated
-	*/
-	public List<IElementType> doGetRelTypesOnTarget(ConnectionEditPart target) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
-		types.add(PLMElementTypes.Classification_4026);
-		types.add(PLMElementTypes.Supertype_4034);
-		types.add(PLMElementTypes.Subtype_4035);
-		types.add(PLMElementTypes.ConnectionEnd_4036);
-		return types;
-	}
+  /**
+   * @generated
+   */
+  public List<IElementType> doGetRelTypesOnTarget(ConnectionEditPart target) {
+    List<IElementType> types = new ArrayList<IElementType>(4);
+    types.add(PLMElementTypes.Classification_4026);
+    types.add(PLMElementTypes.Supertype_4034);
+    types.add(PLMElementTypes.Subtype_4035);
+    types.add(PLMElementTypes.ConnectionEnd_4036);
+    return types;
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getTypesForSource(IAdaptable target, IElementType relationshipType) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
-		return doGetTypesForSource((ConnectionEditPart) targetEditPart, relationshipType);
-	}
+  public List<IElementType> getTypesForSource(IAdaptable target, IElementType relationshipType) {
+    IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
+        .getAdapter(IGraphicalEditPart.class);
+    return doGetTypesForSource((ConnectionEditPart) targetEditPart, relationshipType);
+  }
 
-	/**
-	* @generated
-	*/
-	public List<IElementType> doGetTypesForSource(ConnectionEditPart target, IElementType relationshipType) {
-		List<IElementType> types = new ArrayList<IElementType>();
-		if (relationshipType == PLMElementTypes.Classification_4026) {
-			types.add(PLMElementTypes.Connection_3099);
-			types.add(PLMElementTypes.Entity_3105);
-			types.add(PLMElementTypes.Connection_3111);
-			types.add(PLMElementTypes.Entity_3120);
-			types.add(PLMElementTypes.Entity_3126);
-			types.add(PLMElementTypes.Connection_3127);
-		} else if (relationshipType == PLMElementTypes.Supertype_4034) {
-			types.add(PLMElementTypes.Inheritance_3124);
-			types.add(PLMElementTypes.Inheritance_3122);
-			types.add(PLMElementTypes.Inheritance_3128);
-		} else if (relationshipType == PLMElementTypes.Subtype_4035) {
-			types.add(PLMElementTypes.Inheritance_3124);
-			types.add(PLMElementTypes.Inheritance_3122);
-			types.add(PLMElementTypes.Inheritance_3128);
-		} else if (relationshipType == PLMElementTypes.ConnectionEnd_4036) {
-			types.add(PLMElementTypes.Connection_3099);
-			types.add(PLMElementTypes.Connection_3111);
-			types.add(PLMElementTypes.Connection_3127);
-		}
-		return types;
-	}
+  /**
+   * @generated
+   */
+  public List<IElementType> doGetTypesForSource(ConnectionEditPart target,
+      IElementType relationshipType) {
+    List<IElementType> types = new ArrayList<IElementType>();
+    if (relationshipType == PLMElementTypes.Classification_4026) {
+      types.add(PLMElementTypes.Connection_3099);
+      types.add(PLMElementTypes.Entity_3105);
+      types.add(PLMElementTypes.Connection_3111);
+      types.add(PLMElementTypes.Entity_3120);
+      types.add(PLMElementTypes.Entity_3126);
+      types.add(PLMElementTypes.Connection_3127);
+    } else if (relationshipType == PLMElementTypes.Supertype_4034) {
+      types.add(PLMElementTypes.Inheritance_3124);
+      types.add(PLMElementTypes.Inheritance_3122);
+      types.add(PLMElementTypes.Inheritance_3128);
+    } else if (relationshipType == PLMElementTypes.Subtype_4035) {
+      types.add(PLMElementTypes.Inheritance_3124);
+      types.add(PLMElementTypes.Inheritance_3122);
+      types.add(PLMElementTypes.Inheritance_3128);
+    } else if (relationshipType == PLMElementTypes.ConnectionEnd_4036) {
+      types.add(PLMElementTypes.Connection_3099);
+      types.add(PLMElementTypes.Connection_3111);
+      types.add(PLMElementTypes.Connection_3127);
+    }
+    return types;
+  }
 
 }

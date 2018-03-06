@@ -7,27 +7,28 @@
  *
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
- *******************************************************************************/ 
+ *******************************************************************************/
 package org.melanee.core.workbench.interfaces;
 
-
 /**
- * Interface for a visual model to figure transformator.
- * The transformator takes a visualizer as input and generates
- * a renderable figure as output (e.g. a draw2d figure).
+ * Interface for a visual model to figure transformator. The transformator takes
+ * a visualizer as input and generates a renderable figure as output (e.g. a
+ * draw2d figure).
  *
  */
 public interface ITableVisualizationService extends IVisualizationServiceBase {
-	
-	/**
-	 * Starts the creation of the table editor.
-	 * 
-	 * @param host the IGraphicalEditPart on which the service is invoked
-	 * @param notation the notation to apply
-	 * @param notationChanged is the service invoked after a change of the notation 
-	 * 			or to update the visualization without notation change  
-	 */
-	public abstract Object run(Object host, String notation, boolean notationChanged);
-	
-	
+
+  /**
+   * Starts the creation of the table editor.
+   * 
+   * @param host
+   *          the IGraphicalEditPart on which the service is invoked
+   * @param notation
+   *          the notation to apply
+   * @param notationChanged
+   *          is the service invoked after a change of the notation or to update
+   *          the visualization without notation change
+   */
+  public abstract Object run(Object host, String notation, boolean notationChanged);
+
 }

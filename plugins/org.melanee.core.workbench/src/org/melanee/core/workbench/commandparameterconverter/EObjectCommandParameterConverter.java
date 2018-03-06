@@ -18,35 +18,33 @@ import org.eclipse.core.commands.ParameterValueConversionException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
+public class EObjectCommandParameterConverter extends AbstractParameterValueConverter {
 
-public class EObjectCommandParameterConverter extends
-		AbstractParameterValueConverter {
+  /**
+   * Saves a mapping from emf-id to the EObject.
+   */
+  Map<String, EObject> emfId2Resource = new HashMap<String, EObject>();
 
-	/**
-	 * Saves a mapping from emf-id to the EObject.
-	 */
-	Map<String, EObject> emfId2Resource = new HashMap<String, EObject>();
-	
-	public EObjectCommandParameterConverter() {
-	}
+  public EObjectCommandParameterConverter() {
+  }
 
-	@Override
-	public Object convertToObject(String parameterValue)
-			throws ParameterValueConversionException {
-		return emfId2Resource.get(parameterValue);
-	}
+  @Override
+  public Object convertToObject(String parameterValue) throws ParameterValueConversionException {
+    return emfId2Resource.get(parameterValue);
+  }
 
-	@Override
-	public String convertToString(Object parameterValue)
-			throws ParameterValueConversionException {
-		
-		//Changed to remove dependency to GMF
-		String id = ((XMLResource)((EObject)parameterValue).eResource()).getID((EObject)parameterValue);
-		emfId2Resource.put(id, (EObject)parameterValue);
-		return id;
-		
-//		emfId2Resource.put(EMFCoreUtil.getProxyID((EObject)parameterValue), (EObject)parameterValue);
-//		return EMFCoreUtil.getProxyID((EObject)parameterValue);
-	}
+  @Override
+  public String convertToString(Object parameterValue) throws ParameterValueConversionException {
+
+    // Changed to remove dependency to GMF
+    String id = ((XMLResource) ((EObject) parameterValue).eResource())
+        .getID((EObject) parameterValue);
+    emfId2Resource.put(id, (EObject) parameterValue);
+    return id;
+
+    // emfId2Resource.put(EMFCoreUtil.getProxyID((EObject)parameterValue),
+    // (EObject)parameterValue);
+    // return EMFCoreUtil.getProxyID((EObject)parameterValue);
+  }
 
 }

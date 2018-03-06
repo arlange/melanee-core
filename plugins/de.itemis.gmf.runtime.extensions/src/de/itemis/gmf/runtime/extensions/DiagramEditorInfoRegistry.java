@@ -16,23 +16,23 @@ import org.eclipse.core.runtime.Platform;
 
 public class DiagramEditorInfoRegistry {
 
-	private static final String FILE_EXTENSION = "fileExtension";
-	private static final String EXTENSION_POINT_ID = "de.itemis.gmf.runtime.extensions.diagramEditorInfo";
-	private static final List<String> registeredDiagramFileExtensions;
-	
-	static {
-		List<String> fileExtensions = new ArrayList<String>();
-		IConfigurationElement[] configurationElements = Platform.getExtensionRegistry().getConfigurationElementsFor(EXTENSION_POINT_ID);
-		for (IConfigurationElement configurationElement : configurationElements) {
-			String fileExtension = configurationElement.getAttribute(FILE_EXTENSION);
-			fileExtensions.add(fileExtension);
-		}
-		registeredDiagramFileExtensions = Collections.unmodifiableList(fileExtensions);
-	}
-	
-	public static List<String> getRegisteredDiagramFileExtensions() {
-		return registeredDiagramFileExtensions;
-	}
-	
-	
+  private static final String FILE_EXTENSION = "fileExtension";
+  private static final String EXTENSION_POINT_ID = "de.itemis.gmf.runtime.extensions.diagramEditorInfo";
+  private static final List<String> registeredDiagramFileExtensions;
+
+  static {
+    List<String> fileExtensions = new ArrayList<String>();
+    IConfigurationElement[] configurationElements = Platform.getExtensionRegistry()
+        .getConfigurationElementsFor(EXTENSION_POINT_ID);
+    for (IConfigurationElement configurationElement : configurationElements) {
+      String fileExtension = configurationElement.getAttribute(FILE_EXTENSION);
+      fileExtensions.add(fileExtension);
+    }
+    registeredDiagramFileExtensions = Collections.unmodifiableList(fileExtensions);
+  }
+
+  public static List<String> getRegisteredDiagramFileExtensions() {
+    return registeredDiagramFileExtensions;
+  }
+
 }

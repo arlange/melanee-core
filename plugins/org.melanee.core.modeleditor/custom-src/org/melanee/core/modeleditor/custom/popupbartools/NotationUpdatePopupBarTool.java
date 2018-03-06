@@ -22,29 +22,30 @@ import org.melanee.core.modeleditor.custom.commands.NotationUpdateCommand;
 
 /**
  * 
- * This tools is reponsible for updating the format/notation without
- * setting a value.
+ * This tools is reponsible for updating the format/notation without setting a
+ * value.
  * 
  */
-public class NotationUpdatePopupBarTool extends AbstractPopupBarTool{
+public class NotationUpdatePopupBarTool extends AbstractPopupBarTool {
 
-	private String notation;
-	private String format;
-	
-	public NotationUpdatePopupBarTool(EditPart epHost, CreateRequest theRequest, String format) {
-		super(epHost, theRequest);
-		this.notation = notation;
-		this.format = format;
-	}
+  private String notation;
+  private String format;
 
-	@Override
-	protected Request createTargetRequest() {
-		ChangePropertyValueRequest req = new ChangePropertyValueRequest("Apply Graphical Notation", "Apply Graphical Notation");
-		return req;
-	}
+  public NotationUpdatePopupBarTool(EditPart epHost, CreateRequest theRequest, String format) {
+    super(epHost, theRequest);
+    this.notation = notation;
+    this.format = format;
+  }
 
-	@Override
-	protected Command getCommand() {
-		return new NotationUpdateCommand((IGraphicalEditPart)getHost(), format);
-	}
+  @Override
+  protected Request createTargetRequest() {
+    ChangePropertyValueRequest req = new ChangePropertyValueRequest("Apply Graphical Notation",
+        "Apply Graphical Notation");
+    return req;
+  }
+
+  @Override
+  protected Command getCommand() {
+    return new NotationUpdateCommand((IGraphicalEditPart) getHost(), format);
+  }
 }

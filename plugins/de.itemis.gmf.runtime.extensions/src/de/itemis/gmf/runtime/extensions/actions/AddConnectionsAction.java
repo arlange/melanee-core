@@ -41,97 +41,91 @@ import de.itemis.gmf.runtime.extensions.Activator;
 
 public class AddConnectionsAction implements IObjectActionDelegate {
 
-	private ArrayList<IGraphicalEditPart> selectedEditParts;
+  private ArrayList<IGraphicalEditPart> selectedEditParts;
 
-	/**
-	 * Constructor for Action1.
-	 */
-	public AddConnectionsAction() {
-		super();
-	}
+  /**
+   * Constructor for Action1.
+   */
+  public AddConnectionsAction() {
+    super();
+  }
 
-	/**
-	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
-	 */
-	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-	}
+  /**
+   * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
+   */
+  public void setActivePart(IAction action, IWorkbenchPart targetPart) {
+  }
 
-	/**
-	 * @see IActionDelegate#run(IAction)
-	 */
-	public void run(IAction action) {
-		// TODO: node edit part
-		final Set<EObject> selectedSemanticElements = new HashSet<EObject>();
-		Set<DiagramEditPart> selectedDiagramEditParts = new HashSet<DiagramEditPart>();
-		for (IGraphicalEditPart selectedEditPart : selectedEditParts) {
-			Object view = selectedEditPart.getModel();
-			if (view instanceof Node) {
-				selectedSemanticElements.add(selectedEditPart
-						.resolveSemanticElement());
-				DiagramEditPart diagramEditPart = getDiagramEditPart(selectedEditPart);
-				selectedDiagramEditParts.add(diagramEditPart);
-			}
-		}
-		for (DiagramEditPart diagramEditPart : selectedDiagramEditParts) {
-			final SemiCanonicalDiagramEditPolicy semiCanonicalEditPolicy = (SemiCanonicalDiagramEditPolicy) diagramEditPart
-					.getEditPolicy(SemiCanonicalDiagramEditPolicy.SEMI_CANONICAL_ROLE);
-			ArrayList<IFile> affectedFiles = new ArrayList<IFile>();
-			Resource resource = ((View) diagramEditPart.getModel()).eResource();
-			affectedFiles.add(WorkspaceSynchronizer.getFile(resource));
-			AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-					TransactionUtil
-							.getEditingDomain(diagramEditPart.getModel()),
-					"Add Connections", affectedFiles) {
+  /**
+   * @see IActionDelegate#run(IAction)
+   */
+  public void run(IAction action) {
+    // TODO: node edit part
+    final Set<EObject> selectedSemanticElements = new HashSet<EObject>();
+    Set<DiagramEditPart> selectedDiagramEditParts = new HashSet<DiagramEditPart>();
+    for (IGraphicalEditPart selectedEditPart : selectedEditParts) {
+      Object view = selectedEditPart.getModel();
+      if (view instanceof Node) {
+        selectedSemanticElements.add(selectedEditPart.resolveSemanticElement());
+        DiagramEditPart diagramEditPart = getDiagramEditPart(selectedEditPart);
+        selectedDiagramEditParts.add(diagramEditPart);
+      }
+    }
+    for (DiagramEditPart diagramEditPart : selectedDiagramEditParts) {
+      final SemiCanonicalDiagramEditPolicy semiCanonicalEditPolicy = (SemiCanonicalDiagramEditPolicy) diagramEditPart
+          .getEditPolicy(SemiCanonicalDiagramEditPolicy.SEMI_CANONICAL_ROLE);
+      ArrayList<IFile> affectedFiles = new ArrayList<IFile>();
+      Resource resource = ((View) diagramEditPart.getModel()).eResource();
+      affectedFiles.add(WorkspaceSynchronizer.getFile(resource));
+      AbstractTransactionalCommand command = new AbstractTransactionalCommand(
+          TransactionUtil.getEditingDomain(diagramEditPart.getModel()), "Add Connections",
+          affectedFiles) {
 
-				@Override
-				protected CommandResult doExecuteWithResult(
-						IProgressMonitor monitor, IAdaptable info)
-						throws ExecutionException {
-					semiCanonicalEditPolicy
-							.addConnections(selectedSemanticElements);
-					return CommandResult.newOKCommandResult();
-				}
-			};
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(command,
-						new NullProgressMonitor(), null);
-			} catch (ExecutionException e) {
-				Activator
-						.logError("error executing Add Connections command", e);
-			}
-			TransactionUtil.getEditingDomain(diagramEditPart.getModel())
-					.getCommandStack().execute(null);
-		}
-	}
+        @Override
+        protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+            throws ExecutionException {
+          semiCanonicalEditPolicy.addConnections(selectedSemanticElements);
+          return CommandResult.newOKCommandResult();
+        }
+      };
+      try {
+        OperationHistoryFactory.getOperationHistory().execute(command, new NullProgressMonitor(),
+            null);
+      } catch (ExecutionException e) {
+        Activator.logError("error executing Add Connections command", e);
+      }
+      TransactionUtil.getEditingDomain(diagramEditPart.getModel()).getCommandStack().execute(null);
+    }
+  }
 
-	private DiagramEditPart getDiagramEditPart(EditPart editPart) {
-		if (editPart instanceof DiagramEditPart) {
-			return (DiagramEditPart) editPart;
-		}
-		EditPart parent = editPart.getParent();
-		if (parent != null) {
-			return getDiagramEditPart(parent);
-		}
-		return null;
-	}
+  private DiagramEditPart getDiagramEditPart(EditPart editPart) {
+    if (editPart instanceof DiagramEditPart) {
+      return (DiagramEditPart) editPart;
+    }
+    EditPart parent = editPart.getParent();
+    if (parent != null) {
+      return getDiagramEditPart(parent);
+    }
+    return null;
+  }
 
-	/**
-	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
-	 */
-	public void selectionChanged(IAction action, ISelection selection) {
-		action.setEnabled(false);
-		if (selection instanceof IStructuredSelection) {
-			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-            selectedEditParts = new ArrayList<IGraphicalEditPart>();
-			for (Iterator<?> i = structuredSelection.iterator(); i.hasNext();) {
-				Object selectedElement = i.next();
-				if (selectedElement instanceof IGraphicalEditPart) {
-					IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) selectedElement;
-					selectedEditParts.add(graphicalEditPart);
-					action.setEnabled(true);
-				}
-			}
-		}
-	}
+  /**
+   * @see IActionDelegate#selectionChanged(IAction, ISelection)
+   */
+  public void selectionChanged(IAction action, ISelection selection) {
+    action.setEnabled(false);
+    if (selection instanceof IStructuredSelection) {
+      IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+      selectedEditParts = new ArrayList<IGraphicalEditPart>();
+      for (Iterator<?> i = structuredSelection.iterator(); i.hasNext();) {
+        Object selectedElement = i.next();
+        if (selectedElement instanceof IGraphicalEditPart) {
+          IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) selectedElement;
+          selectedEditParts.add(graphicalEditPart);
+          action.setEnabled(true);
+        }
+      }
+    }
+  }
 
 }

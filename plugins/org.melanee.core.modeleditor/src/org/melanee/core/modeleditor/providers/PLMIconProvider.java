@@ -20,11 +20,11 @@ import org.eclipse.gmf.tooling.runtime.providers.DefaultElementTypeIconProvider;
  */
 public class PLMIconProvider extends DefaultElementTypeIconProvider implements IIconProvider {
 
-	/**
-	* @generated
-	*/
-	public PLMIconProvider() {
-		super(PLMElementTypes.TYPED_INSTANCE);
-	}
+  /**
+   * @generated
+   */
+  public PLMIconProvider() {
+    super(PLMElementTypes.TYPED_INSTANCE);
+  }
 
 }

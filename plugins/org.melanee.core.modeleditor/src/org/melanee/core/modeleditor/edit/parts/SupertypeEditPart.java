@@ -29,77 +29,77 @@ import org.melanee.core.modeleditor.edit.policies.SupertypeItemSemanticEditPolic
  */
 public class SupertypeEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
-	/**
-	* @generated
-	*/
-	public static final int VISUAL_ID = 4034;
+  /**
+   * @generated
+   */
+  public static final int VISUAL_ID = 4034;
 
-	/**
-	* @generated
-	*/
-	public SupertypeEditPart(View view) {
-		super(view);
-	}
+  /**
+   * @generated
+   */
+  public SupertypeEditPart(View view) {
+    super(view);
+  }
 
-	/**
-	* @generated
-	*/
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SupertypeItemSemanticEditPolicy());
-	}
+  /**
+   * @generated
+   */
+  protected void createDefaultEditPolicies() {
+    super.createDefaultEditPolicies();
+    installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SupertypeItemSemanticEditPolicy());
+  }
 
-	/**
-	* Creates figure for this edit part.
-	* 
-	* Body of this method does not depend on settings in generation model
-	* so you may safely remove <i>generated</i> tag and modify it.
-	* 
-	* @generated
-	*/
+  /**
+   * Creates figure for this edit part.
+   * 
+   * Body of this method does not depend on settings in generation model so you
+   * may safely remove <i>generated</i> tag and modify it.
+   * 
+   * @generated
+   */
 
-	protected Connection createConnectionFigure() {
-		return new SuperTypeConnectionFigure();
-	}
+  protected Connection createConnectionFigure() {
+    return new SuperTypeConnectionFigure();
+  }
 
-	/**
-	* @generated
-	*/
-	public SuperTypeConnectionFigure getPrimaryShape() {
-		return (SuperTypeConnectionFigure) getFigure();
-	}
+  /**
+   * @generated
+   */
+  public SuperTypeConnectionFigure getPrimaryShape() {
+    return (SuperTypeConnectionFigure) getFigure();
+  }
 
-	/**
-	 * @generated
-	 */
-	public class SuperTypeConnectionFigure extends PolylineConnectionEx {
+  /**
+   * @generated
+   */
+  public class SuperTypeConnectionFigure extends PolylineConnectionEx {
 
-		/**
-		 * @generated
-		 */
-		public SuperTypeConnectionFigure() {
-			this.setForegroundColor(ColorConstants.black);
+    /**
+     * @generated
+     */
+    public SuperTypeConnectionFigure() {
+      this.setForegroundColor(ColorConstants.black);
 
-			setTargetDecoration(createTargetDecoration());
-		}
+      setTargetDecoration(createTargetDecoration());
+    }
 
-		/**
-		 * @generated
-		 */
-		private RotatableDecoration createTargetDecoration() {
-			PolygonDecoration df = new PolygonDecoration();
-			df.setFill(true);
-			df.setBackgroundColor(DF_BACK);
-			return df;
-		}
+    /**
+     * @generated
+     */
+    private RotatableDecoration createTargetDecoration() {
+      PolygonDecoration df = new PolygonDecoration();
+      df.setFill(true);
+      df.setBackgroundColor(DF_BACK);
+      return df;
+    }
 
-	}
+  }
 
-	/**
-	 * @generated
-	 */
-	static final Color DF_BACK = new Color(null, 255, 255, 255);
+  /**
+   * @generated
+   */
+  static final Color DF_BACK = new Color(null, 255, 255, 255);
 
-	//Sets the potency of instatiation ends
+  // Sets the potency of instatiation ends
 
 }

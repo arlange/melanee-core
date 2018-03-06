@@ -12,14 +12,14 @@ package org.melanee.core.workbench.interfaces;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
-
 public interface IAutoLayoutService {
-	/**
-	 * Starts the auto layouting mechanism for a connection which is connected with the clabjects, which
-	 * coordinates are stored in clabjectClientRectangles.
-	 * 
-	 * @param clabjectClientRectangles The coordinates of the connected clabjects
-	 * @return the client rectangle for the layouted connection
-	 */
-	public Rectangle doLayout(Rectangle[] clabjectClientRectangles);
+  /**
+   * Starts the auto layouting mechanism for a connection which is connected with
+   * the clabjects, which coordinates are stored in clabjectClientRectangles.
+   * 
+   * @param clabjectClientRectangles
+   *          The coordinates of the connected clabjects
+   * @return the client rectangle for the layouted connection
+   */
+  public Rectangle doLayout(Rectangle[] clabjectClientRectangles);
 }

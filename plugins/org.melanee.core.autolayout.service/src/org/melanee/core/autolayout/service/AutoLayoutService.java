@@ -15,10 +15,10 @@ import org.melanee.core.workbench.interfaces.IAutoLayoutService;
 
 public class AutoLayoutService implements IAutoLayoutService {
 
-	@Override
-	public Rectangle doLayout(Rectangle[] clabjectClientRectangles) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public Rectangle doLayout(Rectangle[] clabjectClientRectangles) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
 }

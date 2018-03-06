@@ -17,32 +17,32 @@ import org.eclipse.draw2d.text.TextFlow;
 
 public class ToolTip extends FlowPage {
 
-	private final TextFlow title = new TextFlow();
-	
-	public ToolTip(String title){
-		
-		setOpaque(true);
-		setBorder(new MarginBorder(0 , 2, 1, 2));
-		this.title.setText(title);
-		
-		add(this.title);
-		
-	}
-	
-	@Override
-	public Dimension getPreferredSize(int width, int h) {
-		Dimension result = super.getPreferredSize(-1, -1);
-		
-		if(result.width > 450)
-			result = super.getPreferredSize(450, -1);
-		
-		return result;
-	}
-	
-	public void setTitle(String text){
-		title.setText(text);
-		revalidate();
-		repaint();
-	}
-	
+  private final TextFlow title = new TextFlow();
+
+  public ToolTip(String title) {
+
+    setOpaque(true);
+    setBorder(new MarginBorder(0, 2, 1, 2));
+    this.title.setText(title);
+
+    add(this.title);
+
+  }
+
+  @Override
+  public Dimension getPreferredSize(int width, int h) {
+    Dimension result = super.getPreferredSize(-1, -1);
+
+    if (result.width > 450)
+      result = super.getPreferredSize(450, -1);
+
+    return result;
+  }
+
+  public void setTitle(String text) {
+    title.setText(text);
+    revalidate();
+    repaint();
+  }
+
 }

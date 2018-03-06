@@ -14,22 +14,22 @@ import org.eclipse.core.runtime.CoreException;
 import org.melanee.core.workbench.ExtensionPointService;
 import org.melanee.core.workbench.interfaces.IApplicationVisualizationService;
 
-public class ConstraintPropertiesSectionFilter extends AbstractPropertiesSectionFilter{
+public class ConstraintPropertiesSectionFilter extends AbstractPropertiesSectionFilter {
 
-	@Override
-	public boolean select(Object toTest) {
-		IApplicationVisualizationService service = null;
-		
-		try {
-			service = ExtensionPointService.Instance().getActiveApplicationVisualizationService();
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-		
-		if (service != null)
-			return super.select(toTest) && service.getFilterForConstraintProperties().select(toTest);
-		
-		return super.select(toTest);
-	}
+  @Override
+  public boolean select(Object toTest) {
+    IApplicationVisualizationService service = null;
+
+    try {
+      service = ExtensionPointService.Instance().getActiveApplicationVisualizationService();
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
+
+    if (service != null)
+      return super.select(toTest) && service.getFilterForConstraintProperties().select(toTest);
+
+    return super.select(toTest);
+  }
 
 }

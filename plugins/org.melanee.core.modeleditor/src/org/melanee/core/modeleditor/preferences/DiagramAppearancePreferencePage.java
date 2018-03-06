@@ -20,11 +20,11 @@ import org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin;
  */
 public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 
-	/**
-	* @generated
-	*/
-	public DiagramAppearancePreferencePage() {
-		setPreferenceStore(PLMDiagramEditorPlugin.getInstance().getPreferenceStore());
-	}
+  /**
+   * @generated
+   */
+  public DiagramAppearancePreferencePage() {
+    setPreferenceStore(PLMDiagramEditorPlugin.getInstance().getPreferenceStore());
+  }
 
 }

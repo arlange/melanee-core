@@ -30,115 +30,118 @@ import de.itemis.gmf.runtime.extensions.Activator;
  */
 public class SharedResourceSetInfoDelegate {
 
-	private long myModificationStamp = IResource.NULL_STAMP;
+  private long myModificationStamp = IResource.NULL_STAMP;
 
-	private WorkspaceSynchronizer mySynchronizer;
+  private WorkspaceSynchronizer mySynchronizer;
 
-	private final TransactionalEditingDomain editingDomain;
+  private final TransactionalEditingDomain editingDomain;
 
-	private final List<WorkspaceSynchronizer.Delegate> delegates;
+  private final List<WorkspaceSynchronizer.Delegate> delegates;
 
-	public SharedResourceSetInfoDelegate(TransactionalEditingDomain editingDomain) {
-		this.editingDomain = editingDomain;
-		this.delegates = new ArrayList<WorkspaceSynchronizer.Delegate>();
-		startResourceListening();
-	}
+  public SharedResourceSetInfoDelegate(TransactionalEditingDomain editingDomain) {
+    this.editingDomain = editingDomain;
+    this.delegates = new ArrayList<WorkspaceSynchronizer.Delegate>();
+    startResourceListening();
+  }
 
-	public long getModificationStamp() {
-		return myModificationStamp;
-	}
+  public long getModificationStamp() {
+    return myModificationStamp;
+  }
 
-	public void setModificationStamp(long modificationStamp) {
-		myModificationStamp = modificationStamp;
-	}
+  public void setModificationStamp(long modificationStamp) {
+    myModificationStamp = modificationStamp;
+  }
 
-	public TransactionalEditingDomain getEditingDomain() {
-		return editingDomain;
-	}
+  public TransactionalEditingDomain getEditingDomain() {
+    return editingDomain;
+  }
 
-	public void dispose() {
-		stopResourceListening();
-	}
+  public void dispose() {
+    stopResourceListening();
+  }
 
-	public final void stopResourceListening() {
-		if (mySynchronizer != null) {
-			mySynchronizer.dispose();
-		}
-		mySynchronizer = null;
-	}
+  public final void stopResourceListening() {
+    if (mySynchronizer != null) {
+      mySynchronizer.dispose();
+    }
+    mySynchronizer = null;
+  }
 
-	public final void startResourceListening() {
-		if (mySynchronizer == null) {
-			mySynchronizer = new WorkspaceSynchronizer(getEditingDomain(), new CompositeSynchronizerDelegate());
-		}
-	}
+  public final void startResourceListening() {
+    if (mySynchronizer == null) {
+      mySynchronizer = new WorkspaceSynchronizer(getEditingDomain(),
+          new CompositeSynchronizerDelegate());
+    }
+  }
 
-	public boolean addWorkspaceSynchronizerDelegate(WorkspaceSynchronizer.Delegate delegate) {
-		return delegates.add(delegate);
-	}
+  public boolean addWorkspaceSynchronizerDelegate(WorkspaceSynchronizer.Delegate delegate) {
+    return delegates.add(delegate);
+  }
 
-	public boolean removeWorkspaceSynchronizerDelegate(WorkspaceSynchronizer.Delegate delegate) {
-		return delegates.remove(delegate);
-	}
+  public boolean removeWorkspaceSynchronizerDelegate(WorkspaceSynchronizer.Delegate delegate) {
+    return delegates.remove(delegate);
+  }
 
-	private class CompositeSynchronizerDelegate implements WorkspaceSynchronizer.Delegate {
+  private class CompositeSynchronizerDelegate implements WorkspaceSynchronizer.Delegate {
 
-		public void dispose() {
-		}
+    public void dispose() {
+    }
 
-		public boolean handleResourceChanged(final Resource resource) {
-			// BEGIN: Code block copied from generated DocumentProvider
-			org.eclipse.core.resources.IFile file = org.eclipse.emf.workspace.util.WorkspaceSynchronizer
-					.getFile(resource);
-			if (file != null) {
-				try {
-					file.refreshLocal(org.eclipse.core.resources.IResource.DEPTH_INFINITE, new NullProgressMonitor());
-				} catch (org.eclipse.core.runtime.CoreException ex) {
-					Activator.logError("Error in refreshing changed file", ex);
-				}
-			}
-			resource.unload();
-			// END
-			synchronized (SharedResourceSetInfoDelegate.this) {
-				for (WorkspaceSynchronizer.Delegate delegate : delegates) {
-					delegate.handleResourceChanged(resource);
-				}
-			}
-			return true;
-		}
+    public boolean handleResourceChanged(final Resource resource) {
+      // BEGIN: Code block copied from generated DocumentProvider
+      org.eclipse.core.resources.IFile file = org.eclipse.emf.workspace.util.WorkspaceSynchronizer
+          .getFile(resource);
+      if (file != null) {
+        try {
+          file.refreshLocal(org.eclipse.core.resources.IResource.DEPTH_INFINITE,
+              new NullProgressMonitor());
+        } catch (org.eclipse.core.runtime.CoreException ex) {
+          Activator.logError("Error in refreshing changed file", ex);
+        }
+      }
+      resource.unload();
+      // END
+      synchronized (SharedResourceSetInfoDelegate.this) {
+        for (WorkspaceSynchronizer.Delegate delegate : delegates) {
+          delegate.handleResourceChanged(resource);
+        }
+      }
+      return true;
+    }
 
-		public boolean handleResourceDeleted(final Resource resource) {
-			synchronized (SharedResourceSetInfoDelegate.this) {
-				for (WorkspaceSynchronizer.Delegate delegate : delegates) {
-					delegate.handleResourceDeleted(resource);
-				}
-			}
-			return true;
-		}
+    public boolean handleResourceDeleted(final Resource resource) {
+      synchronized (SharedResourceSetInfoDelegate.this) {
+        for (WorkspaceSynchronizer.Delegate delegate : delegates) {
+          delegate.handleResourceDeleted(resource);
+        }
+      }
+      return true;
+    }
 
-		public boolean handleResourceMoved(final Resource resource, final URI newURI) {
-			synchronized (SharedResourceSetInfoDelegate.this) {
-				for (WorkspaceSynchronizer.Delegate delegate : delegates) {
-					delegate.handleResourceMoved(resource, newURI);
-				}
-			}
-			return true;
-		}
-	}
+    public boolean handleResourceMoved(final Resource resource, final URI newURI) {
+      synchronized (SharedResourceSetInfoDelegate.this) {
+        for (WorkspaceSynchronizer.Delegate delegate : delegates) {
+          delegate.handleResourceMoved(resource, newURI);
+        }
+      }
+      return true;
+    }
+  }
 
-	public boolean resourceSetIsDirty() {
-		for (Resource resource : getEditingDomain().getResourceSet().getResources()) {
-			if (resource.isLoaded() && !getEditingDomain().isReadOnly(resource) && resource.isModified()) {
-				return true;
-			}
-		}
-		return false;
-	}
+  public boolean resourceSetIsDirty() {
+    for (Resource resource : getEditingDomain().getResourceSet().getResources()) {
+      if (resource.isLoaded() && !getEditingDomain().isReadOnly(resource)
+          && resource.isModified()) {
+        return true;
+      }
+    }
+    return false;
+  }
 
-	public static SharedResourceSetInfoDelegate adapt(TransactionalEditingDomain editingDomain) {
-		SharedResourceSetInfoAdapter.Factory factory = new SharedResourceSetInfoAdapter.Factory();
-		SharedResourceSetInfoAdapter adapter = (SharedResourceSetInfoAdapter) factory.adapt(editingDomain
-				.getResourceSet(), SharedResourceSetInfoDelegate.class);
-		return (adapter != null) ? adapter.getSharedResourceSetInfoDelegate() : null;
-	}
+  public static SharedResourceSetInfoDelegate adapt(TransactionalEditingDomain editingDomain) {
+    SharedResourceSetInfoAdapter.Factory factory = new SharedResourceSetInfoAdapter.Factory();
+    SharedResourceSetInfoAdapter adapter = (SharedResourceSetInfoAdapter) factory
+        .adapt(editingDomain.getResourceSet(), SharedResourceSetInfoDelegate.class);
+    return (adapter != null) ? adapter.getSharedResourceSetInfoDelegate() : null;
+  }
 }

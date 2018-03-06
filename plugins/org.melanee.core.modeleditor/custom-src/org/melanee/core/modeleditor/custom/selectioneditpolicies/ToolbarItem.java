@@ -28,185 +28,189 @@ import org.eclipse.swt.widgets.Display;
  * 
  * An item (Button) in the toolbar.
  * 
- * Code is copied from org.eclipse.gmf.runtime.diagram.ui.editpolicies.PopupBarEditPolicy
- * and modified.
+ * Code is copied from
+ * org.eclipse.gmf.runtime.diagram.ui.editpolicies.PopupBarEditPolicy and
+ * modified.
  *
  */
 public class ToolbarItem extends Label implements Handle {
 
-	static private int POPUPBAR_MOVE_FIGURE			 		= 0x02; /* Ignore the first figureMoved event when creating elements inside a shape via a popup bar*/
-	
-	private BaseToolbarSelectionEditPolicy hostPolicy = null;
-	
-	/** Value to control the alpha (transparency)*/
-	public final static int MOUSE_EXIT_ALPHA = 70;
-	
-	/**
-	 * flag to drawFocus rect around the handle when the mouse rolls over it
-	 */
-	private boolean myMouseOver = false;
+  static private int POPUPBAR_MOVE_FIGURE = 0x02; /*
+                                                   * Ignore the first figureMoved event when
+                                                   * creating elements inside a shape via a popup
+                                                   * bar
+                                                   */
 
-	private Image myDisabledImage = null;
+  private BaseToolbarSelectionEditPolicy hostPolicy = null;
 
-	/** The dragTracker CreationTool associated with the handle * */
-	private DragTracker myDragTracker = null;
+  /** Value to control the alpha (transparency) */
+  public final static int MOUSE_EXIT_ALPHA = 70;
 
-	private Image getDisabledImage() {
-		if (myDisabledImage != null)
-			return myDisabledImage;
+  /**
+   * flag to drawFocus rect around the handle when the mouse rolls over it
+   */
+  private boolean myMouseOver = false;
 
-		Image theImage = this.getIcon();
-		if (theImage == null)
-			return null;
+  private Image myDisabledImage = null;
 
-		myDisabledImage = new Image(Display.getCurrent(), theImage,
-				SWT.IMAGE_DISABLE);
-		//This never happens in my implementation
-//		if (imagesToBeDisposed == null) {
-//			imagesToBeDisposed = new ArrayList();
-//		}
-		
-		hostPolicy.getImagesToBeDisposed().add(myDisabledImage);
-		return myDisabledImage;
-	}
+  /** The dragTracker CreationTool associated with the handle * */
+  private DragTracker myDragTracker = null;
 
-	/**
-	 * cnostructor
-	 * 
-	 * @param tracker A PopupBarTool instance
-	 * @param theImage
-	 */
-	public ToolbarItem(DragTracker tracker, Image theImage, BaseToolbarSelectionEditPolicy hostPolicy) {
-		super(theImage);
-		myDragTracker = tracker;
-		this.setOpaque(true);
-		this.setBackgroundColor(ColorConstants.buttonLightest);
-		this.hostPolicy = hostPolicy;
-		calculateEnabled();
-	}
+  private Image getDisabledImage() {
+    if (myDisabledImage != null)
+      return myDisabledImage;
 
-	/**
-	 * @see org.eclipse.gef.Handle#getAccessibleLocation()
-	 */
-	public Point getAccessibleLocation() {
-		return null;
-	}
+    Image theImage = this.getIcon();
+    if (theImage == null)
+      return null;
 
-	/**
-	 * @see org.eclipse.gef.Handle#getDragTracker()
-	 */
-	public DragTracker getDragTracker() {
-		return myDragTracker;
-	}
+    myDisabledImage = new Image(Display.getCurrent(), theImage, SWT.IMAGE_DISABLE);
+    // This never happens in my implementation
+    // if (imagesToBeDisposed == null) {
+    // imagesToBeDisposed = new ArrayList();
+    // }
 
-	/**
-	 * @see org.eclipse.draw2d.Figure#paintBorder(org.eclipse.draw2d.Graphics)
-	 *      paint a focus rectangle for the label if the mouse is inside the
-	 *      label
-	 */
-	protected void paintBorder(Graphics graphics) {
-		super.paintBorder(graphics);
+    hostPolicy.getImagesToBeDisposed().add(myDisabledImage);
+    return myDisabledImage;
+  }
 
-		if (myMouseOver) {
+  /**
+   * cnostructor
+   * 
+   * @param tracker
+   *          A PopupBarTool instance
+   * @param theImage
+   */
+  public ToolbarItem(DragTracker tracker, Image theImage,
+      BaseToolbarSelectionEditPolicy hostPolicy) {
+    super(theImage);
+    myDragTracker = tracker;
+    this.setOpaque(true);
+    this.setBackgroundColor(ColorConstants.buttonLightest);
+    this.hostPolicy = hostPolicy;
+    calculateEnabled();
+  }
 
-			Rectangle area = getClientArea();
-			graphics.setForegroundColor(ColorConstants.black);
-			graphics.setBackgroundColor(ColorConstants.white);
+  /**
+   * @see org.eclipse.gef.Handle#getAccessibleLocation()
+   */
+  public Point getAccessibleLocation() {
+    return null;
+  }
 
-			graphics.drawFocus(area.x, area.y, area.width - 1, area.height - 1);
+  /**
+   * @see org.eclipse.gef.Handle#getDragTracker()
+   */
+  public DragTracker getDragTracker() {
+    return myDragTracker;
+  }
 
-		}
+  /**
+   * @see org.eclipse.draw2d.Figure#paintBorder(org.eclipse.draw2d.Graphics) paint
+   *      a focus rectangle for the label if the mouse is inside the label
+   */
+  protected void paintBorder(Graphics graphics) {
+    super.paintBorder(graphics);
 
-	}
+    if (myMouseOver) {
 
-	/**
-	 * @see org.eclipse.draw2d.IFigure#handleMouseEntered(org.eclipse.draw2d.MouseEvent)
-	 *      flip myMouseOver bit and repaint
-	 */
-	public void handleMouseEntered(MouseEvent event) {
+      Rectangle area = getClientArea();
+      graphics.setForegroundColor(ColorConstants.black);
+      graphics.setBackgroundColor(ColorConstants.white);
 
-		calculateEnabled();
+      graphics.drawFocus(area.x, area.y, area.width - 1, area.height - 1);
 
-		super.handleMouseEntered(event);
-		myMouseOver = true;
-		((Toolbar)getParent()).setMouseOver(true);
-		
-		getParent().repaint();
-		
-		for (Object fig : getParent().getChildren())
-			((IFigure)fig).repaint();
-	}
+    }
 
-	/**
-	 * @see org.eclipse.draw2d.IFigure#handleMouseExited(org.eclipse.draw2d.MouseEvent)
-	 *      flip myMouseOver bit and repaint
-	 */
-	public void handleMouseExited(MouseEvent event) {
+  }
 
-		super.handleMouseExited(event);
-		myMouseOver = false;
-		((Toolbar)getParent()).setMouseOver(false);
-		
-		getParent().repaint();
-		
-		for (Object fig : getParent().getChildren())
-			((IFigure)fig).repaint();
-	}
+  /**
+   * @see org.eclipse.draw2d.IFigure#handleMouseEntered(org.eclipse.draw2d.MouseEvent)
+   *      flip myMouseOver bit and repaint
+   */
+  public void handleMouseEntered(MouseEvent event) {
 
-	/**
-	 * @see org.eclipse.draw2d.IFigure#handleMousePressed(org.eclipse.draw2d.MouseEvent)
-	 *      set PopupBarEditPolicy.myActionMoveFigure bit so the popup bar is
-	 *      not dismissed after creating an item in the editpart
-	 * 
-	 */
-	public void handleMousePressed(MouseEvent event) {
+    calculateEnabled();
 
-		if (1 == event.button) {
-			// this is the flag in PopupBarEditPolicy that
-			// prevents the popup bar from dismissing after a new item
-			// is added to a shape, which causes the editpart to be
-			// resized.
-			setFlag(POPUPBAR_MOVE_FIGURE, true);
-			// future: when other tools besides PopupBarTool are
-			// used
-			// we will need a way in which to call
+    super.handleMouseEntered(event);
+    myMouseOver = true;
+    ((Toolbar) getParent()).setMouseOver(true);
 
-		}
+    getParent().repaint();
 
-		super.handleMousePressed(event);
-	}
+    for (Object fig : getParent().getChildren())
+      ((IFigure) fig).repaint();
+  }
 
-	private void calculateEnabled() {
-		if ((myDragTracker != null)
-				&& (myDragTracker instanceof AbstractPopupBarTool)) {
-			AbstractPopupBarTool abarTool = (AbstractPopupBarTool) myDragTracker;
-			setEnabled(abarTool.isCommandEnabled());
-		} else {
-			setEnabled(true);
-		}
-	}
+  /**
+   * @see org.eclipse.draw2d.IFigure#handleMouseExited(org.eclipse.draw2d.MouseEvent)
+   *      flip myMouseOver bit and repaint
+   */
+  public void handleMouseExited(MouseEvent event) {
 
-	/**
-	 * @see org.eclipse.draw2d.Figure#paintFigure(org.eclipse.draw2d.Graphics)
-	 */
-	protected void paintFigure(Graphics graphics) {
-		if (!isEnabled()) {
-			Image theImage = getDisabledImage();
-			if (theImage != null) {
-				graphics.translate(bounds.x, bounds.y);
-				graphics.drawImage(theImage, getIconLocation());
-				graphics.translate(-bounds.x, -bounds.y);
-				return;
-			}
+    super.handleMouseExited(event);
+    myMouseOver = false;
+    ((Toolbar) getParent()).setMouseOver(false);
 
-		}
-		
-		if(((Toolbar)getParent()).getMouseOver())
-			graphics.setAlpha(255);
-		else
-			graphics.setAlpha(ToolbarItem.MOUSE_EXIT_ALPHA);
-		
-		super.paintFigure(graphics);
+    getParent().repaint();
 
-	}
+    for (Object fig : getParent().getChildren())
+      ((IFigure) fig).repaint();
+  }
+
+  /**
+   * @see org.eclipse.draw2d.IFigure#handleMousePressed(org.eclipse.draw2d.MouseEvent)
+   *      set PopupBarEditPolicy.myActionMoveFigure bit so the popup bar is not
+   *      dismissed after creating an item in the editpart
+   * 
+   */
+  public void handleMousePressed(MouseEvent event) {
+
+    if (1 == event.button) {
+      // this is the flag in PopupBarEditPolicy that
+      // prevents the popup bar from dismissing after a new item
+      // is added to a shape, which causes the editpart to be
+      // resized.
+      setFlag(POPUPBAR_MOVE_FIGURE, true);
+      // future: when other tools besides PopupBarTool are
+      // used
+      // we will need a way in which to call
+
+    }
+
+    super.handleMousePressed(event);
+  }
+
+  private void calculateEnabled() {
+    if ((myDragTracker != null) && (myDragTracker instanceof AbstractPopupBarTool)) {
+      AbstractPopupBarTool abarTool = (AbstractPopupBarTool) myDragTracker;
+      setEnabled(abarTool.isCommandEnabled());
+    } else {
+      setEnabled(true);
+    }
+  }
+
+  /**
+   * @see org.eclipse.draw2d.Figure#paintFigure(org.eclipse.draw2d.Graphics)
+   */
+  protected void paintFigure(Graphics graphics) {
+    if (!isEnabled()) {
+      Image theImage = getDisabledImage();
+      if (theImage != null) {
+        graphics.translate(bounds.x, bounds.y);
+        graphics.drawImage(theImage, getIconLocation());
+        graphics.translate(-bounds.x, -bounds.y);
+        return;
+      }
+
+    }
+
+    if (((Toolbar) getParent()).getMouseOver())
+      graphics.setAlpha(255);
+    else
+      graphics.setAlpha(ToolbarItem.MOUSE_EXIT_ALPHA);
+
+    super.paintFigure(graphics);
+
+  }
 }

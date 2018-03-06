@@ -29,143 +29,144 @@ import org.melanee.core.models.plm.PLM.Supertype;
  */
 public class SupertypeReorientCommand extends EditElementCommand {
 
-	/**
-	* @generated
-	*/
-	private final int reorientDirection;
+  /**
+   * @generated
+   */
+  private final int reorientDirection;
 
-	/**
-	* @generated
-	*/
-	private final EObject oldEnd;
+  /**
+   * @generated
+   */
+  private final EObject oldEnd;
 
-	/**
-	* @generated
-	*/
-	private final EObject newEnd;
+  /**
+   * @generated
+   */
+  private final EObject newEnd;
 
-	/**
-	* @generated
-	*/
-	public SupertypeReorientCommand(ReorientRelationshipRequest request) {
-		super(request.getLabel(), request.getRelationship(), request);
-		reorientDirection = request.getDirection();
-		oldEnd = request.getOldRelationshipEnd();
-		newEnd = request.getNewRelationshipEnd();
-	}
+  /**
+   * @generated
+   */
+  public SupertypeReorientCommand(ReorientRelationshipRequest request) {
+    super(request.getLabel(), request.getRelationship(), request);
+    reorientDirection = request.getDirection();
+    oldEnd = request.getOldRelationshipEnd();
+    newEnd = request.getNewRelationshipEnd();
+  }
 
-	/**
-	* @generated
-	*/
-	public boolean canExecute() {
-		if (false == getElementToEdit() instanceof Supertype) {
-			return false;
-		}
-		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
-			return canReorientSource();
-		}
-		if (reorientDirection == ReorientRelationshipRequest.REORIENT_TARGET) {
-			return canReorientTarget();
-		}
-		return false;
-	}
+  /**
+   * @generated
+   */
+  public boolean canExecute() {
+    if (false == getElementToEdit() instanceof Supertype) {
+      return false;
+    }
+    if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
+      return canReorientSource();
+    }
+    if (reorientDirection == ReorientRelationshipRequest.REORIENT_TARGET) {
+      return canReorientTarget();
+    }
+    return false;
+  }
 
-	/**
-	* @generated
-	*/
-	protected boolean canReorientSource() {
-		if (!(oldEnd instanceof Inheritance && newEnd instanceof Inheritance)) {
-			return false;
-		}
-		Clabject target = getLink().getSupertype();
-		if (!(getLink().eContainer() instanceof Inheritance)) {
-			return false;
-		}
-		Inheritance container = (Inheritance) getLink().eContainer();
-		return PLMBaseItemSemanticEditPolicy.getLinkConstraints().canExistSupertype_4034(container, getLink(),
-				getNewSource(), target);
-	}
+  /**
+   * @generated
+   */
+  protected boolean canReorientSource() {
+    if (!(oldEnd instanceof Inheritance && newEnd instanceof Inheritance)) {
+      return false;
+    }
+    Clabject target = getLink().getSupertype();
+    if (!(getLink().eContainer() instanceof Inheritance)) {
+      return false;
+    }
+    Inheritance container = (Inheritance) getLink().eContainer();
+    return PLMBaseItemSemanticEditPolicy.getLinkConstraints().canExistSupertype_4034(container,
+        getLink(), getNewSource(), target);
+  }
 
-	/**
-	* @generated
-	*/
-	protected boolean canReorientTarget() {
-		if (!(oldEnd instanceof Clabject && newEnd instanceof Clabject)) {
-			return false;
-		}
-		Inheritance source = getLink().getInheritance();
-		if (!(getLink().eContainer() instanceof Inheritance)) {
-			return false;
-		}
-		Inheritance container = (Inheritance) getLink().eContainer();
-		return PLMBaseItemSemanticEditPolicy.getLinkConstraints().canExistSupertype_4034(container, getLink(), source,
-				getNewTarget());
-	}
+  /**
+   * @generated
+   */
+  protected boolean canReorientTarget() {
+    if (!(oldEnd instanceof Clabject && newEnd instanceof Clabject)) {
+      return false;
+    }
+    Inheritance source = getLink().getInheritance();
+    if (!(getLink().eContainer() instanceof Inheritance)) {
+      return false;
+    }
+    Inheritance container = (Inheritance) getLink().eContainer();
+    return PLMBaseItemSemanticEditPolicy.getLinkConstraints().canExistSupertype_4034(container,
+        getLink(), source, getNewTarget());
+  }
 
-	/**
-	* @generated
-	*/
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		if (!canExecute()) {
-			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
-		}
-		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
-			return reorientSource();
-		}
-		if (reorientDirection == ReorientRelationshipRequest.REORIENT_TARGET) {
-			return reorientTarget();
-		}
-		throw new IllegalStateException();
-	}
+  /**
+   * @generated
+   */
+  protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+      throws ExecutionException {
+    if (!canExecute()) {
+      throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
+    }
+    if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
+      return reorientSource();
+    }
+    if (reorientDirection == ReorientRelationshipRequest.REORIENT_TARGET) {
+      return reorientTarget();
+    }
+    throw new IllegalStateException();
+  }
 
-	/**
-	* @generated
-	*/
-	protected CommandResult reorientSource() throws ExecutionException {
-		getLink().setInheritance(getNewSource());
-		return CommandResult.newOKCommandResult(getLink());
-	}
+  /**
+   * @generated
+   */
+  protected CommandResult reorientSource() throws ExecutionException {
+    getLink().setInheritance(getNewSource());
+    return CommandResult.newOKCommandResult(getLink());
+  }
 
-	/**
-	* @generated
-	*/
-	protected CommandResult reorientTarget() throws ExecutionException {
-		getLink().setSupertype(getNewTarget());
-		return CommandResult.newOKCommandResult(getLink());
-	}
+  /**
+   * @generated
+   */
+  protected CommandResult reorientTarget() throws ExecutionException {
+    getLink().setSupertype(getNewTarget());
+    return CommandResult.newOKCommandResult(getLink());
+  }
 
-	/**
-	* @generated
-	*/
-	protected Supertype getLink() {
-		return (Supertype) getElementToEdit();
-	}
+  /**
+   * @generated
+   */
+  protected Supertype getLink() {
+    return (Supertype) getElementToEdit();
+  }
 
-	/**
-	* @generated
-	*/
-	protected Inheritance getOldSource() {
-		return (Inheritance) oldEnd;
-	}
+  /**
+   * @generated
+   */
+  protected Inheritance getOldSource() {
+    return (Inheritance) oldEnd;
+  }
 
-	/**
-	* @generated
-	*/
-	protected Inheritance getNewSource() {
-		return (Inheritance) newEnd;
-	}
+  /**
+   * @generated
+   */
+  protected Inheritance getNewSource() {
+    return (Inheritance) newEnd;
+  }
 
-	/**
-	* @generated
-	*/
-	protected Clabject getOldTarget() {
-		return (Clabject) oldEnd;
-	}
+  /**
+   * @generated
+   */
+  protected Clabject getOldTarget() {
+    return (Clabject) oldEnd;
+  }
 
-	/**
-	* @generated
-	*/
-	protected Clabject getNewTarget() {
-		return (Clabject) newEnd;
-	}
+  /**
+   * @generated
+   */
+  protected Clabject getNewTarget() {
+    return (Clabject) newEnd;
+  }
 }

@@ -36,89 +36,91 @@ import org.melanee.core.models.plm.PLM.Entity;
  */
 public class PLMSheetLabelProvider extends BaseLabelProvider implements ILabelProvider {
 
-	/**
-	* @generated
-	*/
-	public String getText(Object element) {
-		element = unwrap(element);
-		if (element instanceof PLMNavigatorGroup) {
-			return ((PLMNavigatorGroup) element).getGroupName();
-		}
+  /**
+   * @generated
+   */
+  public String getText(Object element) {
+    element = unwrap(element);
+    if (element instanceof PLMNavigatorGroup) {
+      return ((PLMNavigatorGroup) element).getGroupName();
+    }
 
-		EObject semanticElement = ((IGraphicalEditPart) element).resolveSemanticElement();
+    EObject semanticElement = ((IGraphicalEditPart) element).resolveSemanticElement();
 
-		//No Clabject -> Show linguistic type
-		if (!(semanticElement instanceof Clabject)) {
-			IElementType etype = getElementType(getView(element));
-			return etype == null ? "" : etype.getDisplayName();
-		}
+    // No Clabject -> Show linguistic type
+    if (!(semanticElement instanceof Clabject)) {
+      IElementType etype = getElementType(getView(element));
+      return etype == null ? "" : etype.getDisplayName();
+    }
 
-		EList<Classification> classifications = ((Clabject) semanticElement).getClassificationsAsInstance();
+    EList<Classification> classifications = ((Clabject) semanticElement)
+        .getClassificationsAsInstance();
 
-		//No ontological type -> show linguistic type
-		if (classifications.size() == 0) {
-			IElementType etype = getElementType(getView(element));
-			return etype == null ? "" : etype.getDisplayName();
-		}
+    // No ontological type -> show linguistic type
+    if (classifications.size() == 0) {
+      IElementType etype = getElementType(getView(element));
+      return etype == null ? "" : etype.getDisplayName();
+    }
 
-		String typesAsString = "";
+    String typesAsString = "";
 
-		for (Classification i : classifications)
-			if (i.getType() instanceof Entity)
-				typesAsString += i.getType().getName()
-						+ (classifications.indexOf(i) < classifications.size() - 1 ? ", " : "");
-			else
-				typesAsString += ((Connection) i.getType()).getHumanReadableName()
-						+ (classifications.indexOf(i) < classifications.size() - 1 ? ", " : "");
+    for (Classification i : classifications)
+      if (i.getType() instanceof Entity)
+        typesAsString += i.getType().getName()
+            + (classifications.indexOf(i) < classifications.size() - 1 ? ", " : "");
+      else
+        typesAsString += ((Connection) i.getType()).getHumanReadableName()
+            + (classifications.indexOf(i) < classifications.size() - 1 ? ", " : "");
 
-		return typesAsString;
-	}
+    return typesAsString;
+  }
 
-	/**
-	* @generated
-	*/
-	public Image getImage(Object element) {
-		IElementType etype = getElementType(getView(unwrap(element)));
-		return etype == null ? null : PLMElementTypes.getImage(etype);
-	}
+  /**
+   * @generated
+   */
+  public Image getImage(Object element) {
+    IElementType etype = getElementType(getView(unwrap(element)));
+    return etype == null ? null : PLMElementTypes.getImage(etype);
+  }
 
-	/**
-	* @generated
-	*/
-	private Object unwrap(Object element) {
-		if (element instanceof IStructuredSelection) {
-			return ((IStructuredSelection) element).getFirstElement();
-		}
-		return element;
-	}
+  /**
+   * @generated
+   */
+  private Object unwrap(Object element) {
+    if (element instanceof IStructuredSelection) {
+      return ((IStructuredSelection) element).getFirstElement();
+    }
+    return element;
+  }
 
-	/**
-	* @generated
-	*/
-	private View getView(Object element) {
-		if (element instanceof View) {
-			return (View) element;
-		}
-		if (element instanceof IAdaptable) {
-			return (View) ((IAdaptable) element).getAdapter(View.class);
-		}
-		return null;
-	}
+  /**
+   * @generated
+   */
+  private View getView(Object element) {
+    if (element instanceof View) {
+      return (View) element;
+    }
+    if (element instanceof IAdaptable) {
+      return (View) ((IAdaptable) element).getAdapter(View.class);
+    }
+    return null;
+  }
 
-	/**
-	* @generated
-	*/
-	private IElementType getElementType(View view) {
-		// For intermediate views climb up the containment hierarchy to find the one associated with an element type.
-		while (view != null) {
-			int vid = PLMVisualIDRegistry.getVisualID(view);
-			IElementType etype = PLMElementTypes.getElementType(vid);
-			if (etype != null) {
-				return etype;
-			}
-			view = view.eContainer() instanceof View ? (View) view.eContainer() : null;
-		}
-		return null;
-	}
+  /**
+   * @generated
+   */
+  private IElementType getElementType(View view) {
+    // For intermediate views climb up the containment hierarchy to find the one
+    // associated with an element type.
+    while (view != null) {
+      int vid = PLMVisualIDRegistry.getVisualID(view);
+      IElementType etype = PLMElementTypes.getElementType(vid);
+      if (etype != null) {
+        return etype;
+      }
+      view = view.eContainer() instanceof View ? (View) view.eContainer() : null;
+    }
+    return null;
+  }
 
 }

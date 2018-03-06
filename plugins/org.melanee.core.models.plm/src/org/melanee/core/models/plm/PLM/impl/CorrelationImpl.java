@@ -16,30 +16,29 @@ import org.melanee.core.models.plm.PLM.Correlation;
 import org.melanee.core.models.plm.PLM.PLMPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Correlation</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object
+ * '<em><b>Correlation</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public abstract class CorrelationImpl extends OwnedElementImpl implements Correlation {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CorrelationImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected CorrelationImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return PLMPackage.Literals.CORRELATION;
-	}
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return PLMPackage.Literals.CORRELATION;
+  }
 
-} //CorrelationImpl
+} // CorrelationImpl

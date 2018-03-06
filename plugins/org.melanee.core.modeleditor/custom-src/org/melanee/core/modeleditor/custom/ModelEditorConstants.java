@@ -11,13 +11,13 @@
 package org.melanee.core.modeleditor.custom;
 
 public class ModelEditorConstants {
-	
-	//****************************************************************************
-	//This controls whether an instantiation is done with or without the content
-	//****************************************************************************
-	public static final String INSTANTIATE_WITHOUT_CONTENT = ".CreationTool";
-	public static final String INSTANTIATE_WITH_CONTENT = ".CreationTool+";
-	
-	public static final String CREATE_COMMAND_PRECONFIGURED_ELEMENT = "preconfigured_element";
-	public static final String CREATE_COMMAND_LOCATION = "location";
+
+  // ****************************************************************************
+  // This controls whether an instantiation is done with or without the content
+  // ****************************************************************************
+  public static final String INSTANTIATE_WITHOUT_CONTENT = ".CreationTool";
+  public static final String INSTANTIATE_WITH_CONTENT = ".CreationTool+";
+
+  public static final String CREATE_COMMAND_PRECONFIGURED_ELEMENT = "preconfigured_element";
+  public static final String CREATE_COMMAND_LOCATION = "location";
 }

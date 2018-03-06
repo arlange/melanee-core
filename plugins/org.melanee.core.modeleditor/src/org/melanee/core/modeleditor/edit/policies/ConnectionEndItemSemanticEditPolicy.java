@@ -22,18 +22,18 @@ import org.melanee.core.modeleditor.providers.PLMElementTypes;
  */
 public class ConnectionEndItemSemanticEditPolicy extends PLMBaseItemSemanticEditPolicy {
 
-	/**
-	* @generated
-	*/
-	public ConnectionEndItemSemanticEditPolicy() {
-		super(PLMElementTypes.ConnectionEnd_4036);
-	}
+  /**
+   * @generated
+   */
+  public ConnectionEndItemSemanticEditPolicy() {
+    super(PLMElementTypes.ConnectionEnd_4036);
+  }
 
-	/**
-	* @generated
-	*/
-	protected Command getDestroyElementCommand(DestroyElementRequest req) {
-		return getGEFWrapper(new DestroyElementCommand(req));
-	}
+  /**
+   * @generated
+   */
+  protected Command getDestroyElementCommand(DestroyElementRequest req) {
+    return getGEFWrapper(new DestroyElementCommand(req));
+  }
 
 }

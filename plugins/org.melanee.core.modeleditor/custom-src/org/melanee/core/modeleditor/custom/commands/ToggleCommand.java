@@ -26,40 +26,41 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * Command to switch between DSL and GPL view
  *
  */
-public class ToggleCommand extends Command{
-	
-	private IGraphicalEditPart host = null;
-	
-	/**
-	 * 
-	 * @param host Element which shall be toggled
-	 */
-	public ToggleCommand(IGraphicalEditPart host){
-		this.host = host;
-	}
-	
-	@Override
-	public void execute() {
-		super.execute();
+public class ToggleCommand extends Command {
 
-		Element self = (Element)host.resolveSemanticElement();
-		
-		if (self.getVisualizer() == null)
-			return;
-		
-		List<String> newAttribute = new ArrayList<String>();
-		String oldAttribute = null;
-		
-		for (String attr : self.getVisualizer().get(0).getAttributes())
-			if (attr.startsWith("collapsed"))
-			{
-				oldAttribute = attr;
-				String value = self.getVisualizer().get(0).getValueForKey("collapsed");
-				newAttribute.add((value.equals("true")) ? "collapsed= false":"collapsed= true");
-				break;
-			}
-		
-		EditingDomain domain = host.getEditingDomain();
-		domain.getCommandStack().execute(ReplaceCommand.create(domain, self.getVisualizer().get(0), PLMPackage.eINSTANCE.getLMLVisualizer_Attributes(), oldAttribute, newAttribute));
-	}
+  private IGraphicalEditPart host = null;
+
+  /**
+   * 
+   * @param host
+   *          Element which shall be toggled
+   */
+  public ToggleCommand(IGraphicalEditPart host) {
+    this.host = host;
+  }
+
+  @Override
+  public void execute() {
+    super.execute();
+
+    Element self = (Element) host.resolveSemanticElement();
+
+    if (self.getVisualizer() == null)
+      return;
+
+    List<String> newAttribute = new ArrayList<String>();
+    String oldAttribute = null;
+
+    for (String attr : self.getVisualizer().get(0).getAttributes())
+      if (attr.startsWith("collapsed")) {
+        oldAttribute = attr;
+        String value = self.getVisualizer().get(0).getValueForKey("collapsed");
+        newAttribute.add((value.equals("true")) ? "collapsed= false" : "collapsed= true");
+        break;
+      }
+
+    EditingDomain domain = host.getEditingDomain();
+    domain.getCommandStack().execute(ReplaceCommand.create(domain, self.getVisualizer().get(0),
+        PLMPackage.eINSTANCE.getLMLVisualizer_Attributes(), oldAttribute, newAttribute));
+  }
 }

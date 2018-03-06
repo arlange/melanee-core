@@ -13,27 +13,26 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 
-
 public class ComboBoxDirectEditPolicy extends DirectEditPolicy {
 
-	@Override
-	protected Command getDirectEditCommand(DirectEditRequest request) {
-		final EObject newValue = (EObject) request.getCellEditor().getValue();
-		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
-		return new ICommandProxy(new AbstractTransactionalCommand(editingDomain, "Set value from cell editor", null) {
-			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-					throws ExecutionException {
-				((ISemanticRedirectingEditPart) getHost()).setValue(newValue);
-				return CommandResult.newOKCommandResult();
-			}
-		});
-	}
+  @Override
+  protected Command getDirectEditCommand(DirectEditRequest request) {
+    final EObject newValue = (EObject) request.getCellEditor().getValue();
+    TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+    return new ICommandProxy(
+        new AbstractTransactionalCommand(editingDomain, "Set value from cell editor", null) {
+          @Override
+          protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+              throws ExecutionException {
+            ((ISemanticRedirectingEditPart) getHost()).setValue(newValue);
+            return CommandResult.newOKCommandResult();
+          }
+        });
+  }
 
-	@Override
-	protected void showCurrentEditValue(DirectEditRequest request) {
-		// not necessary
-	}
+  @Override
+  protected void showCurrentEditValue(DirectEditRequest request) {
+    // not necessary
+  }
 
 }

@@ -17,13 +17,14 @@ import org.eclipse.ui.views.properties.IPropertyDescriptor;
 
 public class PropertySourceExtension extends PropertySource {
 
-	public PropertySourceExtension(Object object, IItemPropertySource itemPropertySource) {
-		super(object, itemPropertySource);
-	}
+  public PropertySourceExtension(Object object, IItemPropertySource itemPropertySource) {
+    super(object, itemPropertySource);
+  }
 
-	@Override
-	protected IPropertyDescriptor createPropertyDescriptor(IItemPropertyDescriptor itemPropertyDescriptor) {
-		return new EmendationFeaturePropertyDescriptor(object, itemPropertyDescriptor);
-	}
+  @Override
+  protected IPropertyDescriptor createPropertyDescriptor(
+      IItemPropertyDescriptor itemPropertyDescriptor) {
+    return new EmendationFeaturePropertyDescriptor(object, itemPropertyDescriptor);
+  }
 
 }

@@ -38,99 +38,99 @@ import org.melanee.core.modeleditor.providers.PLMElementTypes;
  */
 public class ConnectionConnectionAttributesCompartment3EditPart extends ListCompartmentEditPart {
 
-	/**
-	* @generated
-	*/
-	public static final int VISUAL_ID = 7067;
+  /**
+   * @generated
+   */
+  public static final int VISUAL_ID = 7067;
 
-	/**
-	* @generated
-	*/
-	public ConnectionConnectionAttributesCompartment3EditPart(View view) {
-		super(view);
-	}
+  /**
+   * @generated
+   */
+  public ConnectionConnectionAttributesCompartment3EditPart(View view) {
+    super(view);
+  }
 
-	/**
-	* @generated
-	*/
-	protected boolean hasModelChildrenChanged(Notification evt) {
-		return false;
-	}
+  /**
+   * @generated
+   */
+  protected boolean hasModelChildrenChanged(Notification evt) {
+    return false;
+  }
 
-	/**
-	* @generated
-	*/
-	public String getCompartmentName() {
-		return null;
-	}
+  /**
+   * @generated
+   */
+  public String getCompartmentName() {
+    return null;
+  }
 
-	/**
-	* @generated
-	*/
-	public IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
-		result.setTitleVisibility(false);
-		return result;
-	}
+  /**
+   * @generated
+   */
+  public IFigure createFigure() {
+    ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
+    result.setTitleVisibility(false);
+    return result;
+  }
 
-	/**
-	* @generated
-	*/
-	protected void createDefaultEditPolicies() {
+  /**
+   * @generated
+   */
+  protected void createDefaultEditPolicies() {
 
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new ResizableCompartmentEditPolicy());
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new ConnectionConnectionAttributesCompartment3ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(PLMVisualIDRegistry.TYPED_INSTANCE));
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new ConnectionConnectionAttributesCompartment3CanonicalEditPolicy());
+    super.createDefaultEditPolicies();
+    installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new ResizableCompartmentEditPolicy());
+    installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+        new ConnectionConnectionAttributesCompartment3ItemSemanticEditPolicy());
+    installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+        new CreationEditPolicyWithCustomReparent(PLMVisualIDRegistry.TYPED_INSTANCE));
+    installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+    installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+        new ConnectionConnectionAttributesCompartment3CanonicalEditPolicy());
 
-	}
+  }
 
-	/**
-	* @generated
-	*/
-	protected void setRatio(Double ratio) {
-		// nothing to do -- parent layout does not accept Double constraints as ratio
-		// super.setRatio(ratio); 
-	}
+  /**
+   * @generated
+   */
+  protected void setRatio(Double ratio) {
+    // nothing to do -- parent layout does not accept Double constraints as ratio
+    // super.setRatio(ratio);
+  }
 
-	/**
-	* @generated
-	*/
-	public EditPart getTargetEditPart(Request request) {
-		if (request instanceof CreateViewAndElementRequest) {
-			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
-					.getCreateElementRequestAdapter();
-			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == PLMElementTypes.Attribute_3100) {
-				return this;
-			}
-			if (getParent() != null) {
-				return getParent().getTargetEditPart(request);
-			}
-		}
-		if (request instanceof CreateUnspecifiedTypeConnectionRequest) {
-			return getParent().getTargetEditPart(request);
-		}
-		return super.getTargetEditPart(request);
-	}
+  /**
+   * @generated
+   */
+  public EditPart getTargetEditPart(Request request) {
+    if (request instanceof CreateViewAndElementRequest) {
+      CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request)
+          .getViewAndElementDescriptor().getCreateElementRequestAdapter();
+      IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
+      if (type == PLMElementTypes.Attribute_3100) {
+        return this;
+      }
+      if (getParent() != null) {
+        return getParent().getTargetEditPart(request);
+      }
+    }
+    if (request instanceof CreateUnspecifiedTypeConnectionRequest) {
+      return getParent().getTargetEditPart(request);
+    }
+    return super.getTargetEditPart(request);
+  }
 
-	/*
-	 * @generated
-	 */
-	@Override
-	public boolean isSelectable() {
-		//Things that are not viewed cannot be selected
-		//Throws an NullPointerException after import from
-		//remote model for clabjects
-		if (getViewer() == null)
-			return false;
+  /*
+   * @generated
+   */
+  @Override
+  public boolean isSelectable() {
+    // Things that are not viewed cannot be selected
+    // Throws an NullPointerException after import from
+    // remote model for clabjects
+    if (getViewer() == null)
+      return false;
 
-		return super.isSelectable();
-	}
+    return super.isSelectable();
+  }
 
 }

@@ -27,72 +27,72 @@ import org.melanee.core.models.plm.PLM.Element;
  */
 public class DeepModelEditHelper extends PLMBaseEditHelper {
 
-	/**
-	 * This method is responsible to clean up all elements to 
-	 * which the deleted elment is connected. 
-	 *
-	 * These include
-	 * - Inheritance, Connection and Classification
-	 * - Links to remote model elements
-	 *
-	 */
-	@Override
-	protected ICommand getDestroyElementCommand(DestroyElementRequest req) {
+  /**
+   * This method is responsible to clean up all elements to which the deleted
+   * elment is connected.
+   *
+   * These include - Inheritance, Connection and Classification - Links to remote
+   * model elements
+   *
+   */
+  @Override
+  protected ICommand getDestroyElementCommand(DestroyElementRequest req) {
 
-		CompositeCommand compoundCmd = new CompositeCommand("Delete Clabject and Dependents");
+    CompositeCommand compoundCmd = new CompositeCommand("Delete Clabject and Dependents");
 
-		//************************************************
-		// Delete link to remote model
-		//************************************************
-		ICommand destroyRemoteLinkCommand = getDeleteRemoteLinkCommand(req);
-		if (destroyRemoteLinkCommand != null)
-			compoundCmd.add(destroyRemoteLinkCommand);
+    // ************************************************
+    // Delete link to remote model
+    // ************************************************
+    ICommand destroyRemoteLinkCommand = getDeleteRemoteLinkCommand(req);
+    if (destroyRemoteLinkCommand != null)
+      compoundCmd.add(destroyRemoteLinkCommand);
 
-		//Delete the model element itself
-		DestroyElementCommand cmd = new DestroyElementCommand(req);
-		compoundCmd.add(cmd);
+    // Delete the model element itself
+    DestroyElementCommand cmd = new DestroyElementCommand(req);
+    compoundCmd.add(cmd);
 
-		return compoundCmd;
-	}
+    return compoundCmd;
+  }
 
-	/**
-	 * Delete the link to remote model element from the deleted model element
-	 * 
-	 * @param req The request used to delete the model element
-	 * @return the command deleting the link or null if no link exists
-	 * 
-	 * @generated
-	 */
-	private ICommand getDeleteRemoteLinkCommand(DestroyElementRequest req) {
+  /**
+   * Delete the link to remote model element from the deleted model element
+   * 
+   * @param req
+   *          The request used to delete the model element
+   * @return the command deleting the link or null if no link exists
+   * 
+   * @generated
+   */
+  private ICommand getDeleteRemoteLinkCommand(DestroyElementRequest req) {
 
-		//first check if linking model is present
-		Resource r = req.getElementToDestroy().eResource();
-		if (r.getContents().size() < 3)
-			return null;
+    // first check if linking model is present
+    Resource r = req.getElementToDestroy().eResource();
+    if (r.getContents().size() < 3)
+      return null;
 
-		//Apply only to PLM elements
-		if (!(req.getElementToDestroy() instanceof Element))
-			return null;
+    // Apply only to PLM elements
+    if (!(req.getElementToDestroy() instanceof Element))
+      return null;
 
-		Link link = null;
+    Link link = null;
 
-		try {
-			link = (Link) OCLHelper.execute(req.getElementToDestroy(),
-					"links::Link.allInstances()->select(target = self)->any(true)");
-		} catch (ParserException e) {
-			e.printStackTrace();
-		}
+    try {
+      link = (Link) OCLHelper.execute(req.getElementToDestroy(),
+          "links::Link.allInstances()->select(target = self)->any(true)");
+    } catch (ParserException e) {
+      e.printStackTrace();
+    }
 
-		if (link == null)
-			return null;
+    if (link == null)
+      return null;
 
-		DestroyElementRequest dr = new DestroyElementRequest(false);
-		dr.setClientContext(req.getClientContext());
-		dr.setEditingDomain(req.getEditingDomain());
-		dr.setElementToDestroy(link);
-		dr.setLabel("Destroy Element Remote Model Link");
-		DestroyElementCommand result = new DestroyElementCommand(dr);
-		return result;
-	}
+    DestroyElementRequest dr = new DestroyElementRequest(false);
+    dr.setClientContext(req.getClientContext());
+    dr.setEditingDomain(req.getEditingDomain());
+    dr.setElementToDestroy(link);
+    dr.setLabel("Destroy Element Remote Model Link");
+    DestroyElementCommand result = new DestroyElementCommand(dr);
+    return result;
+  }
 
 }

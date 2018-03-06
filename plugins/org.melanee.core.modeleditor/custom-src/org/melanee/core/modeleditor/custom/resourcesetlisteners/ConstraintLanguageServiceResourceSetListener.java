@@ -32,122 +32,127 @@ import org.melanee.core.workbench.interfaces.IConstraintLanguageService;
 
 /**
  * 
- * This resource set listener listens to changes to the model,
- * informs the constraint language service and applies commands
- * supplied by it. This is needed for derived and init expressions
+ * This resource set listener listens to changes to the model, informs the
+ * constraint language service and applies commands supplied by it. This is
+ * needed for derived and init expressions
  *
  */
-public class ConstraintLanguageServiceResourceSetListener implements ResourceSetListener{
+public class ConstraintLanguageServiceResourceSetListener implements ResourceSetListener {
 
-	static ConstraintLanguageServiceResourceSetListener service = null;
-	
-	/**
-	 * Start listening to the model which is passed over as parameter. This
-	 * method adds a new listener to each model. The previously listened models
-	 * are still listened after listening to a new model. Use stopListening(modelRoot)
-	 * to stop listening to changes of a model.
-	 * 
-	 * @param modelRoot Model to listen for changes.
-	 */
-	public void startListening(EObject modelRoot) {
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(modelRoot);
-		domain.addResourceSetListener(this);
-	}
-	
-	/**
-	 * Stops listening for changes to a model.
-	 * 
-	 * @param modelRoot Model to stop listen for changes.
-	 */
-	public void stopListening(EObject modelRoot) {
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(modelRoot);
-		domain.removeResourceSetListener(this);
-	}
-	
-	public static ConstraintLanguageServiceResourceSetListener getInstance(){
-		if (service == null)
-			service = new ConstraintLanguageServiceResourceSetListener();
-			
-		return service;
-	}
-	
-	@Override
-	public NotificationFilter getFilter() {
-		return null;
-	}
+  static ConstraintLanguageServiceResourceSetListener service = null;
 
-	@Override
-	public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
-		IConstraintLanguageService constraintLanguageService = null;
-		try {
-			constraintLanguageService = ExtensionPointService.Instance().getActiveConstraintLanguageService();
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-		
-		//No constraint language service available, do nothing
-		if (constraintLanguageService == null)
-			return null;
-		
-		for (Notification notification : event.getNotifications()){
-			//Only interseted in EMF notifications for Melanee model
-			if(! (notification instanceof ENotificationImpl))
-				continue;
-			
-			//On attribute creation a default has to be potentially set
-			if (notification.getEventType() == ENotificationImpl.SET
-					&& notification.getNewValue() instanceof Attribute)
-				return constraintLanguageService.initAttrbute((Attribute)notification.getNewValue());
-			//Every addition except deep model and level can cause derived values to be
-			//recalculated
-			else if (notification.getNewValue() instanceof Element
-					&& ! (notification.getNewValue() instanceof DeepModel)
-					&& ! (notification.getNewValue() instanceof Level)){
-				//Add, move and remove
-				if (notification.getEventType() == ENotificationImpl.ADD)
-					return constraintLanguageService.recalculateDerivedAttributes((Element)notification.getNotifier(), notification.getEventType());
-			}
-			//Every addition except deep model and level can cause derived values to be
-			//recalculated
-			else if (notification.getNewValue() == null
-					&& notification.getOldValue() instanceof Element
-					&& ! (notification.getOldValue() instanceof DeepModel)
-					&& ! (notification.getOldValue() instanceof Level)){
-				//Add, move and remove
-				if (notification.getEventType() == ENotificationImpl.REMOVE)
-					return constraintLanguageService.recalculateDerivedAttributes((Element)notification.getNotifier(), notification.getEventType());
-			}
-			//The change of connectionend destinations and attribute values is interesting
-			else if (notification.getNotifier() instanceof Attribute
-						|| notification.getNotifier() instanceof ConnectionEnd){
-				if(notification.getEventType() == ENotificationImpl.SET
-						&& (notification.getFeature() == PLMPackage.eINSTANCE.getAttribute_Value()
-						|| notification.getFeature() == PLMPackage.eINSTANCE.getConnectionEnd_Destination()))
-					return constraintLanguageService.recalculateDerivedAttributes((Element)notification.getNotifier(), notification.getEventType());
-			}
-		}
-		
-		//No operation which is interesting for the constraint language service
-		return null;
-	}
+  /**
+   * Start listening to the model which is passed over as parameter. This method
+   * adds a new listener to each model. The previously listened models are still
+   * listened after listening to a new model. Use stopListening(modelRoot) to stop
+   * listening to changes of a model.
+   * 
+   * @param modelRoot
+   *          Model to listen for changes.
+   */
+  public void startListening(EObject modelRoot) {
+    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(modelRoot);
+    domain.addResourceSetListener(this);
+  }
 
-	@Override
-	public void resourceSetChanged(ResourceSetChangeEvent event) {
-		
-	}
+  /**
+   * Stops listening for changes to a model.
+   * 
+   * @param modelRoot
+   *          Model to stop listen for changes.
+   */
+  public void stopListening(EObject modelRoot) {
+    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(modelRoot);
+    domain.removeResourceSetListener(this);
+  }
 
-	@Override
-	public boolean isAggregatePrecommitListener() {
-		return false;
-	}
+  public static ConstraintLanguageServiceResourceSetListener getInstance() {
+    if (service == null)
+      service = new ConstraintLanguageServiceResourceSetListener();
 
-	@Override
-	public boolean isPrecommitOnly() {
-		return true;
-	}
+    return service;
+  }
 
-	@Override
-	public boolean isPostcommitOnly() {
-		return false;
-	}	
+  @Override
+  public NotificationFilter getFilter() {
+    return null;
+  }
+
+  @Override
+  public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+    IConstraintLanguageService constraintLanguageService = null;
+    try {
+      constraintLanguageService = ExtensionPointService.Instance()
+          .getActiveConstraintLanguageService();
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
+
+    // No constraint language service available, do nothing
+    if (constraintLanguageService == null)
+      return null;
+
+    for (Notification notification : event.getNotifications()) {
+      // Only interseted in EMF notifications for Melanee model
+      if (!(notification instanceof ENotificationImpl))
+        continue;
+
+      // On attribute creation a default has to be potentially set
+      if (notification.getEventType() == ENotificationImpl.SET
+          && notification.getNewValue() instanceof Attribute)
+        return constraintLanguageService.initAttrbute((Attribute) notification.getNewValue());
+      // Every addition except deep model and level can cause derived values to be
+      // recalculated
+      else if (notification.getNewValue() instanceof Element
+          && !(notification.getNewValue() instanceof DeepModel)
+          && !(notification.getNewValue() instanceof Level)) {
+        // Add, move and remove
+        if (notification.getEventType() == ENotificationImpl.ADD)
+          return constraintLanguageService.recalculateDerivedAttributes(
+              (Element) notification.getNotifier(), notification.getEventType());
+      }
+      // Every addition except deep model and level can cause derived values to be
+      // recalculated
+      else if (notification.getNewValue() == null && notification.getOldValue() instanceof Element
+          && !(notification.getOldValue() instanceof DeepModel)
+          && !(notification.getOldValue() instanceof Level)) {
+        // Add, move and remove
+        if (notification.getEventType() == ENotificationImpl.REMOVE)
+          return constraintLanguageService.recalculateDerivedAttributes(
+              (Element) notification.getNotifier(), notification.getEventType());
+      }
+      // The change of connectionend destinations and attribute values is interesting
+      else if (notification.getNotifier() instanceof Attribute
+          || notification.getNotifier() instanceof ConnectionEnd) {
+        if (notification.getEventType() == ENotificationImpl.SET && (notification
+            .getFeature() == PLMPackage.eINSTANCE.getAttribute_Value()
+            || notification.getFeature() == PLMPackage.eINSTANCE.getConnectionEnd_Destination()))
+          return constraintLanguageService.recalculateDerivedAttributes(
+              (Element) notification.getNotifier(), notification.getEventType());
+      }
+    }
+
+    // No operation which is interesting for the constraint language service
+    return null;
+  }
+
+  @Override
+  public void resourceSetChanged(ResourceSetChangeEvent event) {
+
+  }
+
+  @Override
+  public boolean isAggregatePrecommitListener() {
+    return false;
+  }
+
+  @Override
+  public boolean isPrecommitOnly() {
+    return true;
+  }
+
+  @Override
+  public boolean isPostcommitOnly() {
+    return false;
+  }
 }

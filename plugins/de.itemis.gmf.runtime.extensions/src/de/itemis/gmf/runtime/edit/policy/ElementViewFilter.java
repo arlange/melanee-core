@@ -18,23 +18,25 @@ import org.eclipse.gmf.runtime.notation.View;
 
 public class ElementViewFilter {
 
-	@SuppressWarnings("unchecked")
-	public static List<EObject> filterElementsWithoutViewInParent(List<EObject> semanticChildren, View parentView) {
-		EList<View> childViews = parentView.getChildren();
-		SEMANTIC_LOOP: for(Iterator<EObject> semanticChildrenIter = semanticChildren.iterator(); semanticChildrenIter.hasNext();) {
-			EObject semanticChild = semanticChildrenIter.next();
-			URI sematicChildURI = EcoreUtil.getURI(semanticChild);
-			for(View childView:childViews) {
-				if(sematicChildURI.equals(EcoreUtil.getURI(childView.getElement()))) {
-					System.out.println("Keeping " + semanticChild);
-					continue SEMANTIC_LOOP;
-				}
-			}
-			System.out.println("Removing " + semanticChild);
-			semanticChildrenIter.remove();
-		}
-		System.out.println("X\n");
-		return semanticChildren;
-	}
-	
+  @SuppressWarnings("unchecked")
+  public static List<EObject> filterElementsWithoutViewInParent(List<EObject> semanticChildren,
+      View parentView) {
+    EList<View> childViews = parentView.getChildren();
+    SEMANTIC_LOOP: for (Iterator<EObject> semanticChildrenIter = semanticChildren
+        .iterator(); semanticChildrenIter.hasNext();) {
+      EObject semanticChild = semanticChildrenIter.next();
+      URI sematicChildURI = EcoreUtil.getURI(semanticChild);
+      for (View childView : childViews) {
+        if (sematicChildURI.equals(EcoreUtil.getURI(childView.getElement()))) {
+          System.out.println("Keeping " + semanticChild);
+          continue SEMANTIC_LOOP;
+        }
+      }
+      System.out.println("Removing " + semanticChild);
+      semanticChildrenIter.remove();
+    }
+    System.out.println("X\n");
+    return semanticChildren;
+  }
+
 }

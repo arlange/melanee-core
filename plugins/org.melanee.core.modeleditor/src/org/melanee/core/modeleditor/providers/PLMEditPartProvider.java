@@ -22,11 +22,11 @@ import org.melanee.core.modeleditor.part.PLMVisualIDRegistry;
  */
 public class PLMEditPartProvider extends DefaultEditPartProvider {
 
-	/**
-	* @generated
-	*/
-	public PLMEditPartProvider() {
-		super(new PLMEditPartFactory(), PLMVisualIDRegistry.TYPED_INSTANCE, DomainEditPart.MODEL_ID);
-	}
+  /**
+   * @generated
+   */
+  public PLMEditPartProvider() {
+    super(new PLMEditPartFactory(), PLMVisualIDRegistry.TYPED_INSTANCE, DomainEditPart.MODEL_ID);
+  }
 
 }

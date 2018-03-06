@@ -13,15 +13,15 @@ package org.melanee.core.models.plm.PLM;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Abstract Behavior</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Abstract
+ * Behavior</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.melanee.core.models.plm.PLM.AbstractBehavior#getName <em>Name</em>}</li>
+ * <li>{@link org.melanee.core.models.plm.PLM.AbstractBehavior#getName
+ * <em>Name</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getAbstractBehavior()
@@ -29,30 +29,33 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface AbstractBehavior extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.melanee.core.models.plm.PLM.PLMPackage#getAbstractBehavior_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+   * begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+   * should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * 
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.melanee.core.models.plm.PLM.PLMPackage#getAbstractBehavior_Name()
+   * @model
+   * @generated
+   */
+  String getName();
 
-	/**
-	 * Sets the value of the '{@link org.melanee.core.models.plm.PLM.AbstractBehavior#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
+  /**
+   * Sets the value of the
+   * '{@link org.melanee.core.models.plm.PLM.AbstractBehavior#getName
+   * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
 } // AbstractBehavior

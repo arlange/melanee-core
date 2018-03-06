@@ -13,15 +13,15 @@ package org.melanee.core.models.plm.PLM;
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Enumeration</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Enumeration</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.melanee.core.models.plm.PLM.Enumeration#getLiteral <em>Literal</em>}</li>
+ * <li>{@link org.melanee.core.models.plm.PLM.Enumeration#getLiteral
+ * <em>Literal</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getEnumeration()
@@ -29,20 +29,20 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Enumeration extends Element {
-	/**
-	 * Returns the value of the '<em><b>Literal</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Literal</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Literal</em>' attribute list.
-	 * @see org.melanee.core.models.plm.PLM.PLMPackage#getEnumeration_Literal()
-	 * @model
-	 * @generated
-	 */
-	EList<String> getLiteral();
+  /**
+   * Returns the value of the '<em><b>Literal</b></em>' attribute list. The list
+   * contents are of type {@link java.lang.String}. <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Literal</em>' attribute list isn't clear, there
+   * really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * 
+   * @return the value of the '<em>Literal</em>' attribute list.
+   * @see org.melanee.core.models.plm.PLM.PLMPackage#getEnumeration_Literal()
+   * @model
+   * @generated
+   */
+  EList<String> getLiteral();
 
 } // Enumeration

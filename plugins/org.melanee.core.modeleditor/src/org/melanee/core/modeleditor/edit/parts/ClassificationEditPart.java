@@ -41,221 +41,224 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  */
 public class ClassificationEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
-	/**
-	* @generated
-	*/
-	public static final int VISUAL_ID = 4026;
+  /**
+   * @generated
+   */
+  public static final int VISUAL_ID = 4026;
 
-	/**
-	* @generated
-	*/
-	public ClassificationEditPart(View view) {
-		super(view);
-	}
+  /**
+   * @generated
+   */
+  public ClassificationEditPart(View view) {
+    super(view);
+  }
 
-	/**
-	* @generated
-	*/
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ClassificationItemSemanticEditPolicy());
-	}
+  /**
+   * @generated
+   */
+  protected void createDefaultEditPolicies() {
+    super.createDefaultEditPolicies();
+    installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ClassificationItemSemanticEditPolicy());
+  }
 
-	/**
-	* @generated
-	*/
-	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof WrappingLabel51EditPart) {
-			((WrappingLabel51EditPart) childEditPart)
-					.setLabel(getPrimaryShape().getFigureClassificationBlueprintNameFigure());
-			return true;
-		}
-		if (childEditPart instanceof WrappingLabel52EditPart) {
-			((WrappingLabel52EditPart) childEditPart)
-					.setLabel(getPrimaryShape().getFigureClassificationTypeNameFigure());
-			return true;
-		}
-		return false;
-	}
+  /**
+   * @generated
+   */
+  protected boolean addFixedChild(EditPart childEditPart) {
+    if (childEditPart instanceof WrappingLabel51EditPart) {
+      ((WrappingLabel51EditPart) childEditPart)
+          .setLabel(getPrimaryShape().getFigureClassificationBlueprintNameFigure());
+      return true;
+    }
+    if (childEditPart instanceof WrappingLabel52EditPart) {
+      ((WrappingLabel52EditPart) childEditPart)
+          .setLabel(getPrimaryShape().getFigureClassificationTypeNameFigure());
+      return true;
+    }
+    return false;
+  }
 
-	/**
-	* @generated
-	*/
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		if (addFixedChild(childEditPart)) {
-			return;
-		}
-		super.addChildVisual(childEditPart, index);
-	}
+  /**
+   * @generated
+   */
+  protected void addChildVisual(EditPart childEditPart, int index) {
+    if (addFixedChild(childEditPart)) {
+      return;
+    }
+    super.addChildVisual(childEditPart, index);
+  }
 
-	/**
-	* @generated
-	*/
-	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof WrappingLabel51EditPart) {
-			return true;
-		}
-		if (childEditPart instanceof WrappingLabel52EditPart) {
-			return true;
-		}
-		return false;
-	}
+  /**
+   * @generated
+   */
+  protected boolean removeFixedChild(EditPart childEditPart) {
+    if (childEditPart instanceof WrappingLabel51EditPart) {
+      return true;
+    }
+    if (childEditPart instanceof WrappingLabel52EditPart) {
+      return true;
+    }
+    return false;
+  }
 
-	/**
-	* @generated
-	*/
-	protected void removeChildVisual(EditPart childEditPart) {
-		if (removeFixedChild(childEditPart)) {
-			return;
-		}
-		super.removeChildVisual(childEditPart);
-	}
+  /**
+   * @generated
+   */
+  protected void removeChildVisual(EditPart childEditPart) {
+    if (removeFixedChild(childEditPart)) {
+      return;
+    }
+    super.removeChildVisual(childEditPart);
+  }
 
-	/**
-	* Creates figure for this edit part.
-	* 
-	* Body of this method does not depend on settings in generation model
-	* so you may safely remove <i>generated</i> tag and modify it.
-	* 
-	* @generated
-	*/
+  /**
+   * Creates figure for this edit part.
+   * 
+   * Body of this method does not depend on settings in generation model so you
+   * may safely remove <i>generated</i> tag and modify it.
+   * 
+   * @generated
+   */
 
-	protected Connection createConnectionFigure() {
-		return new ClassificationFigure();
-	}
+  protected Connection createConnectionFigure() {
+    return new ClassificationFigure();
+  }
 
-	/**
-	* @generated
-	*/
-	public ClassificationFigure getPrimaryShape() {
-		return (ClassificationFigure) getFigure();
-	}
+  /**
+   * @generated
+   */
+  public ClassificationFigure getPrimaryShape() {
+    return (ClassificationFigure) getFigure();
+  }
 
-	/**
-	 * @generated
-	 */
-	public class ClassificationFigure extends PolylineConnectionEx {
+  /**
+   * @generated
+   */
+  public class ClassificationFigure extends PolylineConnectionEx {
 
-		/**
-		 * @generated
-		 */
-		private WrappingLabel fFigureClassificationTypeNameFigure;
-		/**
-		 * @generated
-		 */
-		private WrappingLabel fFigureClassificationBlueprintNameFigure;
+    /**
+     * @generated
+     */
+    private WrappingLabel fFigureClassificationTypeNameFigure;
+    /**
+     * @generated
+     */
+    private WrappingLabel fFigureClassificationBlueprintNameFigure;
 
-		/**
-		 * @generated
-		 */
-		public ClassificationFigure() {
-			this.setLineStyle(Graphics.LINE_DASH);
-			this.setForegroundColor(ColorConstants.black);
+    /**
+     * @generated
+     */
+    public ClassificationFigure() {
+      this.setLineStyle(Graphics.LINE_DASH);
+      this.setForegroundColor(ColorConstants.black);
 
-			createContents();
-			setTargetDecoration(createTargetDecoration());
-		}
+      createContents();
+      setTargetDecoration(createTargetDecoration());
+    }
 
-		/**
-		 * @generated
-		 */
-		private void createContents() {
+    /**
+     * @generated
+     */
+    private void createContents() {
 
-			fFigureClassificationTypeNameFigure = new WrappingLabel();
+      fFigureClassificationTypeNameFigure = new WrappingLabel();
 
-			fFigureClassificationTypeNameFigure.setText("");
-			fFigureClassificationTypeNameFigure.setForegroundColor(ColorConstants.black);
+      fFigureClassificationTypeNameFigure.setText("");
+      fFigureClassificationTypeNameFigure.setForegroundColor(ColorConstants.black);
 
-			fFigureClassificationTypeNameFigure.setFont(FFIGURECLASSIFICATIONTYPENAMEFIGURE_FONT);
+      fFigureClassificationTypeNameFigure.setFont(FFIGURECLASSIFICATIONTYPENAMEFIGURE_FONT);
 
-			this.add(fFigureClassificationTypeNameFigure);
+      this.add(fFigureClassificationTypeNameFigure);
 
-			fFigureClassificationBlueprintNameFigure = new WrappingLabel();
+      fFigureClassificationBlueprintNameFigure = new WrappingLabel();
 
-			fFigureClassificationBlueprintNameFigure.setText("");
-			fFigureClassificationBlueprintNameFigure.setForegroundColor(ColorConstants.black);
+      fFigureClassificationBlueprintNameFigure.setText("");
+      fFigureClassificationBlueprintNameFigure.setForegroundColor(ColorConstants.black);
 
-			fFigureClassificationBlueprintNameFigure.setFont(FFIGURECLASSIFICATIONBLUEPRINTNAMEFIGURE_FONT);
+      fFigureClassificationBlueprintNameFigure
+          .setFont(FFIGURECLASSIFICATIONBLUEPRINTNAMEFIGURE_FONT);
 
-			this.add(fFigureClassificationBlueprintNameFigure);
+      this.add(fFigureClassificationBlueprintNameFigure);
 
-		}
+    }
 
-		/**
-		 * @generated
-		 */
-		private RotatableDecoration createTargetDecoration() {
-			PolylineDecoration df = new PolylineDecoration();
-			return df;
-		}
+    /**
+     * @generated
+     */
+    private RotatableDecoration createTargetDecoration() {
+      PolylineDecoration df = new PolylineDecoration();
+      return df;
+    }
 
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureClassificationTypeNameFigure() {
-			return fFigureClassificationTypeNameFigure;
-		}
+    /**
+     * @generated
+     */
+    public WrappingLabel getFigureClassificationTypeNameFigure() {
+      return fFigureClassificationTypeNameFigure;
+    }
 
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureClassificationBlueprintNameFigure() {
-			return fFigureClassificationBlueprintNameFigure;
-		}
+    /**
+     * @generated
+     */
+    public WrappingLabel getFigureClassificationBlueprintNameFigure() {
+      return fFigureClassificationBlueprintNameFigure;
+    }
 
-	}
+  }
 
-	/**
-	 * @generated
-	 */
-	static final Font FFIGURECLASSIFICATIONTYPENAMEFIGURE_FONT = new Font(Display.getCurrent(),
-			Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, SWT.NORMAL);
+  /**
+   * @generated
+   */
+  static final Font FFIGURECLASSIFICATIONTYPENAMEFIGURE_FONT = new Font(Display.getCurrent(),
+      Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, SWT.NORMAL);
 
-	/**
-	 * @generated
-	 */
-	static final Font FFIGURECLASSIFICATIONBLUEPRINTNAMEFIGURE_FONT = new Font(Display.getCurrent(),
-			Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, SWT.NORMAL);
+  /**
+   * @generated
+   */
+  static final Font FFIGURECLASSIFICATIONBLUEPRINTNAMEFIGURE_FONT = new Font(Display.getCurrent(),
+      Display.getDefault().getSystemFont().getFontData()[0].getName(), 8, SWT.NORMAL);
 
-	//Sets the potency of instatiation ends
+  // Sets the potency of instatiation ends
 
-	/**
-	 * updates the potency of the source element
-	 *
-	 * @generated
-	 */
-	public void updateSourcePotency() {
-		Classification i = (Classification) resolveSemanticElement();
+  /**
+   * updates the potency of the source element
+   *
+   * @generated
+   */
+  public void updateSourcePotency() {
+    Classification i = (Classification) resolveSemanticElement();
 
-		int newPotency = 0;
+    int newPotency = 0;
 
-		if (i.getType().getPotency() == -1)
-			newPotency = -1;
-		else if (i.getType().getPotency() > 0)
-			newPotency = i.getType().getPotency() - 1;
+    if (i.getType().getPotency() == -1)
+      newPotency = -1;
+    else if (i.getType().getPotency() > 0)
+      newPotency = i.getType().getPotency() - 1;
 
-		SetRequest request = new SetRequest(i.getInstance(), PLMPackage.eINSTANCE.getClabject_Potency(), newPotency);
-		SetValueCommand command = new SetValueCommand(request);
-		this.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(command));
-	}
+    SetRequest request = new SetRequest(i.getInstance(), PLMPackage.eINSTANCE.getClabject_Potency(),
+        newPotency);
+    SetValueCommand command = new SetValueCommand(request);
+    this.getViewer().getEditDomain().getCommandStack().execute(new ICommandProxy(command));
+  }
 
-	/**
-	 * updates the potency of the source element
-	 *
-	 * @generated
-	 */
-	@Override
-	protected void handleNotificationEvent(Notification notification) {
-		super.handleNotificationEvent(notification);
+  /**
+   * updates the potency of the source element
+   *
+   * @generated
+   */
+  @Override
+  protected void handleNotificationEvent(Notification notification) {
+    super.handleNotificationEvent(notification);
 
-		//Source is set before target, so now we can set the potency of the source with the one of the target - 1
-		if (((EStructuralFeature) notification.getFeature()).getName().equals("target")) {
-			updateSourcePotency();
+    // Source is set before target, so now we can set the potency of the source with
+    // the one of the target - 1
+    if (((EStructuralFeature) notification.getFeature()).getName().equals("target")) {
+      updateSourcePotency();
 
-		} else if (((EStructuralFeature) notification.getFeature()).getName().equals("source")
-				&& ((Classification) resolveSemanticElement()).getType() != null) {
-			updateSourcePotency();
-		}
-	}
+    } else if (((EStructuralFeature) notification.getFeature()).getName().equals("source")
+        && ((Classification) resolveSemanticElement()).getType() != null) {
+      updateSourcePotency();
+    }
+  }
 
 }

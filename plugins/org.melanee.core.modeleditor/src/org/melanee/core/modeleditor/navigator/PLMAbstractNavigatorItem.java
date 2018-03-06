@@ -22,49 +22,49 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
  */
 public abstract class PLMAbstractNavigatorItem extends PlatformObject {
 
-	/**
-	* @generated
-	*/
-	static {
-		final Class[] supportedTypes = new Class[] { ITabbedPropertySheetPageContributor.class };
-		final ITabbedPropertySheetPageContributor propertySheetPageContributor = new ITabbedPropertySheetPageContributor() {
-			public String getContributorId() {
-				return "org.melanee.core.modeleditor"; //$NON-NLS-1$
-			}
-		};
-		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
+  /**
+   * @generated
+   */
+  static {
+    final Class[] supportedTypes = new Class[] { ITabbedPropertySheetPageContributor.class };
+    final ITabbedPropertySheetPageContributor propertySheetPageContributor = new ITabbedPropertySheetPageContributor() {
+      public String getContributorId() {
+        return "org.melanee.core.modeleditor"; //$NON-NLS-1$
+      }
+    };
+    Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-			public Object getAdapter(Object adaptableObject, Class adapterType) {
-				if (adaptableObject instanceof org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem
-						&& adapterType == ITabbedPropertySheetPageContributor.class) {
-					return propertySheetPageContributor;
-				}
-				return null;
-			}
+      public Object getAdapter(Object adaptableObject, Class adapterType) {
+        if (adaptableObject instanceof org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem
+            && adapterType == ITabbedPropertySheetPageContributor.class) {
+          return propertySheetPageContributor;
+        }
+        return null;
+      }
 
-			public Class[] getAdapterList() {
-				return supportedTypes;
-			}
-		}, org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem.class);
-	}
+      public Class[] getAdapterList() {
+        return supportedTypes;
+      }
+    }, org.melanee.core.modeleditor.navigator.PLMAbstractNavigatorItem.class);
+  }
 
-	/**
-	* @generated
-	*/
-	private Object myParent;
+  /**
+   * @generated
+   */
+  private Object myParent;
 
-	/**
-	* @generated
-	*/
-	protected PLMAbstractNavigatorItem(Object parent) {
-		myParent = parent;
-	}
+  /**
+   * @generated
+   */
+  protected PLMAbstractNavigatorItem(Object parent) {
+    myParent = parent;
+  }
 
-	/**
-	* @generated
-	*/
-	public Object getParent() {
-		return myParent;
-	}
+  /**
+   * @generated
+   */
+  public Object getParent() {
+    return myParent;
+  }
 
 }

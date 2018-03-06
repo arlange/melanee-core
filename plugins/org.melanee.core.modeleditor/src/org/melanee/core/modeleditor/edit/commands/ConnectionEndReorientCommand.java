@@ -29,143 +29,144 @@ import org.melanee.core.models.plm.PLM.ConnectionEnd;
  */
 public class ConnectionEndReorientCommand extends EditElementCommand {
 
-	/**
-	* @generated
-	*/
-	private final int reorientDirection;
+  /**
+   * @generated
+   */
+  private final int reorientDirection;
 
-	/**
-	* @generated
-	*/
-	private final EObject oldEnd;
+  /**
+   * @generated
+   */
+  private final EObject oldEnd;
 
-	/**
-	* @generated
-	*/
-	private final EObject newEnd;
+  /**
+   * @generated
+   */
+  private final EObject newEnd;
 
-	/**
-	* @generated
-	*/
-	public ConnectionEndReorientCommand(ReorientRelationshipRequest request) {
-		super(request.getLabel(), request.getRelationship(), request);
-		reorientDirection = request.getDirection();
-		oldEnd = request.getOldRelationshipEnd();
-		newEnd = request.getNewRelationshipEnd();
-	}
+  /**
+   * @generated
+   */
+  public ConnectionEndReorientCommand(ReorientRelationshipRequest request) {
+    super(request.getLabel(), request.getRelationship(), request);
+    reorientDirection = request.getDirection();
+    oldEnd = request.getOldRelationshipEnd();
+    newEnd = request.getNewRelationshipEnd();
+  }
 
-	/**
-	* @generated
-	*/
-	public boolean canExecute() {
-		if (false == getElementToEdit() instanceof ConnectionEnd) {
-			return false;
-		}
-		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
-			return canReorientSource();
-		}
-		if (reorientDirection == ReorientRelationshipRequest.REORIENT_TARGET) {
-			return canReorientTarget();
-		}
-		return false;
-	}
+  /**
+   * @generated
+   */
+  public boolean canExecute() {
+    if (false == getElementToEdit() instanceof ConnectionEnd) {
+      return false;
+    }
+    if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
+      return canReorientSource();
+    }
+    if (reorientDirection == ReorientRelationshipRequest.REORIENT_TARGET) {
+      return canReorientTarget();
+    }
+    return false;
+  }
 
-	/**
-	* @generated
-	*/
-	protected boolean canReorientSource() {
-		if (!(oldEnd instanceof Connection && newEnd instanceof Connection)) {
-			return false;
-		}
-		Clabject target = getLink().getDestination();
-		if (!(getLink().eContainer() instanceof Connection)) {
-			return false;
-		}
-		Connection container = (Connection) getLink().eContainer();
-		return PLMBaseItemSemanticEditPolicy.getLinkConstraints().canExistConnectionEnd_4036(container, getLink(),
-				getNewSource(), target);
-	}
+  /**
+   * @generated
+   */
+  protected boolean canReorientSource() {
+    if (!(oldEnd instanceof Connection && newEnd instanceof Connection)) {
+      return false;
+    }
+    Clabject target = getLink().getDestination();
+    if (!(getLink().eContainer() instanceof Connection)) {
+      return false;
+    }
+    Connection container = (Connection) getLink().eContainer();
+    return PLMBaseItemSemanticEditPolicy.getLinkConstraints().canExistConnectionEnd_4036(container,
+        getLink(), getNewSource(), target);
+  }
 
-	/**
-	* @generated
-	*/
-	protected boolean canReorientTarget() {
-		if (!(oldEnd instanceof Clabject && newEnd instanceof Clabject)) {
-			return false;
-		}
-		Connection source = getLink().getConnection();
-		if (!(getLink().eContainer() instanceof Connection)) {
-			return false;
-		}
-		Connection container = (Connection) getLink().eContainer();
-		return PLMBaseItemSemanticEditPolicy.getLinkConstraints().canExistConnectionEnd_4036(container, getLink(),
-				source, getNewTarget());
-	}
+  /**
+   * @generated
+   */
+  protected boolean canReorientTarget() {
+    if (!(oldEnd instanceof Clabject && newEnd instanceof Clabject)) {
+      return false;
+    }
+    Connection source = getLink().getConnection();
+    if (!(getLink().eContainer() instanceof Connection)) {
+      return false;
+    }
+    Connection container = (Connection) getLink().eContainer();
+    return PLMBaseItemSemanticEditPolicy.getLinkConstraints().canExistConnectionEnd_4036(container,
+        getLink(), source, getNewTarget());
+  }
 
-	/**
-	* @generated
-	*/
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		if (!canExecute()) {
-			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
-		}
-		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
-			return reorientSource();
-		}
-		if (reorientDirection == ReorientRelationshipRequest.REORIENT_TARGET) {
-			return reorientTarget();
-		}
-		throw new IllegalStateException();
-	}
+  /**
+   * @generated
+   */
+  protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+      throws ExecutionException {
+    if (!canExecute()) {
+      throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
+    }
+    if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
+      return reorientSource();
+    }
+    if (reorientDirection == ReorientRelationshipRequest.REORIENT_TARGET) {
+      return reorientTarget();
+    }
+    throw new IllegalStateException();
+  }
 
-	/**
-	* @generated
-	*/
-	protected CommandResult reorientSource() throws ExecutionException {
-		getLink().setConnection(getNewSource());
-		return CommandResult.newOKCommandResult(getLink());
-	}
+  /**
+   * @generated
+   */
+  protected CommandResult reorientSource() throws ExecutionException {
+    getLink().setConnection(getNewSource());
+    return CommandResult.newOKCommandResult(getLink());
+  }
 
-	/**
-	* @generated
-	*/
-	protected CommandResult reorientTarget() throws ExecutionException {
-		getLink().setDestination(getNewTarget());
-		return CommandResult.newOKCommandResult(getLink());
-	}
+  /**
+   * @generated
+   */
+  protected CommandResult reorientTarget() throws ExecutionException {
+    getLink().setDestination(getNewTarget());
+    return CommandResult.newOKCommandResult(getLink());
+  }
 
-	/**
-	* @generated
-	*/
-	protected ConnectionEnd getLink() {
-		return (ConnectionEnd) getElementToEdit();
-	}
+  /**
+   * @generated
+   */
+  protected ConnectionEnd getLink() {
+    return (ConnectionEnd) getElementToEdit();
+  }
 
-	/**
-	* @generated
-	*/
-	protected Connection getOldSource() {
-		return (Connection) oldEnd;
-	}
+  /**
+   * @generated
+   */
+  protected Connection getOldSource() {
+    return (Connection) oldEnd;
+  }
 
-	/**
-	* @generated
-	*/
-	protected Connection getNewSource() {
-		return (Connection) newEnd;
-	}
+  /**
+   * @generated
+   */
+  protected Connection getNewSource() {
+    return (Connection) newEnd;
+  }
 
-	/**
-	* @generated
-	*/
-	protected Clabject getOldTarget() {
-		return (Clabject) oldEnd;
-	}
+  /**
+   * @generated
+   */
+  protected Clabject getOldTarget() {
+    return (Clabject) oldEnd;
+  }
 
-	/**
-	* @generated
-	*/
-	protected Clabject getNewTarget() {
-		return (Clabject) newEnd;
-	}
+  /**
+   * @generated
+   */
+  protected Clabject getNewTarget() {
+    return (Clabject) newEnd;
+  }
 }

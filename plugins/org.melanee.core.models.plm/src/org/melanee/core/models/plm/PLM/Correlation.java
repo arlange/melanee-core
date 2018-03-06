@@ -10,11 +10,9 @@
  *******************************************************************************/
 package org.melanee.core.models.plm.PLM;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Correlation</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Correlation</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getCorrelation()

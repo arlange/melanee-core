@@ -18,20 +18,20 @@ import org.eclipse.swt.graphics.Image;
 
 /**
  * 
- * Describes a menu which is expanded when hovering
- * the tool in the toolbar.
+ * Describes a menu which is expanded when hovering the tool in the toolbar.
  *
  */
 public class ToolBarMenuDescriptor extends ToolBarItemDescriptor {
 
-	List<ToolBarItemDescriptor> _children;
-	
-	public ToolBarMenuDescriptor(String toolTip, Image image, IElementType elementType, DragTracker theTracker, List<ToolBarItemDescriptor> children) {
-		super(toolTip, image, elementType, theTracker);
-		_children = children;
-	}
+  List<ToolBarItemDescriptor> _children;
 
-	public List<ToolBarItemDescriptor> getChildren(){
-		return _children;
-	}
+  public ToolBarMenuDescriptor(String toolTip, Image image, IElementType elementType,
+      DragTracker theTracker, List<ToolBarItemDescriptor> children) {
+    super(toolTip, image, elementType, theTracker);
+    _children = children;
+  }
+
+  public List<ToolBarItemDescriptor> getChildren() {
+    return _children;
+  }
 }

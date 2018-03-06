@@ -18,23 +18,23 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 import org.melanee.core.modeleditor.custom.commands.EmptyCommand;
 
-public class SeparatorPopupBarTool extends AbstractPopupBarTool{
+public class SeparatorPopupBarTool extends AbstractPopupBarTool {
 
-	public static String TOOL_TIP = "Separator";
-	
-	public SeparatorPopupBarTool(EditPart epHost, CreateRequest theRequest) {
-		super(epHost, theRequest);
-	}
+  public static String TOOL_TIP = "Separator";
 
-	@Override
-	protected Request createTargetRequest() {
-		ChangePropertyValueRequest req = new ChangePropertyValueRequest("seperator", "seperator");
-		return req;
-	}
+  public SeparatorPopupBarTool(EditPart epHost, CreateRequest theRequest) {
+    super(epHost, theRequest);
+  }
 
-	@Override
-	protected Command getCommand() {
-		return new EmptyCommand();
-	}
-	
+  @Override
+  protected Request createTargetRequest() {
+    ChangePropertyValueRequest req = new ChangePropertyValueRequest("seperator", "seperator");
+    return req;
+  }
+
+  @Override
+  protected Command getCommand() {
+    return new EmptyCommand();
+  }
+
 }

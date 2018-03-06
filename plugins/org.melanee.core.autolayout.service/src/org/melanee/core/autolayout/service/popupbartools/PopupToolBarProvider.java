@@ -24,36 +24,37 @@ import org.melanee.core.workbench.interfaces.IPopupToolBarProvider;
 
 public class PopupToolBarProvider implements IPopupToolBarProvider {
 
-	private final String GROUP_ID = "connector";
-	
-	/**
-	 * 
-	 */
-	public PopupToolBarProvider(){ 
-	}
+  private final String GROUP_ID = "connector";
 
-	@Override
-	public List<PopupToolBarToolWrapper> getPopUpToolbarButtonsForDiagramElement(Object host) {
-		IGraphicalEditPart editPart = (IGraphicalEditPart)host;
-		
-		List<PopupToolBarToolWrapper> result = new ArrayList<PopupToolBarToolWrapper>();
-		AbstractPopupBarTool tool = null;
-		ImageDescriptor imageDescriptor = null;
-		Image image = null;
-		
-		if(editPart.resolveSemanticElement() instanceof Connection
-				|| editPart.resolveSemanticElement() instanceof Correlation){
-			//*********************************
-			// * Add reasoning option
-			// ********************************
-			tool = new AutoLayoutPopupBarTool(editPart, null);
-	
-			imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/auto_layout16.gif");
-			image = imageDescriptor.createImage();
-			
-			result.add(new PopupToolBarToolWrapper(image, tool, "Do Auto Layout", GROUP_ID));
-		}
-		
-		return result;
-	}
+  /**
+   * 
+   */
+  public PopupToolBarProvider() {
+  }
+
+  @Override
+  public List<PopupToolBarToolWrapper> getPopUpToolbarButtonsForDiagramElement(Object host) {
+    IGraphicalEditPart editPart = (IGraphicalEditPart) host;
+
+    List<PopupToolBarToolWrapper> result = new ArrayList<PopupToolBarToolWrapper>();
+    AbstractPopupBarTool tool = null;
+    ImageDescriptor imageDescriptor = null;
+    Image image = null;
+
+    if (editPart.resolveSemanticElement() instanceof Connection
+        || editPart.resolveSemanticElement() instanceof Correlation) {
+      // *********************************
+      // * Add reasoning option
+      // ********************************
+      tool = new AutoLayoutPopupBarTool(editPart, null);
+
+      imageDescriptor = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+          "/icons/auto_layout16.gif");
+      image = imageDescriptor.createImage();
+
+      result.add(new PopupToolBarToolWrapper(image, tool, "Do Auto Layout", GROUP_ID));
+    }
+
+    return result;
+  }
 }

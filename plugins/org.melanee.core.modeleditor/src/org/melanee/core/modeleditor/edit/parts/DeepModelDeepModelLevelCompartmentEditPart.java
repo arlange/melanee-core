@@ -36,94 +36,95 @@ import org.melanee.core.modeleditor.providers.PLMElementTypes;
  */
 public class DeepModelDeepModelLevelCompartmentEditPart extends ShapeCompartmentEditPart {
 
-	/**
-	* @generated
-	*/
-	public static final int VISUAL_ID = 7062;
+  /**
+   * @generated
+   */
+  public static final int VISUAL_ID = 7062;
 
-	/**
-	* @generated
-	*/
-	public DeepModelDeepModelLevelCompartmentEditPart(View view) {
-		super(view);
-	}
+  /**
+   * @generated
+   */
+  public DeepModelDeepModelLevelCompartmentEditPart(View view) {
+    super(view);
+  }
 
-	/**
-	* @generated
-	*/
-	public String getCompartmentName() {
-		return null;
-	}
+  /**
+   * @generated
+   */
+  public String getCompartmentName() {
+    return null;
+  }
 
-	/**
-	* @generated
-	*/
-	public IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
-		result.setTitleVisibility(false);
-		return result;
-	}
+  /**
+   * @generated
+   */
+  public IFigure createFigure() {
+    ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
+    result.setTitleVisibility(false);
+    return result;
+  }
 
-	/**
-	* @generated
-	*/
-	protected void createDefaultEditPolicies() {
+  /**
+   * @generated
+   */
+  protected void createDefaultEditPolicies() {
 
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new DeepModelDeepModelLevelCompartmentItemSemanticEditPolicy());
+    super.createDefaultEditPolicies();
+    installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+        new DeepModelDeepModelLevelCompartmentItemSemanticEditPolicy());
 
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+    installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new DeepModelDeepModelLevelCompartmentCanonicalEditPolicy());
+    installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+    installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+        new DeepModelDeepModelLevelCompartmentCanonicalEditPolicy());
 
-		removeEditPolicy(EditPolicy.LAYOUT_ROLE);
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, new SwimlaneLevelCompartmentLayoutEditPolicy());
+    removeEditPolicy(EditPolicy.LAYOUT_ROLE);
+    installEditPolicy(EditPolicy.LAYOUT_ROLE, new SwimlaneLevelCompartmentLayoutEditPolicy());
 
-	}
+  }
 
-	/**
-	* @generated
-	*/
-	protected void setRatio(Double ratio) {
-		// nothing to do -- parent layout does not accept Double constraints as ratio
-		// super.setRatio(ratio); 
-	}
+  /**
+   * @generated
+   */
+  protected void setRatio(Double ratio) {
+    // nothing to do -- parent layout does not accept Double constraints as ratio
+    // super.setRatio(ratio);
+  }
 
-	/**
-	* @generated
-	*/
-	public EditPart getTargetEditPart(Request request) {
-		if (request instanceof CreateViewAndElementRequest) {
-			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
-					.getCreateElementRequestAdapter();
-			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == PLMElementTypes.Level_3097) {
-				return this;
-			}
-			if (getParent() != null) {
-				return getParent().getTargetEditPart(request);
-			}
-		}
-		if (request instanceof CreateUnspecifiedTypeConnectionRequest) {
-			return getParent().getTargetEditPart(request);
-		}
-		return super.getTargetEditPart(request);
-	}
+  /**
+   * @generated
+   */
+  public EditPart getTargetEditPart(Request request) {
+    if (request instanceof CreateViewAndElementRequest) {
+      CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request)
+          .getViewAndElementDescriptor().getCreateElementRequestAdapter();
+      IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
+      if (type == PLMElementTypes.Level_3097) {
+        return this;
+      }
+      if (getParent() != null) {
+        return getParent().getTargetEditPart(request);
+      }
+    }
+    if (request instanceof CreateUnspecifiedTypeConnectionRequest) {
+      return getParent().getTargetEditPart(request);
+    }
+    return super.getTargetEditPart(request);
+  }
 
-	/*
-	 * @generated
-	 */
-	@Override
-	public boolean isSelectable() {
-		//Things that are not viewed cannot be selected
-		//Throws an NullPointerException after import from
-		//remote model for clabjects
-		if (getViewer() == null)
-			return false;
+  /*
+   * @generated
+   */
+  @Override
+  public boolean isSelectable() {
+    // Things that are not viewed cannot be selected
+    // Throws an NullPointerException after import from
+    // remote model for clabjects
+    if (getViewer() == null)
+      return false;
 
-		return super.isSelectable();
-	}
+    return super.isSelectable();
+  }
 
 }

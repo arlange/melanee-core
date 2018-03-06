@@ -7,24 +7,24 @@
  *
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
- *******************************************************************************/ 
+ *******************************************************************************/
 package org.melanee.core.workbench.interfaces;
-
-
 
 /**
  * Interface for textual domain-specific language support.
  *
  */
 public interface ITextualVisualizationService extends IVisualizationServiceBase {
-	
-	/**
-	 * Starts the creation of the textual editor.
-	 * 
-	 * @param host the IGraphicalEditPart on which the service is invoked
-	 * @param notationChanged is the service invoked after a change of the notation 
-	 * 			or to update the visualization without notation change
-	 */
-	public abstract void run(Object host, String notation, boolean notationChanged);
-	
+
+  /**
+   * Starts the creation of the textual editor.
+   * 
+   * @param host
+   *          the IGraphicalEditPart on which the service is invoked
+   * @param notationChanged
+   *          is the service invoked after a change of the notation or to update
+   *          the visualization without notation change
+   */
+  public abstract void run(Object host, String notation, boolean notationChanged);
+
 }

@@ -7,14 +7,14 @@ import org.eclipse.ui.part.IPageBookViewPage;
 
 public class DesignationConsole extends AbstractConsole {
 
-	public DesignationConsole(String name, ImageDescriptor imageDescriptor) {
-		super(name, imageDescriptor);
-	}
+  public DesignationConsole(String name, ImageDescriptor imageDescriptor) {
+    super(name, imageDescriptor);
+  }
 
-	@Override
-	public IPageBookViewPage createPage(IConsoleView view) {
-		
-		return new DesignationConsolePage();
-	}
+  @Override
+  public IPageBookViewPage createPage(IConsoleView view) {
+
+    return new DesignationConsolePage();
+  }
 
 }

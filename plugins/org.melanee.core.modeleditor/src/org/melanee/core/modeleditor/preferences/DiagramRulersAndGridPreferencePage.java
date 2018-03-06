@@ -20,11 +20,11 @@ import org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin;
  */
 public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage {
 
-	/**
-	* @generated
-	*/
-	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(PLMDiagramEditorPlugin.getInstance().getPreferenceStore());
-	}
+  /**
+   * @generated
+   */
+  public DiagramRulersAndGridPreferencePage() {
+    setPreferenceStore(PLMDiagramEditorPlugin.getInstance().getPreferenceStore());
+  }
 
 }

@@ -20,11 +20,11 @@ import org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin;
  */
 public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
 
-	/**
-	* @generated
-	*/
-	public DiagramGeneralPreferencePage() {
-		setPreferenceStore(PLMDiagramEditorPlugin.getInstance().getPreferenceStore());
-	}
+  /**
+   * @generated
+   */
+  public DiagramGeneralPreferencePage() {
+    setPreferenceStore(PLMDiagramEditorPlugin.getInstance().getPreferenceStore());
+  }
 
 }

@@ -24,25 +24,27 @@ import org.melanee.core.modeleditor.custom.commands.NotationSelectionCommand;
  * This tool is responsible for setting a format/notation combination
  *
  */
-public class NotationSelectionPopupBarTool extends AbstractPopupBarTool{
+public class NotationSelectionPopupBarTool extends AbstractPopupBarTool {
 
-	private String notation;
-	private String format;
-	
-	public NotationSelectionPopupBarTool(EditPart epHost, CreateRequest theRequest, String notation, String format) {
-		super(epHost, theRequest);
-		this.notation = notation;
-		this.format = format;
-	}
+  private String notation;
+  private String format;
 
-	@Override
-	protected Request createTargetRequest() {
-		ChangePropertyValueRequest req = new ChangePropertyValueRequest("Apply Graphical Notation", "Apply Graphical Notation");
-		return req;
-	}
+  public NotationSelectionPopupBarTool(EditPart epHost, CreateRequest theRequest, String notation,
+      String format) {
+    super(epHost, theRequest);
+    this.notation = notation;
+    this.format = format;
+  }
 
-	@Override
-	protected Command getCommand() {
-		return new NotationSelectionCommand((IGraphicalEditPart)getHost(), notation, format);
-	}
+  @Override
+  protected Request createTargetRequest() {
+    ChangePropertyValueRequest req = new ChangePropertyValueRequest("Apply Graphical Notation",
+        "Apply Graphical Notation");
+    return req;
+  }
+
+  @Override
+  protected Command getCommand() {
+    return new NotationSelectionCommand((IGraphicalEditPart) getHost(), notation, format);
+  }
 }

@@ -23,76 +23,77 @@ import org.eclipse.gmf.runtime.notation.View;
  */
 public class PLMNavigatorItem extends PLMAbstractNavigatorItem {
 
-	/**
-	* @generated
-	*/
-	static {
-		final Class[] supportedTypes = new Class[] { View.class, EObject.class };
-		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
+  /**
+   * @generated
+   */
+  static {
+    final Class[] supportedTypes = new Class[] { View.class, EObject.class };
+    Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-			public Object getAdapter(Object adaptableObject, Class adapterType) {
-				if (adaptableObject instanceof org.melanee.core.modeleditor.navigator.PLMNavigatorItem
-						&& (adapterType == View.class || adapterType == EObject.class)) {
-					return ((org.melanee.core.modeleditor.navigator.PLMNavigatorItem) adaptableObject).getView();
-				}
-				return null;
-			}
+      public Object getAdapter(Object adaptableObject, Class adapterType) {
+        if (adaptableObject instanceof org.melanee.core.modeleditor.navigator.PLMNavigatorItem
+            && (adapterType == View.class || adapterType == EObject.class)) {
+          return ((org.melanee.core.modeleditor.navigator.PLMNavigatorItem) adaptableObject)
+              .getView();
+        }
+        return null;
+      }
 
-			public Class[] getAdapterList() {
-				return supportedTypes;
-			}
-		}, org.melanee.core.modeleditor.navigator.PLMNavigatorItem.class);
-	}
+      public Class[] getAdapterList() {
+        return supportedTypes;
+      }
+    }, org.melanee.core.modeleditor.navigator.PLMNavigatorItem.class);
+  }
 
-	/**
-	* @generated
-	*/
-	private View myView;
+  /**
+   * @generated
+   */
+  private View myView;
 
-	/**
-	* @generated
-	*/
-	private boolean myLeaf = false;
+  /**
+   * @generated
+   */
+  private boolean myLeaf = false;
 
-	/**
-	* @generated
-	*/
-	public PLMNavigatorItem(View view, Object parent, boolean isLeaf) {
-		super(parent);
-		myView = view;
-		myLeaf = isLeaf;
-	}
+  /**
+   * @generated
+   */
+  public PLMNavigatorItem(View view, Object parent, boolean isLeaf) {
+    super(parent);
+    myView = view;
+    myLeaf = isLeaf;
+  }
 
-	/**
-	* @generated
-	*/
-	public View getView() {
-		return myView;
-	}
+  /**
+   * @generated
+   */
+  public View getView() {
+    return myView;
+  }
 
-	/**
-	* @generated
-	*/
-	public boolean isLeaf() {
-		return myLeaf;
-	}
+  /**
+   * @generated
+   */
+  public boolean isLeaf() {
+    return myLeaf;
+  }
 
-	/**
-	* @generated
-	*/
-	public boolean equals(Object obj) {
-		if (obj instanceof org.melanee.core.modeleditor.navigator.PLMNavigatorItem) {
-			return EcoreUtil.getURI(getView()).equals(
-					EcoreUtil.getURI(((org.melanee.core.modeleditor.navigator.PLMNavigatorItem) obj).getView()));
-		}
-		return super.equals(obj);
-	}
+  /**
+   * @generated
+   */
+  public boolean equals(Object obj) {
+    if (obj instanceof org.melanee.core.modeleditor.navigator.PLMNavigatorItem) {
+      return EcoreUtil.getURI(getView()).equals(EcoreUtil
+          .getURI(((org.melanee.core.modeleditor.navigator.PLMNavigatorItem) obj).getView()));
+    }
+    return super.equals(obj);
+  }
 
-	/**
-	* @generated
-	*/
-	public int hashCode() {
-		return EcoreUtil.getURI(getView()).hashCode();
-	}
+  /**
+   * @generated
+   */
+  public int hashCode() {
+    return EcoreUtil.getURI(getView()).hashCode();
+  }
 
 }

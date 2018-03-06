@@ -26,43 +26,45 @@ import org.melanee.core.modeleditor.providers.PLMElementTypes;
  */
 public class DomainItemSemanticEditPolicy extends PLMBaseItemSemanticEditPolicy {
 
-	/**
-	* @generated
-	*/
-	public DomainItemSemanticEditPolicy() {
-		super(PLMElementTypes.Domain_1000);
-	}
+  /**
+   * @generated
+   */
+  public DomainItemSemanticEditPolicy() {
+    super(PLMElementTypes.Domain_1000);
+  }
 
-	/**
-	* @generated
-	*/
-	protected Command getCreateCommand(CreateElementRequest req) {
-		if (PLMElementTypes.DeepModel_2005 == req.getElementType()) {
-			return getGEFWrapper(new DeepModelCreateCommand(req));
-		}
-		return super.getCreateCommand(req);
-	}
+  /**
+   * @generated
+   */
+  protected Command getCreateCommand(CreateElementRequest req) {
+    if (PLMElementTypes.DeepModel_2005 == req.getElementType()) {
+      return getGEFWrapper(new DeepModelCreateCommand(req));
+    }
+    return super.getCreateCommand(req);
+  }
 
-	/**
-	* @generated
-	*/
-	protected Command getDuplicateCommand(DuplicateElementsRequest req) {
-		TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
-		return getGEFWrapper(new DuplicateAnythingCommand(editingDomain, req));
-	}
+  /**
+   * @generated
+   */
+  protected Command getDuplicateCommand(DuplicateElementsRequest req) {
+    TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+    return getGEFWrapper(new DuplicateAnythingCommand(editingDomain, req));
+  }
 
-	/**
-	* @generated
-	*/
-	private static class DuplicateAnythingCommand extends DuplicateEObjectsCommand {
+  /**
+   * @generated
+   */
+  private static class DuplicateAnythingCommand extends DuplicateEObjectsCommand {
 
-		/**
-		* @generated
-		*/
-		public DuplicateAnythingCommand(TransactionalEditingDomain editingDomain, DuplicateElementsRequest req) {
-			super(editingDomain, req.getLabel(), req.getElementsToBeDuplicated(), req.getAllDuplicatedElementsMap());
-		}
+    /**
+     * @generated
+     */
+    public DuplicateAnythingCommand(TransactionalEditingDomain editingDomain,
+        DuplicateElementsRequest req) {
+      super(editingDomain, req.getLabel(), req.getElementsToBeDuplicated(),
+          req.getAllDuplicatedElementsMap());
+    }
 
-	}
+  }
 
 }

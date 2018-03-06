@@ -27,48 +27,44 @@ import org.eclipse.gmf.runtime.notation.Node;
 
 public class GenericDiagramDropEditPolicy extends DiagramDragDropEditPolicy {
 
-	DiagramEditPart getDiagramEditPart() {
-		return (DiagramEditPart) getHost();
-	}
+  DiagramEditPart getDiagramEditPart() {
+    return (DiagramEditPart) getHost();
+  }
 
-	@SuppressWarnings("unchecked")
-	public Command getDropObjectsCommand(DropObjectsRequest dropRequest) {
-		List viewDescriptors = new ArrayList();
-		EObject hostDomainElement = ((IGraphicalEditPart) getHost())
-				.resolveSemanticElement();
-		for (Iterator it = dropRequest.getObjects().iterator(); it.hasNext();) {
-			Object nextObject = it.next();
-			EObject eObject = reloadAsEObjectInEditingDomain(nextObject);
-			if (eObject != null) {
-				if (eObject.eContainer() == hostDomainElement) {
-				CreateViewRequest.ViewDescriptor viewDescriptor = new CreateViewRequest.ViewDescriptor(
-						new EObjectAdapter(eObject), Node.class, null,
-						getDiagramEditPart().getDiagramPreferencesHint());
-					viewDescriptors.add(viewDescriptor);
-				}
-			}
-		}
-		Command command = createViewsAndArrangeCommand(dropRequest,
-				viewDescriptors);
-		return command;
-	}
+  @SuppressWarnings("unchecked")
+  public Command getDropObjectsCommand(DropObjectsRequest dropRequest) {
+    List viewDescriptors = new ArrayList();
+    EObject hostDomainElement = ((IGraphicalEditPart) getHost()).resolveSemanticElement();
+    for (Iterator it = dropRequest.getObjects().iterator(); it.hasNext();) {
+      Object nextObject = it.next();
+      EObject eObject = reloadAsEObjectInEditingDomain(nextObject);
+      if (eObject != null) {
+        if (eObject.eContainer() == hostDomainElement) {
+          CreateViewRequest.ViewDescriptor viewDescriptor = new CreateViewRequest.ViewDescriptor(
+              new EObjectAdapter(eObject), Node.class, null,
+              getDiagramEditPart().getDiagramPreferencesHint());
+          viewDescriptors.add(viewDescriptor);
+        }
+      }
+    }
+    Command command = createViewsAndArrangeCommand(dropRequest, viewDescriptors);
+    return command;
+  }
 
-	public EObject reloadAsEObjectInEditingDomain(Object object) {
-		if (!(object instanceof EObject)) {
-			return null;
-		}
-		ResourceSet resourceSet = getEditingDomain().getResourceSet();
-		URI proxyURI = EcoreUtil.getURI((EObject) object);
-		if (proxyURI != null) {
-			EObject eObjectInEditingDomain = resourceSet.getEObject(proxyURI,
-					true);
-			return eObjectInEditingDomain;
-		}
-		return null;
-	}
+  public EObject reloadAsEObjectInEditingDomain(Object object) {
+    if (!(object instanceof EObject)) {
+      return null;
+    }
+    ResourceSet resourceSet = getEditingDomain().getResourceSet();
+    URI proxyURI = EcoreUtil.getURI((EObject) object);
+    if (proxyURI != null) {
+      EObject eObjectInEditingDomain = resourceSet.getEObject(proxyURI, true);
+      return eObjectInEditingDomain;
+    }
+    return null;
+  }
 
-	private TransactionalEditingDomain getEditingDomain() {
-		return ((IGraphicalEditPart) getHost())
-				.getEditingDomain();
-	}
+  private TransactionalEditingDomain getEditingDomain() {
+    return ((IGraphicalEditPart) getHost()).getEditingDomain();
+  }
 }

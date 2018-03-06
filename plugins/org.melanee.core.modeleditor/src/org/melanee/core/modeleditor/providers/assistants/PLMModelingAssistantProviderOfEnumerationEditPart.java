@@ -17,6 +17,7 @@ import org.melanee.core.modeleditor.providers.PLMModelingAssistantProvider;
 /**
  * @generated
  */
-public class PLMModelingAssistantProviderOfEnumerationEditPart extends PLMModelingAssistantProvider {
+public class PLMModelingAssistantProviderOfEnumerationEditPart
+    extends PLMModelingAssistantProvider {
 
 }

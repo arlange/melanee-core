@@ -11,38 +11,37 @@ import org.eclipse.ui.internal.ide.misc.ContainerSelectionGroup;
 @SuppressWarnings("restriction")
 public class SelectTargetWizardPage extends WizardPage {
 
-	ContainerSelectionGroup csg;
-	
-	protected SelectTargetWizardPage(String pageName) {
-		super(pageName);
+  ContainerSelectionGroup csg;
 
-		setTitle("Select container where exported file is created.");
-	}
+  protected SelectTargetWizardPage(String pageName) {
+    super(pageName);
 
-	
-	@Override
-	public void createControl(Composite parent) {
-		Composite c = new Composite(parent, SWT.NONE);
+    setTitle("Select container where exported file is created.");
+  }
 
-		c.setLayout(new GridLayout(1, true));
-		
-		 csg = new ContainerSelectionGroup(c, new Listener() {
-			
-			@Override
-			public void handleEvent(Event event) {
-				getContainer().updateButtons();
-			}
-		}, true);
-		
-		setControl(c);
-	}
-	
-	public String getSelection(){
-		return csg.getContainerFullPath().toString();
-	}
-	
-	@Override
-	public boolean isPageComplete() {
-		return csg.getContainerFullPath() != null;
-	}
+  @Override
+  public void createControl(Composite parent) {
+    Composite c = new Composite(parent, SWT.NONE);
+
+    c.setLayout(new GridLayout(1, true));
+
+    csg = new ContainerSelectionGroup(c, new Listener() {
+
+      @Override
+      public void handleEvent(Event event) {
+        getContainer().updateButtons();
+      }
+    }, true);
+
+    setControl(c);
+  }
+
+  public String getSelection() {
+    return csg.getContainerFullPath().toString();
+  }
+
+  @Override
+  public boolean isPageComplete() {
+    return csg.getContainerFullPath() != null;
+  }
 }

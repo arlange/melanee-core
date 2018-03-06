@@ -27,42 +27,44 @@ import org.eclipse.ui.IWorkbenchPage;
  */
 public class PLMDiagramActionBarContributor extends DiagramActionBarContributor {
 
-	/**
-	* @generated
-	*/
-	protected Class getEditorClass() {
-		return PLMDiagramEditor.class;
-	}
+  /**
+   * @generated
+   */
+  protected Class getEditorClass() {
+    return PLMDiagramEditor.class;
+  }
 
-	/**
-	* @generated
-	*/
-	protected String getEditorId() {
-		return PLMDiagramEditor.ID;
-	}
+  /**
+   * @generated
+   */
+  protected String getEditorId() {
+    return PLMDiagramEditor.ID;
+  }
 
-	/**
-	* @generated
-	*/
-	public void init(IActionBars bars, IWorkbenchPage page) {
+  /**
+   * @generated
+   */
+  public void init(IActionBars bars, IWorkbenchPage page) {
 
-		//The toolbars shall not be propagated
-		//with default values
-		super.init(bars, page);
-		bars.getToolBarManager().removeAll();
-		bars.getMenuManager().removeAll();
+    // The toolbars shall not be propagated
+    // with default values
+    super.init(bars, page);
+    bars.getToolBarManager().removeAll();
+    bars.getMenuManager().removeAll();
 
-		// print preview
-		IMenuManager fileMenu = bars.getMenuManager().findMenuUsingPath(IWorkbenchActionConstants.M_FILE);
-		assert fileMenu != null;
-		IAction printPreviewAction = new RenderedPrintPreviewAction(new EnhancedPrintActionHelper());
-		fileMenu.insertBefore("print", printPreviewAction); //$NON-NLS-1$
-		IMenuManager editMenu = bars.getMenuManager().findMenuUsingPath(IWorkbenchActionConstants.M_EDIT);
-		assert editMenu != null;
-		if (editMenu.find("validationGroup") == null) { //$NON-NLS-1$
-			editMenu.add(new GroupMarker("validationGroup")); //$NON-NLS-1$
-		}
-		IAction validateAction = new ValidateAction(page);
-		editMenu.appendToGroup("validationGroup", validateAction); //$NON-NLS-1$
-	}
+    // print preview
+    IMenuManager fileMenu = bars.getMenuManager()
+        .findMenuUsingPath(IWorkbenchActionConstants.M_FILE);
+    assert fileMenu != null;
+    IAction printPreviewAction = new RenderedPrintPreviewAction(new EnhancedPrintActionHelper());
+    fileMenu.insertBefore("print", printPreviewAction); //$NON-NLS-1$
+    IMenuManager editMenu = bars.getMenuManager()
+        .findMenuUsingPath(IWorkbenchActionConstants.M_EDIT);
+    assert editMenu != null;
+    if (editMenu.find("validationGroup") == null) { //$NON-NLS-1$
+      editMenu.add(new GroupMarker("validationGroup")); //$NON-NLS-1$
+    }
+    IAction validateAction = new ValidateAction(page);
+    editMenu.appendToGroup("validationGroup", validateAction); //$NON-NLS-1$
+  }
 }

@@ -15,19 +15,18 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Linking Model</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Linking
+ * Model</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * The model root which contains all models which are linked
- * <!-- end-model-doc -->
+ * <!-- begin-model-doc --> The model root which contains all models which are
+ * linked <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.melanee.core.models.links.links.LinkingModel#getRemoteModels <em>Remote Models</em>}</li>
+ * <li>{@link org.melanee.core.models.links.links.LinkingModel#getRemoteModels
+ * <em>Remote Models</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.links.links.LinksPackage#getLinkingModel()
@@ -35,19 +34,18 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface LinkingModel extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Remote Models</b></em>' containment reference list.
-	 * The list contents are of type {@link org.melanee.core.models.links.links.RemoteModel}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The linked remote models
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Remote Models</em>' containment reference list.
-	 * @see org.melanee.core.models.links.links.LinksPackage#getLinkingModel_RemoteModels()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<RemoteModel> getRemoteModels();
+  /**
+   * Returns the value of the '<em><b>Remote Models</b></em>' containment
+   * reference list. The list contents are of type
+   * {@link org.melanee.core.models.links.links.RemoteModel}. <!-- begin-user-doc
+   * --> <!-- end-user-doc --> <!-- begin-model-doc --> The linked remote models
+   * <!-- end-model-doc -->
+   * 
+   * @return the value of the '<em>Remote Models</em>' containment reference list.
+   * @see org.melanee.core.models.links.links.LinksPackage#getLinkingModel_RemoteModels()
+   * @model containment="true"
+   * @generated
+   */
+  EList<RemoteModel> getRemoteModels();
 
 } // LinkingModel

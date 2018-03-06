@@ -11,38 +11,42 @@ import org.melanee.core.workbench.interfaces.IConstraintLanguageService;
 
 public class ValidateDeepModelAction extends Action {
 
-	private final Domain domain;
-	
-	public ValidateDeepModelAction(Domain domain) {
-		super();
-		this.domain = domain;
-	}
-	
-	@Override
-	public ImageDescriptor getImageDescriptor() {
-		return AbstractUIPlugin.imageDescriptorFromPlugin(org.melanee.core.workbench.Activator.PLUGIN_ID, "/icons/tick.png");
-	}
-	
-	@Override
-	public String getToolTipText() {
-		return "Validate Deep Model";
-	}
-	
-	@Override
-	public void run() {
-		try {
-			IConstraintLanguageService constraintLanguageService = ExtensionPointService.Instance().getActiveConstraintLanguageService();
-			
-			if(constraintLanguageService == null)
-				return;
-			
-			DeepModel deepModel = domain.getDeepModel().size() > 0 ? (DeepModel)domain.getDeepModel().get(0) : null;
-			if (deepModel == null)
-					return;
-			
-			constraintLanguageService.validate(deepModel, true);
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-	}
+  private final Domain domain;
+
+  public ValidateDeepModelAction(Domain domain) {
+    super();
+    this.domain = domain;
+  }
+
+  @Override
+  public ImageDescriptor getImageDescriptor() {
+    return AbstractUIPlugin.imageDescriptorFromPlugin(
+        org.melanee.core.workbench.Activator.PLUGIN_ID, "/icons/tick.png");
+  }
+
+  @Override
+  public String getToolTipText() {
+    return "Validate Deep Model";
+  }
+
+  @Override
+  public void run() {
+    try {
+      IConstraintLanguageService constraintLanguageService = ExtensionPointService.Instance()
+          .getActiveConstraintLanguageService();
+
+      if (constraintLanguageService == null)
+        return;
+
+      DeepModel deepModel = domain.getDeepModel().size() > 0
+          ? (DeepModel) domain.getDeepModel().get(0)
+          : null;
+      if (deepModel == null)
+        return;
+
+      constraintLanguageService.validate(deepModel, true);
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
+  }
 }

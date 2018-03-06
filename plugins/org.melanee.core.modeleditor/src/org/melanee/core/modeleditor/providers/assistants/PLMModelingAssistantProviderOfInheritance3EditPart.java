@@ -32,115 +32,121 @@ import org.melanee.core.modeleditor.providers.PLMModelingAssistantProvider;
 /**
  * @generated
  */
-public class PLMModelingAssistantProviderOfInheritance3EditPart extends PLMModelingAssistantProvider {
+public class PLMModelingAssistantProviderOfInheritance3EditPart
+    extends PLMModelingAssistantProvider {
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnSource((Inheritance3EditPart) sourceEditPart);
-	}
+  public List<IElementType> getRelTypesOnSource(IAdaptable source) {
+    IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
+        .getAdapter(IGraphicalEditPart.class);
+    return doGetRelTypesOnSource((Inheritance3EditPart) sourceEditPart);
+  }
 
-	/**
-	* @generated
-	*/
-	public List<IElementType> doGetRelTypesOnSource(Inheritance3EditPart source) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(PLMElementTypes.Supertype_4034);
-		types.add(PLMElementTypes.Subtype_4035);
-		return types;
-	}
+  /**
+   * @generated
+   */
+  public List<IElementType> doGetRelTypesOnSource(Inheritance3EditPart source) {
+    List<IElementType> types = new ArrayList<IElementType>(2);
+    types.add(PLMElementTypes.Supertype_4034);
+    types.add(PLMElementTypes.Subtype_4035);
+    return types;
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnSourceAndTarget((Inheritance3EditPart) sourceEditPart, targetEditPart);
-	}
+  public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
+    IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
+        .getAdapter(IGraphicalEditPart.class);
+    IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
+        .getAdapter(IGraphicalEditPart.class);
+    return doGetRelTypesOnSourceAndTarget((Inheritance3EditPart) sourceEditPart, targetEditPart);
+  }
 
-	/**
-	* @generated
-	*/
-	public List<IElementType> doGetRelTypesOnSourceAndTarget(Inheritance3EditPart source,
-			IGraphicalEditPart targetEditPart) {
-		List<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof ConnectionEditPart) {
-			types.add(PLMElementTypes.Supertype_4034);
-		}
-		if (targetEditPart instanceof EntityEditPart) {
-			types.add(PLMElementTypes.Supertype_4034);
-		}
-		if (targetEditPart instanceof Connection2EditPart) {
-			types.add(PLMElementTypes.Supertype_4034);
-		}
-		if (targetEditPart instanceof Entity2EditPart) {
-			types.add(PLMElementTypes.Supertype_4034);
-		}
-		if (targetEditPart instanceof Entity3EditPart) {
-			types.add(PLMElementTypes.Supertype_4034);
-		}
-		if (targetEditPart instanceof Connection3EditPart) {
-			types.add(PLMElementTypes.Supertype_4034);
-		}
-		if (targetEditPart instanceof ConnectionEditPart) {
-			types.add(PLMElementTypes.Subtype_4035);
-		}
-		if (targetEditPart instanceof EntityEditPart) {
-			types.add(PLMElementTypes.Subtype_4035);
-		}
-		if (targetEditPart instanceof Connection2EditPart) {
-			types.add(PLMElementTypes.Subtype_4035);
-		}
-		if (targetEditPart instanceof Entity2EditPart) {
-			types.add(PLMElementTypes.Subtype_4035);
-		}
-		if (targetEditPart instanceof Entity3EditPart) {
-			types.add(PLMElementTypes.Subtype_4035);
-		}
-		if (targetEditPart instanceof Connection3EditPart) {
-			types.add(PLMElementTypes.Subtype_4035);
-		}
-		return types;
-	}
+  /**
+   * @generated
+   */
+  public List<IElementType> doGetRelTypesOnSourceAndTarget(Inheritance3EditPart source,
+      IGraphicalEditPart targetEditPart) {
+    List<IElementType> types = new LinkedList<IElementType>();
+    if (targetEditPart instanceof ConnectionEditPart) {
+      types.add(PLMElementTypes.Supertype_4034);
+    }
+    if (targetEditPart instanceof EntityEditPart) {
+      types.add(PLMElementTypes.Supertype_4034);
+    }
+    if (targetEditPart instanceof Connection2EditPart) {
+      types.add(PLMElementTypes.Supertype_4034);
+    }
+    if (targetEditPart instanceof Entity2EditPart) {
+      types.add(PLMElementTypes.Supertype_4034);
+    }
+    if (targetEditPart instanceof Entity3EditPart) {
+      types.add(PLMElementTypes.Supertype_4034);
+    }
+    if (targetEditPart instanceof Connection3EditPart) {
+      types.add(PLMElementTypes.Supertype_4034);
+    }
+    if (targetEditPart instanceof ConnectionEditPart) {
+      types.add(PLMElementTypes.Subtype_4035);
+    }
+    if (targetEditPart instanceof EntityEditPart) {
+      types.add(PLMElementTypes.Subtype_4035);
+    }
+    if (targetEditPart instanceof Connection2EditPart) {
+      types.add(PLMElementTypes.Subtype_4035);
+    }
+    if (targetEditPart instanceof Entity2EditPart) {
+      types.add(PLMElementTypes.Subtype_4035);
+    }
+    if (targetEditPart instanceof Entity3EditPart) {
+      types.add(PLMElementTypes.Subtype_4035);
+    }
+    if (targetEditPart instanceof Connection3EditPart) {
+      types.add(PLMElementTypes.Subtype_4035);
+    }
+    return types;
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
-		return doGetTypesForTarget((Inheritance3EditPart) sourceEditPart, relationshipType);
-	}
+  public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
+    IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
+        .getAdapter(IGraphicalEditPart.class);
+    return doGetTypesForTarget((Inheritance3EditPart) sourceEditPart, relationshipType);
+  }
 
-	/**
-	* @generated
-	*/
-	public List<IElementType> doGetTypesForTarget(Inheritance3EditPart source, IElementType relationshipType) {
-		List<IElementType> types = new ArrayList<IElementType>();
-		if (relationshipType == PLMElementTypes.Supertype_4034) {
-			types.add(PLMElementTypes.Connection_3099);
-			types.add(PLMElementTypes.Entity_3105);
-			types.add(PLMElementTypes.Connection_3111);
-			types.add(PLMElementTypes.Entity_3120);
-			types.add(PLMElementTypes.Entity_3126);
-			types.add(PLMElementTypes.Connection_3127);
-		} else if (relationshipType == PLMElementTypes.Subtype_4035) {
-			types.add(PLMElementTypes.Connection_3099);
-			types.add(PLMElementTypes.Entity_3105);
-			types.add(PLMElementTypes.Connection_3111);
-			types.add(PLMElementTypes.Entity_3120);
-			types.add(PLMElementTypes.Entity_3126);
-			types.add(PLMElementTypes.Connection_3127);
-		}
-		return types;
-	}
+  /**
+   * @generated
+   */
+  public List<IElementType> doGetTypesForTarget(Inheritance3EditPart source,
+      IElementType relationshipType) {
+    List<IElementType> types = new ArrayList<IElementType>();
+    if (relationshipType == PLMElementTypes.Supertype_4034) {
+      types.add(PLMElementTypes.Connection_3099);
+      types.add(PLMElementTypes.Entity_3105);
+      types.add(PLMElementTypes.Connection_3111);
+      types.add(PLMElementTypes.Entity_3120);
+      types.add(PLMElementTypes.Entity_3126);
+      types.add(PLMElementTypes.Connection_3127);
+    } else if (relationshipType == PLMElementTypes.Subtype_4035) {
+      types.add(PLMElementTypes.Connection_3099);
+      types.add(PLMElementTypes.Entity_3105);
+      types.add(PLMElementTypes.Connection_3111);
+      types.add(PLMElementTypes.Entity_3120);
+      types.add(PLMElementTypes.Entity_3126);
+      types.add(PLMElementTypes.Connection_3127);
+    }
+    return types;
+  }
 
 }

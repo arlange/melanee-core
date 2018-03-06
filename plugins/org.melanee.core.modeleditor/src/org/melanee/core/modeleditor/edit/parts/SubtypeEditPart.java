@@ -26,61 +26,61 @@ import org.melanee.core.modeleditor.edit.policies.SubtypeItemSemanticEditPolicy;
  */
 public class SubtypeEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
-	/**
-	* @generated
-	*/
-	public static final int VISUAL_ID = 4035;
+  /**
+   * @generated
+   */
+  public static final int VISUAL_ID = 4035;
 
-	/**
-	* @generated
-	*/
-	public SubtypeEditPart(View view) {
-		super(view);
-	}
+  /**
+   * @generated
+   */
+  public SubtypeEditPart(View view) {
+    super(view);
+  }
 
-	/**
-	* @generated
-	*/
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SubtypeItemSemanticEditPolicy());
-	}
+  /**
+   * @generated
+   */
+  protected void createDefaultEditPolicies() {
+    super.createDefaultEditPolicies();
+    installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SubtypeItemSemanticEditPolicy());
+  }
 
-	/**
-	* Creates figure for this edit part.
-	* 
-	* Body of this method does not depend on settings in generation model
-	* so you may safely remove <i>generated</i> tag and modify it.
-	* 
-	* @generated
-	*/
+  /**
+   * Creates figure for this edit part.
+   * 
+   * Body of this method does not depend on settings in generation model so you
+   * may safely remove <i>generated</i> tag and modify it.
+   * 
+   * @generated
+   */
 
-	protected Connection createConnectionFigure() {
-		return new SubTypeConnectionFigure();
-	}
+  protected Connection createConnectionFigure() {
+    return new SubTypeConnectionFigure();
+  }
 
-	/**
-	* @generated
-	*/
-	public SubTypeConnectionFigure getPrimaryShape() {
-		return (SubTypeConnectionFigure) getFigure();
-	}
+  /**
+   * @generated
+   */
+  public SubTypeConnectionFigure getPrimaryShape() {
+    return (SubTypeConnectionFigure) getFigure();
+  }
 
-	/**
-	 * @generated
-	 */
-	public class SubTypeConnectionFigure extends PolylineConnectionEx {
+  /**
+   * @generated
+   */
+  public class SubTypeConnectionFigure extends PolylineConnectionEx {
 
-		/**
-		 * @generated
-		 */
-		public SubTypeConnectionFigure() {
-			this.setForegroundColor(ColorConstants.black);
+    /**
+     * @generated
+     */
+    public SubTypeConnectionFigure() {
+      this.setForegroundColor(ColorConstants.black);
 
-		}
+    }
 
-	}
+  }
 
-	//Sets the potency of instatiation ends
+  // Sets the potency of instatiation ends
 
 }

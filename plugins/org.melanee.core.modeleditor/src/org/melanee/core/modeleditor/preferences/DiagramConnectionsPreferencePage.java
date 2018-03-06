@@ -23,24 +23,24 @@ import org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin;
  */
 public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage {
 
-	/**
-	* @generated
-	*/
-	public DiagramConnectionsPreferencePage() {
-		setPreferenceStore(PLMDiagramEditorPlugin.getInstance().getPreferenceStore());
-	}
+  /**
+   * @generated
+   */
+  public DiagramConnectionsPreferencePage() {
+    setPreferenceStore(PLMDiagramEditorPlugin.getInstance().getPreferenceStore());
+  }
 
-	/**
-	* Initializes the default preference values for this preference store.
-	* 
-	* @param preferenceStore
-	*            the preference store
-	* @generated
-	*/
-	public static void initDefaults(IPreferenceStore preferenceStore) {
-		preferenceStore.setDefault(IPreferenceConstants.PREF_LINE_STYLE, Routing.RECTILINEAR);
-		preferenceStore.setDefault(IPreferenceConstants.PREF_SNAP_TO_GRID, false);
-		preferenceStore.setDefault(IPreferenceConstants.PREF_SNAP_TO_GEOMETRY, true);
-	}
+  /**
+   * Initializes the default preference values for this preference store.
+   * 
+   * @param preferenceStore
+   *          the preference store
+   * @generated
+   */
+  public static void initDefaults(IPreferenceStore preferenceStore) {
+    preferenceStore.setDefault(IPreferenceConstants.PREF_LINE_STYLE, Routing.RECTILINEAR);
+    preferenceStore.setDefault(IPreferenceConstants.PREF_SNAP_TO_GRID, false);
+    preferenceStore.setDefault(IPreferenceConstants.PREF_SNAP_TO_GEOMETRY, true);
+  }
 
 }

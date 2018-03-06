@@ -24,40 +24,42 @@ import org.melanee.core.tests.ui.runner.OrderedSWTBotTestRunner.TestOrder;
 @RunWith(OrderedSWTBotTestRunner.class)
 public class PropertiesViewTest {
 
-	private static SWTWorkbenchBot bot;
-	private static SWTGefBot gefBot;
-	private static SWTBotGefEditor editor;
-	
-	@Test
-	@TestOrder(no=1)
-	public void ontologicalPropertiesViewWorking(){
-		//Check whether the tab is there
-		assertTrue(GMFTestUtil.tabbedPropertiesPageExists(TestConstants.PROPERTIES_TAB_ONTOLOGICAL, bot));
-		
-		//Click on it
-		GMFTestUtil.selectTabbedPropertiesPage(TestConstants.PROPERTIES_TAB_ONTOLOGICAL, bot);
-	}
-	
-	@Test
-	@TestOrder(no=2)
-	public void linguisticPropertiesViewWorking(){
-		//Check whether the tab is there
-		assertTrue(GMFTestUtil.tabbedPropertiesPageExists(TestConstants.PROPERTIES_TAB_VISUALIZATION, bot));
-		
-		//Click on it
-		GMFTestUtil.selectTabbedPropertiesPage(TestConstants.PROPERTIES_TAB_VISUALIZATION, bot);
-	}
-	
-	@BeforeClass
-	public static void setup(){
-		bot = new SWTWorkbenchBot();
-		gefBot = new SWTGefBot();
-		
-		//Open Melanee Perspective if not open
-		if (!"Melanee".equals(bot.activePerspective().getLabel()))
-			bot.perspectiveByLabel("Melanee").activate();
-		
-		editor = gefBot.gefEditor(TestConstants.FILE_TEST_FILE);
-		editor.getEditPart("A");
-	}
+  private static SWTWorkbenchBot bot;
+  private static SWTGefBot gefBot;
+  private static SWTBotGefEditor editor;
+
+  @Test
+  @TestOrder(no = 1)
+  public void ontologicalPropertiesViewWorking() {
+    // Check whether the tab is there
+    assertTrue(
+        GMFTestUtil.tabbedPropertiesPageExists(TestConstants.PROPERTIES_TAB_ONTOLOGICAL, bot));
+
+    // Click on it
+    GMFTestUtil.selectTabbedPropertiesPage(TestConstants.PROPERTIES_TAB_ONTOLOGICAL, bot);
+  }
+
+  @Test
+  @TestOrder(no = 2)
+  public void linguisticPropertiesViewWorking() {
+    // Check whether the tab is there
+    assertTrue(
+        GMFTestUtil.tabbedPropertiesPageExists(TestConstants.PROPERTIES_TAB_VISUALIZATION, bot));
+
+    // Click on it
+    GMFTestUtil.selectTabbedPropertiesPage(TestConstants.PROPERTIES_TAB_VISUALIZATION, bot);
+  }
+
+  @BeforeClass
+  public static void setup() {
+    bot = new SWTWorkbenchBot();
+    gefBot = new SWTGefBot();
+
+    // Open Melanee Perspective if not open
+    if (!"Melanee".equals(bot.activePerspective().getLabel()))
+      bot.perspectiveByLabel("Melanee").activate();
+
+    editor = gefBot.gefEditor(TestConstants.FILE_TEST_FILE);
+    editor.getEditPart("A");
+  }
 }

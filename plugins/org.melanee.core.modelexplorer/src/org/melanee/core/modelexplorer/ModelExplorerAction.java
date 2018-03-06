@@ -18,35 +18,38 @@ import org.melanee.core.models.plm.PLM.Domain;
 
 public class ModelExplorerAction extends Action {
 
-	@Override
-	public ImageDescriptor getImageDescriptor() {
-		return AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/explore.gif");
-	}
-	
-	@Override
-	public String getToolTipText() {
-		return "Explore and Link Remote Models";
-	}
-	
-	@Override
-	public void run() {
-		DiagramDocumentEditor editor = (DiagramDocumentEditor)PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		Domain domain = (Domain)editor.getDiagram().getElement();
-		Diagram diagram = editor.getDiagram();
-		ModelExplorerDialog med = new ModelExplorerDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), domain, diagram);
-		int result = med.open();
-		
-		if (result == Window.CANCEL)
-			return; 
-		
-		List<IGraphicalEditPart> editParts = new ArrayList<IGraphicalEditPart>();
-		for(EObject elementToSelect : med.getCreatedElements())
-			editParts.addAll(editor.getDiagramGraphicalViewer().findEditPartsForElement(EMFCoreUtil.getProxyID(elementToSelect), IGraphicalEditPart.class));
-		
-		for(IGraphicalEditPart ep : editParts)
-			if(ep.isSelectable()){
-				ep.activate();
-				editor.getDiagramGraphicalViewer().appendSelection(ep);
-			}
-	}
+  @Override
+  public ImageDescriptor getImageDescriptor() {
+    return AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "/icons/explore.gif");
+  }
+
+  @Override
+  public String getToolTipText() {
+    return "Explore and Link Remote Models";
+  }
+
+  @Override
+  public void run() {
+    DiagramDocumentEditor editor = (DiagramDocumentEditor) PlatformUI.getWorkbench()
+        .getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+    Domain domain = (Domain) editor.getDiagram().getElement();
+    Diagram diagram = editor.getDiagram();
+    ModelExplorerDialog med = new ModelExplorerDialog(
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), domain, diagram);
+    int result = med.open();
+
+    if (result == Window.CANCEL)
+      return;
+
+    List<IGraphicalEditPart> editParts = new ArrayList<IGraphicalEditPart>();
+    for (EObject elementToSelect : med.getCreatedElements())
+      editParts.addAll(editor.getDiagramGraphicalViewer().findEditPartsForElement(
+          EMFCoreUtil.getProxyID(elementToSelect), IGraphicalEditPart.class));
+
+    for (IGraphicalEditPart ep : editParts)
+      if (ep.isSelectable()) {
+        ep.activate();
+        editor.getDiagramGraphicalViewer().appendSelection(ep);
+      }
+  }
 }

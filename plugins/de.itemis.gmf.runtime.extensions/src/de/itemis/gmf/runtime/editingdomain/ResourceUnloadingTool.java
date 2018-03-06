@@ -30,72 +30,62 @@ import de.itemis.gmf.runtime.extensions.Activator;
 
 public class ResourceUnloadingTool {
 
-	public static void unloadEditorInput(ResourceSet resourceSet,
-			IEditorInput editorInput) {
-		EList<Resource> resources = resourceSet.getResources();
-		List<Resource> resourcesToUnload = new ArrayList<Resource>(resources);
-		IEditorReference[] editorReferences;
-		try {
-			editorReferences = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
-		} catch(NullPointerException exc) {
-			// Workbench is not yet created or being disposed, so do nothing
-			// see bug http://code.google.com/p/gmftools/issues/detail?id=9
-			return;
-		}
-		for (IEditorReference openEditorReference : editorReferences) {
-			try {
-				IEditorInput openEditorInput = openEditorReference
-						.getEditorInput();
-				if (openEditorInput != editorInput) {
-					IEditorPart openEditor = openEditorReference
-							.getEditor(false);
-					if (openEditor instanceof DiagramEditor) {
-						DiagramEditor openDiagramEditor = (DiagramEditor) openEditor;
-						ResourceSet diagramResourceSet = openDiagramEditor
-								.getEditingDomain().getResourceSet();
-						if (diagramResourceSet == resourceSet) {
-							Resource diagramResource = getDiagramResource(
-									diagramResourceSet, openEditorInput);
-							resourcesToUnload.remove(diagramResource);
-							Collection<?> imports = EMFCoreUtil
-									.getImports(diagramResource);
-							resourcesToUnload.removeAll(imports);
-						}
-					}
-				}
-			} catch (Exception exc) {
-				Activator.logError("Error unloading resource", exc);
-			}
-		}
-		for (Resource resourceToUnload : resourcesToUnload) {
-			try {
-				resourceToUnload.unload();
-				resources.remove(resourceToUnload);
-			} catch (Throwable t) {
-				Activator.logError("Error unloading resource", t);
-			}
-		}
-	}
+  public static void unloadEditorInput(ResourceSet resourceSet, IEditorInput editorInput) {
+    EList<Resource> resources = resourceSet.getResources();
+    List<Resource> resourcesToUnload = new ArrayList<Resource>(resources);
+    IEditorReference[] editorReferences;
+    try {
+      editorReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+          .getEditorReferences();
+    } catch (NullPointerException exc) {
+      // Workbench is not yet created or being disposed, so do nothing
+      // see bug http://code.google.com/p/gmftools/issues/detail?id=9
+      return;
+    }
+    for (IEditorReference openEditorReference : editorReferences) {
+      try {
+        IEditorInput openEditorInput = openEditorReference.getEditorInput();
+        if (openEditorInput != editorInput) {
+          IEditorPart openEditor = openEditorReference.getEditor(false);
+          if (openEditor instanceof DiagramEditor) {
+            DiagramEditor openDiagramEditor = (DiagramEditor) openEditor;
+            ResourceSet diagramResourceSet = openDiagramEditor.getEditingDomain().getResourceSet();
+            if (diagramResourceSet == resourceSet) {
+              Resource diagramResource = getDiagramResource(diagramResourceSet, openEditorInput);
+              resourcesToUnload.remove(diagramResource);
+              Collection<?> imports = EMFCoreUtil.getImports(diagramResource);
+              resourcesToUnload.removeAll(imports);
+            }
+          }
+        }
+      } catch (Exception exc) {
+        Activator.logError("Error unloading resource", exc);
+      }
+    }
+    for (Resource resourceToUnload : resourcesToUnload) {
+      try {
+        resourceToUnload.unload();
+        resources.remove(resourceToUnload);
+      } catch (Throwable t) {
+        Activator.logError("Error unloading resource", t);
+      }
+    }
+  }
 
-	private static Resource getDiagramResource(ResourceSet resourceSet,
-			IEditorInput editorInput) {
-		Resource diagramResource = null;
-		if (editorInput instanceof URIEditorInput) {
-			URI resourceURI = ((URIEditorInput) editorInput).getURI()
-					.trimFragment();
-			diagramResource = resourceSet.getResource(resourceURI, false);
-		} else if (editorInput instanceof IDiagramEditorInput) {
-			Diagram diagram = ((IDiagramEditorInput) editorInput).getDiagram();
-			diagramResource = diagram.eResource();
-		} else if (editorInput instanceof FileEditorInput) {
-			URI resourceURI = URI.createPlatformResourceURI(
-					((FileEditorInput) editorInput).getFile().getFullPath()
-							.toString(), true);
-			diagramResource = resourceSet.getResource(resourceURI, false);
-		}
-		return diagramResource;
-	}
+  private static Resource getDiagramResource(ResourceSet resourceSet, IEditorInput editorInput) {
+    Resource diagramResource = null;
+    if (editorInput instanceof URIEditorInput) {
+      URI resourceURI = ((URIEditorInput) editorInput).getURI().trimFragment();
+      diagramResource = resourceSet.getResource(resourceURI, false);
+    } else if (editorInput instanceof IDiagramEditorInput) {
+      Diagram diagram = ((IDiagramEditorInput) editorInput).getDiagram();
+      diagramResource = diagram.eResource();
+    } else if (editorInput instanceof FileEditorInput) {
+      URI resourceURI = URI.createPlatformResourceURI(
+          ((FileEditorInput) editorInput).getFile().getFullPath().toString(), true);
+      diagramResource = resourceSet.getResource(resourceURI, false);
+    }
+    return diagramResource;
+  }
 
 }

@@ -19,42 +19,47 @@ import org.eclipse.ocl.expressions.OCLExpression;
 
 public class OCLHelper {
 
-	/**
-	 * Helper for convenient one line call of OCL expressions
-	 * 
-	 * @param context The eObject which is the context
-	 * @param expression expression to execute
-	 *
-	 * @return value of evaluated expression 
-	 *
-	 * @throws ParserException 
-	 */
-	public static Object execute(Object context, String expression) throws ParserException{
-		
-		EObject eObject = (EObject)context;
-		
-		return execute(context, eObject.eClass(), expression);
-	}
-	
-	/**
-	 * Helper for convenient one line call of OCL expressions
-	 * 
-	 * @param context The eObject which is the context
-	 * @param contextLiteral xxxPackage.Literals.xxx
-	 * @param expression expression to execute
-	 *
-	 * @return value of evaluated expression 
-	 *
-	 * @throws ParserException 
-	 */
-	public static Object execute(Object context, EClassifier contextLiteral, String expression) throws ParserException{
-		OCL ocl = OCL
-				.newInstance();
+  /**
+   * Helper for convenient one line call of OCL expressions
+   * 
+   * @param context
+   *          The eObject which is the context
+   * @param expression
+   *          expression to execute
+   *
+   * @return value of evaluated expression
+   *
+   * @throws ParserException
+   */
+  public static Object execute(Object context, String expression) throws ParserException {
 
-		org.eclipse.ocl.helper.OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
-		helper.setContext(contextLiteral);
+    EObject eObject = (EObject) context;
 
-		OCLExpression<EClassifier> q = helper.createQuery(expression);
-		return ocl.evaluate(context, q);
-	}
+    return execute(context, eObject.eClass(), expression);
+  }
+
+  /**
+   * Helper for convenient one line call of OCL expressions
+   * 
+   * @param context
+   *          The eObject which is the context
+   * @param contextLiteral
+   *          xxxPackage.Literals.xxx
+   * @param expression
+   *          expression to execute
+   *
+   * @return value of evaluated expression
+   *
+   * @throws ParserException
+   */
+  public static Object execute(Object context, EClassifier contextLiteral, String expression)
+      throws ParserException {
+    OCL ocl = OCL.newInstance();
+
+    org.eclipse.ocl.helper.OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
+    helper.setContext(contextLiteral);
+
+    OCLExpression<EClassifier> q = helper.createQuery(expression);
+    return ocl.evaluate(context, q);
+  }
 }

@@ -25,44 +25,44 @@ import org.junit.runners.model.FrameworkMethod;
 
 public class OrderedSWTBotTestRunner extends SWTBotJunit4ClassRunner {
 
-	public OrderedSWTBotTestRunner(Class<?> klass) throws Exception {
-		super(klass);
-	}
+  public OrderedSWTBotTestRunner(Class<?> klass) throws Exception {
+    super(klass);
+  }
 
-	@Override
-	protected List<FrameworkMethod> computeTestMethods() {
-		List<FrameworkMethod> result = new ArrayList<FrameworkMethod>(super.computeTestMethods());
-		
-		//Sort the list of returned methods as these are not necessary
-		//sorted according to the Java specification
-		Collections.sort(result, new Comparator<FrameworkMethod>() {
-			
-			@Override
-			public int compare(FrameworkMethod m1, FrameworkMethod m2) {
-				
-				//Not ordered elements shall be executed last
-                if (m1.getAnnotation(TestOrder.class) == null)
-                	return 1;
+  @Override
+  protected List<FrameworkMethod> computeTestMethods() {
+    List<FrameworkMethod> result = new ArrayList<FrameworkMethod>(super.computeTestMethods());
 
-                //Order by number specified in annotation
-                int order1 = m1.getAnnotation(TestOrder.class).no(); 
-                int order2 = m2.getAnnotation(TestOrder.class).no();
-                
-                if (order1 < order2)
-                	return -1;
-                else if (order1 > order2)
-                	return 1;
-                else
-                	return 0;
-			}
-		});
-		
-		return result;
-	}
-	
-	@Retention(RetentionPolicy.RUNTIME)
-	@Target(ElementType.METHOD)
-	public @interface TestOrder {
-		public int no();
-	}
+    // Sort the list of returned methods as these are not necessary
+    // sorted according to the Java specification
+    Collections.sort(result, new Comparator<FrameworkMethod>() {
+
+      @Override
+      public int compare(FrameworkMethod m1, FrameworkMethod m2) {
+
+        // Not ordered elements shall be executed last
+        if (m1.getAnnotation(TestOrder.class) == null)
+          return 1;
+
+        // Order by number specified in annotation
+        int order1 = m1.getAnnotation(TestOrder.class).no();
+        int order2 = m2.getAnnotation(TestOrder.class).no();
+
+        if (order1 < order2)
+          return -1;
+        else if (order1 > order2)
+          return 1;
+        else
+          return 0;
+      }
+    });
+
+    return result;
+  }
+
+  @Retention(RetentionPolicy.RUNTIME)
+  @Target(ElementType.METHOD)
+  public @interface TestOrder {
+    public int no();
+  }
 }

@@ -25,15 +25,15 @@ import org.melanee.core.modeleditor.providers.PLMModelingAssistantProvider;
  */
 public class PLMModelingAssistantProviderOfDomainEditPart extends PLMModelingAssistantProvider {
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(PLMElementTypes.DeepModel_2005);
-		return types;
-	}
+  public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+    List<IElementType> types = new ArrayList<IElementType>(1);
+    types.add(PLMElementTypes.DeepModel_2005);
+    return types;
+  }
 
 }

@@ -4,22 +4,21 @@ import org.eclipse.core.runtime.CoreException;
 import org.melanee.core.workbench.ExtensionPointService;
 import org.melanee.core.workbench.interfaces.IApplicationVisualizationService;
 
+public class OntologicalPropertiesSectionFilter extends AbstractPropertiesSectionFilter {
 
-public class OntologicalPropertiesSectionFilter extends AbstractPropertiesSectionFilter{
+  @Override
+  public boolean select(Object toTest) {
+    IApplicationVisualizationService service = null;
 
-	@Override
-	public boolean select(Object toTest) {
-		IApplicationVisualizationService service = null;
-		
-		try {
-			service = ExtensionPointService.Instance().getActiveApplicationVisualizationService();
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-		
-		if (service != null)
-			return super.select(toTest) && service.getFilterForOntologicalProperties().select(toTest);
-		
-		return super.select(toTest);
-	}
+    try {
+      service = ExtensionPointService.Instance().getActiveApplicationVisualizationService();
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
+
+    if (service != null)
+      return super.select(toTest) && service.getFilterForOntologicalProperties().select(toTest);
+
+    return super.select(toTest);
+  }
 }

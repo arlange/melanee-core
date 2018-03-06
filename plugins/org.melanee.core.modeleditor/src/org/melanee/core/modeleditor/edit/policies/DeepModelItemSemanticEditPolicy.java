@@ -35,69 +35,77 @@ import org.melanee.core.modeleditor.providers.PLMElementTypes;
  */
 public class DeepModelItemSemanticEditPolicy extends PLMBaseItemSemanticEditPolicy {
 
-	/**
-	* @generated
-	*/
-	public DeepModelItemSemanticEditPolicy() {
-		super(PLMElementTypes.DeepModel_2005);
-	}
+  /**
+   * @generated
+   */
+  public DeepModelItemSemanticEditPolicy() {
+    super(PLMElementTypes.DeepModel_2005);
+  }
 
-	/**
-	* @generated
-	*/
-	protected Command getDestroyElementCommand(DestroyElementRequest req) {
-		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
-		cmd.setTransactionNestingEnabled(false);
-		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
-		if (annotation == null) {
-			// there are indirectly referenced children, need extra commands: false
-			addDestroyChildNodesCommand(cmd);
-			addDestroyShortcutsCommand(cmd, view);
-			// delete host element
-			cmd.add(new DestroyElementCommand(req));
-		} else {
-			cmd.add(new DeleteCommand(getEditingDomain(), view));
-		}
-		return getGEFWrapper(cmd.reduce());
-	}
+  /**
+   * @generated
+   */
+  protected Command getDestroyElementCommand(DestroyElementRequest req) {
+    View view = (View) getHost().getModel();
+    CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
+    cmd.setTransactionNestingEnabled(false);
+    EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
+    if (annotation == null) {
+      // there are indirectly referenced children, need extra commands: false
+      addDestroyChildNodesCommand(cmd);
+      addDestroyShortcutsCommand(cmd, view);
+      // delete host element
+      cmd.add(new DestroyElementCommand(req));
+    } else {
+      cmd.add(new DeleteCommand(getEditingDomain(), view));
+    }
+    return getGEFWrapper(cmd.reduce());
+  }
 
-	/**
-	* @generated
-	*/
-	private void addDestroyChildNodesCommand(ICompositeCommand cmd) {
-		View view = (View) getHost().getModel();
-		for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
-			Node node = (Node) nit.next();
-			switch (PLMVisualIDRegistry.getVisualID(node)) {
-			case DeepModelDeepModelEnumerationCompartmentEditPart.VISUAL_ID:
-				for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
-					Node cnode = (Node) cit.next();
-					switch (PLMVisualIDRegistry.getVisualID(cnode)) {
-					case EnumerationEditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
-						break;
-					}
-				}
-				break;
-			case DeepModelDeepModelLevelCompartmentEditPart.VISUAL_ID:
-				for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
-					Node cnode = (Node) cit.next();
-					switch (PLMVisualIDRegistry.getVisualID(cnode)) {
-					case LevelEditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(
-								new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
-						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
-						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
-						break;
-					}
-				}
-				break;
-			}
-		}
-	}
+  /**
+   * @generated
+   */
+  private void addDestroyChildNodesCommand(ICompositeCommand cmd) {
+    View view = (View) getHost().getModel();
+    for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
+      Node node = (Node) nit.next();
+      switch (PLMVisualIDRegistry.getVisualID(node)) {
+      case DeepModelDeepModelEnumerationCompartmentEditPart.VISUAL_ID:
+        for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
+          Node cnode = (Node) cit.next();
+          switch (PLMVisualIDRegistry.getVisualID(cnode)) {
+          case EnumerationEditPart.VISUAL_ID:
+            cmd.add(new DestroyElementCommand(
+                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                            // true
+            // don't need explicit deletion of cnode as parent's view deletion would clean
+            // child views as well
+            // cmd.add(new
+            // org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+            // cnode));
+            break;
+          }
+        }
+        break;
+      case DeepModelDeepModelLevelCompartmentEditPart.VISUAL_ID:
+        for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
+          Node cnode = (Node) cit.next();
+          switch (PLMVisualIDRegistry.getVisualID(cnode)) {
+          case LevelEditPart.VISUAL_ID:
+            cmd.add(new DestroyElementCommand(
+                new DestroyElementRequest(getEditingDomain(), cnode.getElement(), false))); // directlyOwned:
+                                                                                            // true
+            // don't need explicit deletion of cnode as parent's view deletion would clean
+            // child views as well
+            // cmd.add(new
+            // org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(),
+            // cnode));
+            break;
+          }
+        }
+        break;
+      }
+    }
+  }
 
 }

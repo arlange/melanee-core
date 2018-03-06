@@ -6,9 +6,9 @@ import org.eclipse.jface.viewers.IFilter;
 
 public class AbstractPropertiesSectionFilter implements IFilter {
 
-	@Override
-	public boolean select(Object toTest) {
-		return toTest instanceof View || toTest instanceof EditPart;
-	}
+  @Override
+  public boolean select(Object toTest) {
+    return toTest instanceof View || toTest instanceof EditPart;
+  }
 
 }

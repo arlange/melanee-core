@@ -15,11 +15,11 @@ import org.eclipse.gmf.runtime.notation.View;
 
 public interface ImplicitConnectionCreateParameters {
 
-	public View getParentView();
+  public View getParentView();
 
-	public Point getRelativeLocation();
+  public Point getRelativeLocation();
 
-	public View getAnchorSibling();
+  public View getAnchorSibling();
 
-	public boolean isBeforeNotAfterAnchor();
+  public boolean isBeforeNotAfterAnchor();
 }

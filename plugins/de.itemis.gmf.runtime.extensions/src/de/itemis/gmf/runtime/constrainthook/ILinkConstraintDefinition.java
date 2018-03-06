@@ -4,6 +4,6 @@ import org.eclipse.emf.ecore.EObject;
 
 public interface ILinkConstraintDefinition {
 
-	
-	public boolean canCreateLink(int childVisualID, EObject container, EObject source, EObject target);
+  public boolean canCreateLink(int childVisualID, EObject container, EObject source,
+      EObject target);
 }

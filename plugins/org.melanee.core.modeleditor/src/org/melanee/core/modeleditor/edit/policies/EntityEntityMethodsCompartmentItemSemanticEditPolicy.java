@@ -20,23 +20,24 @@ import org.melanee.core.modeleditor.providers.PLMElementTypes;
 /**
  * @generated
  */
-public class EntityEntityMethodsCompartmentItemSemanticEditPolicy extends PLMBaseItemSemanticEditPolicy {
+public class EntityEntityMethodsCompartmentItemSemanticEditPolicy
+    extends PLMBaseItemSemanticEditPolicy {
 
-	/**
-	* @generated
-	*/
-	public EntityEntityMethodsCompartmentItemSemanticEditPolicy() {
-		super(PLMElementTypes.Entity_3105);
-	}
+  /**
+   * @generated
+   */
+  public EntityEntityMethodsCompartmentItemSemanticEditPolicy() {
+    super(PLMElementTypes.Entity_3105);
+  }
 
-	/**
-	* @generated
-	*/
-	protected Command getCreateCommand(CreateElementRequest req) {
-		if (PLMElementTypes.Method_3108 == req.getElementType()) {
-			return getGEFWrapper(new Method2CreateCommand(req));
-		}
-		return super.getCreateCommand(req);
-	}
+  /**
+   * @generated
+   */
+  protected Command getCreateCommand(CreateElementRequest req) {
+    if (PLMElementTypes.Method_3108 == req.getElementType()) {
+      return getGEFWrapper(new Method2CreateCommand(req));
+    }
+    return super.getCreateCommand(req);
+  }
 
 }

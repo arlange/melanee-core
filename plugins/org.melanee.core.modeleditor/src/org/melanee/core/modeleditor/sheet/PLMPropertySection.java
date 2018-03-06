@@ -26,38 +26,39 @@ import org.melanee.core.modeleditor.custom.propertysheet.PropertySourceExtension
  */
 public class PLMPropertySection extends DefaultPropertySection implements IPropertySourceProvider {
 
-	/**
-	* @generated
-	*/
-	public IPropertySource getPropertySource(Object object) {
-		if (object instanceof IPropertySource) {
-			return (IPropertySource) object;
-		}
-		AdapterFactory af = getAdapterFactory(object);
-		if (af != null) {
-			IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
-			if (ips != null) {
-				//*****************************************
-				// Modified to fix emendation service.
-				// On focus lost no transaction is started.
-				//*****************************************
-				return new PropertySourceExtension(object, ips);
-			}
-		}
-		if (object instanceof IAdaptable) {
-			return (IPropertySource) ((IAdaptable) object).getAdapter(IPropertySource.class);
-		}
-		return null;
-	}
+  /**
+   * @generated
+   */
+  public IPropertySource getPropertySource(Object object) {
+    if (object instanceof IPropertySource) {
+      return (IPropertySource) object;
+    }
+    AdapterFactory af = getAdapterFactory(object);
+    if (af != null) {
+      IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
+      if (ips != null) {
+        // *****************************************
+        // Modified to fix emendation service.
+        // On focus lost no transaction is started.
+        // *****************************************
+        return new PropertySourceExtension(object, ips);
+      }
+    }
+    if (object instanceof IAdaptable) {
+      return (IPropertySource) ((IAdaptable) object).getAdapter(IPropertySource.class);
+    }
+    return null;
+  }
 
-	/**
-	* Modify/unwrap selection.
-	* @generated
-	*/
-	@Override
-	protected Object transformSelection(Object selected) {
-		selected = /*super.*/transformSelectionToDomain(selected);
-		return selected;
-	}
+  /**
+   * Modify/unwrap selection.
+   * 
+   * @generated
+   */
+  @Override
+  protected Object transformSelection(Object selected) {
+    selected = /* super. */transformSelectionToDomain(selected);
+    return selected;
+  }
 
 }

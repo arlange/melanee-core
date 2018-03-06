@@ -20,28 +20,30 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableEditPolicyEx;
 /**
  *
  * This edit policy allows edit parts to be only resized towards one direction
- * specified during instantiation. The direction can be specified using constants
- * from org.eclipse.draw2d.PositionConstants.
+ * specified during instantiation. The direction can be specified using
+ * constants from org.eclipse.draw2d.PositionConstants.
  *
  */
 public class OneDirectionResizableEditPolicy extends ResizableEditPolicyEx {
-	// the direction in which the EditPart can be resized
-	private int direction = PositionConstants.NONE;
-	
-	/**
-	 * 
-	 * @param direction the direction in which the EditPart using this EditPolicy may be resized
-	 */
-	public OneDirectionResizableEditPolicy(int direction) {
-		this.direction = direction;
-		setResizeDirections(direction);
-		setDragAllowed(false);
-	}
-	
-	@Override
-	protected List createSelectionHandles() {
-		List list = new ArrayList();
-		createResizeHandle(list, direction);
-		return list;
-	}
+  // the direction in which the EditPart can be resized
+  private int direction = PositionConstants.NONE;
+
+  /**
+   * 
+   * @param direction
+   *          the direction in which the EditPart using this EditPolicy may be
+   *          resized
+   */
+  public OneDirectionResizableEditPolicy(int direction) {
+    this.direction = direction;
+    setResizeDirections(direction);
+    setDragAllowed(false);
+  }
+
+  @Override
+  protected List createSelectionHandles() {
+    List list = new ArrayList();
+    createResizeHandle(list, direction);
+    return list;
+  }
 }

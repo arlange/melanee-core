@@ -22,80 +22,81 @@ import org.melanee.core.models.plm.PLM.Clabject;
 import org.melanee.core.workbench.ExtensionPointService;
 
 public class DesignationConsolePage implements IPageBookViewPage, ISelectionListener {
-	
-	private IPageSite site;
-	private Composite rootComposite;
-	private Clabject selectedClabject;
-	
-	@Override
-	public void setFocus() {
 
-	}
+  private IPageSite site;
+  private Composite rootComposite;
+  private Clabject selectedClabject;
 
-	@Override
-	public void setActionBars(IActionBars actionBars) {
+  @Override
+  public void setFocus() {
 
-	}
+  }
 
-	@Override
-	public Control getControl() {
-		return rootComposite;
-	}
+  @Override
+  public void setActionBars(IActionBars actionBars) {
 
-	@Override
-	public void dispose() {
+  }
 
-	}
+  @Override
+  public Control getControl() {
+    return rootComposite;
+  }
 
-	@Override
-	public void createControl(Composite parent) {
-		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(this);
-		
-		rootComposite = new SashForm(parent, SWT.VERTICAL);
+  @Override
+  public void dispose() {
 
-		final Text result = new Text(rootComposite, SWT.BORDER);
-		result.setEditable(false);
-		final Text command = new Text(rootComposite, SWT.BORDER);
-		command.addTraverseListener(new TraverseListener() {
+  }
 
-			@Override
-			public void keyTraversed(TraverseEvent e) {
-				if (e.detail == SWT.TRAVERSE_RETURN)
-					if (selectedClabject ==  null)
-						result.setText("Please Select a context.");
-					else{
-						try{
-							result.setText(ExtensionPointService.Instance().getActiveDesignationService().evaluate(selectedClabject, command.getText()));
-						}
-						catch(Exception ex){
-							result.setText(ex.getMessage());
-							ex.printStackTrace();
-						}
-					}
-			}
-		});
+  @Override
+  public void createControl(Composite parent) {
+    getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(this);
 
-	}
+    rootComposite = new SashForm(parent, SWT.VERTICAL);
 
-	@Override
-	public void init(IPageSite site) throws PartInitException {
-		this.site = site;
-	}
+    final Text result = new Text(rootComposite, SWT.BORDER);
+    result.setEditable(false);
+    final Text command = new Text(rootComposite, SWT.BORDER);
+    command.addTraverseListener(new TraverseListener() {
 
-	@Override
-	public IPageSite getSite() {
-		return site;
-	}
+      @Override
+      public void keyTraversed(TraverseEvent e) {
+        if (e.detail == SWT.TRAVERSE_RETURN)
+          if (selectedClabject == null)
+            result.setText("Please Select a context.");
+          else {
+            try {
+              result.setText(ExtensionPointService.Instance().getActiveDesignationService()
+                  .evaluate(selectedClabject, command.getText()));
+            } catch (Exception ex) {
+              result.setText(ex.getMessage());
+              ex.printStackTrace();
+            }
+          }
+      }
+    });
 
-	@Override
-	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		if (selection instanceof IStructuredSelection
-				&& ((IStructuredSelection)selection).getFirstElement() instanceof IGraphicalEditPart){
-			IGraphicalEditPart editPart = (IGraphicalEditPart)((IStructuredSelection)selection).getFirstElement();
-			if (editPart.resolveSemanticElement() instanceof Clabject)
-				selectedClabject = (Clabject)editPart.resolveSemanticElement();
-			else
-				selectedClabject = null;
-		}
-	}
+  }
+
+  @Override
+  public void init(IPageSite site) throws PartInitException {
+    this.site = site;
+  }
+
+  @Override
+  public IPageSite getSite() {
+    return site;
+  }
+
+  @Override
+  public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+    if (selection instanceof IStructuredSelection
+        && ((IStructuredSelection) selection).getFirstElement() instanceof IGraphicalEditPart) {
+      IGraphicalEditPart editPart = (IGraphicalEditPart) ((IStructuredSelection) selection)
+          .getFirstElement();
+      if (editPart.resolveSemanticElement() instanceof Clabject)
+        selectedClabject = (Clabject) editPart.resolveSemanticElement();
+      else
+        selectedClabject = null;
+    }
+  }
 }

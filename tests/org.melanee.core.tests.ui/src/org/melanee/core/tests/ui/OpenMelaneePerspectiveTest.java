@@ -19,22 +19,21 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class OpenMelaneePerspectiveTest {
 
-	private SWTWorkbenchBot bot;
-	
-	@Test
-	public void canOpenMelaneePerspective(){
-		
-		//First close all old perspectives
-		bot.menu("Window").menu("Close All Perspectives").click();
-		
-		//Open Melanee Perspective
-		bot.perspectiveByLabel(TestConstants.PERSPECTIVE_MELANEE_NAME).activate();
-	}
-	
-	@Before
-	public void setup(){
-		bot = new SWTWorkbenchBot();
-	}
+  private SWTWorkbenchBot bot;
 
-	
+  @Test
+  public void canOpenMelaneePerspective() {
+
+    // First close all old perspectives
+    bot.menu("Window").menu("Close All Perspectives").click();
+
+    // Open Melanee Perspective
+    bot.perspectiveByLabel(TestConstants.PERSPECTIVE_MELANEE_NAME).activate();
+  }
+
+  @Before
+  public void setup() {
+    bot = new SWTWorkbenchBot();
+  }
+
 }

@@ -15,66 +15,66 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Describes a clickable toolbar item which
- * executes a command.
+ * Describes a clickable toolbar item which executes a command.
  *
  */
 public class ToolBarItemDescriptor {
 
-	/** The action button tooltip */
-	private String _tooltip = new String();
+  /** The action button tooltip */
+  private String _tooltip = new String();
 
-	/** The image for the button */
-	private Image _icon = null;
+  /** The image for the button */
+  private Image _icon = null;
 
-	/** The typeinfo used to create the Request for the command */
-	@SuppressWarnings("unused")
-	private IElementType _elementType;
+  /** The typeinfo used to create the Request for the command */
+  @SuppressWarnings("unused")
+  private IElementType _elementType;
 
-	/** The DracgTracker / Tool associatd with the popup bar button */
-	private DragTracker _dragTracker = null;
+  /** The DracgTracker / Tool associatd with the popup bar button */
+  private DragTracker _dragTracker = null;
 
-	/**
-	 * constructor
-	 * @param toolTip
-	 * @param image
-	 * @param elementType
-	 * @param theTracker
-	 */
-	public ToolBarItemDescriptor(
-			String toolTip,
-			Image image,
-			IElementType elementType,
-			DragTracker theTracker) {
-		_tooltip = toolTip;
-		_icon = image;
-		_dragTracker = theTracker;
-		_elementType = elementType;
+  /**
+   * constructor
+   * 
+   * @param toolTip
+   * @param image
+   * @param elementType
+   * @param theTracker
+   */
+  public ToolBarItemDescriptor(String toolTip, Image image, IElementType elementType,
+      DragTracker theTracker) {
+    _tooltip = toolTip;
+    _icon = image;
+    _dragTracker = theTracker;
+    _elementType = elementType;
 
-	}
+  }
 
-	/**
-	 * gets the icon associated with this Descriptor
-	 * @return Image
-	 */
-	public final Image getIcon() {
-		return _icon;
-	}
+  /**
+   * gets the icon associated with this Descriptor
+   * 
+   * @return Image
+   */
+  public final Image getIcon() {
+    return _icon;
+  }
 
-	/**
-	 * gets the drag tracker associated with this Descriptor
-	 * @return drag tracker
-	 */
-	public final DragTracker getDragTracker() {
-		return _dragTracker;
-	}
+  /**
+   * gets the drag tracker associated with this Descriptor
+   * 
+   * @return drag tracker
+   */
+  public final DragTracker getDragTracker() {
+    return _dragTracker;
+  }
 
-	/**
-	 * gets the tool tip associated with this Descriptor
-	 * @return string
-	 */
-	public final String getToolTip() {
-		return _tooltip;
-	}
+  /**
+   * gets the tool tip associated with this Descriptor
+   * 
+   * @return string
+   */
+  public final String getToolTip() {
+    return _tooltip;
+  }
 
 }

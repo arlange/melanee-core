@@ -28,47 +28,54 @@ import org.melanee.core.workbench.interfaces.IReasoningService;
  */
 public class ReasoningContributionItem extends CompoundContributionItem {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.actions.CompoundContributionItem#getContributionItems()
-	 */
-	@Override
-	protected IContributionItem[] getContributionItems() {
-		IReasoningService reasoner = null;
-		
-		try {
-			reasoner = ExtensionPointService.Instance().getActiveReasoningService();
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-		
-		//No refactoring service found -> return no refactoring options
-		if (reasoner == null)
-			return new IContributionItem[0];
-		
-		IEditorPart editPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		
-		//Check if PLM diagram editor is opened
-		if (! (editPart instanceof PLMDiagramEditor))
-			return new IContributionItem[0];
-		
-		//Check if we have a IStructeredSeclection
-		if (! (((PLMDiagramEditor)editPart).getSite().getSelectionProvider().getSelection() instanceof IStructuredSelection))
-			return new IContributionItem[0];
-		
-		IStructuredSelection selection = (IStructuredSelection)((PLMDiagramEditor)editPart).getSite().getSelectionProvider().getSelection();
-		
-		//Check if exactly one element is selected and the first one is a IGraphicalEditPart
-		if (selection.size() != 1 && !(selection.getFirstElement() instanceof IGraphicalEditPart))
-			return new IContributionItem[0];
-		
-		Object[] parts = selection.toArray();
-		EObject[] modelElements = new EObject[parts.length];
-		
-		for (int i = 0; i < parts.length; i++)
-			if (parts[i] instanceof IGraphicalEditPart)
-				modelElements[i] = ((IGraphicalEditPart)parts[i]).resolveSemanticElement();
-		
-		return reasoner.getAvailableReasoningCommands(modelElements).toArray(new IContributionItem[] {});
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.ui.actions.CompoundContributionItem#getContributionItems()
+   */
+  @Override
+  protected IContributionItem[] getContributionItems() {
+    IReasoningService reasoner = null;
+
+    try {
+      reasoner = ExtensionPointService.Instance().getActiveReasoningService();
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
+
+    // No refactoring service found -> return no refactoring options
+    if (reasoner == null)
+      return new IContributionItem[0];
+
+    IEditorPart editPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+        .getActiveEditor();
+
+    // Check if PLM diagram editor is opened
+    if (!(editPart instanceof PLMDiagramEditor))
+      return new IContributionItem[0];
+
+    // Check if we have a IStructeredSeclection
+    if (!(((PLMDiagramEditor) editPart).getSite().getSelectionProvider()
+        .getSelection() instanceof IStructuredSelection))
+      return new IContributionItem[0];
+
+    IStructuredSelection selection = (IStructuredSelection) ((PLMDiagramEditor) editPart).getSite()
+        .getSelectionProvider().getSelection();
+
+    // Check if exactly one element is selected and the first one is a
+    // IGraphicalEditPart
+    if (selection.size() != 1 && !(selection.getFirstElement() instanceof IGraphicalEditPart))
+      return new IContributionItem[0];
+
+    Object[] parts = selection.toArray();
+    EObject[] modelElements = new EObject[parts.length];
+
+    for (int i = 0; i < parts.length; i++)
+      if (parts[i] instanceof IGraphicalEditPart)
+        modelElements[i] = ((IGraphicalEditPart) parts[i]).resolveSemanticElement();
+
+    return reasoner.getAvailableReasoningCommands(modelElements)
+        .toArray(new IContributionItem[] {});
+  }
 
 }

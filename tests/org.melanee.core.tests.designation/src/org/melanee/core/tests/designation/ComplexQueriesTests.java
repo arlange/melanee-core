@@ -6,9 +6,9 @@ import org.junit.Test;
 
 public class ComplexQueriesTests {
 
-	@Test
-	public void test() {
-		
-	}
+  @Test
+  public void test() {
+
+  }
 
 }

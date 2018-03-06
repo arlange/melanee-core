@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.melanee.core.workbench.interfaces;
 
-
 public interface IValidationService extends IVisualizationServiceBase {
 
 }

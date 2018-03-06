@@ -29,44 +29,51 @@ import org.junit.Test;
 import org.melanee.core.melanee2metadepth.main.GenerateMetadepth;
 
 public class GenerateFactoryTest {
-	
-	@Test
-	public void generateFactory() throws IOException, URISyntaxException {
-		
-		//Get the path of the plugins result folder
-		URL resultFolderURL = Platform.getBundle("org.melanee.core.tests.melanee2metadepth").getEntry("result");
-		File resultFolder = new File(FileLocator.toFileURL(resultFolderURL).getPath());
-		URL expectedFolderURL = Platform.getBundle("org.melanee.core.tests.melanee2metadepth").getEntry("expected");
-		File expectedFolder = new File(FileLocator.toFileURL(expectedFolderURL).getPath());
-		
-		//Load the example model
-		URI sourceModel = URI.createPlatformResourceURI("/org.melanee.core.tests.melanee2metadepth/models/ProductionSystem.lml", true);
-		List<String> arguments = new ArrayList<String>();
-		
-		//Generate the metadepth file
-		GenerateMetadepth generator = new GenerateMetadepth(sourceModel, resultFolder, arguments);
-		generator.doGenerate(new BasicMonitor());
-		
-		//Read the result and expected result line by line and compare
-		List<String> diff = new ArrayList<String>();
-		
-		BufferedReader resultReader = new BufferedReader(new FileReader(resultFolder.getAbsoluteFile() + "/ProductionSystemDeepModel.mdepth"));
-		BufferedReader expectedReader = new BufferedReader(new FileReader(expectedFolder.getAbsoluteFile() + "/ProductionSystemDeepModel.mdepth"));
-		
-		String resultLine, expectedLine;
-		
-		while ((resultLine = resultReader.readLine()) != null
-					&& (expectedLine = expectedReader.readLine()) != null)
-			if (!resultLine.equals(expectedLine))
-				diff.add(resultLine + "<- ->" + expectedLine);
-		
-		for (String str : diff)
-			System.out.println(str);
-		
-		resultReader.close();
-		expectedReader.close();
-		
-		assertTrue("Generated file and expected result are not equal. Did you change the ordered property of PLM methods?", diff.size() == 0);
-	}
+
+  @Test
+  public void generateFactory() throws IOException, URISyntaxException {
+
+    // Get the path of the plugins result folder
+    URL resultFolderURL = Platform.getBundle("org.melanee.core.tests.melanee2metadepth")
+        .getEntry("result");
+    File resultFolder = new File(FileLocator.toFileURL(resultFolderURL).getPath());
+    URL expectedFolderURL = Platform.getBundle("org.melanee.core.tests.melanee2metadepth")
+        .getEntry("expected");
+    File expectedFolder = new File(FileLocator.toFileURL(expectedFolderURL).getPath());
+
+    // Load the example model
+    URI sourceModel = URI.createPlatformResourceURI(
+        "/org.melanee.core.tests.melanee2metadepth/models/ProductionSystem.lml", true);
+    List<String> arguments = new ArrayList<String>();
+
+    // Generate the metadepth file
+    GenerateMetadepth generator = new GenerateMetadepth(sourceModel, resultFolder, arguments);
+    generator.doGenerate(new BasicMonitor());
+
+    // Read the result and expected result line by line and compare
+    List<String> diff = new ArrayList<String>();
+
+    BufferedReader resultReader = new BufferedReader(
+        new FileReader(resultFolder.getAbsoluteFile() + "/ProductionSystemDeepModel.mdepth"));
+    BufferedReader expectedReader = new BufferedReader(
+        new FileReader(expectedFolder.getAbsoluteFile() + "/ProductionSystemDeepModel.mdepth"));
+
+    String resultLine, expectedLine;
+
+    while ((resultLine = resultReader.readLine()) != null
+        && (expectedLine = expectedReader.readLine()) != null)
+      if (!resultLine.equals(expectedLine))
+        diff.add(resultLine + "<- ->" + expectedLine);
+
+    for (String str : diff)
+      System.out.println(str);
+
+    resultReader.close();
+    expectedReader.close();
+
+    assertTrue(
+        "Generated file and expected result are not equal. Did you change the ordered property of PLM methods?",
+        diff.size() == 0);
+  }
 
 }

@@ -16,41 +16,41 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 
 public class SharedResourceSetInfoAdapter extends AdapterImpl {
 
-	private SharedResourceSetInfoDelegate sharedResourceSetInfoDelegate;
+  private SharedResourceSetInfoDelegate sharedResourceSetInfoDelegate;
 
-	@Override
-	public boolean isAdapterForType(Object type) {
-		return type == SharedResourceSetInfoDelegate.class;
-	}
+  @Override
+  public boolean isAdapterForType(Object type) {
+    return type == SharedResourceSetInfoDelegate.class;
+  }
 
-	@Override
-	public void setTarget(Notifier newTarget) {
-		super.setTarget(newTarget);
-		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(newTarget);
-		if(editingDomain != null) {
-			sharedResourceSetInfoDelegate = new SharedResourceSetInfoDelegate(editingDomain);
-		}
-	}
-	
-	@Override
-	public void unsetTarget(Notifier oldTarget) {
-		super.unsetTarget(oldTarget);
-		sharedResourceSetInfoDelegate = null;
-	}
-	
-	public SharedResourceSetInfoDelegate getSharedResourceSetInfoDelegate() {
-		return sharedResourceSetInfoDelegate;
-	}
-	
-	public static class Factory extends AdapterFactoryImpl {
-		@Override
-		public boolean isFactoryForType(Object type) {
-			return type == SharedResourceSetInfoDelegate.class;
-		}
-		
-		@Override
-		protected Adapter createAdapter(Notifier target) {
-			return new SharedResourceSetInfoAdapter();
-		}
-	}
+  @Override
+  public void setTarget(Notifier newTarget) {
+    super.setTarget(newTarget);
+    TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(newTarget);
+    if (editingDomain != null) {
+      sharedResourceSetInfoDelegate = new SharedResourceSetInfoDelegate(editingDomain);
+    }
+  }
+
+  @Override
+  public void unsetTarget(Notifier oldTarget) {
+    super.unsetTarget(oldTarget);
+    sharedResourceSetInfoDelegate = null;
+  }
+
+  public SharedResourceSetInfoDelegate getSharedResourceSetInfoDelegate() {
+    return sharedResourceSetInfoDelegate;
+  }
+
+  public static class Factory extends AdapterFactoryImpl {
+    @Override
+    public boolean isFactoryForType(Object type) {
+      return type == SharedResourceSetInfoDelegate.class;
+    }
+
+    @Override
+    protected Adapter createAdapter(Notifier target) {
+      return new SharedResourceSetInfoAdapter();
+    }
+  }
 }

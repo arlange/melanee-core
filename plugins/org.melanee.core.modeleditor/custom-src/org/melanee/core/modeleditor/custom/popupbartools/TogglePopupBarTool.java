@@ -19,23 +19,21 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.ChangePropertyValueRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool;
 import org.melanee.core.modeleditor.custom.commands.ToggleCommand;
 
-public class TogglePopupBarTool extends AbstractPopupBarTool{
+public class TogglePopupBarTool extends AbstractPopupBarTool {
 
-	
-	
-	public TogglePopupBarTool(EditPart epHost, CreateRequest theRequest) {
-		super(epHost, theRequest);
-	}
+  public TogglePopupBarTool(EditPart epHost, CreateRequest theRequest) {
+    super(epHost, theRequest);
+  }
 
-	@Override
-	protected Request createTargetRequest() {
-		ChangePropertyValueRequest req = new ChangePropertyValueRequest("toggle", "toggle");
-		return req;
-	}
+  @Override
+  protected Request createTargetRequest() {
+    ChangePropertyValueRequest req = new ChangePropertyValueRequest("toggle", "toggle");
+    return req;
+  }
 
-	@Override
-	protected Command getCommand() {
-		return new ToggleCommand((IGraphicalEditPart)getHost());
-	}
-	
+  @Override
+  protected Command getCommand() {
+    return new ToggleCommand((IGraphicalEditPart) getHost());
+  }
+
 }

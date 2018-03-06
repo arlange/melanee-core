@@ -19,11 +19,11 @@ import org.eclipse.gmf.tooling.runtime.update.UpdaterNodeDescriptor;
  * @generated
  */
 public class PLMNodeDescriptor extends UpdaterNodeDescriptor {
-	/**
-	* @generated
-	*/
-	public PLMNodeDescriptor(EObject modelElement, int visualID) {
-		super(modelElement, visualID);
-	}
+  /**
+   * @generated
+   */
+  public PLMNodeDescriptor(EObject modelElement, int visualID) {
+    super(modelElement, visualID);
+  }
 
 }

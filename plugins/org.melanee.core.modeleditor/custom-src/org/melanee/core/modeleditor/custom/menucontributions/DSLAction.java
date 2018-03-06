@@ -20,7 +20,6 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.melanee.core.modeleditor.edit.parts.ConnectionEditPart;
 import org.melanee.core.modeleditor.edit.parts.EntityEditPart;
 
-
 /**
  * 
  * @author Ralph Gerbig (rgerbig@rumms.uni-mannheim.de)
@@ -29,50 +28,50 @@ import org.melanee.core.modeleditor.edit.parts.EntityEditPart;
  */
 public class DSLAction implements IObjectActionDelegate {
 
-	public final static String ID = "org.melanee.core.modeleditor.custom.toggledomainconnectionationaction";
-	
-	private IGraphicalEditPart selectedElement;
-	
-	public DSLAction()  {
-		// TODO Auto-generated constructor stub
-	}
+  public final static String ID = "org.melanee.core.modeleditor.custom.toggledomainconnectionationaction";
 
-	/**
-	 * Reads the rendering information attached to the ontology. If no information
-	 * is present it will be created. After reading the information of collapsedDomainConnections
-	 * Field it is decided whether the ID of the connection will be removed or added to the
-	 * connection. In the end the visual state of the DomainConnectionEditPart is changed.
-	 */
-	@Override
-	public void run(IAction action) {
-		
-		if (selectedElement == null)
-			return;
-		
-//		if (selectedElement instanceof EntityEditPart)
-//			((EntityEditPart)selectedElement).updateDSL();
-//		if (selectedElement instanceof ConnectionEditPart)
-//			((ConnectionEditPart)selectedElement).updateView();
-		
-	}	
-	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		selectedElement = null;
-		if (selection instanceof IStructuredSelection) 
-		{
-			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			if (structuredSelection.getFirstElement() instanceof EntityEditPart 
-					|| structuredSelection.getFirstElement() instanceof ConnectionEditPart) 
-			{
-				selectedElement = (IGraphicalEditPart) structuredSelection.getFirstElement();
-			}
-		}
-	}
+  private IGraphicalEditPart selectedElement;
 
-	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		// TODO Auto-generated method stub
-		
-	}
+  public DSLAction() {
+    // TODO Auto-generated constructor stub
+  }
+
+  /**
+   * Reads the rendering information attached to the ontology. If no information
+   * is present it will be created. After reading the information of
+   * collapsedDomainConnections Field it is decided whether the ID of the
+   * connection will be removed or added to the connection. In the end the visual
+   * state of the DomainConnectionEditPart is changed.
+   */
+  @Override
+  public void run(IAction action) {
+
+    if (selectedElement == null)
+      return;
+
+    // if (selectedElement instanceof EntityEditPart)
+    // ((EntityEditPart)selectedElement).updateDSL();
+    // if (selectedElement instanceof ConnectionEditPart)
+    // ((ConnectionEditPart)selectedElement).updateView();
+
+  }
+
+  @Override
+  public void selectionChanged(IAction action, ISelection selection) {
+    selectedElement = null;
+    if (selection instanceof IStructuredSelection) {
+      IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+      if (structuredSelection.getFirstElement() instanceof EntityEditPart
+          || structuredSelection.getFirstElement() instanceof ConnectionEditPart) {
+        selectedElement = (IGraphicalEditPart) structuredSelection.getFirstElement();
+      }
+    }
+  }
+
+  @Override
+  public void setActivePart(IAction action, IWorkbenchPart targetPart) {
+    // TODO Auto-generated method stub
+
+  }
 
 }

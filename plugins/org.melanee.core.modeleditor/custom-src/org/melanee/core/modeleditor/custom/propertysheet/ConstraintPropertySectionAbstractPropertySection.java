@@ -41,302 +41,306 @@ import org.melanee.core.workbench.interfaces.IConstraintLanguageService.Constrai
 
 public class ConstraintPropertySectionAbstractPropertySection extends AbstractPropertySection {
 
-	public ConstraintPropertySectionAbstractPropertySection() {
-		// TODO Auto-generated constructor stub
-	}
+  public ConstraintPropertySectionAbstractPropertySection() {
+    // TODO Auto-generated constructor stub
+  }
 
-	private IGraphicalEditPart selectedElement = null;
-	private Element selectedSemanticElement = null;
+  private IGraphicalEditPart selectedElement = null;
+  private Element selectedSemanticElement = null;
 
-	private CCombo constraintSelectionCombo = null;
+  private CCombo constraintSelectionCombo = null;
 
-	private Composite editingAreaComposite = null;
-	private ConstraintPropertySheetComposite constraintComposite = null;
-	private Composite sectionComposite = null;
+  private Composite editingAreaComposite = null;
+  private ConstraintPropertySheetComposite constraintComposite = null;
+  private Composite sectionComposite = null;
 
-	@Override
-	public void setInput(IWorkbenchPart part, ISelection selection) {
-		super.setInput(part, selection);
+  @Override
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    super.setInput(part, selection);
 
-		constraintSelectionCombo.removeAll();
-		IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
+    constraintSelectionCombo.removeAll();
+    IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
 
-		if (constraintLanguageService == null)
-			return;
+    if (constraintLanguageService == null)
+      return;
 
-		if (selection instanceof StructuredSelection
-				&& ((StructuredSelection) selection).getFirstElement() instanceof IGraphicalEditPart
-				&& ((IGraphicalEditPart) ((StructuredSelection) selection).getFirstElement())
-						.resolveSemanticElement() instanceof Element) {
-			selectedElement = (IGraphicalEditPart) ((StructuredSelection) selection).getFirstElement();
-			selectedSemanticElement = (Element) selectedElement.resolveSemanticElement();
+    if (selection instanceof StructuredSelection
+        && ((StructuredSelection) selection).getFirstElement() instanceof IGraphicalEditPart
+        && ((IGraphicalEditPart) ((StructuredSelection) selection).getFirstElement())
+            .resolveSemanticElement() instanceof Element) {
+      selectedElement = (IGraphicalEditPart) ((StructuredSelection) selection).getFirstElement();
+      selectedSemanticElement = (Element) selectedElement.resolveSemanticElement();
 
-			String[] constraintList = constraintLanguageService.getDefinedConstraintsFor(selectedSemanticElement);
-			if (constraintList != null) {
-				constraintSelectionCombo.setItems(constraintList);
-			}
-		}
+      String[] constraintList = constraintLanguageService
+          .getDefinedConstraintsFor(selectedSemanticElement);
+      if (constraintList != null) {
+        constraintSelectionCombo.setItems(constraintList);
+      }
+    }
 
-		if (constraintComposite != null) {
-			constraintComposite.dispose();
-			sectionComposite.requestLayout();
-			editingAreaComposite.layout(true, true);
-		}
-	}
+    if (constraintComposite != null) {
+      constraintComposite.dispose();
+      sectionComposite.requestLayout();
+      editingAreaComposite.layout(true, true);
+    }
+  }
 
-	@Override
-	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-		super.createControls(parent, aTabbedPropertySheetPage);
+  @Override
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
 
-		sectionComposite = getWidgetFactory().createFlatFormComposite(parent);
-		GridLayout gl = new GridLayout(4, false);
+    sectionComposite = getWidgetFactory().createFlatFormComposite(parent);
+    GridLayout gl = new GridLayout(4, false);
 
-		sectionComposite.setLayout(gl);
-		CLabel constraintSelectionLabel = getWidgetFactory().createCLabel(sectionComposite, "Constraint");
-		constraintSelectionCombo = getWidgetFactory().createCCombo(sectionComposite);
-		constraintSelectionCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-		createConstraintSelectionComboSelectionListener();
+    sectionComposite.setLayout(gl);
+    CLabel constraintSelectionLabel = getWidgetFactory().createCLabel(sectionComposite,
+        "Constraint");
+    constraintSelectionCombo = getWidgetFactory().createCCombo(sectionComposite);
+    constraintSelectionCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+    createConstraintSelectionComboSelectionListener();
 
-		final Button addButton = getWidgetFactory().createButton(sectionComposite, "Add", SWT.NONE);
-		addButton.addSelectionListener(new SelectionListener() {
+    final Button addButton = getWidgetFactory().createButton(sectionComposite, "Add", SWT.NONE);
+    addButton.addSelectionListener(new SelectionListener() {
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
+      @Override
+      public void widgetSelected(SelectionEvent e) {
 
-				IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
+        IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
 
-				if (constraintLanguageService == null)
-					return;
+        if (constraintLanguageService == null)
+          return;
 
-				Menu addButtonMenu = createMenuForAddButton(
-						constraintLanguageService.getPossibleConstraintKindsFor(selectedSemanticElement), addButton);
-				if (addButtonMenu == null)
-					return;
+        Menu addButtonMenu = createMenuForAddButton(
+            constraintLanguageService.getPossibleConstraintKindsFor(selectedSemanticElement),
+            addButton);
+        if (addButtonMenu == null)
+          return;
 
-				Point location = new Point(addButton.getLocation().x,
-						addButton.getLocation().y + addButton.getBounds().height);
-				location = addButton.getShell().getDisplay().map(addButton.getParent(), null, location);
-				addButtonMenu.setLocation(location);
+        Point location = new Point(addButton.getLocation().x,
+            addButton.getLocation().y + addButton.getBounds().height);
+        location = addButton.getShell().getDisplay().map(addButton.getParent(), null, location);
+        addButtonMenu.setLocation(location);
 
-				addButtonMenu.setVisible(true);
-			}
+        addButtonMenu.setVisible(true);
+      }
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				System.out.println("add Button");
-			}
-		});
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        System.out.println("add Button");
+      }
+    });
 
-		Button removeButton = getWidgetFactory().createButton(sectionComposite, "Remove", SWT.NONE);
-		removeButton.addSelectionListener(new SelectionListener() {
+    Button removeButton = getWidgetFactory().createButton(sectionComposite, "Remove", SWT.NONE);
+    removeButton.addSelectionListener(new SelectionListener() {
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
-				if (constraintLanguageService == null)
-					return;
-				try {
-					constraintLanguageService.deleteConstraint(selectedSemanticElement,
-							constraintSelectionCombo.getText());
-					constraintSelectionCombo
-							.setData(constraintLanguageService.getDefinedConstraintsFor(selectedSemanticElement));
-					constraintSelectionCombo.deselect(0);
-					constraintComposite.dispose();
-					sectionComposite.requestLayout();
-					editingAreaComposite.layout(true, true);
-				} catch (UnsupportedOperationException ex) {
-					System.out.println("Operation not supported by active constraint service");
-				}
-			}
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
+        if (constraintLanguageService == null)
+          return;
+        try {
+          constraintLanguageService.deleteConstraint(selectedSemanticElement,
+              constraintSelectionCombo.getText());
+          constraintSelectionCombo
+              .setData(constraintLanguageService.getDefinedConstraintsFor(selectedSemanticElement));
+          constraintSelectionCombo.deselect(0);
+          constraintComposite.dispose();
+          sectionComposite.requestLayout();
+          editingAreaComposite.layout(true, true);
+        } catch (UnsupportedOperationException ex) {
+          System.out.println("Operation not supported by active constraint service");
+        }
+      }
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// Do nothing
-			}
-		});
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        // Do nothing
+      }
+    });
 
-		editingAreaComposite = getWidgetFactory().createComposite(sectionComposite);
-		editingAreaComposite.setLayout(new FillLayout());
-		GridData editingAreaGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
-		editingAreaGridData.horizontalSpan = 4;
-		editingAreaComposite.setLayoutData(editingAreaGridData);
+    editingAreaComposite = getWidgetFactory().createComposite(sectionComposite);
+    editingAreaComposite.setLayout(new FillLayout());
+    GridData editingAreaGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+    editingAreaGridData.horizontalSpan = 4;
+    editingAreaComposite.setLayoutData(editingAreaGridData);
 
-		CLabel selectConstraintLanguageServiceLabel = getWidgetFactory().createCLabel(editingAreaComposite,
-				"Select Constraint Language Service");
+    CLabel selectConstraintLanguageServiceLabel = getWidgetFactory()
+        .createCLabel(editingAreaComposite, "Select Constraint Language Service");
 
-		final Button cancelButton = getWidgetFactory().createButton(sectionComposite, "Cancel", SWT.NONE);
-		cancelButton.setEnabled(false);
-		GridData cancelButtonGridData = new GridData(SWT.RIGHT, SWT.CENTER, false, false);
-		cancelButtonGridData.horizontalSpan = 2;
-		cancelButton.setLayoutData(cancelButtonGridData);
+    final Button cancelButton = getWidgetFactory().createButton(sectionComposite, "Cancel",
+        SWT.NONE);
+    cancelButton.setEnabled(false);
+    GridData cancelButtonGridData = new GridData(SWT.RIGHT, SWT.CENTER, false, false);
+    cancelButtonGridData.horizontalSpan = 2;
+    cancelButton.setLayoutData(cancelButtonGridData);
 
-		final Button saveButton = getWidgetFactory().createButton(sectionComposite, "Save", SWT.NONE);
-		saveButton.setEnabled(false);
+    final Button saveButton = getWidgetFactory().createButton(sectionComposite, "Save", SWT.NONE);
+    saveButton.setEnabled(false);
 
-		final Button editButton = getWidgetFactory().createButton(sectionComposite, "Edit", SWT.NONE);
+    final Button editButton = getWidgetFactory().createButton(sectionComposite, "Edit", SWT.NONE);
 
-		cancelButton.addSelectionListener(new SelectionListener() {
+    cancelButton.addSelectionListener(new SelectionListener() {
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (constraintComposite != null) {
-					constraintComposite.cancel();
-					cancelButton.setEnabled(false);
-					saveButton.setEnabled(false);
-					editButton.setEnabled(true);
-				}
-			}
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        if (constraintComposite != null) {
+          constraintComposite.cancel();
+          cancelButton.setEnabled(false);
+          saveButton.setEnabled(false);
+          editButton.setEnabled(true);
+        }
+      }
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// Do nothing
-			}
-		});
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        // Do nothing
+      }
+    });
 
-		saveButton.addSelectionListener(new SelectionListener() {
+    saveButton.addSelectionListener(new SelectionListener() {
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (constraintComposite != null) {
-					constraintComposite.save();
-					cancelButton.setEnabled(false);
-					saveButton.setEnabled(false);
-					editButton.setEnabled(true);
-				}
-			}
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        if (constraintComposite != null) {
+          constraintComposite.save();
+          cancelButton.setEnabled(false);
+          saveButton.setEnabled(false);
+          editButton.setEnabled(true);
+        }
+      }
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// Do nothing
-			}
-		});
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        // Do nothing
+      }
+    });
 
-		editButton.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (constraintComposite != null) {
-					constraintComposite.edit();
-					cancelButton.setEnabled(true);
-					saveButton.setEnabled(true);
-					editButton.setEnabled(false);
-				}
-			}
+    editButton.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        if (constraintComposite != null) {
+          constraintComposite.edit();
+          cancelButton.setEnabled(true);
+          saveButton.setEnabled(true);
+          editButton.setEnabled(false);
+        }
+      }
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// Do nothing
-			}
-		});
-	}
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        // Do nothing
+      }
+    });
+  }
 
-	private void createConstraintSelectionComboSelectionListener() {
-		constraintSelectionCombo.addSelectionListener(new SelectionListener() {
+  private void createConstraintSelectionComboSelectionListener() {
+    constraintSelectionCombo.addSelectionListener(new SelectionListener() {
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				for (Control control : editingAreaComposite.getChildren())
-					control.dispose();
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        for (Control control : editingAreaComposite.getChildren())
+          control.dispose();
 
-				editingAreaComposite.layout(true);
+        editingAreaComposite.layout(true);
 
-				int selectionIndex = ((CCombo) e.getSource()).getSelectionIndex();
+        int selectionIndex = ((CCombo) e.getSource()).getSelectionIndex();
 
-				IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
-				if (constraintLanguageService == null || selectionIndex < 0) {
-					editingAreaComposite.redraw();
-					constraintComposite.redraw();
-					return;
-				}
+        IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
+        if (constraintLanguageService == null || selectionIndex < 0) {
+          editingAreaComposite.redraw();
+          constraintComposite.redraw();
+          return;
+        }
 
-				String text = ((CCombo) e.getSource()).getItems()[selectionIndex];
-				constraintComposite = constraintLanguageService.getPropertySheetCompositeFor(
-						constraintLanguageService.getConstraint(selectedSemanticElement, text), getWidgetFactory(),
-						editingAreaComposite, selectedSemanticElement);
+        String text = ((CCombo) e.getSource()).getItems()[selectionIndex];
+        constraintComposite = constraintLanguageService.getPropertySheetCompositeFor(
+            constraintLanguageService.getConstraint(selectedSemanticElement, text),
+            getWidgetFactory(), editingAreaComposite, selectedSemanticElement);
 
-				if (sectionComposite != null) {
-					sectionComposite.requestLayout();
-					editingAreaComposite.layout(true, true);
-				}
-			}
+        if (sectionComposite != null) {
+          sectionComposite.requestLayout();
+          editingAreaComposite.layout(true, true);
+        }
+      }
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// Do nothing
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        // Do nothing
 
-			}
-		});
-	}
+      }
+    });
+  }
 
-	/**
-	 * Creats a Menu for the add Button from the given possible constraints
-	 * 
-	 * @param possibleConstraintKinds
-	 *            constraint kinds to create the menu for
-	 * @param addButton
-	 *            the button to create the menu for
-	 * @return The menu for the button or null if possibleConstraintKinds is null
-	 */
-	private Menu createMenuForAddButton(String[] possibleConstraintKinds, Button addButton) {
+  /**
+   * Creats a Menu for the add Button from the given possible constraints
+   * 
+   * @param possibleConstraintKinds
+   *          constraint kinds to create the menu for
+   * @param addButton
+   *          the button to create the menu for
+   * @return The menu for the button or null if possibleConstraintKinds is null
+   */
+  private Menu createMenuForAddButton(String[] possibleConstraintKinds, Button addButton) {
 
-		if (possibleConstraintKinds == null)
-			return null;
+    if (possibleConstraintKinds == null)
+      return null;
 
-		Menu addButtonMenu = new Menu(addButton);
+    Menu addButtonMenu = new Menu(addButton);
 
-		for (String constraintKind : possibleConstraintKinds) {
+    for (String constraintKind : possibleConstraintKinds) {
 
-			MenuItem item = new MenuItem(addButtonMenu, SWT.PUSH);
-			item.setText(constraintKind);
-			item.addSelectionListener(new SelectionListener() {
+      MenuItem item = new MenuItem(addButtonMenu, SWT.PUSH);
+      item.setText(constraintKind);
+      item.addSelectionListener(new SelectionListener() {
 
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
-					AbstractConstraint addedConstraint = constraintLanguageService
-							.addConstraint(selectedSemanticElement, ((MenuItem) e.getSource()).getText());
-					constraintSelectionCombo
-							.setItems(constraintLanguageService.getDefinedConstraintsFor(selectedSemanticElement));
+        @Override
+        public void widgetSelected(SelectionEvent e) {
+          IConstraintLanguageService constraintLanguageService = getActiveConstraintLanguageService();
+          AbstractConstraint addedConstraint = constraintLanguageService
+              .addConstraint(selectedSemanticElement, ((MenuItem) e.getSource()).getText());
+          constraintSelectionCombo.setItems(
+              constraintLanguageService.getDefinedConstraintsFor(selectedSemanticElement));
 
-					if (addedConstraint != null)
-						if (addedConstraint.getName() != null)
-							constraintSelectionCombo
-									.select(constraintSelectionCombo.indexOf(addedConstraint.getName()));
-					constraintSelectionCombo.notifyListeners(SWT.Selection, new Event());
+          if (addedConstraint != null)
+            if (addedConstraint.getName() != null)
+              constraintSelectionCombo
+                  .select(constraintSelectionCombo.indexOf(addedConstraint.getName()));
+          constraintSelectionCombo.notifyListeners(SWT.Selection, new Event());
 
-					if (constraintComposite != null) {
-						constraintComposite.getShell().layout(true, true);
-						// constraintComposite.dispose();
-						sectionComposite.requestLayout();
-						editingAreaComposite.layout(true, true);
-					} else {
-						editingAreaComposite.redraw();
-						constraintComposite.redraw();
-					}
-				}
+          if (constraintComposite != null) {
+            constraintComposite.getShell().layout(true, true);
+            // constraintComposite.dispose();
+            sectionComposite.requestLayout();
+            editingAreaComposite.layout(true, true);
+          } else {
+            editingAreaComposite.redraw();
+            constraintComposite.redraw();
+          }
+        }
 
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-					// Do nothing
-				}
-			});
-		}
-		return addButtonMenu;
-	}
+        @Override
+        public void widgetDefaultSelected(SelectionEvent e) {
+          // Do nothing
+        }
+      });
+    }
+    return addButtonMenu;
+  }
 
-	/**
-	 * Gets the currently active constraint language service
-	 * 
-	 * @return returns currently activated constraint language service. Null if no
-	 *         constraint language service is installed or if something goes wrong
-	 *         while loading.
-	 */
-	private IConstraintLanguageService getActiveConstraintLanguageService() {
-		try {
-			return ExtensionPointService.Instance().getActiveConstraintLanguageService();
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
+  /**
+   * Gets the currently active constraint language service
+   * 
+   * @return returns currently activated constraint language service. Null if no
+   *         constraint language service is installed or if something goes wrong
+   *         while loading.
+   */
+  private IConstraintLanguageService getActiveConstraintLanguageService() {
+    try {
+      return ExtensionPointService.Instance().getActiveConstraintLanguageService();
+    } catch (CoreException e) {
+      e.printStackTrace();
+    }
 
-		return null;
-	}
+    return null;
+  }
 }

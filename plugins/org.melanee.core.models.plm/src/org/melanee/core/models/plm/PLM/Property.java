@@ -13,9 +13,8 @@ package org.melanee.core.models.plm.PLM;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Property</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object
+ * '<em><b>Property</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getProperty()

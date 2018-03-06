@@ -12,11 +12,11 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 
 public class ResizableFlowLayout extends ConstrainedToolbarLayout {
 
-	public ResizableFlowLayout() {
-		setStretchMinorAxis(true);
-		setStretchMajorAxis(true);
-		setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
-		setSpacing(3);
-		setVertical(true);
-	}
+  public ResizableFlowLayout() {
+    setStretchMinorAxis(true);
+    setStretchMajorAxis(true);
+    setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
+    setSpacing(3);
+    setVertical(true);
+  }
 }

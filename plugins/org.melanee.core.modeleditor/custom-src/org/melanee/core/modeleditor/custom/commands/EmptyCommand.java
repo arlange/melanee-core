@@ -14,14 +14,14 @@ import org.eclipse.gef.commands.Command;
 
 /**
  * 
- * Command which does not execute any action. This command is for example
- * used for the seperator of the pop up tool bar.
+ * Command which does not execute any action. This command is for example used
+ * for the seperator of the pop up tool bar.
  *
  */
-public class EmptyCommand extends Command{
-	
-	@Override
-	public void execute() {
-		super.execute();
-	}
+public class EmptyCommand extends Command {
+
+  @Override
+  public void execute() {
+    super.execute();
+  }
 }

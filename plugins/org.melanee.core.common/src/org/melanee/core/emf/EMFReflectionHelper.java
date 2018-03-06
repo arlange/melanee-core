@@ -20,14 +20,17 @@ import org.eclipse.ocl.ParserException;
 import org.melanee.core.common.emf.ocl.OCLHelper;
 
 public class EMFReflectionHelper {
-	
-	public static Object executeOperation(EObject context, String name) throws InvocationTargetException, ParserException{
-		EOperation opration = (EOperation)OCLHelper.execute(context.eClass(), "self.eAllOperations->select(o | o.name = '" + name + "')->first()");
-		return context.eInvoke(opration, new BasicEList());
-	}
-	
-	public static Object getFeature(EObject context, String name) throws ParserException{
-		EStructuralFeature feature = (EStructuralFeature)OCLHelper.execute(context.eClass(), "self.eAllStructuralFeatures->select(o | o.name = '" + name + "')->first()");
-		return context.eGet(feature);
-	}
+
+  public static Object executeOperation(EObject context, String name)
+      throws InvocationTargetException, ParserException {
+    EOperation opration = (EOperation) OCLHelper.execute(context.eClass(),
+        "self.eAllOperations->select(o | o.name = '" + name + "')->first()");
+    return context.eInvoke(opration, new BasicEList());
+  }
+
+  public static Object getFeature(EObject context, String name) throws ParserException {
+    EStructuralFeature feature = (EStructuralFeature) OCLHelper.execute(context.eClass(),
+        "self.eAllStructuralFeatures->select(o | o.name = '" + name + "')->first()");
+    return context.eGet(feature);
+  }
 }

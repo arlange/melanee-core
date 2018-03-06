@@ -24,76 +24,81 @@ import org.melanee.core.modeleditor.custom.resizableswimlanes.layoutmanagers.Swi
 import org.melanee.core.modeleditor.edit.policies.PLMTextSelectionEditPolicy;
 
 /**
- * EditPolicy for implementing resizable swimlanes. Installs the proper layout managers and
- * also enforces a minimum width during when resizing to prevent scrollbars.
+ * EditPolicy for implementing resizable swimlanes. Installs the proper layout
+ * managers and also enforces a minimum width during when resizing to prevent
+ * scrollbars.
  * 
  * @author gritzner
  */
-public class SwimlaneDeepModelLayoutEditPolicy extends
-		ConstrainedToolbarLayoutEditPolicy {
-	
-	// GENERATED CODE - BEGIN
-	protected EditPolicy createChildEditPolicy(EditPart child) {
-		if (child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE) == null) {
-			if (child instanceof ITextAwareEditPart) {
-				return new PLMTextSelectionEditPolicy();
-			}
-		}
-		return super.createChildEditPolicy(child);
-	}
-	// GENERATED CODE - END
-	
-	/**
-	 * wrapper for SwimlaneDeepModelLayoutManager.getLevelCompartment(getHost())
-	 * 
-	 * @return
-	 */
-	private IGraphicalEditPart getLevelCompartment() {
-		return SwimlaneDeepModelLayoutManager.getLevelCompartment((IGraphicalEditPart)getHost());
-	}
-	
-	/**
-	 * Returns a Command which makes the changes requested by 'request'.
-	 * 
-	 * Enforces a minimum of the resulting width of the DeepModel to prevent scrollbars.
-	 * 
-	 * @param request the Request for which a Command is created and returned
-	 * @return the Command
-	 */
-	@Override
-	public Command getCommand(Request request) {
-		if(request instanceof ChangeBoundsRequest) {
-			// DeepModel resize request
-			ChangeBoundsRequest cbRequest = (ChangeBoundsRequest)request;
-			Dimension sizeDelta = cbRequest.getSizeDelta().getCopy();
+public class SwimlaneDeepModelLayoutEditPolicy extends ConstrainedToolbarLayoutEditPolicy {
 
-			// determine and enforce the minimal value for the width change which is still acceptable (-> no scrollbars)
-			IGraphicalEditPart levelCompartment = getLevelCompartment();
-			for(Object child : levelCompartment.getChildren()) {
-				IGraphicalEditPart level = (IGraphicalEditPart)child;
-				sizeDelta.width = Math.max(sizeDelta.width, SwimlaneDeepModelLayoutManager.getMinimumLevelWidthDelta(level));
-			}
+  // GENERATED CODE - BEGIN
+  protected EditPolicy createChildEditPolicy(EditPart child) {
+    if (child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE) == null) {
+      if (child instanceof ITextAwareEditPart) {
+        return new PLMTextSelectionEditPolicy();
+      }
+    }
+    return super.createChildEditPolicy(child);
+  }
+  // GENERATED CODE - END
 
-			// set new delta and return
-			cbRequest.setSizeDelta(sizeDelta);
-			return super.getCommand(cbRequest);
-		}
-		
-		return super.getCommand(request);
-	}
-		
-	/**
-	 * adds the layout managers to the diagram and the DeepModel in addition to executing the default
-	 * implementation
-	 */
-	@Override
-	public void setHost(EditPart host) {
-		super.setHost(host);
-		
-		// set layout managers
-		EditPart parent = host.getParent();
-		((IGraphicalEditPart)parent).getFigure().setLayoutManager(new SwimlaneDiagramLayoutManager(parent, host));
-		((IGraphicalEditPart)host).getFigure().setLayoutManager(new SwimlaneDeepModelLayoutManager(host));
-	}	
+  /**
+   * wrapper for SwimlaneDeepModelLayoutManager.getLevelCompartment(getHost())
+   * 
+   * @return
+   */
+  private IGraphicalEditPart getLevelCompartment() {
+    return SwimlaneDeepModelLayoutManager.getLevelCompartment((IGraphicalEditPart) getHost());
+  }
+
+  /**
+   * Returns a Command which makes the changes requested by 'request'.
+   * 
+   * Enforces a minimum of the resulting width of the DeepModel to prevent
+   * scrollbars.
+   * 
+   * @param request
+   *          the Request for which a Command is created and returned
+   * @return the Command
+   */
+  @Override
+  public Command getCommand(Request request) {
+    if (request instanceof ChangeBoundsRequest) {
+      // DeepModel resize request
+      ChangeBoundsRequest cbRequest = (ChangeBoundsRequest) request;
+      Dimension sizeDelta = cbRequest.getSizeDelta().getCopy();
+
+      // determine and enforce the minimal value for the width change which is still
+      // acceptable (-> no scrollbars)
+      IGraphicalEditPart levelCompartment = getLevelCompartment();
+      for (Object child : levelCompartment.getChildren()) {
+        IGraphicalEditPart level = (IGraphicalEditPart) child;
+        sizeDelta.width = Math.max(sizeDelta.width,
+            SwimlaneDeepModelLayoutManager.getMinimumLevelWidthDelta(level));
+      }
+
+      // set new delta and return
+      cbRequest.setSizeDelta(sizeDelta);
+      return super.getCommand(cbRequest);
+    }
+
+    return super.getCommand(request);
+  }
+
+  /**
+   * adds the layout managers to the diagram and the DeepModel in addition to
+   * executing the default implementation
+   */
+  @Override
+  public void setHost(EditPart host) {
+    super.setHost(host);
+
+    // set layout managers
+    EditPart parent = host.getParent();
+    ((IGraphicalEditPart) parent).getFigure()
+        .setLayoutManager(new SwimlaneDiagramLayoutManager(parent, host));
+    ((IGraphicalEditPart) host).getFigure()
+        .setLayoutManager(new SwimlaneDeepModelLayoutManager(host));
+  }
 }
- 

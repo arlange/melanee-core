@@ -23,32 +23,33 @@ import org.melanee.core.modeleditor.providers.PLMElementTypes;
 /**
  * @generated
  */
-public class PackagePackageContentCompartmentItemSemanticEditPolicy extends PLMBaseItemSemanticEditPolicy {
+public class PackagePackageContentCompartmentItemSemanticEditPolicy
+    extends PLMBaseItemSemanticEditPolicy {
 
-	/**
-	* @generated
-	*/
-	public PackagePackageContentCompartmentItemSemanticEditPolicy() {
-		super(PLMElementTypes.Package_3125);
-	}
+  /**
+   * @generated
+   */
+  public PackagePackageContentCompartmentItemSemanticEditPolicy() {
+    super(PLMElementTypes.Package_3125);
+  }
 
-	/**
-	* @generated
-	*/
-	protected Command getCreateCommand(CreateElementRequest req) {
-		if (PLMElementTypes.Entity_3126 == req.getElementType()) {
-			return getGEFWrapper(new Entity3CreateCommand(req));
-		}
-		if (PLMElementTypes.Connection_3127 == req.getElementType()) {
-			return getGEFWrapper(new Connection3CreateCommand(req));
-		}
-		if (PLMElementTypes.Inheritance_3128 == req.getElementType()) {
-			return getGEFWrapper(new Inheritance3CreateCommand(req));
-		}
-		if (PLMElementTypes.Package_3129 == req.getElementType()) {
-			return getGEFWrapper(new Package2CreateCommand(req));
-		}
-		return super.getCreateCommand(req);
-	}
+  /**
+   * @generated
+   */
+  protected Command getCreateCommand(CreateElementRequest req) {
+    if (PLMElementTypes.Entity_3126 == req.getElementType()) {
+      return getGEFWrapper(new Entity3CreateCommand(req));
+    }
+    if (PLMElementTypes.Connection_3127 == req.getElementType()) {
+      return getGEFWrapper(new Connection3CreateCommand(req));
+    }
+    if (PLMElementTypes.Inheritance_3128 == req.getElementType()) {
+      return getGEFWrapper(new Inheritance3CreateCommand(req));
+    }
+    if (PLMElementTypes.Package_3129 == req.getElementType()) {
+      return getGEFWrapper(new Package2CreateCommand(req));
+    }
+    return super.getCreateCommand(req);
+  }
 
 }

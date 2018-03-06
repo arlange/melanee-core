@@ -17,36 +17,34 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 public class BottomLessRectangleFigure extends RectangleFigure {
 
+  // @Override
+  // protected void paintBorder(Graphics graphics) {
+  // super.paintBorder(graphics);
+  //
+  // getBorder();
+  // }
+  //
+  @Override
+  protected void outlineShape(Graphics graphics) {
+    // super.outlineShape(graphics);
+    float lineInset = Math.max(1.0f, getLineWidthFloat()) / 2.0f;
+    int inset1 = (int) Math.floor(lineInset);
+    int inset2 = (int) Math.ceil(lineInset);
 
-	
-//	@Override
-//	protected void paintBorder(Graphics graphics) {
-//		super.paintBorder(graphics);
-//		
-//		getBorder();
-//	}
-//	
-	@Override
-	protected void outlineShape(Graphics graphics) {
-//		super.outlineShape(graphics);
-		float lineInset = Math.max(1.0f, getLineWidthFloat()) / 2.0f;
-		int inset1 = (int) Math.floor(lineInset);
-		int inset2 = (int) Math.ceil(lineInset);
+    Rectangle r = Rectangle.SINGLETON.setBounds(getBounds());
+    r.x += inset1;
+    r.y += inset1;
+    r.width -= inset1 + inset2;
+    // r.height -= inset1 + inset2;
 
-		Rectangle r = Rectangle.SINGLETON.setBounds(getBounds());
-		r.x += inset1;
-		r.y += inset1;
-		r.width -= inset1 + inset2;
-//		r.height -= inset1 + inset2;
-		
-		PointList points = new PointList();
-//		Rectangle bounds = getBounds();
-		
-		points.addPoint(r.getBottomLeft());
-		points.addPoint(r.getTopLeft());
-		points.addPoint(r.getTopRight());
-		points.addPoint(r.getBottomRight());
-		graphics.drawPolyline(points);
-	}
-	
+    PointList points = new PointList();
+    // Rectangle bounds = getBounds();
+
+    points.addPoint(r.getBottomLeft());
+    points.addPoint(r.getTopLeft());
+    points.addPoint(r.getTopRight());
+    points.addPoint(r.getBottomRight());
+    graphics.drawPolyline(points);
+  }
+
 }

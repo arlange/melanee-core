@@ -20,45 +20,45 @@ import org.melanee.core.modeleditor.edit.parts.DeepModelEditPart;
  */
 public class EnumerationsVisiblePin2005Policy extends AbstractOclVisualEffectEditPolicy {
 
-	/**
-	* @generated
-	*/
-	public static final String KEY = "org.melanee.core.models.plm.PLM.diagram.edit.policies.EnumerationsVisiblePin2005Policy:KEY";
+  /**
+   * @generated
+   */
+  public static final String KEY = "org.melanee.core.models.plm.PLM.diagram.edit.policies.EnumerationsVisiblePin2005Policy:KEY";
 
-	/**
-	* @generated
-	*/
-	public EnumerationsVisiblePin2005Policy() {
-		super();
-	}
+  /**
+   * @generated
+   */
+  public EnumerationsVisiblePin2005Policy() {
+    super();
+  }
 
-	/**
-	* @generated
-	*/
+  /**
+   * @generated
+   */
 
-	@Override
+  @Override
 
-	protected void setVisualEffectValue(Object value) {
-		getHostImpl().getPrimaryShape().getFigureDeepModelEnumerations().setVisible((Boolean) value);
+  protected void setVisualEffectValue(Object value) {
+    getHostImpl().getPrimaryShape().getFigureDeepModelEnumerations().setVisible((Boolean) value);
 
-	}
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	protected DeepModelEditPart getHostImpl() {
-		return (DeepModelEditPart) super.getHostImpl();
-	}
+  protected DeepModelEditPart getHostImpl() {
+    return (DeepModelEditPart) super.getHostImpl();
+  }
 
-	/**
-	* @generated
-	*/
-	@Override
+  /**
+   * @generated
+   */
+  @Override
 
-	protected String getExpressionBody() {
-		return "self.enumeration->size() > 0"; //$NON-NLS-1$
-	}
+  protected String getExpressionBody() {
+    return "self.enumeration->size() > 0"; //$NON-NLS-1$
+  }
 
 }

@@ -4,6 +4,5 @@ import org.eclipse.emf.ecore.EObject;
 
 public interface INodeConstraintDefinition {
 
-	
-	public boolean canCreateNode(int childVisualID, EObject container);
+  public boolean canCreateNode(int childVisualID, EObject container);
 }

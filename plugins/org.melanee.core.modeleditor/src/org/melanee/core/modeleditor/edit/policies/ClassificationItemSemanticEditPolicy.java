@@ -22,18 +22,18 @@ import org.melanee.core.modeleditor.providers.PLMElementTypes;
  */
 public class ClassificationItemSemanticEditPolicy extends PLMBaseItemSemanticEditPolicy {
 
-	/**
-	* @generated
-	*/
-	public ClassificationItemSemanticEditPolicy() {
-		super(PLMElementTypes.Classification_4026);
-	}
+  /**
+   * @generated
+   */
+  public ClassificationItemSemanticEditPolicy() {
+    super(PLMElementTypes.Classification_4026);
+  }
 
-	/**
-	* @generated
-	*/
-	protected Command getDestroyElementCommand(DestroyElementRequest req) {
-		return getGEFWrapper(new DestroyElementCommand(req));
-	}
+  /**
+   * @generated
+   */
+  protected Command getDestroyElementCommand(DestroyElementRequest req) {
+    return getGEFWrapper(new DestroyElementCommand(req));
+  }
 
 }

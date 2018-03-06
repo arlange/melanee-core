@@ -7,31 +7,32 @@
  *
  * Contributors:
  *    Ralph Gerbig - initial API and implementation and initial documentation
- *******************************************************************************/ 
+ *******************************************************************************/
 package org.melanee.core.workbench.interfaces;
 
 import org.melanee.core.models.plm.PLM.Element;
 
-
 /**
- * Interface for a visual model to figure transformator.
- * The transformator takes a visualizer as input and generates
- * a renderable figure as output (e.g. a draw2d figure).
+ * Interface for a visual model to figure transformator. The transformator takes
+ * a visualizer as input and generates a renderable figure as output (e.g. a
+ * draw2d figure).
  *
  */
 public interface IFormVisualizationService extends IVisualizationServiceBase {
-	
-	/**
-	 * Starts the creation of the form editor.
-	 * 
-	 * @param host the IGraphicalEditPart on which the service is invoked
-	 * @param notation the notation to apply
-	 * @param notationChanged is the service invoked after a change of the notation 
-	 * 			or to update the visualization without notation change  
-	 */
-	public abstract Object run(Object host, String notation, boolean notationChanged);
 
-	public abstract void delegateDrawing(Element e, String valueForKey);
-	
-	
+  /**
+   * Starts the creation of the form editor.
+   * 
+   * @param host
+   *          the IGraphicalEditPart on which the service is invoked
+   * @param notation
+   *          the notation to apply
+   * @param notationChanged
+   *          is the service invoked after a change of the notation or to update
+   *          the visualization without notation change
+   */
+  public abstract Object run(Object host, String notation, boolean notationChanged);
+
+  public abstract void delegateDrawing(Element e, String valueForKey);
+
 }

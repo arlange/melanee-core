@@ -57,325 +57,333 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  */
 public class MultiplicityPropertiesSection extends AbstractPropertySection {
 
-	private IGraphicalEditPart selectedElement = null;
-	private ConnectionEnd selectedConnectionEnd = null;
+  private IGraphicalEditPart selectedElement = null;
+  private ConnectionEnd selectedConnectionEnd = null;
+
+  CCombo multiplicitySelectionCombo = null;
+  List<Multiplicity> multiplicities = null;
+  TableViewer viewer;
+  int selectedIndex = 0;
+  private ISelection selection;
+  private IWorkbenchPart part;
+
+  @Override
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    super.setInput(part, selection);
+
+    this.part = part;
+    this.selection = selection;
 
-	CCombo multiplicitySelectionCombo = null;
-	List<Multiplicity> multiplicities = null;
-	TableViewer viewer;
-	int selectedIndex = 0;
-	private ISelection selection;
-	private IWorkbenchPart part;
+    if (selection instanceof StructuredSelection
+        && ((StructuredSelection) selection).getFirstElement() instanceof IGraphicalEditPart)
+      selectedElement = (IGraphicalEditPart) ((StructuredSelection) selection).getFirstElement();
 
-	@Override
-	public void setInput(IWorkbenchPart part, ISelection selection) {
-		super.setInput(part, selection);
+    multiplicitySelectionCombo.removeAll();
 
-		this.part = part;
-		this.selection = selection;
+    if (multiplicitySelectionCombo == null
+        || !(selectedElement.resolveSemanticElement() instanceof ConnectionEnd)) {
+      multiplicityPropertiesViewReset();
+      return;
+    }
 
-		if (selection instanceof StructuredSelection
-				&& ((StructuredSelection) selection).getFirstElement() instanceof IGraphicalEditPart)
-			selectedElement = (IGraphicalEditPart) ((StructuredSelection) selection).getFirstElement();
+    selectedConnectionEnd = (ConnectionEnd) selectedElement.resolveSemanticElement();
 
-		multiplicitySelectionCombo.removeAll();
+    for (Multiplicity m : selectedConnectionEnd.getMultiplicity())
+      multiplicitySelectionCombo
+          .add("Multiplicity: " + m.getLower() + ".." + m.getUpper() + "^" + m.getPotency());
 
-		if (multiplicitySelectionCombo == null || !(selectedElement.resolveSemanticElement() instanceof ConnectionEnd)){
-			multiplicityPropertiesViewReset();
-			return;
-		}
+    multiplicities = selectedConnectionEnd.getMultiplicity();
 
-		selectedConnectionEnd = (ConnectionEnd) selectedElement.resolveSemanticElement();
+    if (multiplicitySelectionCombo.getItems().length > 0) {
+      if (selectedIndex > multiplicities.size() - 1)
+        selectedIndex = 0;
 
-		for (Multiplicity m : selectedConnectionEnd.getMultiplicity())
-			multiplicitySelectionCombo
-					.add("Multiplicity: " + m.getLower() + ".." + m.getUpper() + "^" + m.getPotency());
+      multiplicitySelectionCombo.select(selectedIndex);
 
-		multiplicities = selectedConnectionEnd.getMultiplicity();
+      List<String> multiplicitiesValues = new ArrayList<String>();
+      multiplicitiesValues
+          .add("Lower=" + String.valueOf(multiplicities.get(selectedIndex).getLower()));
+      multiplicitiesValues
+          .add("Upper=" + String.valueOf(multiplicities.get(selectedIndex).getUpper()));
+      multiplicitiesValues
+          .add("Potency=" + String.valueOf(multiplicities.get(selectedIndex).getPotency()));
 
-		if (multiplicitySelectionCombo.getItems().length > 0) {
-			if (selectedIndex > multiplicities.size() - 1)
-				selectedIndex = 0;
+      viewer.setInput(multiplicitiesValues);
+      viewer.refresh();
+    } else {
+      multiplicityPropertiesViewReset();
+    }
+  }
 
-			multiplicitySelectionCombo.select(selectedIndex);
+  private void multiplicityPropertiesViewReset() {
+    viewer.setInput(null);
+    viewer.refresh();
+  }
 
-			List<String> multiplicitiesValues = new ArrayList<String>();
-			multiplicitiesValues.add("Lower=" + String.valueOf(multiplicities.get(selectedIndex).getLower()));
-			multiplicitiesValues.add("Upper=" + String.valueOf(multiplicities.get(selectedIndex).getUpper()));
-			multiplicitiesValues.add("Potency=" + String.valueOf(multiplicities.get(selectedIndex).getPotency()));
+  @Override
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
 
-			viewer.setInput(multiplicitiesValues);
-			viewer.refresh();
-		}else{
-			multiplicityPropertiesViewReset();
-		}
-	}
+    Composite composite = getWidgetFactory().createFlatFormComposite(parent);
 
-	private void multiplicityPropertiesViewReset() {
-		viewer.setInput(null);
-		viewer.refresh();
-	}
+    GridLayout gl = new GridLayout(5, false);
+    composite.setLayout(gl);
 
-	@Override
-	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-		super.createControls(parent, aTabbedPropertySheetPage);
+    CLabel visualizerSelectionLabel = getWidgetFactory().createCLabel(composite, "Multiplicity");
 
-		Composite composite = getWidgetFactory().createFlatFormComposite(parent);
+    multiplicitySelectionCombo = getWidgetFactory().createCCombo(composite);
 
-		GridLayout gl = new GridLayout(5, false);
-		composite.setLayout(gl);
+    Button addButton = getWidgetFactory().createButton(composite, "Add", SWT.NONE);
+    addButton.addSelectionListener(new SelectionListener() {
 
-		CLabel visualizerSelectionLabel = getWidgetFactory().createCLabel(composite, "Multiplicity");
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        // TODO Auto-generated method stub
+        if (multiplicitySelectionCombo != null
+            || (selectedElement.resolveSemanticElement() instanceof ConnectionEnd)) {
 
-		multiplicitySelectionCombo = getWidgetFactory().createCCombo(composite);
+          TransactionalEditingDomain domain = TransactionUtil
+              .getEditingDomain(selectedConnectionEnd);
+          Multiplicity newMultiplicity = PLMFactory.eINSTANCE.createMultiplicity();
+          Command addMultiplicityCommand = AddCommand.create(domain, selectedConnectionEnd,
+              PLMPackage.eINSTANCE.getConnectionEnd_Multiplicity(), newMultiplicity);
+          domain.getCommandStack().execute(addMultiplicityCommand);
 
-		Button addButton = getWidgetFactory().createButton(composite, "Add", SWT.NONE);
-		addButton.addSelectionListener(new SelectionListener() {
+          List<String> multiplicitiesValues = new ArrayList<String>();
+          multiplicitiesValues.add("Lower=" + 0);
+          multiplicitiesValues.add("Upper=" + -1);
+          multiplicitiesValues.add("Potency=" + 1);
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				if (multiplicitySelectionCombo != null
-						|| (selectedElement.resolveSemanticElement() instanceof ConnectionEnd)) {
+          selectedIndex = multiplicities.size() - 1;
 
-					TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(selectedConnectionEnd);
-					Multiplicity newMultiplicity = PLMFactory.eINSTANCE.createMultiplicity();
-					Command addMultiplicityCommand = AddCommand.create(domain, selectedConnectionEnd,
-							PLMPackage.eINSTANCE.getConnectionEnd_Multiplicity(), newMultiplicity);
-					domain.getCommandStack().execute(addMultiplicityCommand);
+          viewer.refresh();
+          setInput(part, selection);
+        }
+      }
 
-					List<String> multiplicitiesValues = new ArrayList<String>();
-					multiplicitiesValues.add("Lower=" + 0);
-					multiplicitiesValues.add("Upper=" + -1);
-					multiplicitiesValues.add("Potency=" + 1);
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        // TODO Auto-generated method stub
+      }
 
-					selectedIndex = multiplicities.size() - 1;
+    });
 
-					viewer.refresh();
-					setInput(part, selection);
-				}
-			}
+    Button removeButton = getWidgetFactory().createButton(composite, "Remove", SWT.NONE);
+    removeButton.addSelectionListener(new SelectionListener() {
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-			}
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        // TODO Auto-generated method stub
+        if (multiplicitySelectionCombo != null
+            || (selectedElement.resolveSemanticElement() instanceof ConnectionEnd)) {
 
-		});
+          selectedIndex = multiplicitySelectionCombo.getSelectionIndex();
 
-		Button removeButton = getWidgetFactory().createButton(composite, "Remove", SWT.NONE);
-		removeButton.addSelectionListener(new SelectionListener() {
+          Multiplicity multiplicity = multiplicities.get(selectedIndex);
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				if (multiplicitySelectionCombo != null
-						|| (selectedElement.resolveSemanticElement() instanceof ConnectionEnd)) {
+          TransactionalEditingDomain domain = TransactionUtil
+              .getEditingDomain(selectedConnectionEnd);
 
-					selectedIndex = multiplicitySelectionCombo.getSelectionIndex();
+          Command removeMultiplicityCommand = DeleteCommand.create(domain, multiplicity);
 
-					Multiplicity multiplicity = multiplicities.get(selectedIndex);
+          domain.getCommandStack().execute(removeMultiplicityCommand);
 
-					TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(selectedConnectionEnd);
+          viewer.refresh();
 
-					Command removeMultiplicityCommand = DeleteCommand.create(domain, multiplicity);
+          setInput(part, selection);
+        }
+      }
 
-					domain.getCommandStack().execute(removeMultiplicityCommand);
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        // TODO Auto-generated method stub
+      }
 
-					viewer.refresh();
+    });
 
-					setInput(part, selection);
-				}
-			}
+    viewer = new TableViewer(composite, SWT.FULL_SELECTION);
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-			}
+    multiplicitySelectionCombo.addSelectionListener(new SelectionListener() {
 
-		});
+      @Override
+      public void widgetSelected(SelectionEvent e) {
 
-		viewer = new TableViewer(composite, SWT.FULL_SELECTION);
+        List<String> multiplicitiesValues = new ArrayList<String>();
+        multiplicitiesValues.add("Lower=" + String
+            .valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getLower())
+            .toString());
+        multiplicitiesValues.add("Upper=" + String
+            .valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getUpper())
+            .toString());
+        multiplicitiesValues.add("Potency=" + String
+            .valueOf(
+                multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getPotency())
+            .toString());
+        viewer.setInput(multiplicitiesValues);
+      }
 
-		multiplicitySelectionCombo.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
+        List<String> multiplicitiesValues = getMultiplicityList();
+        viewer.setInput(multiplicitiesValues);
+      }
+    });
 
-				List<String> multiplicitiesValues = new ArrayList<String>();
-				multiplicitiesValues.add("Lower="
-						+ String.valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getLower())
-								.toString());
-				multiplicitiesValues.add("Upper="
-						+ String.valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getUpper())
-								.toString());
-				multiplicitiesValues
-						.add("Potency=" + String
-								.valueOf(
-										multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getPotency())
-								.toString());
-				viewer.setInput(multiplicitiesValues);
-			}
+    GridData visualizerComboData = new GridData(GridData.FILL, GridData.CENTER, true, false);
+    multiplicitySelectionCombo.setLayoutData(visualizerComboData);
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
+    Table table = viewer.getTable();
 
-				List<String> multiplicitiesValues = getMultiplicityList();
-				viewer.setInput(multiplicitiesValues);
-			}
-		});
+    GridData tableGridData = new GridData(GridData.FILL, GridData.FILL, true, true);
+    tableGridData.horizontalSpan = 5;
 
-		GridData visualizerComboData = new GridData(GridData.FILL, GridData.CENTER, true, false);
-		multiplicitySelectionCombo.setLayoutData(visualizerComboData);
+    table.setLayoutData(tableGridData);
 
-		Table table = viewer.getTable();
+    table.setHeaderVisible(true);
+    table.setLinesVisible(true);
 
-		GridData tableGridData = new GridData(GridData.FILL, GridData.FILL, true, true);
-		tableGridData.horizontalSpan = 5;
+    // Add ContentProviders
+    viewer.setContentProvider(new VisualizerContentProvider());
 
-		table.setLayoutData(tableGridData);
-
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-
-		// Add ContentProviders
-		viewer.setContentProvider(new VisualizerContentProvider());
-
-		TableViewerColumn keyColumn = new TableViewerColumn(viewer, SWT.NONE);
-		keyColumn.getColumn().setText("Name");
-		keyColumn.getColumn().setWidth(200);
-
-		keyColumn.setLabelProvider(new CellLabelProvider() {
-
-			@Override
-			public void update(ViewerCell cell) {
-				String keyValuePair = (String) cell.getElement();
-				String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
-				cell.setText(key);
-			}
-		});
-
-		TableViewerColumn valueColumn = new TableViewerColumn(viewer, SWT.NONE);
-		valueColumn.getColumn().setText("Value");
-		valueColumn.getColumn().setWidth(100);
-
-		valueColumn.setLabelProvider(new CellLabelProvider() {
-
-			@Override
-			public void update(ViewerCell cell) {
-				String keyValuePair = (String) cell.getElement();
-				int equalIndex = keyValuePair.indexOf("=") + 1;
-				String value = keyValuePair.substring(equalIndex, keyValuePair.length()).trim();
-				cell.setText(value);
-			}
-		});
-
-		valueColumn.setEditingSupport(new EditingSupport(viewer) {
-
-			@Override
-			protected void setValue(Object element, Object value) {
-
-				selectedIndex = multiplicitySelectionCombo.getSelectionIndex();
-				Multiplicity multiplicity = multiplicities.get(selectedIndex);
-
-				String keyValuePair = (String) element;
-
-				// String oldValue =
-				// keyValuePair.substring(keyValuePair.indexOf("=") + 1).trim();
-				String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
-
-				String newAttrValue = (String) value;
-
-				Multiplicity newMultiplicity = PLMFactory.eINSTANCE.createMultiplicity();
-				newMultiplicity.setLower(multiplicity.getLower());
-				newMultiplicity.setUpper(multiplicity.getUpper());
-				newMultiplicity.setPotency(multiplicity.getPotency());
-
-				if (key.equals("Lower")) {
-					newMultiplicity.setLower(Integer.valueOf(newAttrValue));
-				} else if (key.equals("Upper")) {
-					newMultiplicity.setUpper(Integer.valueOf(newAttrValue));
-				} else if (key.equals("Potency")) {
-					newMultiplicity.setPotency(Integer.valueOf(newAttrValue));
-				}
-
-				TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(selectedConnectionEnd);
-
-				Command editMultiplicityCommand = new ReplaceCommand(domain, selectedConnectionEnd,
-						PLMPackage.eINSTANCE.getConnectionEnd_Multiplicity(), multiplicity, newMultiplicity);
-
-				domain.getCommandStack().execute(editMultiplicityCommand);
-
-				viewer.refresh();
-
-				setInput(part, selection);
-			}
-
-			@Override
-			protected Object getValue(Object element) {
-				String keyValuePair = (String) element;
-				int equalIndex = keyValuePair.indexOf("=") + 1;
-				String value = keyValuePair.substring(equalIndex, keyValuePair.length()).trim();
-				return value;
-			}
-
-			@Override
-			protected CellEditor getCellEditor(Object element) {
-
-				// String keyValuePair = (String) element;
-				// int equalIndex = keyValuePair.indexOf("=") + 1;
-				// String value = keyValuePair.substring(equalIndex,
-				// keyValuePair.length()).trim();
-				//
-				// if ("false".equals(value) || "true".equals(value)) {
-				// ComboBoxViewerCellEditor cb = new
-				// ComboBoxViewerCellEditor(viewer.getTable());
-				// cb.setContentProvider(ArrayContentProvider.getInstance());
-				// cb.setInput(new String[] { "true", "false" });
-				// return cb;
-				// } else if ("default".equals(value) || "tvs".equals(value) ||
-				// "noshow".equals(value)
-				// || "max".equals(value)) {
-				// ComboBoxViewerCellEditor cb = new
-				// ComboBoxViewerCellEditor(viewer.getTable());
-				// cb.setContentProvider(ArrayContentProvider.getInstance());
-				// cb.setInput(new String[] { "default", "tvs", "noshow", "max",
-				// "show" });
-				// return cb;
-				// }
-				return new TextCellEditor(viewer.getTable());
-			}
-
-			@Override
-			protected boolean canEdit(Object element) {
-				return true;
-			}
-		});
-	}
-
-	private class VisualizerContentProvider extends ArrayContentProvider {
-		@Override
-		public Object[] getElements(Object inputElement) {
-
-			// Durability needs to be added
-			LinkedList<Object> elementsPlusTraits = new LinkedList<Object>();
-			// Append the attributes list
-			elementsPlusTraits.addAll(Arrays.asList(super.getElements(inputElement)));
-
-			return elementsPlusTraits.toArray();
-		}
-	}
-
-	private List<String> getMultiplicityList() {
-
-		List<String> multiplicitiesValues = new ArrayList<String>();
-		multiplicitiesValues.add("Lower=" + String
-				.valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getLower()).toString());
-		multiplicitiesValues.add("Upper=" + String
-				.valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getUpper()).toString());
-		multiplicitiesValues.add("Potency=" + String
-				.valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getPotency()).toString());
-		return multiplicitiesValues;
-	}
+    TableViewerColumn keyColumn = new TableViewerColumn(viewer, SWT.NONE);
+    keyColumn.getColumn().setText("Name");
+    keyColumn.getColumn().setWidth(200);
+
+    keyColumn.setLabelProvider(new CellLabelProvider() {
+
+      @Override
+      public void update(ViewerCell cell) {
+        String keyValuePair = (String) cell.getElement();
+        String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
+        cell.setText(key);
+      }
+    });
+
+    TableViewerColumn valueColumn = new TableViewerColumn(viewer, SWT.NONE);
+    valueColumn.getColumn().setText("Value");
+    valueColumn.getColumn().setWidth(100);
+
+    valueColumn.setLabelProvider(new CellLabelProvider() {
+
+      @Override
+      public void update(ViewerCell cell) {
+        String keyValuePair = (String) cell.getElement();
+        int equalIndex = keyValuePair.indexOf("=") + 1;
+        String value = keyValuePair.substring(equalIndex, keyValuePair.length()).trim();
+        cell.setText(value);
+      }
+    });
+
+    valueColumn.setEditingSupport(new EditingSupport(viewer) {
+
+      @Override
+      protected void setValue(Object element, Object value) {
+
+        selectedIndex = multiplicitySelectionCombo.getSelectionIndex();
+        Multiplicity multiplicity = multiplicities.get(selectedIndex);
+
+        String keyValuePair = (String) element;
+
+        // String oldValue =
+        // keyValuePair.substring(keyValuePair.indexOf("=") + 1).trim();
+        String key = keyValuePair.substring(0, keyValuePair.indexOf("=")).trim();
+
+        String newAttrValue = (String) value;
+
+        Multiplicity newMultiplicity = PLMFactory.eINSTANCE.createMultiplicity();
+        newMultiplicity.setLower(multiplicity.getLower());
+        newMultiplicity.setUpper(multiplicity.getUpper());
+        newMultiplicity.setPotency(multiplicity.getPotency());
+
+        if (key.equals("Lower")) {
+          newMultiplicity.setLower(Integer.valueOf(newAttrValue));
+        } else if (key.equals("Upper")) {
+          newMultiplicity.setUpper(Integer.valueOf(newAttrValue));
+        } else if (key.equals("Potency")) {
+          newMultiplicity.setPotency(Integer.valueOf(newAttrValue));
+        }
+
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(selectedConnectionEnd);
+
+        Command editMultiplicityCommand = new ReplaceCommand(domain, selectedConnectionEnd,
+            PLMPackage.eINSTANCE.getConnectionEnd_Multiplicity(), multiplicity, newMultiplicity);
+
+        domain.getCommandStack().execute(editMultiplicityCommand);
+
+        viewer.refresh();
+
+        setInput(part, selection);
+      }
+
+      @Override
+      protected Object getValue(Object element) {
+        String keyValuePair = (String) element;
+        int equalIndex = keyValuePair.indexOf("=") + 1;
+        String value = keyValuePair.substring(equalIndex, keyValuePair.length()).trim();
+        return value;
+      }
+
+      @Override
+      protected CellEditor getCellEditor(Object element) {
+
+        // String keyValuePair = (String) element;
+        // int equalIndex = keyValuePair.indexOf("=") + 1;
+        // String value = keyValuePair.substring(equalIndex,
+        // keyValuePair.length()).trim();
+        //
+        // if ("false".equals(value) || "true".equals(value)) {
+        // ComboBoxViewerCellEditor cb = new
+        // ComboBoxViewerCellEditor(viewer.getTable());
+        // cb.setContentProvider(ArrayContentProvider.getInstance());
+        // cb.setInput(new String[] { "true", "false" });
+        // return cb;
+        // } else if ("default".equals(value) || "tvs".equals(value) ||
+        // "noshow".equals(value)
+        // || "max".equals(value)) {
+        // ComboBoxViewerCellEditor cb = new
+        // ComboBoxViewerCellEditor(viewer.getTable());
+        // cb.setContentProvider(ArrayContentProvider.getInstance());
+        // cb.setInput(new String[] { "default", "tvs", "noshow", "max",
+        // "show" });
+        // return cb;
+        // }
+        return new TextCellEditor(viewer.getTable());
+      }
+
+      @Override
+      protected boolean canEdit(Object element) {
+        return true;
+      }
+    });
+  }
+
+  private class VisualizerContentProvider extends ArrayContentProvider {
+    @Override
+    public Object[] getElements(Object inputElement) {
+
+      // Durability needs to be added
+      LinkedList<Object> elementsPlusTraits = new LinkedList<Object>();
+      // Append the attributes list
+      elementsPlusTraits.addAll(Arrays.asList(super.getElements(inputElement)));
+
+      return elementsPlusTraits.toArray();
+    }
+  }
+
+  private List<String> getMultiplicityList() {
+
+    List<String> multiplicitiesValues = new ArrayList<String>();
+    multiplicitiesValues.add("Lower=" + String
+        .valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getLower())
+        .toString());
+    multiplicitiesValues.add("Upper=" + String
+        .valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getUpper())
+        .toString());
+    multiplicitiesValues.add("Potency=" + String
+        .valueOf(multiplicities.get(multiplicitySelectionCombo.getSelectionIndex()).getPotency())
+        .toString());
+    return multiplicitiesValues;
+  }
 
 }
