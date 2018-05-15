@@ -218,20 +218,18 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
       protected EditPolicy createChildEditPolicy(EditPart child) {
         View childView = (View) child.getModel();
         switch (PLMVisualIDRegistry.getVisualID(childView)) {
-        case ConnectionNameEditPart.VISUAL_ID:
-          return new BorderItemSelectionEditPolicy() {
+          case ConnectionNameEditPart.VISUAL_ID:
+            return new BorderItemSelectionEditPolicy() {
 
-            protected List createSelectionHandles() {
-              MoveHandle mh = new MoveHandle((GraphicalEditPart) getHost());
-              mh.setBorder(null);
-              return Collections.singletonList(mh);
-            }
-          };
+              protected List createSelectionHandles() {
+                MoveHandle mh = new MoveHandle((GraphicalEditPart) getHost());
+                mh.setBorder(null);
+                return Collections.singletonList(mh);
+              }
+            };
         }
         if (child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE) == null) {
-          if (child instanceof ITextAwareEditPart) {
-            return new PLMTextSelectionEditPolicy();
-          }
+          if (child instanceof ITextAwareEditPart) { return new PLMTextSelectionEditPolicy(); }
         }
         return super.createChildEditPolicy(child);
       }
@@ -307,21 +305,11 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
    * @generated
    */
   protected boolean removeFixedChild(EditPart childEditPart) {
-    if (childEditPart instanceof WrappingLabel4EditPart) {
-      return true;
-    }
-    if (childEditPart instanceof WrappingLabel5EditPart) {
-      return true;
-    }
-    if (childEditPart instanceof WrappingLabel6EditPart) {
-      return true;
-    }
-    if (childEditPart instanceof WrappingLabel7EditPart) {
-      return true;
-    }
-    if (childEditPart instanceof WrappingLabel8EditPart) {
-      return true;
-    }
+    if (childEditPart instanceof WrappingLabel4EditPart) { return true; }
+    if (childEditPart instanceof WrappingLabel5EditPart) { return true; }
+    if (childEditPart instanceof WrappingLabel6EditPart) { return true; }
+    if (childEditPart instanceof WrappingLabel7EditPart) { return true; }
+    if (childEditPart instanceof WrappingLabel8EditPart) { return true; }
     if (childEditPart instanceof ConnectionConnectionAttributesCompartmentEditPart) {
       IFigure pane = getPrimaryShape().getFigureAttributesCompartmentRectangle();
       pane.remove(((ConnectionConnectionAttributesCompartmentEditPart) childEditPart).getFigure());
@@ -344,9 +332,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
    * @generated
    */
   protected void addChildVisual(EditPart childEditPart, int index) {
-    if (addFixedChild(childEditPart)) {
-      return;
-    }
+    if (addFixedChild(childEditPart)) { return; }
     super.addChildVisual(childEditPart, -1);
   }
 
@@ -354,9 +340,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
    * @generated
    */
   protected void removeChildVisual(EditPart childEditPart) {
-    if (removeFixedChild(childEditPart)) {
-      return;
-    }
+    if (removeFixedChild(childEditPart)) { return; }
     super.removeChildVisual(childEditPart);
   }
 
@@ -364,18 +348,14 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
    * @generated
    */
   protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
-    if (editPart instanceof ConnectionConnectionAttributesCompartmentEditPart) {
-      return getPrimaryShape().getFigureAttributesCompartmentRectangle();
-    }
-    if (editPart instanceof ConnectionConnectionMethodsCompartmentEditPart) {
-      return getPrimaryShape().getFigureMethodsCompartmentRectangle();
-    }
-    if (editPart instanceof ConnectionConnectionContentsCompartmentEditPart) {
-      return getPrimaryShape().getFigureContentCompartmentRectangle();
-    }
-    if (editPart instanceof IBorderItemEditPart) {
-      return getBorderedFigure().getBorderItemContainer();
-    }
+    if (editPart instanceof ConnectionConnectionAttributesCompartmentEditPart) { return getPrimaryShape()
+        .getFigureAttributesCompartmentRectangle(); }
+    if (editPart instanceof ConnectionConnectionMethodsCompartmentEditPart) { return getPrimaryShape()
+        .getFigureMethodsCompartmentRectangle(); }
+    if (editPart instanceof ConnectionConnectionContentsCompartmentEditPart) { return getPrimaryShape()
+        .getFigureContentCompartmentRectangle(); }
+    if (editPart instanceof IBorderItemEditPart) { return getBorderedFigure()
+        .getBorderItemContainer(); }
     return getContentPane();
   }
 
@@ -454,9 +434,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
    * @generated
    */
   public IFigure getContentPane() {
-    if (contentPane != null) {
-      return contentPane;
-    }
+    if (contentPane != null) { return contentPane; }
     return super.getContentPane();
   }
 
@@ -511,14 +489,11 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
       CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request)
           .getViewAndElementDescriptor().getCreateElementRequestAdapter();
       IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-      if (type == PLMElementTypes.Attribute_3100) {
-        return getChildBySemanticHint(PLMVisualIDRegistry
-            .getType(ConnectionConnectionAttributesCompartmentEditPart.VISUAL_ID));
-      }
-      if (type == PLMElementTypes.Method_3102) {
-        return getChildBySemanticHint(
-            PLMVisualIDRegistry.getType(ConnectionConnectionMethodsCompartmentEditPart.VISUAL_ID));
-      }
+      if (type == PLMElementTypes.Attribute_3100) { return getChildBySemanticHint(
+          PLMVisualIDRegistry
+              .getType(ConnectionConnectionAttributesCompartmentEditPart.VISUAL_ID)); }
+      if (type == PLMElementTypes.Method_3102) { return getChildBySemanticHint(
+          PLMVisualIDRegistry.getType(ConnectionConnectionMethodsCompartmentEditPart.VISUAL_ID)); }
     }
     return super.getTargetEditPart(request);
   }
@@ -574,8 +549,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
 
         if (current instanceof Clabject) {
           Object editPart = findEditPart(this, current);
-          if (editPart == null)
-            continue;
+          if (editPart == null) continue;
 
           ClabjectEditPartWrapper wrapper = new ClabjectEditPartWrapper(editPart);
           wrapper.updateView(notification.getNewStringValue().split("=")[0].trim());
@@ -613,15 +587,13 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
 
       // Only take views of Classifications
       for (View c : outgoingEdges)
-        if (c.getElement() instanceof Classification)
-          outgoingClassificationEdges.add(c);
+        if (c.getElement() instanceof Classification) outgoingClassificationEdges.add(c);
 
       // This has currently no support for multiple classifications
       if (outgoingClassificationEdges.size() > 0) {
         if ("1".equals(LMLVisualizer.getValueForKey("ProximityClassification")))
           outgoingClassificationEdges.get(0).setVisible(false);
-        else
-          outgoingClassificationEdges.get(0).setVisible(true);
+        else outgoingClassificationEdges.get(0).setVisible(true);
 
         IGraphicalEditPart edgeEP = (IGraphicalEditPart) getViewer().getEditPartRegistry()
             .get(outgoingClassificationEdges.get(0));
@@ -663,9 +635,8 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
             else if (featureEditPart instanceof Entity2EditPart)
               ((Entity2EditPart) featureEditPart)
                   .updateView(IVisualizationServiceBase.FORMAT_GRAPH);
-            else if (featureEditPart instanceof Entity3EditPart)
-              ((Entity3EditPart) featureEditPart)
-                  .updateView(IVisualizationServiceBase.FORMAT_GRAPH);
+            else if (featureEditPart instanceof Entity3EditPart) ((Entity3EditPart) featureEditPart)
+                .updateView(IVisualizationServiceBase.FORMAT_GRAPH);
           }
         }
       }
@@ -765,23 +736,19 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
         if (IVisualizationServiceBase.FORMAT_FORM.equals(format)) {
           IFormVisualizationService service = ExtensionPointService.Instance()
               .getActiveFormVisualizationService();
-          if (service != null)
-            service.run(this, notation, true);
+          if (service != null) service.run(this, notation, true);
         } else if (IVisualizationServiceBase.FORMAT_TEXT.equals(format)) {
           ITextualVisualizationService service = ExtensionPointService.Instance()
               .getActiveTextualVisualizationService();
-          if (service != null)
-            service.run(this, notation, true);
+          if (service != null) service.run(this, notation, true);
         } else if (IVisualizationServiceBase.FORMAT_APP.equals(format)) {
           IApplicationVisualizationService service = ExtensionPointService.Instance()
               .getActiveApplicationVisualizationService();
-          if (service != null)
-            service.run(this, notation, true);
+          if (service != null) service.run(this, notation, true);
         } else if (IVisualizationServiceBase.FORMAT_TABLE.equals(format)) {
           ITableVisualizationService service = ExtensionPointService.Instance()
               .getActiveTableVisualizationService();
-          if (service != null)
-            service.run(this, notation, true);
+          if (service != null) service.run(this, notation, true);
         }
       } catch (CoreException e) {
         e.printStackTrace();
@@ -800,39 +767,39 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
     // BEGING Show hide depending on containment
     // *******************************************
     for (ConnectionEnd p : ((Connection) self).getConnectionEnd())
-      if (p.getKind() != ConnectionEndKind.BASIC)
-        hasCompositeAggregate = true;
+      if (p.getKind() != ConnectionEndKind.BASIC) hasCompositeAggregate = true;
 
     if (hasCompositeAggregate) {
       // Containment/Aggregation
       List<Clabject> participants = ((Connection) self).getParticipants();
+      if (participants.size() == 2) {
+        if ((participants.get(0).getContent().contains(participants.get(1))
+            || participants.get(1).getContent().contains(participants.get(0)))) {
+          if (!getNotationView().isVisible()) return;
 
-      if ((participants.get(0).getContent().contains(participants.get(1))
-          || participants.get(1).getContent().contains(participants.get(0)))) {
-        if (!getNotationView().isVisible())
-          return;
+          // Set Notation view to invisble so that it does not appear in the command stack
+          InternalTransactionalEditingDomain domain = (InternalTransactionalEditingDomain) getEditingDomain();
 
-        // Set Notation view to invisble so that it does not appear in the command stack
-        InternalTransactionalEditingDomain domain = (InternalTransactionalEditingDomain) getEditingDomain();
+          Map<java.lang.String, java.lang.Boolean> commandOptions = Collections
+              .singletonMap(Transaction.OPTION_NO_UNDO, java.lang.Boolean.TRUE);
 
-        Map<java.lang.String, java.lang.Boolean> commandOptions = Collections
-            .singletonMap(Transaction.OPTION_NO_UNDO, java.lang.Boolean.TRUE);
+          try {
+            if (domain.getActiveTransaction() != null && domain.getActiveTransaction().isReadOnly())
+              domain.getActiveTransaction().commit();
 
-        try {
-          if (domain.getActiveTransaction() != null && domain.getActiveTransaction().isReadOnly())
+            domain.startTransaction(false, commandOptions);
+            getNotationView().setVisible(false);
             domain.getActiveTransaction().commit();
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          } catch (RollbackException e) {
+            e.printStackTrace();
+          }
 
-          domain.startTransaction(false, commandOptions);
-          getNotationView().setVisible(false);
-          domain.getActiveTransaction().commit();
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        } catch (RollbackException e) {
-          e.printStackTrace();
+          return;
         }
-
-        return;
       }
+
     }
     // *******************************************
     // END Show hide depending on containment
@@ -858,8 +825,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
     java.lang.Boolean toggleValue = getToggleValue();
 
     // We do toggle the connection
-    if (toggleValue != null)
-      toggle();
+    if (toggleValue != null) toggle();
 
     // We can change expressed as long as connection is not elided and not toggled
     if ((toggleValue == null || toggleValue == false)) {
@@ -877,8 +843,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
       Clabject self = (Clabject) resolveSemanticElement();
 
       // No visualization information available
-      if (self.getVisualizer().size() == 0)
-        return;
+      if (self.getVisualizer().size() == 0) return;
 
       IDesignationService designationService = ExtensionPointService.Instance()
           .getActiveDesignationService();
@@ -914,8 +879,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
 
       String newIdentification = designationService.createIdenficationDesignationString(self,
           designationRequest);
-      if (newIdentification.equals("~"))
-        newIdentification = self.getName();
+      if (newIdentification.equals("~")) newIdentification = self.getName();
       identifierDesignationWrappingLabel.setText(newIdentification);
     } catch (CoreException e) {
       e.printStackTrace();
@@ -940,8 +904,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
     Map<java.lang.String, java.lang.Boolean> commandOptions = Collections
         .singletonMap(Transaction.OPTION_NO_UNDO, java.lang.Boolean.TRUE);
 
-    if (domain.getActiveTransaction() != null && domain.getActiveTransaction().isReadOnly())
-      return;
+    if (domain.getActiveTransaction() != null && domain.getActiveTransaction().isReadOnly()) return;
 
     try {
       Clabject self = (Clabject) resolveSemanticElement();
@@ -1659,8 +1622,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
       // **************************************************
 
       // if already toggled -> return
-      if (inToggeledState == true)
-        return;
+      if (inToggeledState == true) return;
 
       Rectangle rect = (figure.getClientArea() != null) ? figure.getClientArea().getCopy() : null;
 
@@ -1722,8 +1684,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
     // creation as this is true on move by mouse.
     // This will break instantiation with content otherwise
         ((ChangeBoundsRequest) _request).isSnapToEnabled()) {
-      if (cmd == null)
-        return cmd;
+      if (cmd == null) return cmd;
 
       Rectangle oldBounds = getFigure().getBounds();
       ChangeBoundsRequest changeRequest = (ChangeBoundsRequest) _request;
@@ -1850,11 +1811,9 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
     LinkingModel linkingModel = null;
 
     for (EObject obj : containingResource.getContents())
-      if (obj instanceof LinkingModel)
-        linkingModel = (LinkingModel) obj;
+      if (obj instanceof LinkingModel) linkingModel = (LinkingModel) obj;
 
-    if (linkingModel == null)
-      return null;
+    if (linkingModel == null) return null;
 
     Link linkToRemoteObject = null;
     Iterator<EObject> linkingModelIterator = linkingModel.eAllContents();
@@ -1876,12 +1835,10 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
    * remote model
    */
   public void createLinkedModelElementDecoration() {
-    if (linkDecoration != null)
-      return;
+    if (linkDecoration != null) return;
 
     Link remoteLink = getRemoteModelLink();
-    if (remoteLink == null)
-      return;
+    if (remoteLink == null) return;
 
     RemoteModel remoteModel = (RemoteModel) remoteLink.eContainer();
 
@@ -1930,8 +1887,7 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
       super.notifyChanged(notification);
 
       // Do nothing on remove of listener
-      if (notification.getEventType() == Notification.REMOVING_ADAPTER)
-        return;
+      if (notification.getEventType() == Notification.REMOVING_ADAPTER) return;
 
       // This happens when toggeling between dsl and gpl mode and is already
       // handled via code in handle notification
@@ -1969,9 +1925,8 @@ public class ConnectionEditPart extends AbstractBorderedShapeEditPart {
 
     // if a model element gets deleted there is no
     // way to remove adapters anymore
-    if (e != null)
-      for (LMLVisualizer v : e.getVisualizer())
-        v.eAdapters().remove(visualizerListener);
+    if (e != null) for (LMLVisualizer v : e.getVisualizer())
+      v.eAdapters().remove(visualizerListener);
 
     // Remove the cached decoration code from DecorationEditPolicy
     if (linkDecoration != null) {
