@@ -162,7 +162,7 @@ public interface IConstraintLanguageService {
    * @return a EMF SetCommand for setting the initial value of the attribute; null
    *         if no initial value is set.
    */
-  public Command initAttrbute(Attribute attribute);
+  public Command initAttribute(Attribute attribute);
 
   /**
    * Recalculates all derived values when anything except a deep model or level

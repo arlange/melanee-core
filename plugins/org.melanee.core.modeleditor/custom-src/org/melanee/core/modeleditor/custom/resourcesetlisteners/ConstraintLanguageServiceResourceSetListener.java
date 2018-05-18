@@ -100,7 +100,7 @@ public class ConstraintLanguageServiceResourceSetListener implements ResourceSet
       // On attribute creation a default has to be potentially set
       if (notification.getEventType() == ENotificationImpl.SET
           && notification.getNewValue() instanceof Attribute)
-        return constraintLanguageService.initAttrbute((Attribute) notification.getNewValue());
+        return constraintLanguageService.initAttribute((Attribute) notification.getNewValue());
       // Every addition except deep model and level can cause derived values to be
       // recalculated
       else if (notification.getNewValue() instanceof Element
