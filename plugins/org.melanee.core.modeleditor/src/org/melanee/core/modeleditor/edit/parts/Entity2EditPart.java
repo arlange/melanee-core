@@ -1,13 +1,11 @@
 /*
- * *******************************************************************************
- * Copyright (c) 2011 - 2015 University of Mannheim: Chair for Software Engineering
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
+ * ******************************************************************************* Copyright (c)
+ * 2011 - 2015 University of Mannheim: Chair for Software Engineering All rights reserved. This
+ * program and the accompanying materials are made available under the terms of the Eclipse Public
+ * License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Contributors:
- *     Ralph Gerbig - initial API and implementation and initial documentation
+ * Contributors: Ralph Gerbig - initial API and implementation and initial documentation
  * *******************************************************************************
  */
 package org.melanee.core.modeleditor.edit.parts;
@@ -18,7 +16,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -141,7 +138,6 @@ import org.melanee.core.workbench.interfaces.IGraphicalVisualizationService;
 import org.melanee.core.workbench.interfaces.ITableVisualizationService;
 import org.melanee.core.workbench.interfaces.ITextualVisualizationService;
 import org.melanee.core.workbench.interfaces.IVisualizationServiceBase;
-
 import de.itemis.gmf.runtime.layout.ResizableFlowLayout;
 
 /**
@@ -207,36 +203,37 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
    * @generated
    */
   protected LayoutEditPolicy createLayoutEditPolicy() {
-    org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
+    org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep =
+        new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
-      protected EditPolicy createChildEditPolicy(EditPart child) {
-        View childView = (View) child.getModel();
-        switch (PLMVisualIDRegistry.getVisualID(childView)) {
-        case ConnectionNameExternalLabel2EditPart.VISUAL_ID:
-          return new BorderItemSelectionEditPolicy() {
+          protected EditPolicy createChildEditPolicy(EditPart child) {
+            View childView = (View) child.getModel();
+            switch (PLMVisualIDRegistry.getVisualID(childView)) {
+              case ConnectionNameExternalLabel2EditPart.VISUAL_ID:
+                return new BorderItemSelectionEditPolicy() {
 
-            protected List createSelectionHandles() {
-              MoveHandle mh = new MoveHandle((GraphicalEditPart) getHost());
-              mh.setBorder(null);
-              return Collections.singletonList(mh);
+                  protected List createSelectionHandles() {
+                    MoveHandle mh = new MoveHandle((GraphicalEditPart) getHost());
+                    mh.setBorder(null);
+                    return Collections.singletonList(mh);
+                  }
+                };
             }
-          };
-        }
-        EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-        if (result == null) {
-          result = new NonResizableEditPolicy();
-        }
-        return result;
-      }
+            EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+            if (result == null) {
+              result = new NonResizableEditPolicy();
+            }
+            return result;
+          }
 
-      protected Command getMoveChildrenCommand(Request request) {
-        return null;
-      }
+          protected Command getMoveChildrenCommand(Request request) {
+            return null;
+          }
 
-      protected Command getCreateCommand(CreateRequest request) {
-        return null;
-      }
-    };
+          protected Command getCreateCommand(CreateRequest request) {
+            return null;
+          }
+        };
     return lep;
   }
 
@@ -406,8 +403,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
   /**
    * Creates figure for this edit part.
    * 
-   * Body of this method does not depend on settings in generation model so you
-   * may safely remove <i>generated</i> tag and modify it.
+   * Body of this method does not depend on settings in generation model so you may safely remove
+   * <i>generated</i> tag and modify it.
    * 
    * @generated
    */
@@ -421,11 +418,10 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
   }
 
   /**
-   * Default implementation treats passed figure as content pane. Respects layout
-   * one may have set for generated figure.
+   * Default implementation treats passed figure as content pane. Respects layout one may have set
+   * for generated figure.
    * 
-   * @param nodeShape
-   *          instance of generated figure class
+   * @param nodeShape instance of generated figure class
    * @generated
    */
   protected IFigure setupContentPane(IFigure nodeShape) {
@@ -635,8 +631,9 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
       }
 
       if (changedFeature.getName().equals("name") && notification.getNotifier() instanceof Entity) {
-        PLMDiagramEditor plmEditor = (PLMDiagramEditor) ((DiagramEditDomain) ((IGraphicalEditPart) this)
-            .getDiagramEditDomain()).getEditorPart();
+        PLMDiagramEditor plmEditor =
+            (PLMDiagramEditor) ((DiagramEditDomain) ((IGraphicalEditPart) this)
+                .getDiagramEditDomain()).getEditorPart();
 
         Entity changedEntity = (Entity) notification.getNotifier();
         for (Clabject instance : changedEntity.getInstances()) {
@@ -666,17 +663,18 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
 
         try {
           OCLExpression<EClassifier> q = helper.createQuery("Feature.allInstances()");
-          feature = ((HashSet<Feature>) ocl
-              .evaluate(EcoreUtil.getRootContainer(resolveSemanticElement()), q))
-                  .toArray(new Feature[] {});
+          feature =
+              ((HashSet<Feature>) ocl.evaluate(EcoreUtil.getRootContainer(resolveSemanticElement()),
+                  q)).toArray(new Feature[] {});
         } catch (ParserException e) {
           e.printStackTrace();
         }
 
         // We found feature
         if (feature.length > 0) {
-          PLMDiagramEditor plmEditor = (PLMDiagramEditor) ((DiagramEditDomain) ((IGraphicalEditPart) this)
-              .getDiagramEditDomain()).getEditorPart();
+          PLMDiagramEditor plmEditor =
+              (PLMDiagramEditor) ((DiagramEditDomain) ((IGraphicalEditPart) this)
+                  .getDiagramEditDomain()).getEditorPart();
 
           for (Feature f : feature) {
             // if a attribute is hidden via the notational model it cannot be resolved
@@ -784,23 +782,23 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
         || IVisualizationServiceBase.FORMAT_TABLE.equals(format)) {
       try {
         if (IVisualizationServiceBase.FORMAT_FORM.equals(format)) {
-          IFormVisualizationService service = ExtensionPointService.Instance()
-              .getActiveFormVisualizationService();
+          IFormVisualizationService service =
+              ExtensionPointService.Instance().getActiveFormVisualizationService();
           if (service != null)
             service.run(this, notation, true);
         } else if (IVisualizationServiceBase.FORMAT_TEXT.equals(format)) {
-          ITextualVisualizationService service = ExtensionPointService.Instance()
-              .getActiveTextualVisualizationService();
+          ITextualVisualizationService service =
+              ExtensionPointService.Instance().getActiveTextualVisualizationService();
           if (service != null)
             service.run(this, notation, true);
         } else if (IVisualizationServiceBase.FORMAT_APP.equals(format)) {
-          IApplicationVisualizationService service = ExtensionPointService.Instance()
-              .getActiveApplicationVisualizationService();
+          IApplicationVisualizationService service =
+              ExtensionPointService.Instance().getActiveApplicationVisualizationService();
           if (service != null)
             service.run(this, notation, true);
         } else if (IVisualizationServiceBase.FORMAT_TABLE.equals(format)) {
-          ITableVisualizationService service = ExtensionPointService.Instance()
-              .getActiveTableVisualizationService();
+          ITableVisualizationService service =
+              ExtensionPointService.Instance().getActiveTableVisualizationService();
           if (service != null)
             service.run(this, notation, true);
         }
@@ -844,8 +842,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
       if (self.getVisualizer().size() == 0)
         return;
 
-      IDesignationService designationService = ExtensionPointService.Instance()
-          .getActiveDesignationService();
+      IDesignationService designationService =
+          ExtensionPointService.Instance().getActiveDesignationService();
 
       WrappingLabel classificationDesignationWrappingLabel =
 
@@ -876,8 +874,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
       containmentDesignationWrappingLabel
           .setText(designationService.createLocationDesignationString(self, designationRequest));
 
-      String newIdentification = designationService.createIdenficationDesignationString(self,
-          designationRequest);
+      String newIdentification =
+          designationService.createIdenficationDesignationString(self, designationRequest);
       if (newIdentification.equals("~"))
         newIdentification = self.getName();
       identifierDesignationWrappingLabel.setText(newIdentification);
@@ -892,17 +890,17 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
   public static final int COMPARTMENT_CONTENT = 4;
 
   /**
-   * Makes the compartments specified by 'compartments' visible. Bitwise-Or
-   * combinations of COMPARTMENT_ATTRIBUTES COMPARTMENT_METHODS and
-   * COMPARTMENT_CONTENT are valid values for this parameter. Forcing compartments
-   * to be is neither implemented nor currently intended. COMPARTMENT_AUTOMATIC is
-   * making the compartments with content visible.
+   * Makes the compartments specified by 'compartments' visible. Bitwise-Or combinations of
+   * COMPARTMENT_ATTRIBUTES COMPARTMENT_METHODS and COMPARTMENT_CONTENT are valid values for this
+   * parameter. Forcing compartments to be is neither implemented nor currently intended.
+   * COMPARTMENT_AUTOMATIC is making the compartments with content visible.
    */
   public void makeCompartmentsVisible(int compartments) {
-    InternalTransactionalEditingDomain domain = (InternalTransactionalEditingDomain) getEditingDomain();
+    InternalTransactionalEditingDomain domain =
+        (InternalTransactionalEditingDomain) getEditingDomain();
 
-    Map<java.lang.String, Boolean> commandOptions = Collections
-        .singletonMap(Transaction.OPTION_NO_UNDO, Boolean.TRUE);
+    Map<java.lang.String, Boolean> commandOptions =
+        Collections.singletonMap(Transaction.OPTION_NO_UNDO, Boolean.TRUE);
 
     if (domain.getActiveTransaction() != null && domain.getActiveTransaction().isReadOnly())
       return;
@@ -915,7 +913,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
       // manage attributes compartment visibility
       if ((compartments & COMPARTMENT_ATTRIBUTES) != 0)
         getAttributesCompartmentView().setVisible(true);
-      else if (self.getDefinedAttributes().size() == 0 && getAttributesCompartment() != null)
+      else if (self != null && self.getDefinedAttributes().size() == 0
+          && getAttributesCompartment() != null)
         getAttributesCompartmentView().setVisible(false);
 
       // manage methods compartment visibility
@@ -1041,8 +1040,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
         e.printStackTrace();
       }
 
-      AbstractDSLVisualizer dslVisualizer = transformator.findDSLVisualizerForElement(self,
-          notation, true);
+      AbstractDSLVisualizer dslVisualizer =
+          transformator.findDSLVisualizerForElement(self, notation, true);
 
       // GPL rendering is used if no dsl rendering is found
       if (dslVisualizer == null) {
@@ -1077,8 +1076,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
       // BorderItemContainer. Everything else will break the diagram
 
       DefaultSizeNodeFigure sourceDFN = (DefaultSizeNodeFigure) figure.getChildren().get(0);
-      BorderItemContainerFigure sourceBICF = (BorderItemContainerFigure) figure.getChildren()
-          .get(1);
+      BorderItemContainerFigure sourceBICF =
+          (BorderItemContainerFigure) figure.getChildren().get(1);
 
       // Clear the DefaultSizeNodeFigure children
       sourceDFN.getChildren().clear();
@@ -1096,8 +1095,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
       } else if (customFigure instanceof BorderedNodeFigure) {
 
         DefaultSizeNodeFigure targetDFN = (DefaultSizeNodeFigure) customFigure.getChildren().get(0);
-        BorderItemContainerFigure targetBICF = (BorderItemContainerFigure) customFigure
-            .getChildren().get(1);
+        BorderItemContainerFigure targetBICF =
+            (BorderItemContainerFigure) customFigure.getChildren().get(1);
 
         // Add customFigure children to the DefaultSizeNodeFigure
         for (IFigure f : (List<IFigure>) targetDFN.getChildren()) {
@@ -1107,10 +1106,11 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
 
         // Add customFigure children to the BorderItemContainer
         for (IFigure f : (List<IFigure>) targetBICF.getChildren()) {
-          ConnectionNameExternalLabelEditPart ep = new ConnectionNameExternalLabelEditPart(
-              NotationFactoryImpl.eINSTANCE.createNode());
-          ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure borderFig = (ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure) ep
-              .getFigure();
+          ConnectionNameExternalLabelEditPart ep =
+              new ConnectionNameExternalLabelEditPart(NotationFactoryImpl.eINSTANCE.createNode());
+          ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure borderFig =
+              (ConnectionNameExternalLabelEditPart.ConnectionNameExternalLabelFigure) ep
+                  .getFigure();
           borderFig.setText(((WrappingLabel) f).getText());
 
           CenteredBorderItemLocator oldLocator = (CenteredBorderItemLocator) (f.getParent()
@@ -1636,32 +1636,34 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
       ChangeBoundsRequest changeRequest = (ChangeBoundsRequest) _request;
       Rectangle newBounds = changeRequest.getTransformedRectangle(oldBounds);
 
-      InternalTransactionalEditingDomain domain = (InternalTransactionalEditingDomain) getEditingDomain();
+      InternalTransactionalEditingDomain domain =
+          (InternalTransactionalEditingDomain) getEditingDomain();
       final LMLVisualizer visualizer = ((Element) resolveSemanticElement()).getVisualizer().get(0);
       final Node notationView = (Node) getNotationView();
 
-      AbstractTransactionalCommand changeVisualizerBoundsCommand = new AbstractTransactionalCommand(
-          domain, "Change Visulizer",
-          Collections.singletonList(WorkspaceSynchronizer.getFile(visualizer.eResource()))) {
+      AbstractTransactionalCommand changeVisualizerBoundsCommand =
+          new AbstractTransactionalCommand(domain, "Change Visulizer",
+              Collections.singletonList(WorkspaceSynchronizer.getFile(visualizer.eResource()))) {
 
-        @Override
-        protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-            throws ExecutionException {
-          Bounds b = (Bounds) notationView.getLayoutConstraint();
+            @Override
+            protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+                throws ExecutionException {
+              Bounds b = (Bounds) notationView.getLayoutConstraint();
 
-          // If in synch nothing has to be done
-          if (visualizer.getXLocation() == b.getX() && visualizer.getYLocation() == b.getY()
-              && visualizer.getHeight() == b.getHeight() && visualizer.getWidth() == b.getWidth())
-            return CommandResult.newOKCommandResult();
+              // If in synch nothing has to be done
+              if (visualizer.getXLocation() == b.getX() && visualizer.getYLocation() == b.getY()
+                  && visualizer.getHeight() == b.getHeight()
+                  && visualizer.getWidth() == b.getWidth())
+                return CommandResult.newOKCommandResult();
 
-          visualizer.setXLocation(b.getX());
-          visualizer.setYLocation(b.getY());
-          visualizer.setHeight(b.getHeight());
-          visualizer.setWidth(b.getWidth());
-          return CommandResult.newOKCommandResult();
-        }
+              visualizer.setXLocation(b.getX());
+              visualizer.setYLocation(b.getY());
+              visualizer.setHeight(b.getHeight());
+              visualizer.setWidth(b.getWidth());
+              return CommandResult.newOKCommandResult();
+            }
 
-      };
+          };
 
       ((CompoundCommand) cmd).add(new ICommandProxy(changeVisualizerBoundsCommand));
     }
@@ -1684,15 +1686,13 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
   }
 
   /**
-   * This method synchronizes the visualizer and the notation view. The method can
-   * be configured whether to write from notation model to visualizer or the other
-   * way around. Writing to notation model is e.g. used when opening the editor or
-   * editing the visualizer. Writing to the visualizer is e.g. used when changes
-   * in the graphical editor occur.
+   * This method synchronizes the visualizer and the notation view. The method can be configured
+   * whether to write from notation model to visualizer or the other way around. Writing to notation
+   * model is e.g. used when opening the editor or editing the visualizer. Writing to the visualizer
+   * is e.g. used when changes in the graphical editor occur.
    * 
-   * @param notationModel
-   *          True -> write from notation model to visualizer; false -> write from
-   *          visualizer to notation model
+   * @param notationModel True -> write from notation model to visualizer; false -> write from
+   *        visualizer to notation model
    */
   private void synchronizeVisualizerAndNotationModel() {
     try {
@@ -1701,7 +1701,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
 
       Node node = (Node) getNotationView();
       Bounds bounds = (Bounds) node.getLayoutConstraint();
-      InternalTransactionalEditingDomain domain = (InternalTransactionalEditingDomain) getEditingDomain();
+      InternalTransactionalEditingDomain domain =
+          (InternalTransactionalEditingDomain) getEditingDomain();
 
       try {
         // A location is different to notation -> change in notation model
@@ -1711,7 +1712,8 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
           // Write X and Y value to notation model
           // If a transaction is active the command stack has to be used
           if (domain.getActiveTransaction() != null) {
-            org.eclipse.emf.common.command.CompoundCommand compoundCommand = new org.eclipse.emf.common.command.CompoundCommand();
+            org.eclipse.emf.common.command.CompoundCommand compoundCommand =
+                new org.eclipse.emf.common.command.CompoundCommand();
             org.eclipse.emf.common.command.Command xCommand = SetCommand.create(domain, bounds,
                 NotationPackage.eINSTANCE.getLocation_X(), visualizer.getXLocation());
             compoundCommand.append(xCommand);
@@ -1779,8 +1781,7 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
   Decoration linkDecoration = null;
 
   /**
-   * Creates a decoration at the lower right if the model element is linked from a
-   * remote model
+   * Creates a decoration at the lower right if the model element is linked from a remote model
    */
   public void createLinkedModelElementDecoration() {
     if (linkDecoration != null)
@@ -1894,8 +1895,7 @@ public class Entity2EditPart extends AbstractBorderedShapeEditPart {
   /**
    * Registers the Edipart to fire handleNotification on changes in LMLVisualizer.
    *
-   * BUG: Only runs on EditPartCrearion. Items which are added Afterwards are not
-   * listened to.
+   * BUG: Only runs on EditPartCrearion. Items which are added Afterwards are not listened to.
    * 
    * @generated
    */
