@@ -1,9 +1,9 @@
-Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PLM Test Plugin
 Bundle-SymbolicName: org.melanee.core.tests.plm
 Bundle-Version: 2.0.0.qualifier
 Bundle-Vendor: University of Mannheim - Software Enginerring Group
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.junit,
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.junit;bundle-version="4.12.0",
  org.melanee.core.models.plm;bundle-version="2.0.0"
+Automatic-Module-Name: org.melanee.core.tests.plm

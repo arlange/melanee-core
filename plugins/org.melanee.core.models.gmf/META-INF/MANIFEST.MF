@@ -4,4 +4,4 @@ Bundle-Name: org.melanee.core.models.gmf
 Bundle-SymbolicName: org.melanee.core.models.gmf;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

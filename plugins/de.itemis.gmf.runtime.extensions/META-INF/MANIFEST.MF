@@ -8,9 +8,12 @@ Bundle-Vendor: itemis AG
 Require-Bundle: org.eclipse.emf.common.ui;bundle-version="2.4.0",
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.1.0",
  org.eclipse.ui.ide;bundle-version="3.4.0"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
-Export-Package: de.itemis.gmf.runtime.combolabel,de.itemis.gmf.runtime
- .constrainthook,de.itemis.gmf.runtime.edit.policy,de.itemis.gmf.runti
- me.editingdomain,de.itemis.gmf.runtime.extensions,de.itemis.gmf.runti
- me.layout
+Export-Package: de.itemis.gmf.runtime.combolabel,
+ de.itemis.gmf.runtime.constrainthook,
+ de.itemis.gmf.runtime.edit.policy,
+ de.itemis.gmf.runtime.editingdomain,
+ de.itemis.gmf.runtime.extensions,
+ de.itemis.gmf.runtime.layout
+Automatic-Module-Name: de.itemis.gmf.runtime.extensions

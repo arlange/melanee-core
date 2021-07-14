@@ -41,7 +41,6 @@ Ralph Gerbig, Nicole Wesemeyer, Katharina Markert, Daniel Gritzner, Colin Atkins
    <launcher name="Melanee">
       <linux icon="img/file/linux.xpm"/>
       <macosx icon="img/file/mac.icns"/>
-      <solaris/>
       <win useIco="true">
          <ico path="img/file/win.ico"/>
          <bmp/>
@@ -171,7 +170,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <configurations>
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="3" />
    </configurations>
 

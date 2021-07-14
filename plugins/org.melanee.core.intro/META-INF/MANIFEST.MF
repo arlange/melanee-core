@@ -7,7 +7,6 @@ Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: org.melanee.core.intro.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.intro,
- org.eclipse.ui.intro.universal
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.eclipse.ui.intro
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy

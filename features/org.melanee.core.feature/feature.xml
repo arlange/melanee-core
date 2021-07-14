@@ -149,7 +149,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.acceleo.engine"/>
       <import plugin="org.melanee.core.designation.service"/>
       <import plugin="org.eclipse.ui.intro"/>
-      <import plugin="org.eclipse.ui.intro.universal"/>
       <import plugin="org.eclipse.jgit"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
       <import plugin="org.eclipse.emf.codegen.ecore"/>
