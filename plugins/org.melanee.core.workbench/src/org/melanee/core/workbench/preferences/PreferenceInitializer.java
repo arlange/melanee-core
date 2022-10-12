@@ -39,6 +39,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
         "org.melanee.appdsl.service");
     store.setDefault(PreferenceConstants.P_ACTIVE_TEXTUAL_VISUALIZATION_ENGINE,
         "org.melanee.textdsl.service");
+    store.setDefault(PreferenceConstants.P_ACTIVE_GRAMMAR_VISUALIZATION_ENGINE,
+        "org.melanee.core.grammarware.service");
     store.setDefault(PreferenceConstants.P_ACTIVE_DESIGNATION_SERVICE,
         "org.melanee.core.designation.service");
     store.setDefault(PreferenceConstants.P_ACTIVE_DSL_ENGINE, "org.melanee.core.dsl.service");

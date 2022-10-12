@@ -50,22 +50,21 @@ import org.melanee.core.models.plm.PLM.Supertype;
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
  * an adapter <code>createXXX</code> method for each class of the model. <!--
  * end-user-doc -->
- * 
  * @see org.melanee.core.models.plm.PLM.PLMPackage
  * @generated
  */
 public class PLMAdapterFactory extends AdapterFactoryImpl {
   /**
-   * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached model package.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected static PLMPackage modelPackage;
 
   /**
-   * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
+   * Creates an instance of the adapter factory.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public PLMAdapterFactory() {
@@ -89,7 +88,7 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
       return true;
     }
     if (object instanceof EObject) {
-      return ((EObject) object).eClass().getEPackage() == modelPackage;
+      return ((EObject)object).eClass().getEPackage() == modelPackage;
     }
     return false;
   }
@@ -101,164 +100,135 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
    * @generated
    */
   protected PLMSwitch<Adapter> modelSwitch = new PLMSwitch<Adapter>() {
-    @Override
-    public Adapter caseDomain(Domain object) {
-      return createDomainAdapter();
-    }
-
-    @Override
-    public Adapter caseElement(Element object) {
-      return createElementAdapter();
-    }
-
-    @Override
-    public Adapter caseLevel(Level object) {
-      return createLevelAdapter();
-    }
-
-    @Override
-    public Adapter caseDeepModel(DeepModel object) {
-      return createDeepModelAdapter();
-    }
-
-    @Override
-    public Adapter caseOwnedElement(OwnedElement object) {
-      return createOwnedElementAdapter();
-    }
-
-    @Override
-    public Adapter caseCorrelation(Correlation object) {
-      return createCorrelationAdapter();
-    }
-
-    @Override
-    public Adapter caseInheritance(Inheritance object) {
-      return createInheritanceAdapter();
-    }
-
-    @Override
-    public Adapter caseSupertype(Supertype object) {
-      return createSupertypeAdapter();
-    }
-
-    @Override
-    public Adapter caseSubtype(Subtype object) {
-      return createSubtypeAdapter();
-    }
-
-    @Override
-    public Adapter caseClassification(Classification object) {
-      return createClassificationAdapter();
-    }
-
-    @Override
-    public Adapter caseClabject(Clabject object) {
-      return createClabjectAdapter();
-    }
-
-    @Override
-    public Adapter caseFeature(Feature object) {
-      return createFeatureAdapter();
-    }
-
-    @Override
-    public Adapter caseEntity(Entity object) {
-      return createEntityAdapter();
-    }
-
-    @Override
-    public Adapter caseConnection(Connection object) {
-      return createConnectionAdapter();
-    }
-
-    @Override
-    public Adapter caseConnectionEnd(ConnectionEnd object) {
-      return createConnectionEndAdapter();
-    }
-
-    @Override
-    public Adapter caseLMLVisualizer(LMLVisualizer object) {
-      return createLMLVisualizerAdapter();
-    }
-
-    @Override
-    public Adapter caseProperty(Property object) {
-      return createPropertyAdapter();
-    }
-
-    @Override
-    public Adapter caseAttribute(Attribute object) {
-      return createAttributeAdapter();
-    }
-
-    @Override
-    public Adapter caseMethod(Method object) {
-      return createMethodAdapter();
-    }
-
-    @Override
-    public Adapter caseEnumeration(Enumeration object) {
-      return createEnumerationAdapter();
-    }
-
-    @Override
-    public Adapter caseParameter(Parameter object) {
-      return createParameterAdapter();
-    }
-
-    @Override
-    public Adapter caseClabjectParameter(ClabjectParameter object) {
-      return createClabjectParameterAdapter();
-    }
-
-    @Override
-    public Adapter casePrimitiveParameter(PrimitiveParameter object) {
-      return createPrimitiveParameterAdapter();
-    }
-
-    @Override
-    public Adapter caseMultiplicity(Multiplicity object) {
-      return createMultiplicityAdapter();
-    }
-
-    @Override
-    public Adapter casePackage(org.melanee.core.models.plm.PLM.Package object) {
-      return createPackageAdapter();
-    }
-
-    @Override
-    public Adapter caseAbstractDSLVisualizer(AbstractDSLVisualizer object) {
-      return createAbstractDSLVisualizerAdapter();
-    }
-
-    @Override
-    public Adapter caseAbstractBehavior(AbstractBehavior object) {
-      return createAbstractBehaviorAdapter();
-    }
-
-    @Override
-    public Adapter caseAbstractConstraint(AbstractConstraint object) {
-      return createAbstractConstraintAdapter();
-    }
-
-    @Override
-    public Adapter defaultCase(EObject object) {
-      return createEObjectAdapter();
-    }
-  };
+      @Override
+      public Adapter caseDomain(Domain object) {
+        return createDomainAdapter();
+      }
+      @Override
+      public Adapter caseElement(Element object) {
+        return createElementAdapter();
+      }
+      @Override
+      public Adapter caseLevel(Level object) {
+        return createLevelAdapter();
+      }
+      @Override
+      public Adapter caseDeepModel(DeepModel object) {
+        return createDeepModelAdapter();
+      }
+      @Override
+      public Adapter caseOwnedElement(OwnedElement object) {
+        return createOwnedElementAdapter();
+      }
+      @Override
+      public Adapter caseCorrelation(Correlation object) {
+        return createCorrelationAdapter();
+      }
+      @Override
+      public Adapter caseInheritance(Inheritance object) {
+        return createInheritanceAdapter();
+      }
+      @Override
+      public Adapter caseSupertype(Supertype object) {
+        return createSupertypeAdapter();
+      }
+      @Override
+      public Adapter caseSubtype(Subtype object) {
+        return createSubtypeAdapter();
+      }
+      @Override
+      public Adapter caseClassification(Classification object) {
+        return createClassificationAdapter();
+      }
+      @Override
+      public Adapter caseClabject(Clabject object) {
+        return createClabjectAdapter();
+      }
+      @Override
+      public Adapter caseFeature(Feature object) {
+        return createFeatureAdapter();
+      }
+      @Override
+      public Adapter caseEntity(Entity object) {
+        return createEntityAdapter();
+      }
+      @Override
+      public Adapter caseConnection(Connection object) {
+        return createConnectionAdapter();
+      }
+      @Override
+      public Adapter caseConnectionEnd(ConnectionEnd object) {
+        return createConnectionEndAdapter();
+      }
+      @Override
+      public Adapter caseLMLVisualizer(LMLVisualizer object) {
+        return createLMLVisualizerAdapter();
+      }
+      @Override
+      public Adapter caseProperty(Property object) {
+        return createPropertyAdapter();
+      }
+      @Override
+      public Adapter caseAttribute(Attribute object) {
+        return createAttributeAdapter();
+      }
+      @Override
+      public Adapter caseMethod(Method object) {
+        return createMethodAdapter();
+      }
+      @Override
+      public Adapter caseEnumeration(Enumeration object) {
+        return createEnumerationAdapter();
+      }
+      @Override
+      public Adapter caseParameter(Parameter object) {
+        return createParameterAdapter();
+      }
+      @Override
+      public Adapter caseClabjectParameter(ClabjectParameter object) {
+        return createClabjectParameterAdapter();
+      }
+      @Override
+      public Adapter casePrimitiveParameter(PrimitiveParameter object) {
+        return createPrimitiveParameterAdapter();
+      }
+      @Override
+      public Adapter caseMultiplicity(Multiplicity object) {
+        return createMultiplicityAdapter();
+      }
+      @Override
+      public Adapter casePackage(org.melanee.core.models.plm.PLM.Package object) {
+        return createPackageAdapter();
+      }
+      @Override
+      public Adapter caseAbstractDSLVisualizer(AbstractDSLVisualizer object) {
+        return createAbstractDSLVisualizerAdapter();
+      }
+      @Override
+      public Adapter caseAbstractBehavior(AbstractBehavior object) {
+        return createAbstractBehaviorAdapter();
+      }
+      @Override
+      public Adapter caseAbstractConstraint(AbstractConstraint object) {
+        return createAbstractConstraintAdapter();
+      }
+      @Override
+      public Adapter defaultCase(EObject object) {
+        return createEObjectAdapter();
+      }
+    };
 
   /**
-   * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!--
+   * Creates an adapter for the <code>target</code>.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @param target
-   *          the object to adapt.
+   * @param target the object to adapt.
    * @return the adapter for the <code>target</code>.
    * @generated
    */
   @Override
   public Adapter createAdapter(Notifier target) {
-    return modelSwitch.doSwitch((EObject) target);
+    return modelSwitch.doSwitch((EObject)target);
   }
 
   /**
@@ -322,12 +292,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.OwnedElement <em>Owned
-   * Element</em>}'. <!-- begin-user-doc --> This default implementation returns
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.OwnedElement <em>Owned Element</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns
    * null so that we can easily ignore cases; it's useful to ignore a case when
    * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.OwnedElement
    * @generated
@@ -337,12 +305,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.Correlation <em>Correlation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.Correlation <em>Correlation</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we
    * can easily ignore cases; it's useful to ignore a case when inheritance will
    * catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.Correlation
    * @generated
@@ -352,12 +318,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance <em>Inheritance</em>}'.
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.Inheritance <em>Inheritance</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we
    * can easily ignore cases; it's useful to ignore a case when inheritance will
    * catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.Inheritance
    * @generated
@@ -397,13 +361,11 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.Classification
-   * <em>Classification</em>}'. <!-- begin-user-doc --> This default
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.Classification <em>Classification</em>}'.
+   * <!-- begin-user-doc --> This default
    * implementation returns null so that we can easily ignore cases; it's useful
    * to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.Classification
    * @generated
@@ -458,12 +420,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.Connection <em>Connection</em>}'.
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.Connection <em>Connection</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we
    * can easily ignore cases; it's useful to ignore a case when inheritance will
    * catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.Connection
    * @generated
@@ -473,12 +433,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd <em>Connection
-   * End</em>}'. <!-- begin-user-doc --> This default implementation returns null
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.ConnectionEnd <em>Connection End</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null
    * so that we can easily ignore cases; it's useful to ignore a case when
    * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd
    * @generated
@@ -488,12 +446,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer <em>LML
-   * Visualizer</em>}'. <!-- begin-user-doc --> This default implementation
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.LMLVisualizer <em>LML Visualizer</em>}'.
+   * <!-- begin-user-doc --> This default implementation
    * returns null so that we can easily ignore cases; it's useful to ignore a case
    * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer
    * @generated
@@ -548,12 +504,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.Enumeration <em>Enumeration</em>}'.
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.Enumeration <em>Enumeration</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we
    * can easily ignore cases; it's useful to ignore a case when inheritance will
    * catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.Enumeration
    * @generated
@@ -578,12 +532,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.ClabjectParameter <em>Clabject
-   * Parameter</em>}'. <!-- begin-user-doc --> This default implementation returns
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.ClabjectParameter <em>Clabject Parameter</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns
    * null so that we can easily ignore cases; it's useful to ignore a case when
    * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.ClabjectParameter
    * @generated
@@ -593,12 +545,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.PrimitiveParameter <em>Primitive
-   * Parameter</em>}'. <!-- begin-user-doc --> This default implementation returns
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.PrimitiveParameter <em>Primitive Parameter</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns
    * null so that we can easily ignore cases; it's useful to ignore a case when
    * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.PrimitiveParameter
    * @generated
@@ -608,12 +558,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.Multiplicity <em>Multiplicity</em>}'.
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.Multiplicity <em>Multiplicity</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we
    * can easily ignore cases; it's useful to ignore a case when inheritance will
    * catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.Multiplicity
    * @generated
@@ -638,12 +586,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer <em>Abstract
-   * DSL Visualizer</em>}'. <!-- begin-user-doc --> This default implementation
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer <em>Abstract DSL Visualizer</em>}'.
+   * <!-- begin-user-doc --> This default implementation
    * returns null so that we can easily ignore cases; it's useful to ignore a case
    * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.AbstractDSLVisualizer
    * @generated
@@ -653,12 +599,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.AbstractBehavior <em>Abstract
-   * Behavior</em>}'. <!-- begin-user-doc --> This default implementation returns
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.AbstractBehavior <em>Abstract Behavior</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns
    * null so that we can easily ignore cases; it's useful to ignore a case when
    * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.AbstractBehavior
    * @generated
@@ -668,12 +612,10 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class
-   * '{@link org.melanee.core.models.plm.PLM.AbstractConstraint <em>Abstract
-   * Constraint</em>}'. <!-- begin-user-doc --> This default implementation
+   * Creates a new adapter for an object of class '{@link org.melanee.core.models.plm.PLM.AbstractConstraint <em>Abstract Constraint</em>}'.
+   * <!-- begin-user-doc --> This default implementation
    * returns null so that we can easily ignore cases; it's useful to ignore a case
    * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.melanee.core.models.plm.PLM.AbstractConstraint
    * @generated
@@ -683,9 +625,9 @@ public class PLMAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for the default case. <!-- begin-user-doc --> This
+   * Creates a new adapter for the default case.
+   * <!-- begin-user-doc --> This
    * default implementation returns null. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @generated
    */

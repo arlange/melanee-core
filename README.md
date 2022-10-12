@@ -17,7 +17,7 @@ If you want to build Melanee for your local repository then do the following
 cd melanee-core
 mvn clean install
 ```
-If you want to build Melanee as an Eclipse product then do this
+If you want to build Melanee as an Eclipse product than do this
 ```
 cd melanee-core/features/org.melanee.core.product
 mvn clean install -Ppackage

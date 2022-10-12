@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho.version>1.3.0</tycho.version>
+		<tycho.version>0.25.0</tycho.version>
 
 		<!-- p2 Update Sites -->
 		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
@@ -25,7 +25,7 @@
 			${release.version} specified version.
 		-->
 		<release.version>2.0.0-SNAPSHOT</release.version>
-		<release.targetPlatform>core-4.17</release.targetPlatform>
+		<release.targetPlatform>core-4.6</release.targetPlatform>
 	</properties>
 
 	<modules>
@@ -113,13 +113,21 @@
 						</artifact>
 					</target>-->
 					<environments>
-						
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
 							<arch>x86_64</arch>
 						</environment>
-
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>

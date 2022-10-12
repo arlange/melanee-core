@@ -25,10 +25,9 @@ import org.melanee.core.models.plm.PLM.PLMFactory;
 import org.melanee.core.models.plm.PLM.PLMPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.melanee.core.models.plm.PLM.Package} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.melanee.core.models.plm.PLM.Package} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class PackageItemProvider extends OwnedElementItemProvider {
@@ -58,12 +57,10 @@ public class PackageItemProvider extends OwnedElementItemProvider {
   }
 
   /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an
-   * appropriate feature for an {@link org.eclipse.emf.edit.command.AddCommand},
-   * {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -77,21 +74,19 @@ public class PackageItemProvider extends OwnedElementItemProvider {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   protected EStructuralFeature getChildFeature(Object object, Object child) {
-    // Check the type of the specified child object and return the proper feature to
-    // use for
+    // Check the type of the specified child object and return the proper feature to use for
     // adding (see {@link AddCommand}) it as a child.
 
     return super.getChildFeature(object, child);
   }
 
   /**
-   * This returns Package.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Package.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -100,24 +95,25 @@ public class PackageItemProvider extends OwnedElementItemProvider {
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String getText(Object object) {
 
-    String label = ((org.melanee.core.models.plm.PLM.Package) object).getName();
-    return label == null || label.length() == 0 ? getString("_UI_Package_type")
-        : getString("_UI_Package_type") + " " + label;
+
+    String label = ((org.melanee.core.models.plm.PLM.Package)object).getName();
+    return label == null || label.length() == 0 ?
+      getString("_UI_Package_type") :
+      getString("_UI_Package_type") + " " + label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update
-   * any cached children and by creating a viewer notification, which it passes to
-   * {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -125,39 +121,48 @@ public class PackageItemProvider extends OwnedElementItemProvider {
     updateChildren(notification);
 
     switch (notification.getFeatureID(org.melanee.core.models.plm.PLM.Package.class)) {
-    case PLMPackage.PACKAGE__CONTENT:
-      fireNotifyChanged(
-          new ViewerNotification(notification, notification.getNotifier(), true, false));
-      return;
+      case PLMPackage.PACKAGE__CONTENT:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
     }
     super.notifyChanged(notification);
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing
-   * the children that can be created under this object. <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
     super.collectNewChildDescriptors(newChildDescriptors, object);
 
-    newChildDescriptors.add(createChildParameter(PLMPackage.Literals.PACKAGE__CONTENT,
-        PLMFactory.eINSTANCE.createInheritance()));
+    newChildDescriptors.add
+      (createChildParameter
+        (PLMPackage.Literals.PACKAGE__CONTENT,
+         PLMFactory.eINSTANCE.createInheritance()));
 
-    newChildDescriptors.add(createChildParameter(PLMPackage.Literals.PACKAGE__CONTENT,
-        PLMFactory.eINSTANCE.createClassification()));
+    newChildDescriptors.add
+      (createChildParameter
+        (PLMPackage.Literals.PACKAGE__CONTENT,
+         PLMFactory.eINSTANCE.createClassification()));
 
-    newChildDescriptors.add(createChildParameter(PLMPackage.Literals.PACKAGE__CONTENT,
-        PLMFactory.eINSTANCE.createEntity()));
+    newChildDescriptors.add
+      (createChildParameter
+        (PLMPackage.Literals.PACKAGE__CONTENT,
+         PLMFactory.eINSTANCE.createEntity()));
 
-    newChildDescriptors.add(createChildParameter(PLMPackage.Literals.PACKAGE__CONTENT,
-        PLMFactory.eINSTANCE.createConnection()));
+    newChildDescriptors.add
+      (createChildParameter
+        (PLMPackage.Literals.PACKAGE__CONTENT,
+         PLMFactory.eINSTANCE.createConnection()));
 
-    newChildDescriptors.add(createChildParameter(PLMPackage.Literals.PACKAGE__CONTENT,
-        PLMFactory.eINSTANCE.createPackage()));
+    newChildDescriptors.add
+      (createChildParameter
+        (PLMPackage.Literals.PACKAGE__CONTENT,
+         PLMFactory.eINSTANCE.createPackage()));
   }
 
 }

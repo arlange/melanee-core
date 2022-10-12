@@ -14,7 +14,7 @@
          </property>
          <property
                name="aboutText"
-               value="Melanee - Multi-level Modeling and DeepModel Engineering Environment&#x0A;&#x0A;Version: 2.0.0&#x0A;&#x0A;(c) Copyright University of Mannheim and others 2010 - 2014.  All rights reserved.&#x0A;Visit http://melanee.org&#x0A;&#x0A;This product includes software developed by the&#x0A;Apache Software Foundation http://www.apache.org/&#x0A;&#x0A;Thanks to:&#x0A;Ralph Gerbig, Daniel Gritzner, Nikolai Hellwig, Colin Atkinson, Bastian Kennel">
+               value="Melanee - Multi-level Modeling and DeepModel Engineering Environment&#x0A;&#x0A;Version: 2.1.0&#x0A;&#x0A;(c) Copyright University of Mannheim and others 2010 - 2015.  All rights reserved.&#x0A;Visit http://melanee.org&#x0A;&#x0A;This product includes software developed by the&#x0A;Apache Software Foundation http://www.apache.org/&#x0A;&#x0A;Thanks to:&#x0A;Ralph Gerbig, Nicole Wesemeyer, Katharina Markert, Daniel Gritzner, Colin Atkinson, Bastian Kennel">
          </property>
          <property
                name="aboutImage"
@@ -23,10 +23,6 @@
          <property
                name="appName"
                value="Melanee">
-         </property>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
          </property>
          <property
                name="startupForegroundColor"
@@ -43,6 +39,10 @@
          <property
                name="cssTheme"
                value="org.eclipse.e4.ui.css.theme.e4_default">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
          </property>
       </product>
    </extension>

@@ -31,6 +31,8 @@ public class PreferenceConstants {
   public static final String P_ACTIVE_DSL_ENGINE = "dslService";
 
   public static final String P_ACTIVE_TEXTUAL_VISUALIZATION_ENGINE = "textualVisualizationService";
+  
+  public static final String P_ACTIVE_GRAMMAR_VISUALIZATION_ENGINE = "grammarVisualizationService";
 
   public static final String P_ACTIVE_FORM_VISUALIZATION_ENGINE = "formVisualizationService";
 

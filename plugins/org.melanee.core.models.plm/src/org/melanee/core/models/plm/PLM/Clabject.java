@@ -20,39 +20,27 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Clabject#getPotency
- * <em>Potency</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Clabject#getLevelIndex <em>Level
- * Index</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Clabject#getContent
- * <em>Content</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Clabject#getFeature
- * <em>Feature</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Clabject#getPotency <em>Potency</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Clabject#getLevelIndex <em>Level Index</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Clabject#getContent <em>Content</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Clabject#getFeature <em>Feature</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getClabject()
- * @model abstract="true" annotation="Comment level\040derrived='Element
- *        container = (this.eContainer() instanceof Element) ?
- *        (Element)this.eContainer() : null;\r\n\t\t\r\n\t\twhile ( (container
- *        != null) && !(container instanceof Level) )\r\n\t\t\tcontainer =
- *        (container.eContainer() instanceof Element) ?
- *        (Element)container.eContainer() : null;\r\n\t\tif (container ==
- *        null)\r\n\t\t\treturn -1;\r\n\t\treturn (container.eContainer()
- *        instanceof DeepModel) ?
- *        ((DeepModel)container.eContainer()).getLevels().indexOf(container) :
- *        -1;'"
+ * @model abstract="true"
+ *        annotation="Comment level\040derrived='Element container = (this.eContainer() instanceof Element) ? (Element)this.eContainer() : null;\r\n\t\t\r\n\t\twhile ( (container != null) &amp;&amp; !(container instanceof Level) )\r\n\t\t\tcontainer = (container.eContainer() instanceof Element) ? (Element)container.eContainer() : null;\r\n\t\tif (container == null)\r\n\t\t\treturn -1;\r\n\t\treturn (container.eContainer() instanceof DeepModel) ? ((DeepModel)container.eContainer()).getLevels().indexOf(container) : -1;'"
  * @generated
  */
 public interface Clabject extends OwnedElement {
   /**
-   * Returns the value of the '<em><b>Potency</b></em>' attribute. The default
-   * value is <code>"1"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Potency</b></em>' attribute.
+   * The default value is <code>"1"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Potency</em>' attribute isn't clear, there really
    * should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Potency</em>' attribute.
    * @see #setPotency(int)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getClabject_Potency()
@@ -62,12 +50,9 @@ public interface Clabject extends OwnedElement {
   int getPotency();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getPotency
-   * <em>Potency</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Potency</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Clabject#getPotency <em>Potency</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Potency</em>' attribute.
    * @see #getPotency()
    * @generated
    */
@@ -98,10 +83,8 @@ public interface Clabject extends OwnedElement {
   int getLevelIndex();
 
   /**
-   * Returns whether the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelIndex <em>Level
-   * Index</em>}' attribute is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns whether the value of the '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelIndex <em>Level Index</em>}' attribute is set.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return whether the value of the '<em>Level Index</em>' attribute is set.
    * @see #getLevelIndex()
    * @generated
@@ -109,15 +92,14 @@ public interface Clabject extends OwnedElement {
   boolean isSetLevelIndex();
 
   /**
-   * Returns the value of the '<em><b>Content</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.OwnedElement}. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Content</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.OwnedElement}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Content</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Content</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getClabject_Content()
    * @model containment="true"
@@ -126,15 +108,14 @@ public interface Clabject extends OwnedElement {
   EList<OwnedElement> getContent();
 
   /**
-   * Returns the value of the '<em><b>Feature</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.Feature}. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Feature</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.Feature}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Feature</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Feature</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getClabject_Feature()
    * @model containment="true"
@@ -763,7 +744,8 @@ public interface Clabject extends OwnedElement {
    *        then\r\n\tself.getTypes().getPossibleDomainSpecificVisualizers()->asSet()\r\nelse\r\n\tpossibleVisualizationOfLevelSupertypes\r\nendif'"
    * @generated
    */
-  EList<AbstractDSLVisualizer> getPossibleDomainSpecificVisualizers();
+  @Deprecated
+		EList<AbstractDSLVisualizer> getPossibleDomainSpecificVisualizers();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -852,7 +834,8 @@ public interface Clabject extends OwnedElement {
    *        = moniker).destination->asOrderedSet()\r\n)->asOrderedSet()'"
    * @generated
    */
-  EList<Clabject> getDomainForMoniker(String moniker);
+  @Deprecated
+		EList<Clabject> getDomainForMoniker(String moniker);
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->

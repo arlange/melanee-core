@@ -24,7 +24,6 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
 public abstract class CorrelationImpl extends OwnedElementImpl implements Correlation {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CorrelationImpl() {
@@ -33,7 +32,6 @@ public abstract class CorrelationImpl extends OwnedElementImpl implements Correl
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

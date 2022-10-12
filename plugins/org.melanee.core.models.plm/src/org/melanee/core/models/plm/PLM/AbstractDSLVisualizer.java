@@ -20,10 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#isInstanceLevel
- * <em>Instance Level</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#getNotation
- * <em>Notation</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#isInstanceLevel <em>Instance Level</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#getNotation <em>Notation</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getAbstractDSLVisualizer()
@@ -46,13 +44,10 @@ public interface AbstractDSLVisualizer extends EObject {
   boolean isInstanceLevel();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#isInstanceLevel
-   * <em>Instance Level</em>}' attribute. <!-- begin-user-doc --> <!--
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#isInstanceLevel <em>Instance Level</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Instance Level</em>' attribute.
+   * @param value the new value of the '<em>Instance Level</em>' attribute.
    * @see #isInstanceLevel()
    * @generated
    */
@@ -72,12 +67,9 @@ public interface AbstractDSLVisualizer extends EObject {
   String getNotation();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#getNotation
-   * <em>Notation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Notation</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#getNotation <em>Notation</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Notation</em>' attribute.
    * @see #getNotation()
    * @generated
    */

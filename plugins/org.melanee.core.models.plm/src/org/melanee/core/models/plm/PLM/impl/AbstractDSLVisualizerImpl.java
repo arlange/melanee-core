@@ -33,10 +33,8 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl#isInstanceLevel
- * <em>Instance Level</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl#getNotation
- * <em>Notation</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl#isInstanceLevel <em>Instance Level</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl#getNotation <em>Notation</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,9 +42,8 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
 public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Container
     implements AbstractDSLVisualizer {
   /**
-   * The default value of the '{@link #isInstanceLevel() <em>Instance Level</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #isInstanceLevel() <em>Instance Level</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #isInstanceLevel()
    * @generated
    * @ordered
@@ -54,9 +51,8 @@ public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Conta
   protected static final boolean INSTANCE_LEVEL_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isInstanceLevel() <em>Instance Level</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #isInstanceLevel() <em>Instance Level</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #isInstanceLevel()
    * @generated
    * @ordered
@@ -64,9 +60,8 @@ public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Conta
   protected boolean instanceLevel = INSTANCE_LEVEL_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getNotation() <em>Notation</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getNotation() <em>Notation</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getNotation()
    * @generated
    * @ordered
@@ -76,7 +71,6 @@ public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Conta
   /**
    * The cached value of the '{@link #getNotation() <em>Notation</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getNotation()
    * @generated
    * @ordered
@@ -85,7 +79,6 @@ public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Conta
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected AbstractDSLVisualizerImpl() {
@@ -94,7 +87,6 @@ public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Conta
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -104,7 +96,6 @@ public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Conta
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean isInstanceLevel() {
@@ -113,20 +104,17 @@ public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Conta
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setInstanceLevel(boolean newInstanceLevel) {
     boolean oldInstanceLevel = instanceLevel;
     instanceLevel = newInstanceLevel;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET,
-          PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL, oldInstanceLevel, instanceLevel));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL, oldInstanceLevel, instanceLevel));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getNotation() {
@@ -135,134 +123,123 @@ public abstract class AbstractDSLVisualizerImpl extends MinimalEObjectImpl.Conta
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setNotation(String newNotation) {
     String oldNotation = notation;
     notation = newNotation;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET,
-          PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION, oldNotation, notation));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION, oldNotation, notation));
   }
 
   /**
-   * The cached invocation delegate for the '{@link #format() <em>Format</em>}'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #format() <em>Format</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #format()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate FORMAT__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ABSTRACT_DSL_VISUALIZER___FORMAT)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate FORMAT__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ABSTRACT_DSL_VISUALIZER___FORMAT).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String format() {
     try {
-      return (String) FORMAT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)FORMAT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL:
-      return isInstanceLevel();
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION:
-      return getNotation();
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL:
+        return isInstanceLevel();
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION:
+        return getNotation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL:
-      setInstanceLevel((Boolean) newValue);
-      return;
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION:
-      setNotation((String) newValue);
-      return;
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL:
+        setInstanceLevel((Boolean)newValue);
+        return;
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION:
+        setNotation((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL:
-      setInstanceLevel(INSTANCE_LEVEL_EDEFAULT);
-      return;
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION:
-      setNotation(NOTATION_EDEFAULT);
-      return;
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL:
+        setInstanceLevel(INSTANCE_LEVEL_EDEFAULT);
+        return;
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION:
+        setNotation(NOTATION_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL:
-      return instanceLevel != INSTANCE_LEVEL_EDEFAULT;
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION:
-      return NOTATION_EDEFAULT == null ? notation != null : !NOTATION_EDEFAULT.equals(notation);
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL:
+        return instanceLevel != INSTANCE_LEVEL_EDEFAULT;
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER__NOTATION:
+        return NOTATION_EDEFAULT == null ? notation != null : !NOTATION_EDEFAULT.equals(notation);
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
     switch (operationID) {
-    case PLMPackage.ABSTRACT_DSL_VISUALIZER___FORMAT:
-      return format();
+      case PLMPackage.ABSTRACT_DSL_VISUALIZER___FORMAT:
+        return format();
     }
     return super.eInvoke(operationID, arguments);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString() {
-    if (eIsProxy())
-      return super.toString();
+    if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (instanceLevel: ");
     result.append(instanceLevel);
     result.append(", notation: ");

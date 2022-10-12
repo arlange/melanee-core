@@ -20,10 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Subtype#getSubtype
- * <em>Subtype</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Subtype#getInheritance
- * <em>Inheritance</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Subtype#getSubtype <em>Subtype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Subtype#getInheritance <em>Inheritance</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getSubtype()
@@ -49,12 +47,9 @@ public interface Subtype extends EObject {
   Clabject getSubtype();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Subtype#getSubtype <em>Subtype</em>}'
-   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Subtype</em>' reference.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Subtype#getSubtype <em>Subtype</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Subtype</em>' reference.
    * @see #getSubtype()
    * @generated
    */
@@ -62,15 +57,13 @@ public interface Subtype extends EObject {
 
   /**
    * Returns the value of the '<em><b>Inheritance</b></em>' container reference.
-   * It is bidirectional and its opposite is
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtype
-   * <em>Subtype</em>}'. <!-- begin-user-doc -->
+   * It is bidirectional and its opposite is '{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtype <em>Subtype</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Inheritance</em>' container reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Inheritance</em>' container reference.
    * @see #setInheritance(Inheritance)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getSubtype_Inheritance()
@@ -81,13 +74,10 @@ public interface Subtype extends EObject {
   Inheritance getInheritance();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Subtype#getInheritance
-   * <em>Inheritance</em>}' container reference. <!-- begin-user-doc --> <!--
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Subtype#getInheritance <em>Inheritance</em>}' container reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Inheritance</em>' container reference.
+   * @param value the new value of the '<em>Inheritance</em>' container reference.
    * @see #getInheritance()
    * @generated
    */

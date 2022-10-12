@@ -71,56 +71,74 @@ public class MultiplicityItemProvider extends ItemProviderAdapter
   }
 
   /**
-   * This adds a property descriptor for the Lower feature. <!-- begin-user-doc
+   * This adds a property descriptor for the Lower feature.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addLowerPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Multiplicity_lower_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_Multiplicity_lower_feature",
-            "_UI_Multiplicity_type"),
-        PLMPackage.Literals.MULTIPLICITY__LOWER, true, false, false,
-        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Multiplicity_lower_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Multiplicity_lower_feature", "_UI_Multiplicity_type"),
+         PLMPackage.Literals.MULTIPLICITY__LOWER,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This adds a property descriptor for the Upper feature. <!-- begin-user-doc
+   * This adds a property descriptor for the Upper feature.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addUpperPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Multiplicity_upper_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_Multiplicity_upper_feature",
-            "_UI_Multiplicity_type"),
-        PLMPackage.Literals.MULTIPLICITY__UPPER, true, false, false,
-        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Multiplicity_upper_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Multiplicity_upper_feature", "_UI_Multiplicity_type"),
+         PLMPackage.Literals.MULTIPLICITY__UPPER,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This adds a property descriptor for the Potency feature. <!-- begin-user-doc
+   * This adds a property descriptor for the Potency feature.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addPotencyPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Multiplicity_potency_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_Multiplicity_potency_feature",
-            "_UI_Multiplicity_type"),
-        PLMPackage.Literals.MULTIPLICITY__POTENCY, true, false, false,
-        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Multiplicity_potency_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Multiplicity_potency_feature", "_UI_Multiplicity_type"),
+         PLMPackage.Literals.MULTIPLICITY__POTENCY,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This returns Multiplicity.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Multiplicity.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -129,23 +147,23 @@ public class MultiplicityItemProvider extends ItemProviderAdapter
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String getText(Object object) {
 
-    Multiplicity multiplicity = (Multiplicity) object;
+
+    Multiplicity multiplicity = (Multiplicity)object;
     return getString("_UI_Multiplicity_type") + " " + multiplicity.getLower();
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update
-   * any cached children and by creating a viewer notification, which it passes to
-   * {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -153,21 +171,20 @@ public class MultiplicityItemProvider extends ItemProviderAdapter
     updateChildren(notification);
 
     switch (notification.getFeatureID(Multiplicity.class)) {
-    case PLMPackage.MULTIPLICITY__LOWER:
-    case PLMPackage.MULTIPLICITY__UPPER:
-    case PLMPackage.MULTIPLICITY__POTENCY:
-      fireNotifyChanged(
-          new ViewerNotification(notification, notification.getNotifier(), false, true));
-      return;
+      case PLMPackage.MULTIPLICITY__LOWER:
+      case PLMPackage.MULTIPLICITY__UPPER:
+      case PLMPackage.MULTIPLICITY__POTENCY:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
     }
     super.notifyChanged(notification);
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing
-   * the children that can be created under this object. <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

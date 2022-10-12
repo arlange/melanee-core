@@ -20,14 +20,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertype
- * <em>Supertype</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtype
- * <em>Subtype</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getDisjoint
- * <em>Disjoint</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getComplete
- * <em>Complete</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertype <em>Supertype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtype <em>Subtype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getDisjoint <em>Disjoint</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getComplete <em>Complete</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getInheritance()
@@ -36,18 +32,15 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Inheritance extends Correlation {
   /**
-   * Returns the value of the '<em><b>Supertype</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.Supertype}. It is bidirectional and
-   * its opposite is
-   * '{@link org.melanee.core.models.plm.PLM.Supertype#getInheritance
-   * <em>Inheritance</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Supertype</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.Supertype}.
+   * It is bidirectional and its opposite is '{@link org.melanee.core.models.plm.PLM.Supertype#getInheritance <em>Inheritance</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Supertype</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Supertype</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getInheritance_Supertype()
    * @see org.melanee.core.models.plm.PLM.Supertype#getInheritance
@@ -57,17 +50,15 @@ public interface Inheritance extends Correlation {
   EList<Supertype> getSupertype();
 
   /**
-   * Returns the value of the '<em><b>Subtype</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.Subtype}. It is bidirectional and its
-   * opposite is '{@link org.melanee.core.models.plm.PLM.Subtype#getInheritance
-   * <em>Inheritance</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Subtype</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.Subtype}.
+   * It is bidirectional and its opposite is '{@link org.melanee.core.models.plm.PLM.Subtype#getInheritance <em>Inheritance</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Subtype</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Subtype</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getInheritance_Subtype()
    * @see org.melanee.core.models.plm.PLM.Subtype#getInheritance
@@ -94,12 +85,9 @@ public interface Inheritance extends Correlation {
   Boolean getDisjoint();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#getDisjoint
-   * <em>Disjoint</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Disjoint</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Inheritance#getDisjoint <em>Disjoint</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Disjoint</em>' attribute.
    * @see #getDisjoint()
    * @generated
    */
@@ -123,12 +111,9 @@ public interface Inheritance extends Correlation {
   Boolean getComplete();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#getComplete
-   * <em>Complete</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Complete</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Inheritance#getComplete <em>Complete</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Complete</em>' attribute.
    * @see #getComplete()
    * @generated
    */

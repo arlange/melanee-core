@@ -9,7 +9,7 @@
 	<relativePath>../</relativePath>
   </parent>
   <groupId>org.melanee.tycho.build</groupId>
-  <artifactId>core-4.17</artifactId>
+  <artifactId>core-4.6</artifactId>
   <version>2.0.0-SNAPSHOT</version>
   <packaging>eclipse-target-definition</packaging>
 </project>

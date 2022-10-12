@@ -20,10 +20,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.DeepModel#getContent
- * <em>Content</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.DeepModel#getEnumeration
- * <em>Enumeration</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.DeepModel#getContent <em>Content</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.DeepModel#getEnumeration <em>Enumeration</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getDeepModel()
@@ -32,15 +30,14 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface DeepModel extends Element {
   /**
-   * Returns the value of the '<em><b>Content</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.Level}. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Content</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.Level}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Content</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Content</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getDeepModel_Content()
    * @model containment="true"
@@ -49,15 +46,14 @@ public interface DeepModel extends Element {
   EList<Level> getContent();
 
   /**
-   * Returns the value of the '<em><b>Enumeration</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.Enumeration}. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Enumeration</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.Enumeration}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Enumeration</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Enumeration</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getDeepModel_Enumeration()
    * @model containment="true"

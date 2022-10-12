@@ -20,12 +20,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Parameter#getName
- * <em>Name</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Parameter#getExpression
- * <em>Expression</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Parameter#isOutput
- * <em>Output</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Parameter#getName <em>Name</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Parameter#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Parameter#isOutput <em>Output</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getParameter()
@@ -51,12 +48,9 @@ public interface Parameter extends EObject {
   String getName();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Parameter#getName <em>Name</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Name</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Parameter#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */
@@ -93,14 +87,14 @@ public interface Parameter extends EObject {
   void setExpression(String value);
 
   /**
-   * Returns the value of the '<em><b>Output</b></em>' attribute. The default
-   * value is <code>"false"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Output</b></em>' attribute.
+   * The default value is <code>"false"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Output</em>' attribute isn't clear, there really
    * should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Output</em>' attribute.
    * @see #setOutput(boolean)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getParameter_Output()
@@ -110,12 +104,9 @@ public interface Parameter extends EObject {
   boolean isOutput();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Parameter#isOutput <em>Output</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Output</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Parameter#isOutput <em>Output</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Output</em>' attribute.
    * @see #isOutput()
    * @generated
    */

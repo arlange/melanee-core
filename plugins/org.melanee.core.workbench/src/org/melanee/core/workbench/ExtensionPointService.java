@@ -1,12 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2011 - 2015 University of Mannheim: Chair for Software Engineering
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
+ * Copyright (c) 2011 - 2015 University of Mannheim: Chair for Software Engineering All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v1.0 which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors:
- *    Ralph Gerbig - initial API and implementation and initial documentation
+ * Contributors: Ralph Gerbig - initial API and implementation and initial documentation
  *******************************************************************************/
 package org.melanee.core.workbench;
 
@@ -14,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
@@ -24,11 +21,12 @@ import org.eclipse.ui.statushandlers.StatusManager;
 import org.melanee.core.workbench.interfaces.IApplicationVisualizationService;
 import org.melanee.core.workbench.interfaces.IConstraintLanguageService;
 import org.melanee.core.workbench.interfaces.IDSLService;
+import org.melanee.core.workbench.interfaces.IDesignationService;
 import org.melanee.core.workbench.interfaces.IEmendationService;
 import org.melanee.core.workbench.interfaces.IFormVisualizationService;
+import org.melanee.core.workbench.interfaces.IGrammarVisualizationService;
 import org.melanee.core.workbench.interfaces.IGraphicalVisualizationService;
 import org.melanee.core.workbench.interfaces.IPopupToolBarProvider;
-import org.melanee.core.workbench.interfaces.IDesignationService;
 import org.melanee.core.workbench.interfaces.IReasoningService;
 import org.melanee.core.workbench.interfaces.ITableVisualizationService;
 import org.melanee.core.workbench.interfaces.ITextualVisualizationService;
@@ -37,24 +35,29 @@ import org.melanee.core.workbench.preferences.PreferenceConstants;
 import org.melanee.core.workbench.status.MelaneeWorkbenchStatus;
 
 /**
- * This class manages loading extension points. Call Instance() to get an
- * instance of this class.
+ * This class manages loading extension points. Call Instance() to get an instance of this class.
  *
  */
 public class ExtensionPointService {
 
   private final static String TEXTUAL_VISUALIZATION_SERVICE_ID = "org.melanee.core.textdsl.service";
-  private final static String GRAPHICAL_VISUALIZATION_SERVICE_ID = "org.melanee.core.graphdsl.service";
-  private final static String APPLICATION_VISUALIZATION_SERVICE_ID = "org.melanee.core.appdsl.service";
+  private final static String GRAPHICAL_VISUALIZATION_SERVICE_ID =
+      "org.melanee.core.graphdsl.service";
+  private final static String APPLICATION_VISUALIZATION_SERVICE_ID =
+      "org.melanee.core.appdsl.service";
   private final static String VALIDATION_SERVICE_ID = "org.melanee.core.validation.service";
-  private final static String CONSTRAINT_LANGUAGE_SERVICE_ID = "org.melanee.core.constraintlanguage.service";
+  private final static String CONSTRAINT_LANGUAGE_SERVICE_ID =
+      "org.melanee.core.constraintlanguage.service";
   private final static String REASONING_SERVICE_ID = "org.melanee.core.reasoning.service";
   private final static String EMENDATION_SERVICE_ID = "org.melanee.core.emendation.service";
   private final static String DESIGNATION_SERVICE_ID = "org.melanee.core.designation.service";
   private final static String DSL_SERVICE_ID = "org.melanee.core.dsl.service";
-  private final static String POPUPBARBUTTON_PROVIDER_ID = "org.melanee.core.popupbarbuttons.provider";
+  private final static String POPUPBARBUTTON_PROVIDER_ID =
+      "org.melanee.core.popupbarbuttons.provider";
   private final static String FORM_VISUALIZATION_SERVICE_ID = "org.melanee.core.formdsl.service";
   private final static String TABLE_VISUALIZATION_SERVICE_ID = "org.melanee.core.tabledsl.service";
+  private final static String GRAMMAR_VISUALIZATION_SERVICE_ID =
+      "org.melanee.core.grammarware.service";
 
   private static ExtensionPointService instance = null;
 
@@ -71,6 +74,21 @@ public class ExtensionPointService {
    * Cache for Graphical Visualization Instances
    */
   private static Map<String, IGraphicalVisualizationService> id2GraphicalVisualizationServiceInstance;
+
+
+  /**
+   * Cache for Grammar Visualization IConfigurationElements
+   */
+  private static Map<String, IConfigurationElement> id2GrammarVisualizationServiceConfigurationElement;
+
+  public Map<String, IConfigurationElement> getId2GrammarVisualizationServiceConfigurationElement() {
+    return id2GrammarVisualizationServiceConfigurationElement;
+  }
+
+  /**
+   * Cache for Grammar Visualization Instances
+   */
+  private static Map<String, IGrammarVisualizationService> id2GrammarVisualizationServiceInstance;
 
   /**
    * Cache for Textual Visualization IConfigurationElements
@@ -194,7 +212,7 @@ public class ExtensionPointService {
   }
 
   /**
-   * Cache for IValidarionService Instances
+   * Cache for IValidationService Instances
    */
   private static Map<String, IValidationService> id2IValidationServiceInstance;
 
@@ -252,11 +270,18 @@ public class ExtensionPointService {
     id2TableVisualizationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
     id2TableVisualizationServiceInstance = new HashMap<String, ITableVisualizationService>();
 
-    id2TextualVisualizationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
+    id2TextualVisualizationServiceConfigurationElement =
+        new HashMap<String, IConfigurationElement>();
     id2TextualVisualizationServiceInstance = new HashMap<String, ITextualVisualizationService>();
 
-    id2GraphicalVisualizationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
-    id2GraphicalVisualizationServiceInstance = new HashMap<String, IGraphicalVisualizationService>();
+    id2GrammarVisualizationServiceConfigurationElement =
+        new HashMap<String, IConfigurationElement>();
+    id2GrammarVisualizationServiceInstance = new HashMap<String, IGrammarVisualizationService>();
+
+    id2GraphicalVisualizationServiceConfigurationElement =
+        new HashMap<String, IConfigurationElement>();
+    id2GraphicalVisualizationServiceInstance =
+        new HashMap<String, IGraphicalVisualizationService>();
 
     id2ReasoningServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
     id2ReasoningServiceInstance = new HashMap<String, IReasoningService>();
@@ -276,22 +301,25 @@ public class ExtensionPointService {
     id2IValidationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
     id2IValidationServiceInstance = new HashMap<String, IValidationService>();
 
-    id2IConstraintLanguageServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
+    id2IConstraintLanguageServiceConfigurationElement =
+        new HashMap<String, IConfigurationElement>();
     id2IConstraintLanguageServiceInstance = new HashMap<String, IConstraintLanguageService>();
 
-    id2IApplicationVisualizationServiceConfigurationElement = new HashMap<String, IConfigurationElement>();
-    id2IApplicationVisualizationServiceInstance = new HashMap<String, IApplicationVisualizationService>();
+    id2IApplicationVisualizationServiceConfigurationElement =
+        new HashMap<String, IConfigurationElement>();
+    id2IApplicationVisualizationServiceInstance =
+        new HashMap<String, IApplicationVisualizationService>();
 
     // Initialize the form visualization service
-    IConfigurationElement[] configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(FORM_VISUALIZATION_SERVICE_ID);
+    IConfigurationElement[] configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(FORM_VISUALIZATION_SERVICE_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2FormVisualizationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 
     // Initialize the table visualization service
-    configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(TABLE_VISUALIZATION_SERVICE_ID);
+    configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(TABLE_VISUALIZATION_SERVICE_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2TableVisualizationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
@@ -303,6 +331,13 @@ public class ExtensionPointService {
     for (IConfigurationElement cElement : configurationElements)
       id2TextualVisualizationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 
+    // Initialize the grammar visualization service
+    configurationElements = Platform.getExtensionRegistry()
+        .getConfigurationElementsFor(GRAMMAR_VISUALIZATION_SERVICE_ID);
+
+    for (IConfigurationElement cElement : configurationElements)
+      id2GrammarVisualizationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
+
     // Initialize the graphical visualization service
     configurationElements = Platform.getExtensionRegistry()
         .getConfigurationElementsFor(GRAPHICAL_VISUALIZATION_SERVICE_ID);
@@ -312,50 +347,50 @@ public class ExtensionPointService {
           cElement);
 
     // Initialize the reasoning service
-    configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(REASONING_SERVICE_ID);
+    configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(REASONING_SERVICE_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2ReasoningServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 
     // Initialize the refactoring service
-    configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(EMENDATION_SERVICE_ID);
+    configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(EMENDATION_SERVICE_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2EmendationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 
     // Initialize the designation indication service
-    configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(DESIGNATION_SERVICE_ID);
+    configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(DESIGNATION_SERVICE_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2DesignationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 
     // Initialize the DSL service
-    configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(DSL_SERVICE_ID);
+    configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(DSL_SERVICE_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2DSLServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 
     // Initialize the popup bar service
-    configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(POPUPBARBUTTON_PROVIDER_ID);
+    configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(POPUPBARBUTTON_PROVIDER_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2IPopupToolBarProviderConfigurationElement.put(cElement.getAttribute("id"), cElement);
 
     // Initialize the validation service
-    configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(VALIDATION_SERVICE_ID);
+    configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(VALIDATION_SERVICE_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2IValidationServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
 
     // Initialize the constraint language service
-    configurationElements = Platform.getExtensionRegistry()
-        .getConfigurationElementsFor(CONSTRAINT_LANGUAGE_SERVICE_ID);
+    configurationElements =
+        Platform.getExtensionRegistry().getConfigurationElementsFor(CONSTRAINT_LANGUAGE_SERVICE_ID);
 
     for (IConfigurationElement cElement : configurationElements)
       id2IConstraintLanguageServiceConfigurationElement.put(cElement.getAttribute("id"), cElement);
@@ -370,13 +405,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Form Visualization Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance. Returns null in case that an
-   * empty string or null is provided as id.
+   * Returns an instance of the Form Visualization Service. For performance improvements two caches
+   * are used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the visualization service
    * 
@@ -407,9 +440,9 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active instance of the Form Visualization Service. For
-   * performance improvements two caches are used. One to cache the
-   * IConfigurationElements and one to cache the visualization service instance.
+   * Returns the active instance of the Form Visualization Service. For performance improvements two
+   * caches are used. One to cache the IConfigurationElements and one to cache the visualization
+   * service instance.
    *
    * 
    * @return A cached instance of the visualization service
@@ -424,13 +457,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Table Visualization Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance. Returns null in case that an
-   * empty string or null is provided as id.
+   * Returns an instance of the Table Visualization Service. For performance improvements two caches
+   * are used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the visualization service
    * 
@@ -461,9 +492,9 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active instance of the Form Visualization Service. For
-   * performance improvements two caches are used. One to cache the
-   * IConfigurationElements and one to cache the visualization service instance.
+   * Returns the active instance of the Form Visualization Service. For performance improvements two
+   * caches are used. One to cache the IConfigurationElements and one to cache the visualization
+   * service instance.
    *
    * 
    * @return A cached instance of the visualization service
@@ -478,13 +509,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Textual Visualization Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance. Returns null in case that an
-   * empty string or null is provided as id.
+   * Returns an instance of the Textual Visualization Service. For performance improvements two
+   * caches are used. One to cache the IConfigurationElements and one to cache the visualization
+   * service instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the visualization service
    * 
@@ -507,8 +536,9 @@ public class ExtensionPointService {
         return null;
       }
 
-      transformator = (ITextualVisualizationService) id2TextualVisualizationServiceConfigurationElement
-          .get(id).createExecutableExtension("class");
+      transformator =
+          (ITextualVisualizationService) id2TextualVisualizationServiceConfigurationElement.get(id)
+              .createExecutableExtension("class");
       id2TextualVisualizationServiceInstance.put(id, transformator);
     }
 
@@ -516,9 +546,9 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active instance of the Textual Visualization Service. For
-   * performance improvements two caches are used. One to cache the
-   * IConfigurationElements and one to cache the visualization service instance.
+   * Returns the active instance of the Textual Visualization Service. For performance improvements
+   * two caches are used. One to cache the IConfigurationElements and one to cache the visualization
+   * service instance.
    *
    * 
    * @return A cached instance of the visualization service
@@ -533,13 +563,66 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Visualization Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance. Returns null in case that an
-   * empty string or null is provided as id.
+   * Returns an instance of the Grammar Visualization Service. For performance improvements two
+   * caches are used. One to cache the IConfigurationElements and one to cache the visualization
+   * service instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
+   * 
+   * @return A cached instance of the visualization service
+   * 
+   * @throws CoreException
+   */
+  public IGrammarVisualizationService getGrammarVisualizationService(String id)
+      throws CoreException {
+    IGrammarVisualizationService transformator = id2GrammarVisualizationServiceInstance.get(id);
+
+    if (id == null || id.length() == 0)
+      return null;
+
+    if (transformator == null) {
+      if (id2GrammarVisualizationServiceConfigurationElement.get(id) == null) {
+        String message = MelaneeWorkbenchStatus.CANNOT_FIND_PLUGIN_MESSAGE + id;
+        StatusManager.getManager()
+            .handle(new MelaneeWorkbenchStatus(IStatus.ERROR,
+                MelaneeWorkbenchStatus.CANNOT_FIND_PLUGIN, message, null, Activator.PLUGIN_ID),
+                StatusManager.LOG);
+        return null;
+      }
+
+      transformator =
+          (IGrammarVisualizationService) id2GrammarVisualizationServiceConfigurationElement.get(id)
+              .createExecutableExtension("class");
+      id2GrammarVisualizationServiceInstance.put(id, transformator);
+    }
+
+    return transformator;
+  }
+
+  /**
+   * Returns the active instance of the Textual Visualization Service. For performance improvements
+   * two caches are used. One to cache the IConfigurationElements and one to cache the visualization
+   * service instance.
+   *
+   * 
+   * @return A cached instance of the visualization service
+   * 
+   * @throws CoreException
+   */
+  public IGrammarVisualizationService getActiveGrammarVisualizationService() throws CoreException {
+    IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+
+    return getGrammarVisualizationService(
+        store.getString(PreferenceConstants.P_ACTIVE_GRAMMAR_VISUALIZATION_ENGINE));
+  }
+
+
+  /**
+   * Returns an instance of the Visualization Service. For performance improvements two caches are
+   * used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance. Returns null in case that an empty string or null is provided as id.
+   * 
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the visualization service
    * 
@@ -562,8 +645,9 @@ public class ExtensionPointService {
         return null;
       }
 
-      transformator = (IGraphicalVisualizationService) id2GraphicalVisualizationServiceConfigurationElement
-          .get(id).createExecutableExtension("class");
+      transformator =
+          (IGraphicalVisualizationService) id2GraphicalVisualizationServiceConfigurationElement
+              .get(id).createExecutableExtension("class");
       id2GraphicalVisualizationServiceInstance.put(id, transformator);
     }
 
@@ -571,9 +655,9 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active instance of the Visualization Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance.
+   * Returns the active instance of the Visualization Service. For performance improvements two
+   * caches are used. One to cache the IConfigurationElements and one to cache the visualization
+   * service instance.
    *
    * 
    * @return A cached instance of the visualization service
@@ -589,13 +673,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Reasoning Service. For performance improvements
-   * two caches are used. One to cache the IConfigurationElements and one to cache
-   * the visualization service instance. Returns null in case that an empty string
-   * or null is provided as id.
+   * Returns an instance of the Reasoning Service. For performance improvements two caches are used.
+   * One to cache the IConfigurationElements and one to cache the visualization service instance.
+   * Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
@@ -626,9 +708,8 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active Reasoning Service. For performance improvements two caches
-   * are used. One to cache the IConfigurationElements and one to cache the
-   * visualization service instance.
+   * Returns the active Reasoning Service. For performance improvements two caches are used. One to
+   * cache the IConfigurationElements and one to cache the visualization service instance.
    * 
    * 
    * @return A cached instance of the reasoning service
@@ -638,19 +719,17 @@ public class ExtensionPointService {
   public IReasoningService getActiveReasoningService() throws CoreException {
     IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 
-    IReasoningService reasoner = getReasoningService(
-        store.getString(PreferenceConstants.P_ACTIVE_REASONING_ENGINE));
+    IReasoningService reasoner =
+        getReasoningService(store.getString(PreferenceConstants.P_ACTIVE_REASONING_ENGINE));
     return reasoner != null ? reasoner.Instance() : null;
   }
 
   /**
-   * Returns an instance of the Refactoring Service. For performance improvements
-   * two caches are used. One to cache the IConfigurationElements and one to cache
-   * the visualization service instance. Returns null in case that an empty string
-   * or null is provided as id.
+   * Returns an instance of the Refactoring Service. For performance improvements two caches are
+   * used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
@@ -681,12 +760,10 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active Refactoring Service. For performance improvements two
-   * caches are used. One to cache the IConfigurationElements and one to cache the
-   * visualization service instance.
+   * Returns the active Refactoring Service. For performance improvements two caches are used. One
+   * to cache the IConfigurationElements and one to cache the visualization service instance.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
@@ -699,13 +776,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Designation Service. For performance improvements
-   * two caches are used. One to cache the IConfigurationElements and one to cache
-   * the visualization service instance. Returns null in case that an empty string
-   * or null is provided as id.
+   * Returns an instance of the Designation Service. For performance improvements two caches are
+   * used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
@@ -736,12 +811,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active Designation Indication Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance.
+   * Returns the active Designation Indication Service. For performance improvements two caches are
+   * used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
@@ -754,13 +828,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the DSL Service. For performance improvements two
-   * caches are used. One to cache the IConfigurationElements and one to cache the
-   * visualization service instance. Returns null in case that an empty string or
-   * null is provided as id.
+   * Returns an instance of the DSL Service. For performance improvements two caches are used. One
+   * to cache the IConfigurationElements and one to cache the visualization service instance.
+   * Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
@@ -791,12 +863,10 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active DSL Service. For performance improvements two caches are
-   * used. One to cache the IConfigurationElements and one to cache the
-   * visualization service instance.
+   * Returns the active DSL Service. For performance improvements two caches are used. One to cache
+   * the IConfigurationElements and one to cache the visualization service instance.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
@@ -809,13 +879,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the PopupBarButtonProvider. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance. Returns null in case that an
-   * empty string or null is provided as id.
+   * Returns an instance of the PopupBarButtonProvider. For performance improvements two caches are
+   * used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
@@ -846,20 +914,19 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns instances of all PopupBarButtonProvider. For performance improvements
-   * two caches are used. One to cache the IConfigurationElements and one to cache
-   * the visualization service instance.
+   * Returns instances of all PopupBarButtonProvider. For performance improvements two caches are
+   * used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the reasoning service
    * 
    * @throws CoreException
    */
   public List<IPopupToolBarProvider> getAllPopUpBarButtonProvider() throws CoreException {
-    List<IPopupToolBarProvider> popupBarToolProviders = new ArrayList<IPopupToolBarProvider>(
-        id2IPopupToolBarProviderInstance.keySet().size());
+    List<IPopupToolBarProvider> popupBarToolProviders =
+        new ArrayList<IPopupToolBarProvider>(id2IPopupToolBarProviderInstance.keySet().size());
 
     for (String id : id2IPopupToolBarProviderConfigurationElement.keySet()) {
       popupBarToolProviders.add(getPopUpBarButtonProvider(id));
@@ -869,13 +936,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Visualization Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance. Returns null in case that an
-   * empty string or null is provided as id.
+   * Returns an instance of the Visualization Service. For performance improvements two caches are
+   * used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the visualization service
    * 
@@ -906,9 +971,9 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active instance of the Validation Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the validation service instance.
+   * Returns the active instance of the Validation Service. For performance improvements two caches
+   * are used. One to cache the IConfigurationElements and one to cache the validation service
+   * instance.
    *
    * 
    * @return A cached instance of the visualization service
@@ -922,13 +987,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Visualization Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance. Returns null in case that an
-   * empty string or null is provided as id.
+   * Returns an instance of the Visualization Service. For performance improvements two caches are
+   * used. One to cache the IConfigurationElements and one to cache the visualization service
+   * instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the visualization service
    * 
@@ -950,8 +1013,9 @@ public class ExtensionPointService {
         return null;
       }
 
-      languageService = (IConstraintLanguageService) id2IConstraintLanguageServiceConfigurationElement
-          .get(id).createExecutableExtension("class");
+      languageService =
+          (IConstraintLanguageService) id2IConstraintLanguageServiceConfigurationElement.get(id)
+              .createExecutableExtension("class");
       id2IConstraintLanguageServiceInstance.put(id, languageService);
     }
 
@@ -959,9 +1023,9 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active instance of the Validation Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the validation service instance.
+   * Returns the active instance of the Validation Service. For performance improvements two caches
+   * are used. One to cache the IConfigurationElements and one to cache the validation service
+   * instance.
    *
    * 
    * @return A cached instance of the visualization service
@@ -976,13 +1040,11 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns an instance of the Application Visualization Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the visualization service instance. Returns null in case that an
-   * empty string or null is provided as id.
+   * Returns an instance of the Application Visualization Service. For performance improvements two
+   * caches are used. One to cache the IConfigurationElements and one to cache the visualization
+   * service instance. Returns null in case that an empty string or null is provided as id.
    * 
-   * @param id
-   *          ID of the registered extension point
+   * @param id ID of the registered extension point
    * 
    * @return A cached instance of the visualization service
    * 
@@ -990,8 +1052,8 @@ public class ExtensionPointService {
    */
   public IApplicationVisualizationService getApplicationVisualizationService(String id)
       throws CoreException {
-    IApplicationVisualizationService appVisualizer = id2IApplicationVisualizationServiceInstance
-        .get(id);
+    IApplicationVisualizationService appVisualizer =
+        id2IApplicationVisualizationServiceInstance.get(id);
 
     if (id == null || id.length() == 0)
       return null;
@@ -1006,8 +1068,9 @@ public class ExtensionPointService {
         return null;
       }
 
-      appVisualizer = (IApplicationVisualizationService) id2IApplicationVisualizationServiceConfigurationElement
-          .get(id).createExecutableExtension("class");
+      appVisualizer =
+          (IApplicationVisualizationService) id2IApplicationVisualizationServiceConfigurationElement
+              .get(id).createExecutableExtension("class");
       id2IApplicationVisualizationServiceInstance.put(id, appVisualizer);
     }
 
@@ -1015,9 +1078,9 @@ public class ExtensionPointService {
   }
 
   /**
-   * Returns the active instance of the Validation Service. For performance
-   * improvements two caches are used. One to cache the IConfigurationElements and
-   * one to cache the validation service instance.
+   * Returns the active instance of the Validation Service. For performance improvements two caches
+   * are used. One to cache the IConfigurationElements and one to cache the validation service
+   * instance.
    *
    * 
    * @return A cached instance of the visualization service

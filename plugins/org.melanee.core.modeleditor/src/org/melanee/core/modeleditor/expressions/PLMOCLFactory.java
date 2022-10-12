@@ -33,6 +33,9 @@ import org.melanee.core.modeleditor.part.PLMDiagramEditorPlugin;
  * @generated
  */
 public class PLMOCLFactory {
+	//This is the parsingOrder initializer
+	//"-- This is needed to prevent setting a if one was already set at creation of the semantic model element\r\n-- This can happen when changing values through the refactoring service during creation\r\nlet attribute : ecore::EAttribute =\r\n\tself.oclAsType(ecore::EObject).eClass().eAllAttributes->select(a | a.name = \'parsingOrder\')->first().oclAsType(ecore::EAttribute)\r\nin\r\nlet isSet:Boolean = \r\n\tself.oclAsType(ecore::EObject).eIsSet(attribute)\r\nin\r\n\r\nif (not isSet) then\r\n\t 0 \r\n-- If set use the old value\r\nelse\r\n\tself.parsingOrder\r\nendif", //$NON-NLS-1$
+    
 
   /**
    * @generated
@@ -102,6 +105,7 @@ public class PLMOCLFactory {
         "--A participation has no visualizer yet\r\n--let renderingInformationAvailable:Boolean = \r\n--\tif (self.visualizer->size() > 0) then\r\n--\t\ttrue\r\n--\telse\r\n--\t\tfalse\r\n--\tendif\r\n--in\r\n\r\n--is a visualizer present?\r\n--let visualizer:LMLVisualizer =\r\n--\tif (renderingInformationAvailable)\tthen\r\n--\t\tself.visualizer->first()\r\n--\telse\r\n--\t\tnull\r\n--\tendif\r\n--in\r\n\r\n--here for the DSL mode needs to be checked\r\nlet multiplicityPotency:Boolean = true\r\n--\tif (renderingInformationAvailable) then\r\n--\t\tvisualizer.getValueForKey(\'potency\') = \'max\' \r\n--\t\t\tor \r\n--\t\t(visualizer.getValueForKey(\'potency\') = \'default\') and (self.potency <> 1)\r\n--\telse\r\n--\t\ttrue\r\n--\tendif\r\nin\r\n\r\n--If lower is null we do not want to show anything in the label\r\nlet lowerIsNull:Boolean = self.lower.oclIsUndefined() in\r\n\r\nlet lowerString:String = if (self.lower > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(\r\n            denominator : Integer;\r\n            s : String = \'\'|\r\n            let numberAsString : String = OrderedSet{\r\n                    \'0\',\'1\',\'2\',\'3\',\'4\',\'5\',\'6\',\'7\',\'8\',\'9\'\r\n                }->at(self.lower.div(denominator).mod(10) + 1)\r\n            in\r\n                if s=\'\' and numberAsString = \'0\' then\r\n                    s\r\n                else\r\n                    s.concat(numberAsString)\r\n                endif\r\n        )\r\n\telse \r\n\t\tif (self.lower = 0) then\r\n\t\t\t\'0\'\r\n\t\telse\r\n\t\t\t\'*\'\r\n\t\tendif\r\n\tendif\r\nin\r\n\r\nlet upperString:String = if (self.upper > 0) then OrderedSet{1000000, 10000, 1000, 100, 10, 1}->iterate(\r\n            denominator : Integer;\r\n            s : String = \'\'|\r\n            let numberAsString : String = OrderedSet{\r\n                    \'0\',\'1\',\'2\',\'3\',\'4\',\'5\',\'6\',\'7\',\'8\',\'9\'\r\n                }->at(self.upper.div(denominator).mod(10) + 1)\r\n            in\r\n                if s=\'\' and numberAsString = \'0\' then\r\n                    s\r\n                else\r\n                    s.concat(numberAsString)\r\n                endif\r\n        )\r\n\telse \r\n\t\tif (self.upper = 0) then\r\n\t\t\t\'0\'\r\n\t\telse\r\n\t\t\t\'*\'\r\n\t\tendif\r\n\tendif\r\nin\r\n\r\nif (not lowerIsNull) then\r\n\tif (self.lower = 0 and self.upper = -1) then\r\n\t\t\'*\'\r\n\telse\r\n\t\tif (self.lower = self.upper) then\r\n\t\t\tself.lower\r\n\t\telse\r\n\t\t\tlowerString.concat(\'..\').concat(upperString)\r\n\t\tendif\r\n\tendif\r\nelse\r\n\t\'\'\r\nendif", //$NON-NLS-1$
         "self.levelIndex = oppositeEnd.levelIndex", //$NON-NLS-1$
         "true", //$NON-NLS-1$
+        
     };
   }
 

@@ -20,36 +20,25 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Connection#getConnectionEnd
- * <em>Connection End</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Connection#getConnectionEnd <em>Connection End</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getConnection()
- * @model annotation="Comment Unique\040Workaround='if (this.participant ==
- *        null) {\r\n\t\t this.participant = new
- *        EObjectResolvingEList<Clabject>(Clabject.class, this,\r\n\t\t
- *        \t\tPLMPackage.DOMAIN_CONNECTION__PARTICIPANT)
- *        {\r\n\t\t @Override\r\n\t\t protected boolean isUnique() {\r\n\t\t
- *        return false;\r\n\t\t }\r\n\t\t };\r\n\t\t }\r\n\t\t return
- *        this.participant;'"
+ * @model annotation="Comment Unique\040Workaround='if (this.participant == null) {\r\n\t\t    this.participant = new EObjectResolvingEList&lt;Clabject&gt;(Clabject.class, this,\r\n\t\t    \t\tPLMPackage.DOMAIN_CONNECTION__PARTICIPANT) {\r\n\t\t      @Override\r\n\t\t      protected boolean isUnique() {\r\n\t\t        return false;\r\n\t\t      }\r\n\t\t    };\r\n\t\t  }\r\n\t\t  return this.participant;'"
  * @generated
  */
 public interface Connection extends Clabject {
   /**
-   * Returns the value of the '<em><b>Connection End</b></em>' containment
-   * reference list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.ConnectionEnd}. It is bidirectional
-   * and its opposite is
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection
-   * <em>Connection</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Connection End</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.ConnectionEnd}.
+   * It is bidirectional and its opposite is '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection <em>Connection</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Connection End</em>' containment reference list
    * isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
-   * @return the value of the '<em>Connection End</em>' containment reference
-   *         list.
+   * @return the value of the '<em>Connection End</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getConnection_ConnectionEnd()
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection
    * @model opposite="connection" containment="true"

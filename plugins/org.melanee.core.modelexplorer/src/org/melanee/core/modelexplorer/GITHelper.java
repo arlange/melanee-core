@@ -45,7 +45,7 @@ public class GITHelper {
           .call();
       this.repository = result.getRepository();// builder.setGitDir(new File(cacheLocation +
                                                // "/.git")).readEnvironment().findGitDir().build();
-      this.headRef = repository.exactRef("HEAD");
+      this.headRef = repository.getRef("HEAD");
       this.headTree = getHeadTree();
 
     } catch (IOException e) {

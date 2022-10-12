@@ -33,17 +33,15 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.FeatureImpl#getDurability
- * <em>Durability</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.FeatureImpl#getDurability <em>Durability</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class FeatureImpl extends ElementImpl implements Feature {
   /**
-   * The default value of the '{@link #getDurability() <em>Durability</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getDurability() <em>Durability</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getDurability()
    * @generated
    * @ordered
@@ -51,9 +49,8 @@ public abstract class FeatureImpl extends ElementImpl implements Feature {
   protected static final int DURABILITY_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getDurability() <em>Durability</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getDurability() <em>Durability</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getDurability()
    * @generated
    * @ordered
@@ -62,7 +59,6 @@ public abstract class FeatureImpl extends ElementImpl implements Feature {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected FeatureImpl() {
@@ -71,7 +67,6 @@ public abstract class FeatureImpl extends ElementImpl implements Feature {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -81,7 +76,6 @@ public abstract class FeatureImpl extends ElementImpl implements Feature {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getDurability() {
@@ -90,177 +84,162 @@ public abstract class FeatureImpl extends ElementImpl implements Feature {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDurability(int newDurability) {
     int oldDurability = durability;
     durability = newDurability;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.FEATURE__DURABILITY,
-          oldDurability, durability));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.FEATURE__DURABILITY, oldDurability, durability));
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getClabject() <em>Get
-   * Clabject</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #getClabject() <em>Get Clabject</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getClabject()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_CLABJECT__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.FEATURE___GET_CLABJECT)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_CLABJECT__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.FEATURE___GET_CLABJECT).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject getClabject() {
     try {
-      return (Clabject) GET_CLABJECT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (Clabject)GET_CLABJECT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getDurabilityAsString()
-   * <em>Get Durability As String</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getDurabilityAsString() <em>Get Durability As String</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getDurabilityAsString()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_DURABILITY_AS_STRING__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.FEATURE___GET_DURABILITY_AS_STRING)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_DURABILITY_AS_STRING__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.FEATURE___GET_DURABILITY_AS_STRING).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getDurabilityAsString() {
     try {
-      return (String) GET_DURABILITY_AS_STRING__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)GET_DURABILITY_AS_STRING__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #represent()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.FEATURE___REPRESENT)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.FEATURE___REPRESENT).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String represent() {
     try {
-      return (String) REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.FEATURE__DURABILITY:
-      return getDurability();
+      case PLMPackage.FEATURE__DURABILITY:
+        return getDurability();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.FEATURE__DURABILITY:
-      setDurability((Integer) newValue);
-      return;
+      case PLMPackage.FEATURE__DURABILITY:
+        setDurability((Integer)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.FEATURE__DURABILITY:
-      setDurability(DURABILITY_EDEFAULT);
-      return;
+      case PLMPackage.FEATURE__DURABILITY:
+        setDurability(DURABILITY_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.FEATURE__DURABILITY:
-      return durability != DURABILITY_EDEFAULT;
+      case PLMPackage.FEATURE__DURABILITY:
+        return durability != DURABILITY_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
     switch (operationID) {
-    case PLMPackage.FEATURE___GET_CLABJECT:
-      return getClabject();
-    case PLMPackage.FEATURE___GET_DURABILITY_AS_STRING:
-      return getDurabilityAsString();
-    case PLMPackage.FEATURE___REPRESENT:
-      return represent();
+      case PLMPackage.FEATURE___GET_CLABJECT:
+        return getClabject();
+      case PLMPackage.FEATURE___GET_DURABILITY_AS_STRING:
+        return getDurabilityAsString();
+      case PLMPackage.FEATURE___REPRESENT:
+        return represent();
     }
     return super.eInvoke(operationID, arguments);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString() {
-    if (eIsProxy())
-      return super.toString();
+    if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (durability: ");
     result.append(durability);
     result.append(')');

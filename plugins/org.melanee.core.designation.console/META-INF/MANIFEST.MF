@@ -8,5 +8,5 @@ Require-Bundle: org.melanee.core.models.plm,
  org.eclipse.gmf.runtime.diagram.ui,
  org.melanee.core.designation.service;bundle-version="1.0.0",
  org.melanee.core.workbench;bundle-version="2.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

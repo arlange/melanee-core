@@ -18,8 +18,7 @@ package org.melanee.core.models.plm.PLM;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.PrimitiveParameter#getDatatype
- * <em>Datatype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.PrimitiveParameter#getDatatype <em>Datatype</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getPrimitiveParameter()
@@ -45,12 +44,9 @@ public interface PrimitiveParameter extends Parameter {
   String getDatatype();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.PrimitiveParameter#getDatatype
-   * <em>Datatype</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Datatype</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.PrimitiveParameter#getDatatype <em>Datatype</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Datatype</em>' attribute.
    * @see #getDatatype()
    * @generated
    */

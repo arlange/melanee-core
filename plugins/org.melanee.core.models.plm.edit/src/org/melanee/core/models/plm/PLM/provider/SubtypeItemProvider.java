@@ -28,13 +28,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 import org.melanee.core.models.plm.PLM.PLMPackage;
-import org.melanee.core.models.plm.PLM.Subtype;
 
 /**
- * This is the item provider adapter for a
- * {@link org.melanee.core.models.plm.PLM.Subtype} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.melanee.core.models.plm.PLM.Subtype} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SubtypeItemProvider extends ItemProviderAdapter
@@ -67,23 +65,30 @@ public class SubtypeItemProvider extends ItemProviderAdapter
   }
 
   /**
-   * This adds a property descriptor for the Subtype feature. <!-- begin-user-doc
+   * This adds a property descriptor for the Subtype feature.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addSubtypePropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Subtype_subtype_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_Subtype_subtype_feature",
-            "_UI_Subtype_type"),
-        PLMPackage.Literals.SUBTYPE__SUBTYPE, true, false, true, null, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Subtype_subtype_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Subtype_subtype_feature", "_UI_Subtype_type"),
+         PLMPackage.Literals.SUBTYPE__SUBTYPE,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
   }
 
   /**
-   * This returns Subtype.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Subtype.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -92,22 +97,22 @@ public class SubtypeItemProvider extends ItemProviderAdapter
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String getText(Object object) {
 
+
     return getString("_UI_Subtype_type");
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update
-   * any cached children and by creating a viewer notification, which it passes to
-   * {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -117,10 +122,10 @@ public class SubtypeItemProvider extends ItemProviderAdapter
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing
-   * the children that can be created under this object. <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

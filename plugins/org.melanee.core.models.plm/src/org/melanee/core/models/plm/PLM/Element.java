@@ -22,14 +22,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Element#getName
- * <em>Name</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Element#getVisualizer
- * <em>Visualizer</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Element#getBehavior
- * <em>Behavior</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Element#getConstraint
- * <em>Constraint</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Element#getName <em>Name</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Element#getVisualizer <em>Visualizer</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Element#getBehavior <em>Behavior</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Element#getConstraint <em>Constraint</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getElement()
@@ -55,27 +51,24 @@ public interface Element extends EObject {
   String getName();
 
   /**
-   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Element#getName
-   * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Name</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Element#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Visualizer</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.LMLVisualizer}. <!-- begin-user-doc
+   * Returns the value of the '<em><b>Visualizer</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.LMLVisualizer}.
+   * <!-- begin-user-doc
    * -->
    * <p>
    * If the meaning of the '<em>Visualizer</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Visualizer</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getElement_Visualizer()
    * @model containment="true"
@@ -84,16 +77,15 @@ public interface Element extends EObject {
   EList<LMLVisualizer> getVisualizer();
 
   /**
-   * Returns the value of the '<em><b>Behavior</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.AbstractBehavior}. <!-- begin-user-doc
+   * Returns the value of the '<em><b>Behavior</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.AbstractBehavior}.
+   * <!-- begin-user-doc
    * -->
    * <p>
    * If the meaning of the '<em>Behavior</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Behavior</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getElement_Behavior()
    * @model containment="true"

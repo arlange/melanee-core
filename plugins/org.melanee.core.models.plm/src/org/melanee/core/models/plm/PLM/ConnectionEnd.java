@@ -20,24 +20,15 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getLower
- * <em>Lower</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getUpper
- * <em>Upper</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#isNavigable
- * <em>Navigable</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getDestination
- * <em>Destination</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection
- * <em>Connection</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMoniker
- * <em>Moniker</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getKind
- * <em>Kind</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getType
- * <em>Type</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMultiplicity
- * <em>Multiplicity</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getLower <em>Lower</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#isNavigable <em>Navigable</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getDestination <em>Destination</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection <em>Connection</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMoniker <em>Moniker</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getKind <em>Kind</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getType <em>Type</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMultiplicity <em>Multiplicity</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getConnectionEnd()
@@ -46,14 +37,14 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ConnectionEnd extends Property {
   /**
-   * Returns the value of the '<em><b>Lower</b></em>' attribute. The default value
-   * is <code>"0"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Lower</b></em>' attribute.
+   * The default value is <code>"0"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Lower</em>' attribute isn't clear, there really
    * should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Lower</em>' attribute.
    * @see #setLower(int)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getConnectionEnd_Lower()
@@ -63,26 +54,23 @@ public interface ConnectionEnd extends Property {
   int getLower();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getLower
-   * <em>Lower</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Lower</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getLower <em>Lower</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Lower</em>' attribute.
    * @see #getLower()
    * @generated
    */
   void setLower(int value);
 
   /**
-   * Returns the value of the '<em><b>Upper</b></em>' attribute. The default value
-   * is <code>"-1"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Upper</b></em>' attribute.
+   * The default value is <code>"-1"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Upper</em>' attribute isn't clear, there really
    * should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Upper</em>' attribute.
    * @see #setUpper(int)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getConnectionEnd_Upper()
@@ -92,26 +80,23 @@ public interface ConnectionEnd extends Property {
   int getUpper();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getUpper
-   * <em>Upper</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Upper</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getUpper <em>Upper</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Upper</em>' attribute.
    * @see #getUpper()
    * @generated
    */
   void setUpper(int value);
 
   /**
-   * Returns the value of the '<em><b>Navigable</b></em>' attribute. The default
-   * value is <code>"true"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Navigable</b></em>' attribute.
+   * The default value is <code>"true"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Navigable</em>' attribute isn't clear, there
    * really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Navigable</em>' attribute.
    * @see #setNavigable(boolean)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getConnectionEnd_Navigable()
@@ -121,12 +106,9 @@ public interface ConnectionEnd extends Property {
   boolean isNavigable();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#isNavigable
-   * <em>Navigable</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Navigable</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#isNavigable <em>Navigable</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Navigable</em>' attribute.
    * @see #isNavigable()
    * @generated
    */
@@ -163,16 +145,14 @@ public interface ConnectionEnd extends Property {
   void setDestination(Clabject value);
 
   /**
-   * Returns the value of the '<em><b>Connection</b></em>' container reference. It
-   * is bidirectional and its opposite is
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getConnectionEnd
-   * <em>Connection End</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Connection</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.melanee.core.models.plm.PLM.Connection#getConnectionEnd <em>Connection End</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Connection</em>' container reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Connection</em>' container reference.
    * @see #setConnection(Connection)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getConnectionEnd_Connection()
@@ -183,13 +163,10 @@ public interface ConnectionEnd extends Property {
   Connection getConnection();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection
-   * <em>Connection</em>}' container reference. <!-- begin-user-doc --> <!--
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection <em>Connection</em>}' container reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Connection</em>' container reference.
+   * @param value the new value of the '<em>Connection</em>' container reference.
    * @see #getConnection()
    * @generated
    */
@@ -213,12 +190,9 @@ public interface ConnectionEnd extends Property {
   String getMoniker();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMoniker
-   * <em>Moniker</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Moniker</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMoniker <em>Moniker</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Moniker</em>' attribute.
    * @see #getMoniker()
    * @generated
    */
@@ -245,12 +219,9 @@ public interface ConnectionEnd extends Property {
   ConnectionEndKind getKind();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getKind <em>Kind</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Kind</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getKind <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Kind</em>' attribute.
    * @see org.melanee.core.models.plm.PLM.ConnectionEndKind
    * @see #getKind()
    * @generated
@@ -275,30 +246,24 @@ public interface ConnectionEnd extends Property {
   ConnectionEnd getType();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getType <em>Type</em>}'
-   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Type</em>' reference.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getType <em>Type</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' reference.
    * @see #getType()
    * @generated
    */
   void setType(ConnectionEnd value);
 
   /**
-   * Returns the value of the '<em><b>Multiplicity</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.Multiplicity}. It is bidirectional and
-   * its opposite is
-   * '{@link org.melanee.core.models.plm.PLM.Multiplicity#getConnectionend
-   * <em>Connectionend</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Multiplicity</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.Multiplicity}.
+   * It is bidirectional and its opposite is '{@link org.melanee.core.models.plm.PLM.Multiplicity#getConnectionend <em>Connectionend</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Multiplicity</em>' containment reference list
    * isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Multiplicity</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getConnectionEnd_Multiplicity()
    * @see org.melanee.core.models.plm.PLM.Multiplicity#getConnectionend

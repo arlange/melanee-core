@@ -21,10 +21,9 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.melanee.core.models.plm.PLM.Entity;
 
 /**
- * This is the item provider adapter for a
- * {@link org.melanee.core.models.plm.PLM.Entity} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.melanee.core.models.plm.PLM.Entity} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class EntityItemProvider extends ClabjectItemProvider {
@@ -54,8 +53,8 @@ public class EntityItemProvider extends ClabjectItemProvider {
   }
 
   /**
-   * This returns Entity.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Entity.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -64,24 +63,25 @@ public class EntityItemProvider extends ClabjectItemProvider {
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String getText(Object object) {
 
-    String label = ((Entity) object).getName();
-    return label == null || label.length() == 0 ? getString("_UI_Entity_type")
-        : getString("_UI_Entity_type") + " " + label;
+
+    String label = ((Entity)object).getName();
+    return label == null || label.length() == 0 ?
+      getString("_UI_Entity_type") :
+      getString("_UI_Entity_type") + " " + label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update
-   * any cached children and by creating a viewer notification, which it passes to
-   * {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -91,10 +91,10 @@ public class EntityItemProvider extends ClabjectItemProvider {
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing
-   * the children that can be created under this object. <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

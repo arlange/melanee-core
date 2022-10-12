@@ -33,10 +33,9 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
 import org.melanee.core.models.plm.PLM.Parameter;
 
 /**
- * This is the item provider adapter for a
- * {@link org.melanee.core.models.plm.PLM.Parameter} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.melanee.core.models.plm.PLM.Parameter} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ParameterItemProvider extends ItemProviderAdapter
@@ -71,17 +70,25 @@ public class ParameterItemProvider extends ItemProviderAdapter
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc -->
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Parameter_name_feature"), getString("_UI_Parameter_name_description"),
-        PLMPackage.Literals.PARAMETER__NAME, true, false, false,
-        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Parameter_name_feature"),
+         getString("_UI_Parameter_name_description"),
+         PLMPackage.Literals.PARAMETER__NAME,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
@@ -91,50 +98,63 @@ public class ParameterItemProvider extends ItemProviderAdapter
    * @generated
    */
   protected void addExpressionPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Parameter_expression_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_Parameter_expression_feature",
-            "_UI_Parameter_type"),
-        PLMPackage.Literals.PARAMETER__EXPRESSION, true, false, false,
-        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Parameter_expression_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Parameter_expression_feature", "_UI_Parameter_type"),
+         PLMPackage.Literals.PARAMETER__EXPRESSION,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This adds a property descriptor for the Output feature. <!-- begin-user-doc
+   * This adds a property descriptor for the Output feature.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addOutputPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Parameter_output_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_Parameter_output_feature",
-            "_UI_Parameter_type"),
-        PLMPackage.Literals.PARAMETER__OUTPUT, true, false, false,
-        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Parameter_output_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Parameter_output_feature", "_UI_Parameter_type"),
+         PLMPackage.Literals.PARAMETER__OUTPUT,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String getText(Object object) {
 
-    String label = ((Parameter) object).getName();
-    return label == null || label.length() == 0 ? getString("_UI_Parameter_type")
-        : getString("_UI_Parameter_type") + " " + label;
+
+    String label = ((Parameter)object).getName();
+    return label == null || label.length() == 0 ?
+      getString("_UI_Parameter_type") :
+      getString("_UI_Parameter_type") + " " + label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update
-   * any cached children and by creating a viewer notification, which it passes to
-   * {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -142,21 +162,20 @@ public class ParameterItemProvider extends ItemProviderAdapter
     updateChildren(notification);
 
     switch (notification.getFeatureID(Parameter.class)) {
-    case PLMPackage.PARAMETER__NAME:
-    case PLMPackage.PARAMETER__EXPRESSION:
-    case PLMPackage.PARAMETER__OUTPUT:
-      fireNotifyChanged(
-          new ViewerNotification(notification, notification.getNotifier(), false, true));
-      return;
+      case PLMPackage.PARAMETER__NAME:
+      case PLMPackage.PARAMETER__EXPRESSION:
+      case PLMPackage.PARAMETER__OUTPUT:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
     }
     super.notifyChanged(notification);
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing
-   * the children that can be created under this object. <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

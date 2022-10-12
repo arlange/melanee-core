@@ -16,8 +16,7 @@
   
   <modules>
 	<module>org.melanee.core.tests.plm</module>
-	<module>org.melanee.core.tests.designation</module>
-	<module>org.melanee.core.tests.melanee2metadepth</module>
+	<module>org.melanee.core.tests.designation</module> 	
 	<!--<module>org.melanee.core.tests.ui</module>-->
   </modules>
   

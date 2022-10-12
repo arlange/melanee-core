@@ -82,27 +82,41 @@ public class LMLVisualizerItemProvider extends ItemProviderAdapter
    * @generated
    */
   protected void addAttributesPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_LMLVisualizer_attributes_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_attributes_feature",
-            "_UI_LMLVisualizer_type"),
-        PLMPackage.Literals.LML_VISUALIZER__ATTRIBUTES, true, false, false,
-        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LMLVisualizer_attributes_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_attributes_feature", "_UI_LMLVisualizer_type"),
+         PLMPackage.Literals.LML_VISUALIZER__ATTRIBUTES,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc -->
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_LMLVisualizer_name_feature"),
-        getString("_UI_LMLVisualizer_name_description"), PLMPackage.Literals.LML_VISUALIZER__NAME,
-        true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LMLVisualizer_name_feature"),
+         getString("_UI_LMLVisualizer_name_description"),
+         PLMPackage.Literals.LML_VISUALIZER__NAME,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
@@ -112,13 +126,19 @@ public class LMLVisualizerItemProvider extends ItemProviderAdapter
    * @generated
    */
   protected void addXLocationPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_LMLVisualizer_xLocation_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_xLocation_feature",
-            "_UI_LMLVisualizer_type"),
-        PLMPackage.Literals.LML_VISUALIZER__XLOCATION, true, false, false,
-        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LMLVisualizer_xLocation_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_xLocation_feature", "_UI_LMLVisualizer_type"),
+         PLMPackage.Literals.LML_VISUALIZER__XLOCATION,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
@@ -128,54 +148,70 @@ public class LMLVisualizerItemProvider extends ItemProviderAdapter
    * @generated
    */
   protected void addYLocationPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_LMLVisualizer_yLocation_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_yLocation_feature",
-            "_UI_LMLVisualizer_type"),
-        PLMPackage.Literals.LML_VISUALIZER__YLOCATION, true, false, false,
-        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LMLVisualizer_yLocation_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_yLocation_feature", "_UI_LMLVisualizer_type"),
+         PLMPackage.Literals.LML_VISUALIZER__YLOCATION,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This adds a property descriptor for the Width feature. <!-- begin-user-doc
+   * This adds a property descriptor for the Width feature.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addWidthPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_LMLVisualizer_width_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_width_feature",
-            "_UI_LMLVisualizer_type"),
-        PLMPackage.Literals.LML_VISUALIZER__WIDTH, true, false, false,
-        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LMLVisualizer_width_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_width_feature", "_UI_LMLVisualizer_type"),
+         PLMPackage.Literals.LML_VISUALIZER__WIDTH,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This adds a property descriptor for the Height feature. <!-- begin-user-doc
+   * This adds a property descriptor for the Height feature.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected void addHeightPropertyDescriptor(Object object) {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(
-        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_LMLVisualizer_height_feature"),
-        getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_height_feature",
-            "_UI_LMLVisualizer_type"),
-        PLMPackage.Literals.LML_VISUALIZER__HEIGHT, true, false, false,
-        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_LMLVisualizer_height_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_LMLVisualizer_height_feature", "_UI_LMLVisualizer_type"),
+         PLMPackage.Literals.LML_VISUALIZER__HEIGHT,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an
-   * appropriate feature for an {@link org.eclipse.emf.edit.command.AddCommand},
-   * {@link org.eclipse.emf.edit.command.RemoveCommand} or
+   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -189,21 +225,19 @@ public class LMLVisualizerItemProvider extends ItemProviderAdapter
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   protected EStructuralFeature getChildFeature(Object object, Object child) {
-    // Check the type of the specified child object and return the proper feature to
-    // use for
+    // Check the type of the specified child object and return the proper feature to use for
     // adding (see {@link AddCommand}) it as a child.
 
     return super.getChildFeature(object, child);
   }
 
   /**
-   * This returns LMLVisualizer.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns LMLVisualizer.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -212,24 +246,25 @@ public class LMLVisualizerItemProvider extends ItemProviderAdapter
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String getText(Object object) {
 
-    String label = ((LMLVisualizer) object).getName();
-    return label == null || label.length() == 0 ? getString("_UI_LMLVisualizer_type")
-        : getString("_UI_LMLVisualizer_type") + " " + label;
+
+    String label = ((LMLVisualizer)object).getName();
+    return label == null || label.length() == 0 ?
+      getString("_UI_LMLVisualizer_type") :
+      getString("_UI_LMLVisualizer_type") + " " + label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update
-   * any cached children and by creating a viewer notification, which it passes to
-   * {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -237,28 +272,26 @@ public class LMLVisualizerItemProvider extends ItemProviderAdapter
     updateChildren(notification);
 
     switch (notification.getFeatureID(LMLVisualizer.class)) {
-    case PLMPackage.LML_VISUALIZER__ATTRIBUTES:
-    case PLMPackage.LML_VISUALIZER__NAME:
-    case PLMPackage.LML_VISUALIZER__XLOCATION:
-    case PLMPackage.LML_VISUALIZER__YLOCATION:
-    case PLMPackage.LML_VISUALIZER__WIDTH:
-    case PLMPackage.LML_VISUALIZER__HEIGHT:
-      fireNotifyChanged(
-          new ViewerNotification(notification, notification.getNotifier(), false, true));
-      return;
-    case PLMPackage.LML_VISUALIZER__DSL_VISUALIZER:
-      fireNotifyChanged(
-          new ViewerNotification(notification, notification.getNotifier(), true, false));
-      return;
+      case PLMPackage.LML_VISUALIZER__ATTRIBUTES:
+      case PLMPackage.LML_VISUALIZER__NAME:
+      case PLMPackage.LML_VISUALIZER__XLOCATION:
+      case PLMPackage.LML_VISUALIZER__YLOCATION:
+      case PLMPackage.LML_VISUALIZER__WIDTH:
+      case PLMPackage.LML_VISUALIZER__HEIGHT:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+        return;
+      case PLMPackage.LML_VISUALIZER__DSL_VISUALIZER:
+        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+        return;
     }
     super.notifyChanged(notification);
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing
-   * the children that can be created under this object. <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

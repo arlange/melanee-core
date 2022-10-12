@@ -45,24 +45,15 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getLower
- * <em>Lower</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getUpper
- * <em>Upper</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#isNavigable
- * <em>Navigable</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getDestination
- * <em>Destination</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getConnection
- * <em>Connection</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getMoniker
- * <em>Moniker</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getKind
- * <em>Kind</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getType
- * <em>Type</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getMultiplicity
- * <em>Multiplicity</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getLower <em>Lower</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#isNavigable <em>Navigable</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getDestination <em>Destination</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getConnection <em>Connection</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getMoniker <em>Moniker</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getKind <em>Kind</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl#getMultiplicity <em>Multiplicity</em>}</li>
  * </ul>
  *
  * @generated
@@ -109,9 +100,8 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
   protected int upper = UPPER_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isNavigable() <em>Navigable</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #isNavigable() <em>Navigable</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #isNavigable()
    * @generated
    * @ordered
@@ -119,9 +109,8 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
   protected static final boolean NAVIGABLE_EDEFAULT = true;
 
   /**
-   * The cached value of the '{@link #isNavigable() <em>Navigable</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #isNavigable() <em>Navigable</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #isNavigable()
    * @generated
    * @ordered
@@ -129,9 +118,8 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
   protected boolean navigable = NAVIGABLE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDestination() <em>Destination</em>}'
-   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getDestination() <em>Destination</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getDestination()
    * @generated
    * @ordered
@@ -141,7 +129,6 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
   /**
    * The default value of the '{@link #getMoniker() <em>Moniker</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getMoniker()
    * @generated
    * @ordered
@@ -151,7 +138,6 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
   /**
    * The cached value of the '{@link #getMoniker() <em>Moniker</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getMoniker()
    * @generated
    * @ordered
@@ -189,9 +175,8 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
   protected ConnectionEnd type;
 
   /**
-   * The cached value of the '{@link #getMultiplicity() <em>Multiplicity</em>}'
-   * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getMultiplicity()
    * @generated
    * @ordered
@@ -200,7 +185,6 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected ConnectionEndImpl() {
@@ -209,7 +193,6 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -219,7 +202,6 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getLower() {
@@ -228,20 +210,17 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setLower(int newLower) {
     int oldLower = lower;
     lower = newLower;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__LOWER,
-          oldLower, lower));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__LOWER, oldLower, lower));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getUpper() {
@@ -250,20 +229,17 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setUpper(int newUpper) {
     int oldUpper = upper;
     upper = newUpper;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__UPPER,
-          oldUpper, upper));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__UPPER, oldUpper, upper));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean isNavigable() {
@@ -272,30 +248,26 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setNavigable(boolean newNavigable) {
     boolean oldNavigable = navigable;
     navigable = newNavigable;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__NAVIGABLE,
-          oldNavigable, navigable));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__NAVIGABLE, oldNavigable, navigable));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject getDestination() {
     if (destination != null && destination.eIsProxy()) {
-      InternalEObject oldDestination = (InternalEObject) destination;
-      destination = (Clabject) eResolveProxy(oldDestination);
+      InternalEObject oldDestination = (InternalEObject)destination;
+      destination = (Clabject)eResolveProxy(oldDestination);
       if (destination != oldDestination) {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-              PLMPackage.CONNECTION_END__DESTINATION, oldDestination, destination));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PLMPackage.CONNECTION_END__DESTINATION, oldDestination, destination));
       }
     }
     return destination;
@@ -303,7 +275,6 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject basicGetDestination() {
@@ -312,67 +283,55 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDestination(Clabject newDestination) {
     Clabject oldDestination = destination;
     destination = newDestination;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__DESTINATION,
-          oldDestination, destination));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__DESTINATION, oldDestination, destination));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Connection getConnection() {
-    if (eContainerFeatureID() != PLMPackage.CONNECTION_END__CONNECTION)
-      return null;
-    return (Connection) eInternalContainer();
+    if (eContainerFeatureID() != PLMPackage.CONNECTION_END__CONNECTION) return null;
+    return (Connection)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetConnection(Connection newConnection, NotificationChain msgs) {
-    msgs = eBasicSetContainer((InternalEObject) newConnection,
-        PLMPackage.CONNECTION_END__CONNECTION, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newConnection, PLMPackage.CONNECTION_END__CONNECTION, msgs);
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setConnection(Connection newConnection) {
-    if (newConnection != eInternalContainer()
-        || (eContainerFeatureID() != PLMPackage.CONNECTION_END__CONNECTION
-            && newConnection != null)) {
+    if (newConnection != eInternalContainer() || (eContainerFeatureID() != PLMPackage.CONNECTION_END__CONNECTION && newConnection != null)) {
       if (EcoreUtil.isAncestor(this, newConnection))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
       if (newConnection != null)
-        msgs = ((InternalEObject) newConnection).eInverseAdd(this,
-            PLMPackage.CONNECTION__CONNECTION_END, Connection.class, msgs);
+        msgs = ((InternalEObject)newConnection).eInverseAdd(this, PLMPackage.CONNECTION__CONNECTION_END, Connection.class, msgs);
       msgs = basicSetConnection(newConnection, msgs);
-      if (msgs != null)
-        msgs.dispatch();
-    } else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__CONNECTION,
-          newConnection, newConnection));
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__CONNECTION, newConnection, newConnection));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getMoniker() {
@@ -381,20 +340,17 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setMoniker(String newMoniker) {
     String oldMoniker = moniker;
     moniker = newMoniker;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__MONIKER,
-          oldMoniker, moniker));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__MONIKER, oldMoniker, moniker));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ConnectionEndKind getKind() {
@@ -403,30 +359,26 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setKind(ConnectionEndKind newKind) {
     ConnectionEndKind oldKind = kind;
     kind = newKind == null ? KIND_EDEFAULT : newKind;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__KIND,
-          oldKind, kind));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__KIND, oldKind, kind));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ConnectionEnd getType() {
     if (type != null && type.eIsProxy()) {
-      InternalEObject oldType = (InternalEObject) type;
-      type = (ConnectionEnd) eResolveProxy(oldType);
+      InternalEObject oldType = (InternalEObject)type;
+      type = (ConnectionEnd)eResolveProxy(oldType);
       if (type != oldType) {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PLMPackage.CONNECTION_END__TYPE,
-              oldType, type));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PLMPackage.CONNECTION_END__TYPE, oldType, type));
       }
     }
     return type;
@@ -434,7 +386,6 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ConnectionEnd basicGetType() {
@@ -443,53 +394,45 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setType(ConnectionEnd newType) {
     ConnectionEnd oldType = type;
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__TYPE,
-          oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CONNECTION_END__TYPE, oldType, type));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Multiplicity> getMultiplicity() {
     if (multiplicity == null) {
-      multiplicity = new EObjectContainmentWithInverseEList<Multiplicity>(Multiplicity.class, this,
-          PLMPackage.CONNECTION_END__MULTIPLICITY, PLMPackage.MULTIPLICITY__CONNECTIONEND);
+      multiplicity = new EObjectContainmentWithInverseEList<Multiplicity>(Multiplicity.class, this, PLMPackage.CONNECTION_END__MULTIPLICITY, PLMPackage.MULTIPLICITY__CONNECTIONEND);
     }
     return multiplicity;
   }
 
   /**
-   * The cached invocation delegate for the
-   * '{@link #getHumanReadableConnectionEndName() <em>Get Human Readable
-   * Connection End Name</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getHumanReadableConnectionEndName() <em>Get Human Readable Connection End Name</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getHumanReadableConnectionEndName()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_HUMAN_READABLE_CONNECTION_END_NAME__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.CONNECTION_END___GET_HUMAN_READABLE_CONNECTION_END_NAME)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_HUMAN_READABLE_CONNECTION_END_NAME__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CONNECTION_END___GET_HUMAN_READABLE_CONNECTION_END_NAME).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getHumanReadableConnectionEndName() {
     try {
-      return (String) GET_HUMAN_READABLE_CONNECTION_END_NAME__EINVOCATION_DELEGATE
-          .dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)GET_HUMAN_READABLE_CONNECTION_END_NAME__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
@@ -503,149 +446,135 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate HAS_DEFAULT_MONIKER__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.CONNECTION_END___HAS_DEFAULT_MONIKER)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate HAS_DEFAULT_MONIKER__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CONNECTION_END___HAS_DEFAULT_MONIKER).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean hasDefaultMoniker() {
     try {
-      return (Boolean) HAS_DEFAULT_MONIKER__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (Boolean)HAS_DEFAULT_MONIKER__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #represent()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.CONNECTION_END___REPRESENT)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CONNECTION_END___REPRESENT).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String represent() {
     try {
-      return (String) REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #moniker() <em>Moniker</em>}'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #moniker() <em>Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #moniker()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate MONIKER__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.CONNECTION_END___MONIKER)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate MONIKER__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CONNECTION_END___MONIKER).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String moniker() {
     try {
-      return (String) MONIKER__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)MONIKER__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #representMultiplicity()
-   * <em>Represent Multiplicity</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #representMultiplicity() <em>Represent Multiplicity</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #representMultiplicity()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate REPRESENT_MULTIPLICITY__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.CONNECTION_END___REPRESENT_MULTIPLICITY)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate REPRESENT_MULTIPLICITY__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CONNECTION_END___REPRESENT_MULTIPLICITY).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String representMultiplicity() {
     try {
-      return (String) REPRESENT_MULTIPLICITY__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)REPRESENT_MULTIPLICITY__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getConnectionEndName()
-   * <em>Get Connection End Name</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getConnectionEndName() <em>Get Connection End Name</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getConnectionEndName()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_CONNECTION_END_NAME__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.CONNECTION_END___GET_CONNECTION_END_NAME)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_CONNECTION_END_NAME__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CONNECTION_END___GET_CONNECTION_END_NAME).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getConnectionEndName() {
     try {
-      return (String) GET_CONNECTION_END_NAME__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)GET_CONNECTION_END_NAME__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the
-   * '{@link #conforms(org.melanee.core.models.plm.PLM.ConnectionEnd)
-   * <em>Conforms</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #conforms(org.melanee.core.models.plm.PLM.ConnectionEnd) <em>Conforms</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #conforms(org.melanee.core.models.plm.PLM.ConnectionEnd)
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate CONFORMS_CONNECTION_END__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.CONNECTION_END___CONFORMS__CONNECTIONEND)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate CONFORMS_CONNECTION_END__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CONNECTION_END___CONFORMS__CONNECTIONEND).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean conforms(ConnectionEnd connectionEnd) {
     try {
-      return (Boolean) CONFORMS_CONNECTION_END__EINVOCATION_DELEGATE.dynamicInvoke(this,
-          new BasicEList.UnmodifiableEList<Object>(1, new Object[] { connectionEnd }));
-    } catch (InvocationTargetException ite) {
+      return (Boolean)CONFORMS_CONNECTION_END__EINVOCATION_DELEGATE.dynamicInvoke(this, new BasicEList.UnmodifiableEList<Object>(1, new Object[]{connectionEnd}));
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -653,230 +582,217 @@ public class ConnectionEndImpl extends PropertyImpl implements ConnectionEnd {
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
       NotificationChain msgs) {
     switch (featureID) {
-    case PLMPackage.CONNECTION_END__CONNECTION:
-      if (eInternalContainer() != null)
-        msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetConnection((Connection) otherEnd, msgs);
-    case PLMPackage.CONNECTION_END__MULTIPLICITY:
-      return ((InternalEList<InternalEObject>) (InternalEList<?>) getMultiplicity())
-          .basicAdd(otherEnd, msgs);
+      case PLMPackage.CONNECTION_END__CONNECTION:
+        if (eInternalContainer() != null)
+          msgs = eBasicRemoveFromContainer(msgs);
+        return basicSetConnection((Connection)otherEnd, msgs);
+      case PLMPackage.CONNECTION_END__MULTIPLICITY:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getMultiplicity()).basicAdd(otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
       NotificationChain msgs) {
     switch (featureID) {
-    case PLMPackage.CONNECTION_END__CONNECTION:
-      return basicSetConnection(null, msgs);
-    case PLMPackage.CONNECTION_END__MULTIPLICITY:
-      return ((InternalEList<?>) getMultiplicity()).basicRemove(otherEnd, msgs);
+      case PLMPackage.CONNECTION_END__CONNECTION:
+        return basicSetConnection(null, msgs);
+      case PLMPackage.CONNECTION_END__MULTIPLICITY:
+        return ((InternalEList<?>)getMultiplicity()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
     switch (eContainerFeatureID()) {
-    case PLMPackage.CONNECTION_END__CONNECTION:
-      return eInternalContainer().eInverseRemove(this, PLMPackage.CONNECTION__CONNECTION_END,
-          Connection.class, msgs);
+      case PLMPackage.CONNECTION_END__CONNECTION:
+        return eInternalContainer().eInverseRemove(this, PLMPackage.CONNECTION__CONNECTION_END, Connection.class, msgs);
     }
     return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.CONNECTION_END__LOWER:
-      return getLower();
-    case PLMPackage.CONNECTION_END__UPPER:
-      return getUpper();
-    case PLMPackage.CONNECTION_END__NAVIGABLE:
-      return isNavigable();
-    case PLMPackage.CONNECTION_END__DESTINATION:
-      if (resolve)
-        return getDestination();
-      return basicGetDestination();
-    case PLMPackage.CONNECTION_END__CONNECTION:
-      return getConnection();
-    case PLMPackage.CONNECTION_END__MONIKER:
-      return getMoniker();
-    case PLMPackage.CONNECTION_END__KIND:
-      return getKind();
-    case PLMPackage.CONNECTION_END__TYPE:
-      if (resolve)
-        return getType();
-      return basicGetType();
-    case PLMPackage.CONNECTION_END__MULTIPLICITY:
-      return getMultiplicity();
+      case PLMPackage.CONNECTION_END__LOWER:
+        return getLower();
+      case PLMPackage.CONNECTION_END__UPPER:
+        return getUpper();
+      case PLMPackage.CONNECTION_END__NAVIGABLE:
+        return isNavigable();
+      case PLMPackage.CONNECTION_END__DESTINATION:
+        if (resolve) return getDestination();
+        return basicGetDestination();
+      case PLMPackage.CONNECTION_END__CONNECTION:
+        return getConnection();
+      case PLMPackage.CONNECTION_END__MONIKER:
+        return getMoniker();
+      case PLMPackage.CONNECTION_END__KIND:
+        return getKind();
+      case PLMPackage.CONNECTION_END__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
+      case PLMPackage.CONNECTION_END__MULTIPLICITY:
+        return getMultiplicity();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.CONNECTION_END__LOWER:
-      setLower((Integer) newValue);
-      return;
-    case PLMPackage.CONNECTION_END__UPPER:
-      setUpper((Integer) newValue);
-      return;
-    case PLMPackage.CONNECTION_END__NAVIGABLE:
-      setNavigable((Boolean) newValue);
-      return;
-    case PLMPackage.CONNECTION_END__DESTINATION:
-      setDestination((Clabject) newValue);
-      return;
-    case PLMPackage.CONNECTION_END__CONNECTION:
-      setConnection((Connection) newValue);
-      return;
-    case PLMPackage.CONNECTION_END__MONIKER:
-      setMoniker((String) newValue);
-      return;
-    case PLMPackage.CONNECTION_END__KIND:
-      setKind((ConnectionEndKind) newValue);
-      return;
-    case PLMPackage.CONNECTION_END__TYPE:
-      setType((ConnectionEnd) newValue);
-      return;
-    case PLMPackage.CONNECTION_END__MULTIPLICITY:
-      getMultiplicity().clear();
-      getMultiplicity().addAll((Collection<? extends Multiplicity>) newValue);
-      return;
+      case PLMPackage.CONNECTION_END__LOWER:
+        setLower((Integer)newValue);
+        return;
+      case PLMPackage.CONNECTION_END__UPPER:
+        setUpper((Integer)newValue);
+        return;
+      case PLMPackage.CONNECTION_END__NAVIGABLE:
+        setNavigable((Boolean)newValue);
+        return;
+      case PLMPackage.CONNECTION_END__DESTINATION:
+        setDestination((Clabject)newValue);
+        return;
+      case PLMPackage.CONNECTION_END__CONNECTION:
+        setConnection((Connection)newValue);
+        return;
+      case PLMPackage.CONNECTION_END__MONIKER:
+        setMoniker((String)newValue);
+        return;
+      case PLMPackage.CONNECTION_END__KIND:
+        setKind((ConnectionEndKind)newValue);
+        return;
+      case PLMPackage.CONNECTION_END__TYPE:
+        setType((ConnectionEnd)newValue);
+        return;
+      case PLMPackage.CONNECTION_END__MULTIPLICITY:
+        getMultiplicity().clear();
+        getMultiplicity().addAll((Collection<? extends Multiplicity>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.CONNECTION_END__LOWER:
-      setLower(LOWER_EDEFAULT);
-      return;
-    case PLMPackage.CONNECTION_END__UPPER:
-      setUpper(UPPER_EDEFAULT);
-      return;
-    case PLMPackage.CONNECTION_END__NAVIGABLE:
-      setNavigable(NAVIGABLE_EDEFAULT);
-      return;
-    case PLMPackage.CONNECTION_END__DESTINATION:
-      setDestination((Clabject) null);
-      return;
-    case PLMPackage.CONNECTION_END__CONNECTION:
-      setConnection((Connection) null);
-      return;
-    case PLMPackage.CONNECTION_END__MONIKER:
-      setMoniker(MONIKER_EDEFAULT);
-      return;
-    case PLMPackage.CONNECTION_END__KIND:
-      setKind(KIND_EDEFAULT);
-      return;
-    case PLMPackage.CONNECTION_END__TYPE:
-      setType((ConnectionEnd) null);
-      return;
-    case PLMPackage.CONNECTION_END__MULTIPLICITY:
-      getMultiplicity().clear();
-      return;
+      case PLMPackage.CONNECTION_END__LOWER:
+        setLower(LOWER_EDEFAULT);
+        return;
+      case PLMPackage.CONNECTION_END__UPPER:
+        setUpper(UPPER_EDEFAULT);
+        return;
+      case PLMPackage.CONNECTION_END__NAVIGABLE:
+        setNavigable(NAVIGABLE_EDEFAULT);
+        return;
+      case PLMPackage.CONNECTION_END__DESTINATION:
+        setDestination((Clabject)null);
+        return;
+      case PLMPackage.CONNECTION_END__CONNECTION:
+        setConnection((Connection)null);
+        return;
+      case PLMPackage.CONNECTION_END__MONIKER:
+        setMoniker(MONIKER_EDEFAULT);
+        return;
+      case PLMPackage.CONNECTION_END__KIND:
+        setKind(KIND_EDEFAULT);
+        return;
+      case PLMPackage.CONNECTION_END__TYPE:
+        setType((ConnectionEnd)null);
+        return;
+      case PLMPackage.CONNECTION_END__MULTIPLICITY:
+        getMultiplicity().clear();
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.CONNECTION_END__LOWER:
-      return lower != LOWER_EDEFAULT;
-    case PLMPackage.CONNECTION_END__UPPER:
-      return upper != UPPER_EDEFAULT;
-    case PLMPackage.CONNECTION_END__NAVIGABLE:
-      return navigable != NAVIGABLE_EDEFAULT;
-    case PLMPackage.CONNECTION_END__DESTINATION:
-      return destination != null;
-    case PLMPackage.CONNECTION_END__CONNECTION:
-      return getConnection() != null;
-    case PLMPackage.CONNECTION_END__MONIKER:
-      return MONIKER_EDEFAULT == null ? moniker != null : !MONIKER_EDEFAULT.equals(moniker);
-    case PLMPackage.CONNECTION_END__KIND:
-      return kind != KIND_EDEFAULT;
-    case PLMPackage.CONNECTION_END__TYPE:
-      return type != null;
-    case PLMPackage.CONNECTION_END__MULTIPLICITY:
-      return multiplicity != null && !multiplicity.isEmpty();
+      case PLMPackage.CONNECTION_END__LOWER:
+        return lower != LOWER_EDEFAULT;
+      case PLMPackage.CONNECTION_END__UPPER:
+        return upper != UPPER_EDEFAULT;
+      case PLMPackage.CONNECTION_END__NAVIGABLE:
+        return navigable != NAVIGABLE_EDEFAULT;
+      case PLMPackage.CONNECTION_END__DESTINATION:
+        return destination != null;
+      case PLMPackage.CONNECTION_END__CONNECTION:
+        return getConnection() != null;
+      case PLMPackage.CONNECTION_END__MONIKER:
+        return MONIKER_EDEFAULT == null ? moniker != null : !MONIKER_EDEFAULT.equals(moniker);
+      case PLMPackage.CONNECTION_END__KIND:
+        return kind != KIND_EDEFAULT;
+      case PLMPackage.CONNECTION_END__TYPE:
+        return type != null;
+      case PLMPackage.CONNECTION_END__MULTIPLICITY:
+        return multiplicity != null && !multiplicity.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
     switch (operationID) {
-    case PLMPackage.CONNECTION_END___GET_HUMAN_READABLE_CONNECTION_END_NAME:
-      return getHumanReadableConnectionEndName();
-    case PLMPackage.CONNECTION_END___HAS_DEFAULT_MONIKER:
-      return hasDefaultMoniker();
-    case PLMPackage.CONNECTION_END___REPRESENT:
-      return represent();
-    case PLMPackage.CONNECTION_END___MONIKER:
-      return moniker();
-    case PLMPackage.CONNECTION_END___REPRESENT_MULTIPLICITY:
-      return representMultiplicity();
-    case PLMPackage.CONNECTION_END___GET_CONNECTION_END_NAME:
-      return getConnectionEndName();
-    case PLMPackage.CONNECTION_END___CONFORMS__CONNECTIONEND:
-      return conforms((ConnectionEnd) arguments.get(0));
+      case PLMPackage.CONNECTION_END___GET_HUMAN_READABLE_CONNECTION_END_NAME:
+        return getHumanReadableConnectionEndName();
+      case PLMPackage.CONNECTION_END___HAS_DEFAULT_MONIKER:
+        return hasDefaultMoniker();
+      case PLMPackage.CONNECTION_END___REPRESENT:
+        return represent();
+      case PLMPackage.CONNECTION_END___MONIKER:
+        return moniker();
+      case PLMPackage.CONNECTION_END___REPRESENT_MULTIPLICITY:
+        return representMultiplicity();
+      case PLMPackage.CONNECTION_END___GET_CONNECTION_END_NAME:
+        return getConnectionEndName();
+      case PLMPackage.CONNECTION_END___CONFORMS__CONNECTIONEND:
+        return conforms((ConnectionEnd)arguments.get(0));
     }
     return super.eInvoke(operationID, arguments);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString() {
-    if (eIsProxy())
-      return super.toString();
+    if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (lower: ");
     result.append(lower);
     result.append(", upper: ");

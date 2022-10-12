@@ -35,12 +35,9 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ClassificationImpl#getInstance
- * <em>Instance</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ClassificationImpl#getType
- * <em>Type</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ClassificationImpl#getKind
- * <em>Kind</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ClassificationImpl#getInstance <em>Instance</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ClassificationImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ClassificationImpl#getKind <em>Kind</em>}</li>
  * </ul>
  *
  * @generated
@@ -49,7 +46,6 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
   /**
    * The cached value of the '{@link #getInstance() <em>Instance</em>}' reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getInstance()
    * @generated
    * @ordered
@@ -88,7 +84,6 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected ClassificationImpl() {
@@ -97,7 +92,6 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -107,17 +101,15 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject getInstance() {
     if (instance != null && instance.eIsProxy()) {
-      InternalEObject oldInstance = (InternalEObject) instance;
-      instance = (Clabject) eResolveProxy(oldInstance);
+      InternalEObject oldInstance = (InternalEObject)instance;
+      instance = (Clabject)eResolveProxy(oldInstance);
       if (instance != oldInstance) {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-              PLMPackage.CLASSIFICATION__INSTANCE, oldInstance, instance));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PLMPackage.CLASSIFICATION__INSTANCE, oldInstance, instance));
       }
     }
     return instance;
@@ -125,7 +117,6 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject basicGetInstance() {
@@ -134,30 +125,26 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setInstance(Clabject newInstance) {
     Clabject oldInstance = instance;
     instance = newInstance;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CLASSIFICATION__INSTANCE,
-          oldInstance, instance));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CLASSIFICATION__INSTANCE, oldInstance, instance));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject getType() {
     if (type != null && type.eIsProxy()) {
-      InternalEObject oldType = (InternalEObject) type;
-      type = (Clabject) eResolveProxy(oldType);
+      InternalEObject oldType = (InternalEObject)type;
+      type = (Clabject)eResolveProxy(oldType);
       if (type != oldType) {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PLMPackage.CLASSIFICATION__TYPE,
-              oldType, type));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PLMPackage.CLASSIFICATION__TYPE, oldType, type));
       }
     }
     return type;
@@ -165,7 +152,6 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject basicGetType() {
@@ -174,20 +160,17 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setType(Clabject newType) {
     Clabject oldType = type;
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CLASSIFICATION__TYPE,
-          oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CLASSIFICATION__TYPE, oldType, type));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ClassificationKind getKind() {
@@ -196,148 +179,135 @@ public class ClassificationImpl extends CorrelationImpl implements Classificatio
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setKind(ClassificationKind newKind) {
     ClassificationKind oldKind = kind;
     kind = newKind == null ? KIND_EDEFAULT : newKind;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CLASSIFICATION__KIND,
-          oldKind, kind));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CLASSIFICATION__KIND, oldKind, kind));
   }
 
   /**
-   * The cached invocation delegate for the '{@link #represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #represent()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.CLASSIFICATION___REPRESENT)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CLASSIFICATION___REPRESENT).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String represent() {
     try {
-      return (String) REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.CLASSIFICATION__INSTANCE:
-      if (resolve)
-        return getInstance();
-      return basicGetInstance();
-    case PLMPackage.CLASSIFICATION__TYPE:
-      if (resolve)
-        return getType();
-      return basicGetType();
-    case PLMPackage.CLASSIFICATION__KIND:
-      return getKind();
+      case PLMPackage.CLASSIFICATION__INSTANCE:
+        if (resolve) return getInstance();
+        return basicGetInstance();
+      case PLMPackage.CLASSIFICATION__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
+      case PLMPackage.CLASSIFICATION__KIND:
+        return getKind();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.CLASSIFICATION__INSTANCE:
-      setInstance((Clabject) newValue);
-      return;
-    case PLMPackage.CLASSIFICATION__TYPE:
-      setType((Clabject) newValue);
-      return;
-    case PLMPackage.CLASSIFICATION__KIND:
-      setKind((ClassificationKind) newValue);
-      return;
+      case PLMPackage.CLASSIFICATION__INSTANCE:
+        setInstance((Clabject)newValue);
+        return;
+      case PLMPackage.CLASSIFICATION__TYPE:
+        setType((Clabject)newValue);
+        return;
+      case PLMPackage.CLASSIFICATION__KIND:
+        setKind((ClassificationKind)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.CLASSIFICATION__INSTANCE:
-      setInstance((Clabject) null);
-      return;
-    case PLMPackage.CLASSIFICATION__TYPE:
-      setType((Clabject) null);
-      return;
-    case PLMPackage.CLASSIFICATION__KIND:
-      setKind(KIND_EDEFAULT);
-      return;
+      case PLMPackage.CLASSIFICATION__INSTANCE:
+        setInstance((Clabject)null);
+        return;
+      case PLMPackage.CLASSIFICATION__TYPE:
+        setType((Clabject)null);
+        return;
+      case PLMPackage.CLASSIFICATION__KIND:
+        setKind(KIND_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.CLASSIFICATION__INSTANCE:
-      return instance != null;
-    case PLMPackage.CLASSIFICATION__TYPE:
-      return type != null;
-    case PLMPackage.CLASSIFICATION__KIND:
-      return kind != KIND_EDEFAULT;
+      case PLMPackage.CLASSIFICATION__INSTANCE:
+        return instance != null;
+      case PLMPackage.CLASSIFICATION__TYPE:
+        return type != null;
+      case PLMPackage.CLASSIFICATION__KIND:
+        return kind != KIND_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
     switch (operationID) {
-    case PLMPackage.CLASSIFICATION___REPRESENT:
-      return represent();
+      case PLMPackage.CLASSIFICATION___REPRESENT:
+        return represent();
     }
     return super.eInvoke(operationID, arguments);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString() {
-    if (eIsProxy())
-      return super.toString();
+    if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (kind: ");
     result.append(kind);
     result.append(')');

@@ -31,7 +31,6 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
 public class EntityImpl extends ClabjectImpl implements Entity {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected EntityImpl() {
@@ -40,7 +39,6 @@ public class EntityImpl extends ClabjectImpl implements Entity {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -49,42 +47,37 @@ public class EntityImpl extends ClabjectImpl implements Entity {
   }
 
   /**
-   * The cached invocation delegate for the '{@link #represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #represent()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ENTITY___REPRESENT)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ENTITY___REPRESENT).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String represent() {
     try {
-      return (String) REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
     if (baseClass == Clabject.class) {
       switch (baseOperationID) {
-      case PLMPackage.CLABJECT___REPRESENT:
-        return PLMPackage.ENTITY___REPRESENT;
-      default:
-        return super.eDerivedOperationID(baseOperationID, baseClass);
+        case PLMPackage.CLABJECT___REPRESENT: return PLMPackage.ENTITY___REPRESENT;
+        default: return super.eDerivedOperationID(baseOperationID, baseClass);
       }
     }
     return super.eDerivedOperationID(baseOperationID, baseClass);
@@ -92,14 +85,13 @@ public class EntityImpl extends ClabjectImpl implements Entity {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
     switch (operationID) {
-    case PLMPackage.ENTITY___REPRESENT:
-      return represent();
+      case PLMPackage.ENTITY___REPRESENT:
+        return represent();
     }
     return super.eInvoke(operationID, arguments);
   }

@@ -20,8 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Level#getContent
- * <em>Content</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Level#getContent <em>Content</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getLevel()
@@ -30,15 +29,14 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Level extends Element {
   /**
-   * Returns the value of the '<em><b>Content</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.OwnedElement}. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Content</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.OwnedElement}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Content</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Content</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getLevel_Content()
    * @model containment="true"

@@ -20,8 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.AbstractConstraint#getName
- * <em>Name</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.AbstractConstraint#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getAbstractConstraint()
@@ -47,12 +46,9 @@ public interface AbstractConstraint extends EObject {
   String getName();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.AbstractConstraint#getName
-   * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Name</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.AbstractConstraint#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */

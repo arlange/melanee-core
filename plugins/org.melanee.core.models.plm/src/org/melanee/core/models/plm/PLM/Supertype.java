@@ -20,10 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Supertype#getSupertype
- * <em>Supertype</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Supertype#getInheritance
- * <em>Inheritance</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Supertype#getSupertype <em>Supertype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Supertype#getInheritance <em>Inheritance</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getSupertype()
@@ -49,12 +47,9 @@ public interface Supertype extends EObject {
   Clabject getSupertype();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Supertype#getSupertype
-   * <em>Supertype</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Supertype</em>' reference.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Supertype#getSupertype <em>Supertype</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Supertype</em>' reference.
    * @see #getSupertype()
    * @generated
    */
@@ -62,15 +57,13 @@ public interface Supertype extends EObject {
 
   /**
    * Returns the value of the '<em><b>Inheritance</b></em>' container reference.
-   * It is bidirectional and its opposite is
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertype
-   * <em>Supertype</em>}'. <!-- begin-user-doc -->
+   * It is bidirectional and its opposite is '{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertype <em>Supertype</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Inheritance</em>' container reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Inheritance</em>' container reference.
    * @see #setInheritance(Inheritance)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getSupertype_Inheritance()
@@ -81,13 +74,10 @@ public interface Supertype extends EObject {
   Inheritance getInheritance();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Supertype#getInheritance
-   * <em>Inheritance</em>}' container reference. <!-- begin-user-doc --> <!--
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Supertype#getInheritance <em>Inheritance</em>}' container reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Inheritance</em>' container reference.
+   * @param value the new value of the '<em>Inheritance</em>' container reference.
    * @see #getInheritance()
    * @generated
    */

@@ -35,18 +35,36 @@ import org.melanee.core.models.plm.PLM.Property;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl#getValue
- * <em>Value</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl#getMutability
- * <em>Mutability</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl#getDatatype
- * <em>Datatype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl#getParsingOrder <em>Parsing Order</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl#getMutability <em>Mutability</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl#getDatatype <em>Datatype</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class AttributeImpl extends FeatureImpl implements Attribute {
   /**
+   * The default value of the '{@link #getParsingOrder() <em>Parsing Order</em>}' attribute.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+   * @see #getParsingOrder()
+   * @generated
+   * @ordered
+   */
+	protected static final String PARSING_ORDER_EDEFAULT = "0";
+
+	/**
+   * The cached value of the '{@link #getParsingOrder() <em>Parsing Order</em>}' attribute.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+   * @see #getParsingOrder()
+   * @generated
+   * @ordered
+   */
+	protected String parsingOrder = PARSING_ORDER_EDEFAULT;
+
+		/**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -67,9 +85,8 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
   protected String value = VALUE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getMutability() <em>Mutability</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getMutability() <em>Mutability</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getMutability()
    * @generated
    * @ordered
@@ -77,9 +94,8 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
   protected static final int MUTABILITY_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getMutability() <em>Mutability</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getMutability() <em>Mutability</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getMutability()
    * @generated
    * @ordered
@@ -87,9 +103,8 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
   protected int mutability = MUTABILITY_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getDatatype() <em>Datatype</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getDatatype() <em>Datatype</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getDatatype()
    * @generated
    * @ordered
@@ -99,7 +114,6 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
   /**
    * The cached value of the '{@link #getDatatype() <em>Datatype</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getDatatype()
    * @generated
    * @ordered
@@ -108,7 +122,6 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected AttributeImpl() {
@@ -117,7 +130,6 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -126,8 +138,28 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
   }
 
   /**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+   * @generated
+   */
+	public String getParsingOrder() {
+    return parsingOrder;
+  }
+
+		/**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setParsingOrder(String newParsingOrder) {
+    String oldParsingOrder = parsingOrder;
+    parsingOrder = newParsingOrder;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ATTRIBUTE__PARSING_ORDER, oldParsingOrder, parsingOrder));
+  }
+
+    /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getValue() {
@@ -136,20 +168,17 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setValue(String newValue) {
     String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ATTRIBUTE__VALUE, oldValue,
-          value));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ATTRIBUTE__VALUE, oldValue, value));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getMutability() {
@@ -158,20 +187,17 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setMutability(int newMutability) {
     int oldMutability = mutability;
     mutability = newMutability;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ATTRIBUTE__MUTABILITY,
-          oldMutability, mutability));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ATTRIBUTE__MUTABILITY, oldMutability, mutability));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getDatatype() {
@@ -180,317 +206,330 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDatatype(String newDatatype) {
     String oldDatatype = datatype;
     datatype = newDatatype;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ATTRIBUTE__DATATYPE,
-          oldDatatype, datatype));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.ATTRIBUTE__DATATYPE, oldDatatype, datatype));
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getMutabilityAsString()
-   * <em>Get Mutability As String</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getMutabilityAsString() <em>Get Mutability As String</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getMutabilityAsString()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_MUTABILITY_AS_STRING__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ATTRIBUTE___GET_MUTABILITY_AS_STRING)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_MUTABILITY_AS_STRING__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ATTRIBUTE___GET_MUTABILITY_AS_STRING).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getMutabilityAsString() {
     try {
-      return (String) GET_MUTABILITY_AS_STRING__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)GET_MUTABILITY_AS_STRING__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #represent()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ATTRIBUTE___REPRESENT)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate REPRESENT__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ATTRIBUTE___REPRESENT).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String represent() {
     try {
-      return (String) REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (String)REPRESENT__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getPossibleDataTypes()
-   * <em>Get Possible Data Types</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getPossibleDataTypes() <em>Get Possible Data Types</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPossibleDataTypes()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_POSSIBLE_DATA_TYPES__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ATTRIBUTE___GET_POSSIBLE_DATA_TYPES)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_POSSIBLE_DATA_TYPES__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ATTRIBUTE___GET_POSSIBLE_DATA_TYPES).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   public EList<String> getPossibleDataTypes() {
     try {
-      return (EList<String>) GET_POSSIBLE_DATA_TYPES__EINVOCATION_DELEGATE.dynamicInvoke(this,
-          null);
-    } catch (InvocationTargetException ite) {
+      return (EList<String>)GET_POSSIBLE_DATA_TYPES__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getPrimitiveDataTypes()
-   * <em>Get Primitive Data Types</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getPrimitiveDataTypes() <em>Get Primitive Data Types</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPrimitiveDataTypes()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_PRIMITIVE_DATA_TYPES__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ATTRIBUTE___GET_PRIMITIVE_DATA_TYPES)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_PRIMITIVE_DATA_TYPES__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ATTRIBUTE___GET_PRIMITIVE_DATA_TYPES).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   public EList<String> getPrimitiveDataTypes() {
     try {
-      return (EList<String>) GET_PRIMITIVE_DATA_TYPES__EINVOCATION_DELEGATE.dynamicInvoke(this,
-          null);
-    } catch (InvocationTargetException ite) {
+      return (EList<String>)GET_PRIMITIVE_DATA_TYPES__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getEnumerationDataTypes()
-   * <em>Get Enumeration Data Types</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getEnumerationDataTypes() <em>Get Enumeration Data Types</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getEnumerationDataTypes()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_ENUMERATION_DATA_TYPES__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ATTRIBUTE___GET_ENUMERATION_DATA_TYPES)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_ENUMERATION_DATA_TYPES__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ATTRIBUTE___GET_ENUMERATION_DATA_TYPES).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   public EList<String> getEnumerationDataTypes() {
     try {
-      return (EList<String>) GET_ENUMERATION_DATA_TYPES__EINVOCATION_DELEGATE.dynamicInvoke(this,
-          null);
-    } catch (InvocationTargetException ite) {
+      return (EList<String>)GET_ENUMERATION_DATA_TYPES__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #isEnumeration() <em>Is
-   * Enumeration</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #isEnumeration() <em>Is Enumeration</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #isEnumeration()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate IS_ENUMERATION__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ATTRIBUTE___IS_ENUMERATION)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate IS_ENUMERATION__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ATTRIBUTE___IS_ENUMERATION).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean isEnumeration() {
     try {
-      return (Boolean) IS_ENUMERATION__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (Boolean)IS_ENUMERATION__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getEnumeration() <em>Get
-   * Enumeration</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #getEnumeration() <em>Get Enumeration</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getEnumeration()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_ENUMERATION__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ATTRIBUTE___GET_ENUMERATION)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_ENUMERATION__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ATTRIBUTE___GET_ENUMERATION).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Enumeration getEnumeration() {
     try {
-      return (Enumeration) GET_ENUMERATION__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (Enumeration)GET_ENUMERATION__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getLiterals() <em>Get
-   * Literals</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #getLiterals() <em>Get Literals</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getLiterals()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_LITERALS__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.ATTRIBUTE___GET_LITERALS)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_LITERALS__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.ATTRIBUTE___GET_LITERALS).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   public EList<String> getLiterals() {
     try {
-      return (EList<String>) GET_LITERALS__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (EList<String>)GET_LITERALS__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.ATTRIBUTE__VALUE:
-      return getValue();
-    case PLMPackage.ATTRIBUTE__MUTABILITY:
-      return getMutability();
-    case PLMPackage.ATTRIBUTE__DATATYPE:
-      return getDatatype();
+      case PLMPackage.ATTRIBUTE__PARSING_ORDER:
+        return getParsingOrder();
+      case PLMPackage.ATTRIBUTE__VALUE:
+        return getValue();
+      case PLMPackage.ATTRIBUTE__MUTABILITY:
+        return getMutability();
+      case PLMPackage.ATTRIBUTE__DATATYPE:
+        return getDatatype();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.ATTRIBUTE__VALUE:
-      setValue((String) newValue);
-      return;
-    case PLMPackage.ATTRIBUTE__MUTABILITY:
-      setMutability((Integer) newValue);
-      return;
-    case PLMPackage.ATTRIBUTE__DATATYPE:
-      setDatatype((String) newValue);
-      return;
+      case PLMPackage.ATTRIBUTE__PARSING_ORDER:
+        setParsingOrder((String)newValue);
+        return;
+      case PLMPackage.ATTRIBUTE__VALUE:
+        setValue((String)newValue);
+        return;
+      case PLMPackage.ATTRIBUTE__MUTABILITY:
+        setMutability((Integer)newValue);
+        return;
+      case PLMPackage.ATTRIBUTE__DATATYPE:
+        setDatatype((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.ATTRIBUTE__VALUE:
-      setValue(VALUE_EDEFAULT);
-      return;
-    case PLMPackage.ATTRIBUTE__MUTABILITY:
-      setMutability(MUTABILITY_EDEFAULT);
-      return;
-    case PLMPackage.ATTRIBUTE__DATATYPE:
-      setDatatype(DATATYPE_EDEFAULT);
-      return;
+      case PLMPackage.ATTRIBUTE__PARSING_ORDER:
+        setParsingOrder(PARSING_ORDER_EDEFAULT);
+        return;
+      case PLMPackage.ATTRIBUTE__VALUE:
+        setValue(VALUE_EDEFAULT);
+        return;
+      case PLMPackage.ATTRIBUTE__MUTABILITY:
+        setMutability(MUTABILITY_EDEFAULT);
+        return;
+      case PLMPackage.ATTRIBUTE__DATATYPE:
+        setDatatype(DATATYPE_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.ATTRIBUTE__VALUE:
-      return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-    case PLMPackage.ATTRIBUTE__MUTABILITY:
-      return mutability != MUTABILITY_EDEFAULT;
-    case PLMPackage.ATTRIBUTE__DATATYPE:
-      return DATATYPE_EDEFAULT == null ? datatype != null : !DATATYPE_EDEFAULT.equals(datatype);
+      case PLMPackage.ATTRIBUTE__PARSING_ORDER:
+        return PARSING_ORDER_EDEFAULT == null ? parsingOrder != null : !PARSING_ORDER_EDEFAULT.equals(parsingOrder);
+      case PLMPackage.ATTRIBUTE__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case PLMPackage.ATTRIBUTE__MUTABILITY:
+        return mutability != MUTABILITY_EDEFAULT;
+      case PLMPackage.ATTRIBUTE__DATATYPE:
+        return DATATYPE_EDEFAULT == null ? datatype != null : !DATATYPE_EDEFAULT.equals(datatype);
     }
     return super.eIsSet(featureID);
   }
 
   /**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+   * @generated
+   */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+    if (baseClass == Property.class) {
+      switch (derivedFeatureID) {
+        case PLMPackage.ATTRIBUTE__PARSING_ORDER: return PLMPackage.PROPERTY__PARSING_ORDER;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+		/**
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+   * @generated
+   */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+    if (baseClass == Property.class) {
+      switch (baseFeatureID) {
+        case PLMPackage.PROPERTY__PARSING_ORDER: return PLMPackage.ATTRIBUTE__PARSING_ORDER;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
+
+		/**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
     if (baseClass == Feature.class) {
       switch (baseOperationID) {
-      case PLMPackage.FEATURE___REPRESENT:
-        return PLMPackage.ATTRIBUTE___REPRESENT;
-      default:
-        return super.eDerivedOperationID(baseOperationID, baseClass);
+        case PLMPackage.FEATURE___REPRESENT: return PLMPackage.ATTRIBUTE___REPRESENT;
+        default: return super.eDerivedOperationID(baseOperationID, baseClass);
       }
     }
     if (baseClass == Property.class) {
       switch (baseOperationID) {
-      default:
-        return -1;
+        default: return -1;
       }
     }
     return super.eDerivedOperationID(baseOperationID, baseClass);
@@ -498,44 +537,43 @@ public class AttributeImpl extends FeatureImpl implements Attribute {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
     switch (operationID) {
-    case PLMPackage.ATTRIBUTE___GET_MUTABILITY_AS_STRING:
-      return getMutabilityAsString();
-    case PLMPackage.ATTRIBUTE___REPRESENT:
-      return represent();
-    case PLMPackage.ATTRIBUTE___GET_POSSIBLE_DATA_TYPES:
-      return getPossibleDataTypes();
-    case PLMPackage.ATTRIBUTE___GET_PRIMITIVE_DATA_TYPES:
-      return getPrimitiveDataTypes();
-    case PLMPackage.ATTRIBUTE___GET_ENUMERATION_DATA_TYPES:
-      return getEnumerationDataTypes();
-    case PLMPackage.ATTRIBUTE___IS_ENUMERATION:
-      return isEnumeration();
-    case PLMPackage.ATTRIBUTE___GET_ENUMERATION:
-      return getEnumeration();
-    case PLMPackage.ATTRIBUTE___GET_LITERALS:
-      return getLiterals();
+      case PLMPackage.ATTRIBUTE___GET_MUTABILITY_AS_STRING:
+        return getMutabilityAsString();
+      case PLMPackage.ATTRIBUTE___REPRESENT:
+        return represent();
+      case PLMPackage.ATTRIBUTE___GET_POSSIBLE_DATA_TYPES:
+        return getPossibleDataTypes();
+      case PLMPackage.ATTRIBUTE___GET_PRIMITIVE_DATA_TYPES:
+        return getPrimitiveDataTypes();
+      case PLMPackage.ATTRIBUTE___GET_ENUMERATION_DATA_TYPES:
+        return getEnumerationDataTypes();
+      case PLMPackage.ATTRIBUTE___IS_ENUMERATION:
+        return isEnumeration();
+      case PLMPackage.ATTRIBUTE___GET_ENUMERATION:
+        return getEnumeration();
+      case PLMPackage.ATTRIBUTE___GET_LITERALS:
+        return getLiterals();
     }
     return super.eInvoke(operationID, arguments);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString() {
-    if (eIsProxy())
-      return super.toString();
+    if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (parsingOrder: ");
+    result.append(parsingOrder);
+    result.append(", value: ");
     result.append(value);
     result.append(", mutability: ");
     result.append(mutability);

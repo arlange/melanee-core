@@ -18,8 +18,7 @@ package org.melanee.core.models.plm.PLM;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Feature#getDurability
- * <em>Durability</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Feature#getDurability <em>Durability</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getFeature()

@@ -31,7 +31,6 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
 public abstract class OwnedElementImpl extends ElementImpl implements OwnedElement {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected OwnedElementImpl() {
@@ -40,7 +39,6 @@ public abstract class OwnedElementImpl extends ElementImpl implements OwnedEleme
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -49,39 +47,36 @@ public abstract class OwnedElementImpl extends ElementImpl implements OwnedEleme
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getLevel() <em>Get
-   * Level</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #getLevel() <em>Get Level</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getLevel()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_LEVEL__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.OWNED_ELEMENT___GET_LEVEL)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_LEVEL__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.OWNED_ELEMENT___GET_LEVEL).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Level getLevel() {
     try {
-      return (Level) GET_LEVEL__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (Level)GET_LEVEL__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
     switch (operationID) {
-    case PLMPackage.OWNED_ELEMENT___GET_LEVEL:
-      return getLevel();
+      case PLMPackage.OWNED_ELEMENT___GET_LEVEL:
+        return getLevel();
     }
     return super.eInvoke(operationID, arguments);
   }

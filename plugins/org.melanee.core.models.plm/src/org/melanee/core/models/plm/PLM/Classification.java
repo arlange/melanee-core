@@ -18,12 +18,9 @@ package org.melanee.core.models.plm.PLM;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Classification#getInstance
- * <em>Instance</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Classification#getType
- * <em>Type</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Classification#getKind
- * <em>Kind</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Classification#getInstance <em>Instance</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Classification#getType <em>Type</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Classification#getKind <em>Kind</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getClassification()
@@ -49,12 +46,9 @@ public interface Classification extends Correlation {
   Clabject getInstance();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Classification#getInstance
-   * <em>Instance</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Instance</em>' reference.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Classification#getInstance <em>Instance</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Instance</em>' reference.
    * @see #getInstance()
    * @generated
    */
@@ -78,12 +72,9 @@ public interface Classification extends Correlation {
   Clabject getType();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Classification#getType
-   * <em>Type</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Type</em>' reference.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Classification#getType <em>Type</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' reference.
    * @see #getType()
    * @generated
    */
@@ -110,12 +101,9 @@ public interface Classification extends Correlation {
   ClassificationKind getKind();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Classification#getKind
-   * <em>Kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Kind</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Classification#getKind <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Kind</em>' attribute.
    * @see org.melanee.core.models.plm.PLM.ClassificationKind
    * @see #getKind()
    * @generated

@@ -28,8 +28,7 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.ClabjectParameterImpl#getDatatype
- * <em>Datatype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.ClabjectParameterImpl#getDatatype <em>Datatype</em>}</li>
  * </ul>
  *
  * @generated
@@ -38,7 +37,6 @@ public class ClabjectParameterImpl extends ParameterImpl implements ClabjectPara
   /**
    * The cached value of the '{@link #getDatatype() <em>Datatype</em>}' reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getDatatype()
    * @generated
    * @ordered
@@ -47,7 +45,6 @@ public class ClabjectParameterImpl extends ParameterImpl implements ClabjectPara
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected ClabjectParameterImpl() {
@@ -56,7 +53,6 @@ public class ClabjectParameterImpl extends ParameterImpl implements ClabjectPara
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -66,17 +62,15 @@ public class ClabjectParameterImpl extends ParameterImpl implements ClabjectPara
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject getDatatype() {
     if (datatype != null && datatype.eIsProxy()) {
-      InternalEObject oldDatatype = (InternalEObject) datatype;
-      datatype = (Clabject) eResolveProxy(oldDatatype);
+      InternalEObject oldDatatype = (InternalEObject)datatype;
+      datatype = (Clabject)eResolveProxy(oldDatatype);
       if (datatype != oldDatatype) {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-              PLMPackage.CLABJECT_PARAMETER__DATATYPE, oldDatatype, datatype));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PLMPackage.CLABJECT_PARAMETER__DATATYPE, oldDatatype, datatype));
       }
     }
     return datatype;
@@ -84,7 +78,6 @@ public class ClabjectParameterImpl extends ParameterImpl implements ClabjectPara
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Clabject basicGetDatatype() {
@@ -93,73 +86,66 @@ public class ClabjectParameterImpl extends ParameterImpl implements ClabjectPara
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDatatype(Clabject newDatatype) {
     Clabject oldDatatype = datatype;
     datatype = newDatatype;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CLABJECT_PARAMETER__DATATYPE,
-          oldDatatype, datatype));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.CLABJECT_PARAMETER__DATATYPE, oldDatatype, datatype));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.CLABJECT_PARAMETER__DATATYPE:
-      if (resolve)
-        return getDatatype();
-      return basicGetDatatype();
+      case PLMPackage.CLABJECT_PARAMETER__DATATYPE:
+        if (resolve) return getDatatype();
+        return basicGetDatatype();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.CLABJECT_PARAMETER__DATATYPE:
-      setDatatype((Clabject) newValue);
-      return;
+      case PLMPackage.CLABJECT_PARAMETER__DATATYPE:
+        setDatatype((Clabject)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.CLABJECT_PARAMETER__DATATYPE:
-      setDatatype((Clabject) null);
-      return;
+      case PLMPackage.CLABJECT_PARAMETER__DATATYPE:
+        setDatatype((Clabject)null);
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.CLABJECT_PARAMETER__DATATYPE:
-      return datatype != null;
+      case PLMPackage.CLABJECT_PARAMETER__DATATYPE:
+        return datatype != null;
     }
     return super.eIsSet(featureID);
   }

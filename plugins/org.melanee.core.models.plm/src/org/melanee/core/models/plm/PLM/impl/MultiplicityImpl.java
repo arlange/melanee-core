@@ -32,14 +32,10 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl#getLower
- * <em>Lower</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl#getUpper
- * <em>Upper</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl#getPotency
- * <em>Potency</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl#getConnectionend
- * <em>Connectionend</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl#getLower <em>Lower</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl#getPotency <em>Potency</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl#getConnectionend <em>Connectionend</em>}</li>
  * </ul>
  *
  * @generated
@@ -88,7 +84,6 @@ public class MultiplicityImpl extends MinimalEObjectImpl.Container implements Mu
   /**
    * The default value of the '{@link #getPotency() <em>Potency</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getPotency()
    * @generated
    * @ordered
@@ -98,7 +93,6 @@ public class MultiplicityImpl extends MinimalEObjectImpl.Container implements Mu
   /**
    * The cached value of the '{@link #getPotency() <em>Potency</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getPotency()
    * @generated
    * @ordered
@@ -107,7 +101,6 @@ public class MultiplicityImpl extends MinimalEObjectImpl.Container implements Mu
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected MultiplicityImpl() {
@@ -116,7 +109,6 @@ public class MultiplicityImpl extends MinimalEObjectImpl.Container implements Mu
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -126,7 +118,6 @@ public class MultiplicityImpl extends MinimalEObjectImpl.Container implements Mu
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getLower() {
@@ -135,20 +126,17 @@ public class MultiplicityImpl extends MinimalEObjectImpl.Container implements Mu
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setLower(int newLower) {
     int oldLower = lower;
     lower = newLower;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.MULTIPLICITY__LOWER,
-          oldLower, lower));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.MULTIPLICITY__LOWER, oldLower, lower));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getUpper() {
@@ -157,20 +145,17 @@ public class MultiplicityImpl extends MinimalEObjectImpl.Container implements Mu
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setUpper(int newUpper) {
     int oldUpper = upper;
     upper = newUpper;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.MULTIPLICITY__UPPER,
-          oldUpper, upper));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.MULTIPLICITY__UPPER, oldUpper, upper));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getPotency() {
@@ -179,211 +164,190 @@ public class MultiplicityImpl extends MinimalEObjectImpl.Container implements Mu
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPotency(int newPotency) {
     int oldPotency = potency;
     potency = newPotency;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.MULTIPLICITY__POTENCY,
-          oldPotency, potency));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.MULTIPLICITY__POTENCY, oldPotency, potency));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ConnectionEnd getConnectionend() {
-    if (eContainerFeatureID() != PLMPackage.MULTIPLICITY__CONNECTIONEND)
-      return null;
-    return (ConnectionEnd) eInternalContainer();
+    if (eContainerFeatureID() != PLMPackage.MULTIPLICITY__CONNECTIONEND) return null;
+    return (ConnectionEnd)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetConnectionend(ConnectionEnd newConnectionend,
       NotificationChain msgs) {
-    msgs = eBasicSetContainer((InternalEObject) newConnectionend,
-        PLMPackage.MULTIPLICITY__CONNECTIONEND, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newConnectionend, PLMPackage.MULTIPLICITY__CONNECTIONEND, msgs);
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setConnectionend(ConnectionEnd newConnectionend) {
-    if (newConnectionend != eInternalContainer()
-        || (eContainerFeatureID() != PLMPackage.MULTIPLICITY__CONNECTIONEND
-            && newConnectionend != null)) {
+    if (newConnectionend != eInternalContainer() || (eContainerFeatureID() != PLMPackage.MULTIPLICITY__CONNECTIONEND && newConnectionend != null)) {
       if (EcoreUtil.isAncestor(this, newConnectionend))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
       if (newConnectionend != null)
-        msgs = ((InternalEObject) newConnectionend).eInverseAdd(this,
-            PLMPackage.CONNECTION_END__MULTIPLICITY, ConnectionEnd.class, msgs);
+        msgs = ((InternalEObject)newConnectionend).eInverseAdd(this, PLMPackage.CONNECTION_END__MULTIPLICITY, ConnectionEnd.class, msgs);
       msgs = basicSetConnectionend(newConnectionend, msgs);
-      if (msgs != null)
-        msgs.dispatch();
-    } else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.MULTIPLICITY__CONNECTIONEND,
-          newConnectionend, newConnectionend));
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.MULTIPLICITY__CONNECTIONEND, newConnectionend, newConnectionend));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID,
       NotificationChain msgs) {
     switch (featureID) {
-    case PLMPackage.MULTIPLICITY__CONNECTIONEND:
-      if (eInternalContainer() != null)
-        msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetConnectionend((ConnectionEnd) otherEnd, msgs);
+      case PLMPackage.MULTIPLICITY__CONNECTIONEND:
+        if (eInternalContainer() != null)
+          msgs = eBasicRemoveFromContainer(msgs);
+        return basicSetConnectionend((ConnectionEnd)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
       NotificationChain msgs) {
     switch (featureID) {
-    case PLMPackage.MULTIPLICITY__CONNECTIONEND:
-      return basicSetConnectionend(null, msgs);
+      case PLMPackage.MULTIPLICITY__CONNECTIONEND:
+        return basicSetConnectionend(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
     switch (eContainerFeatureID()) {
-    case PLMPackage.MULTIPLICITY__CONNECTIONEND:
-      return eInternalContainer().eInverseRemove(this, PLMPackage.CONNECTION_END__MULTIPLICITY,
-          ConnectionEnd.class, msgs);
+      case PLMPackage.MULTIPLICITY__CONNECTIONEND:
+        return eInternalContainer().eInverseRemove(this, PLMPackage.CONNECTION_END__MULTIPLICITY, ConnectionEnd.class, msgs);
     }
     return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.MULTIPLICITY__LOWER:
-      return getLower();
-    case PLMPackage.MULTIPLICITY__UPPER:
-      return getUpper();
-    case PLMPackage.MULTIPLICITY__POTENCY:
-      return getPotency();
-    case PLMPackage.MULTIPLICITY__CONNECTIONEND:
-      return getConnectionend();
+      case PLMPackage.MULTIPLICITY__LOWER:
+        return getLower();
+      case PLMPackage.MULTIPLICITY__UPPER:
+        return getUpper();
+      case PLMPackage.MULTIPLICITY__POTENCY:
+        return getPotency();
+      case PLMPackage.MULTIPLICITY__CONNECTIONEND:
+        return getConnectionend();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.MULTIPLICITY__LOWER:
-      setLower((Integer) newValue);
-      return;
-    case PLMPackage.MULTIPLICITY__UPPER:
-      setUpper((Integer) newValue);
-      return;
-    case PLMPackage.MULTIPLICITY__POTENCY:
-      setPotency((Integer) newValue);
-      return;
-    case PLMPackage.MULTIPLICITY__CONNECTIONEND:
-      setConnectionend((ConnectionEnd) newValue);
-      return;
+      case PLMPackage.MULTIPLICITY__LOWER:
+        setLower((Integer)newValue);
+        return;
+      case PLMPackage.MULTIPLICITY__UPPER:
+        setUpper((Integer)newValue);
+        return;
+      case PLMPackage.MULTIPLICITY__POTENCY:
+        setPotency((Integer)newValue);
+        return;
+      case PLMPackage.MULTIPLICITY__CONNECTIONEND:
+        setConnectionend((ConnectionEnd)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.MULTIPLICITY__LOWER:
-      setLower(LOWER_EDEFAULT);
-      return;
-    case PLMPackage.MULTIPLICITY__UPPER:
-      setUpper(UPPER_EDEFAULT);
-      return;
-    case PLMPackage.MULTIPLICITY__POTENCY:
-      setPotency(POTENCY_EDEFAULT);
-      return;
-    case PLMPackage.MULTIPLICITY__CONNECTIONEND:
-      setConnectionend((ConnectionEnd) null);
-      return;
+      case PLMPackage.MULTIPLICITY__LOWER:
+        setLower(LOWER_EDEFAULT);
+        return;
+      case PLMPackage.MULTIPLICITY__UPPER:
+        setUpper(UPPER_EDEFAULT);
+        return;
+      case PLMPackage.MULTIPLICITY__POTENCY:
+        setPotency(POTENCY_EDEFAULT);
+        return;
+      case PLMPackage.MULTIPLICITY__CONNECTIONEND:
+        setConnectionend((ConnectionEnd)null);
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.MULTIPLICITY__LOWER:
-      return lower != LOWER_EDEFAULT;
-    case PLMPackage.MULTIPLICITY__UPPER:
-      return upper != UPPER_EDEFAULT;
-    case PLMPackage.MULTIPLICITY__POTENCY:
-      return potency != POTENCY_EDEFAULT;
-    case PLMPackage.MULTIPLICITY__CONNECTIONEND:
-      return getConnectionend() != null;
+      case PLMPackage.MULTIPLICITY__LOWER:
+        return lower != LOWER_EDEFAULT;
+      case PLMPackage.MULTIPLICITY__UPPER:
+        return upper != UPPER_EDEFAULT;
+      case PLMPackage.MULTIPLICITY__POTENCY:
+        return potency != POTENCY_EDEFAULT;
+      case PLMPackage.MULTIPLICITY__CONNECTIONEND:
+        return getConnectionend() != null;
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString() {
-    if (eIsProxy())
-      return super.toString();
+    if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (lower: ");
     result.append(lower);
     result.append(", upper: ");

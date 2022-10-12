@@ -20,9 +20,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Method#getBody <em>Body</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Method#getParameter
- * <em>Parameter</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Method#getBody <em>Body</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Method#getParameter <em>Parameter</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getMethod()
@@ -48,26 +47,23 @@ public interface Method extends Feature {
   String getBody();
 
   /**
-   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Method#getBody
-   * <em>Body</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Body</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Method#getBody <em>Body</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Body</em>' attribute.
    * @see #getBody()
    * @generated
    */
   void setBody(String value);
 
   /**
-   * Returns the value of the '<em><b>Parameter</b></em>' containment reference
-   * list. The list contents are of type
-   * {@link org.melanee.core.models.plm.PLM.Parameter}. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
+   * The list contents are of type {@link org.melanee.core.models.plm.PLM.Parameter}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parameter</em>' containment reference list isn't
    * clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Parameter</em>' containment reference list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getMethod_Parameter()
    * @model containment="true"

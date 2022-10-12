@@ -8,4 +8,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.melanee.core.models.plm;bundle-version="1.0.0",
  org.melanee.core.workbench;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

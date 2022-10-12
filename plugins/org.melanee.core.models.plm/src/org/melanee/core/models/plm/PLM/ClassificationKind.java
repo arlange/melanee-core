@@ -20,16 +20,15 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration
  * '<em><b>Classification Kind</b></em>', and utility methods for working with
  * them. <!-- end-user-doc -->
- * 
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getClassificationKind()
  * @model
  * @generated
  */
 public enum ClassificationKind implements Enumerator {
   /**
-   * The '<em><b>Instance</b></em>' literal object. <!-- begin-user-doc --> <!--
+   * The '<em><b>Instance</b></em>' literal object.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #INSTANCE_VALUE
    * @generated
    * @ordered
@@ -37,9 +36,9 @@ public enum ClassificationKind implements Enumerator {
   INSTANCE(0, "instance", "instance"),
 
   /**
-   * The '<em><b>Isonym</b></em>' literal object. <!-- begin-user-doc --> <!--
+   * The '<em><b>Isonym</b></em>' literal object.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #ISONYM_VALUE
    * @generated
    * @ordered
@@ -47,9 +46,9 @@ public enum ClassificationKind implements Enumerator {
   ISONYM(1, "isonym", "isonym"),
 
   /**
-   * The '<em><b>Hyponym</b></em>' literal object. <!-- begin-user-doc --> <!--
+   * The '<em><b>Hyponym</b></em>' literal object.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #HYPONYM_VALUE
    * @generated
    * @ordered
@@ -57,9 +56,9 @@ public enum ClassificationKind implements Enumerator {
   HYPONYM(2, "hyponym", "hyponym"),
 
   /**
-   * The '<em><b>Instantiation</b></em>' literal object. <!-- begin-user-doc -->
+   * The '<em><b>Instantiation</b></em>' literal object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #INSTANTIATION_VALUE
    * @generated
    * @ordered
@@ -67,13 +66,13 @@ public enum ClassificationKind implements Enumerator {
   INSTANTIATION(3, "instantiation", "instantiation");
 
   /**
-   * The '<em><b>Instance</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>Instance</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Instance</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #INSTANCE
    * @model name="instance"
    * @generated
@@ -82,13 +81,13 @@ public enum ClassificationKind implements Enumerator {
   public static final int INSTANCE_VALUE = 0;
 
   /**
-   * The '<em><b>Isonym</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>Isonym</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Isonym</b></em>' literal object isn't clear, there
    * really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #ISONYM
    * @model name="isonym"
    * @generated
@@ -97,13 +96,13 @@ public enum ClassificationKind implements Enumerator {
   public static final int ISONYM_VALUE = 1;
 
   /**
-   * The '<em><b>Hyponym</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>Hyponym</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Hyponym</b></em>' literal object isn't clear, there
    * really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #HYPONYM
    * @model name="hyponym"
    * @generated
@@ -112,13 +111,13 @@ public enum ClassificationKind implements Enumerator {
   public static final int HYPONYM_VALUE = 2;
 
   /**
-   * The '<em><b>Instantiation</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>Instantiation</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Instantiation</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #INSTANTIATION
    * @model name="instantiation"
    * @generated
@@ -132,24 +131,24 @@ public enum ClassificationKind implements Enumerator {
    * 
    * @generated
    */
-  private static final ClassificationKind[] VALUES_ARRAY = new ClassificationKind[] { INSTANCE,
-      ISONYM, HYPONYM, INSTANTIATION, };
+  private static final ClassificationKind[] VALUES_ARRAY = new ClassificationKind[] {
+      INSTANCE,
+      ISONYM,
+      HYPONYM,
+      INSTANTIATION,
+    };
 
   /**
-   * A public read-only list of all the '<em><b>Classification Kind</b></em>'
-   * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * A public read-only list of all the '<em><b>Classification Kind</b></em>' enumerators.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public static final List<ClassificationKind> VALUES = Collections
-      .unmodifiableList(Arrays.asList(VALUES_ARRAY));
+  public static final List<ClassificationKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
   /**
-   * Returns the '<em><b>Classification Kind</b></em>' literal with the specified
-   * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param literal
-   *          the literal.
+   * Returns the '<em><b>Classification Kind</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param literal the literal.
    * @return the matching enumerator or <code>null</code>.
    * @generated
    */
@@ -164,11 +163,9 @@ public enum ClassificationKind implements Enumerator {
   }
 
   /**
-   * Returns the '<em><b>Classification Kind</b></em>' literal with the specified
-   * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param name
-   *          the name.
+   * Returns the '<em><b>Classification Kind</b></em>' literal with the specified name.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param name the name.
    * @return the matching enumerator or <code>null</code>.
    * @generated
    */
@@ -183,53 +180,44 @@ public enum ClassificationKind implements Enumerator {
   }
 
   /**
-   * Returns the '<em><b>Classification Kind</b></em>' literal with the specified
-   * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the integer value.
+   * Returns the '<em><b>Classification Kind</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the integer value.
    * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static ClassificationKind get(int value) {
     switch (value) {
-    case INSTANCE_VALUE:
-      return INSTANCE;
-    case ISONYM_VALUE:
-      return ISONYM;
-    case HYPONYM_VALUE:
-      return HYPONYM;
-    case INSTANTIATION_VALUE:
-      return INSTANTIATION;
+      case INSTANCE_VALUE: return INSTANCE;
+      case ISONYM_VALUE: return ISONYM;
+      case HYPONYM_VALUE: return HYPONYM;
+      case INSTANTIATION_VALUE: return INSTANTIATION;
     }
     return null;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final int value;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final String name;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final String literal;
 
   /**
-   * Only this class can construct instances. <!-- begin-user-doc --> <!--
+   * Only this class can construct instances.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   private ClassificationKind(int value, String name, String literal) {
@@ -240,7 +228,6 @@ public enum ClassificationKind implements Enumerator {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getValue() {
@@ -249,7 +236,6 @@ public enum ClassificationKind implements Enumerator {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName() {
@@ -258,7 +244,6 @@ public enum ClassificationKind implements Enumerator {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getLiteral() {
@@ -266,9 +251,8 @@ public enum ClassificationKind implements Enumerator {
   }
 
   /**
-   * Returns the literal value of the enumerator, which is its string
-   * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

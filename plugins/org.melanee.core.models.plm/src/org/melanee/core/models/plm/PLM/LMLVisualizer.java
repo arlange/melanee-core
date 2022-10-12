@@ -22,20 +22,13 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getAttributes
- * <em>Attributes</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getDslVisualizer
- * <em>Dsl Visualizer</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getName
- * <em>Name</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getXLocation
- * <em>XLocation</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getYLocation
- * <em>YLocation</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getWidth
- * <em>Width</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getHeight
- * <em>Height</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getDslVisualizer <em>Dsl Visualizer</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getName <em>Name</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getXLocation <em>XLocation</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getYLocation <em>YLocation</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getWidth <em>Width</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getHeight <em>Height</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getLMLVisualizer()
@@ -44,14 +37,14 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface LMLVisualizer extends EObject {
   /**
-   * Returns the value of the '<em><b>Attributes</b></em>' attribute list. The
-   * list contents are of type {@link java.lang.String}. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Attributes</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Attributes</em>' attribute list isn't clear, there
    * really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Attributes</em>' attribute list.
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getLMLVisualizer_Attributes()
    * @model
@@ -96,26 +89,23 @@ public interface LMLVisualizer extends EObject {
   String getName();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getName <em>Name</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Name</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>XLocation</b></em>' attribute. The default
-   * value is <code>"-1"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>XLocation</b></em>' attribute.
+   * The default value is <code>"-1"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>XLocation</em>' attribute isn't clear, there
    * really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>XLocation</em>' attribute.
    * @see #setXLocation(int)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getLMLVisualizer_XLocation()
@@ -125,26 +115,23 @@ public interface LMLVisualizer extends EObject {
   int getXLocation();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getXLocation
-   * <em>XLocation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>XLocation</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getXLocation <em>XLocation</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>XLocation</em>' attribute.
    * @see #getXLocation()
    * @generated
    */
   void setXLocation(int value);
 
   /**
-   * Returns the value of the '<em><b>YLocation</b></em>' attribute. The default
-   * value is <code>"-1"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>YLocation</b></em>' attribute.
+   * The default value is <code>"-1"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>YLocation</em>' attribute isn't clear, there
    * really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>YLocation</em>' attribute.
    * @see #setYLocation(int)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getLMLVisualizer_YLocation()
@@ -154,26 +141,23 @@ public interface LMLVisualizer extends EObject {
   int getYLocation();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getYLocation
-   * <em>YLocation</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>YLocation</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getYLocation <em>YLocation</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>YLocation</em>' attribute.
    * @see #getYLocation()
    * @generated
    */
   void setYLocation(int value);
 
   /**
-   * Returns the value of the '<em><b>Width</b></em>' attribute. The default value
-   * is <code>"-1"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Width</b></em>' attribute.
+   * The default value is <code>"-1"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Width</em>' attribute isn't clear, there really
    * should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Width</em>' attribute.
    * @see #setWidth(int)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getLMLVisualizer_Width()
@@ -183,26 +167,23 @@ public interface LMLVisualizer extends EObject {
   int getWidth();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getWidth
-   * <em>Width</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Width</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getWidth <em>Width</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Width</em>' attribute.
    * @see #getWidth()
    * @generated
    */
   void setWidth(int value);
 
   /**
-   * Returns the value of the '<em><b>Height</b></em>' attribute. The default
-   * value is <code>"-1"</code>. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Height</b></em>' attribute.
+   * The default value is <code>"-1"</code>.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Height</em>' attribute isn't clear, there really
    * should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Height</em>' attribute.
    * @see #setHeight(int)
    * @see org.melanee.core.models.plm.PLM.PLMPackage#getLMLVisualizer_Height()
@@ -212,12 +193,9 @@ public interface LMLVisualizer extends EObject {
   int getHeight();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getHeight
-   * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Height</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getHeight <em>Height</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Height</em>' attribute.
    * @see #getHeight()
    * @generated
    */
@@ -287,42 +265,22 @@ public interface LMLVisualizer extends EObject {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @model required="true" ordered="false" keyRequired="true"
-   *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='let
-   *        keyValueList : Sequence(String) =\r\n\tself.attributes->select(a |
-   *        a.size() > key.size())->select(a | a.substring(1, key.size()) =
-   *        key)->asSequence()\r\nin\r\nlet keyValue : String =\r\n\tif
-   *        (keyValueList->size() > 0)
-   *        then\r\n\t\tkeyValueList->first()\r\n\telse\r\n\t\t\'\'\r\n\tendif\r\nin\r\nlet
-   *        indexOfEquals:Integer =\r\n\t--Key not found?\r\n\tif (keyValue <>
-   *        \'\') then\r\n\t\tSequence{1 .. keyValue.size()}->iterate(i:Integer;
-   *        index:Integer = -1 | \r\n\t\t\tif (index = -1 and
-   *        keyValue.substring(i,i) = \'=\') then i else index
-   *        endif)\r\n\telse\r\n\t\t-1\r\n\tendif\r\nin\r\nlet value:String
-   *        =\r\n\t--No Equals found in keyValue\r\n\tif(indexOfEquals <> -1)
-   *        then\r\n\t\tkeyValue.substring(indexOfEquals + 1,
-   *        keyValue.size())\r\n\telse\r\n\t\t\'\'\r\n\tendif\r\nin\r\nlet
-   *        valueWithoutLeadingSpace:String = \r\n\t--No value found\r\n\tif
-   *        (value <> \'\') then\r\n\t\tif (value.substring(1,1) = \' \' and
-   *        value.size() > 1) then\r\n\t\t\tvalue.substring(2,
-   *        value.size())\r\n\t\telse\r\n\t\t\tvalue\r\n\t\tendif\r\n\telse\r\n\t\t\'\'\r\n\tendif\r\nin\r\n\tvalueWithoutLeadingSpace'"
+   *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='let keyValueList : Sequence(String) =\r\n\tself.attributes-&gt;select(a | a.size() &gt; key.size())-&gt;select(a | a.substring(1, key.size()) = key)-&gt;asSequence()\r\nin\r\nlet keyValue : String =\r\n\tif (keyValueList-&gt;size() &gt; 0) then\r\n\t\tkeyValueList-&gt;first()\r\n\telse\r\n\t\t\'\'\r\n\tendif\r\nin\r\nlet indexOfEquals:Integer =\r\n\t--Key not found?\r\n\tif (keyValue &lt;&gt; \'\') then\r\n\t\tSequence{1 .. keyValue.size()}-&gt;iterate(i:Integer; index:Integer = -1 | \r\n\t\t\tif (index = -1 and keyValue.substring(i,i) = \'=\') then i else index endif)\r\n\telse\r\n\t\t-1\r\n\tendif\r\nin\r\nlet value:String =\r\n\t--No Equals found in keyValue\r\n\tif(indexOfEquals &lt;&gt; -1) then\r\n\t\tkeyValue.substring(indexOfEquals + 1, keyValue.size())\r\n\telse\r\n\t\t\'\'\r\n\tendif\r\nin\r\nlet valueWithoutLeadingSpace:String = \r\n\t--No value found\r\n\tif (value &lt;&gt; \'\') then\r\n\t\tif (value.substring(1,1) = \' \' and value.size() &gt; 1) then\r\n\t\t\tvalue.substring(2, value.size())\r\n\t\telse\r\n\t\t\tvalue\r\n\t\tendif\r\n\telse\r\n\t\t\'\'\r\n\tendif\r\nin\r\n\tvalueWithoutLeadingSpace'"
    * @generated
    */
   String getValueForKey(String key);
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @model kind="operation" annotation="http://www.eclipse.org/emf/2002/Ecore/OCL
-   *        body='self.oclAsType(ecore::EObject).eContainer().oclAsType(Element)'"
+   * @model kind="operation"
+   *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='self.oclAsType(ecore::EObject).eContainer().oclAsType(Element)'"
    * @generated
    */
   Element getContainingElement();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @model
    * @generated
    */

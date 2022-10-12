@@ -26,17 +26,15 @@ import org.melanee.core.models.plm.PLM.PrimitiveParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.PrimitiveParameterImpl#getDatatype
- * <em>Datatype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.PrimitiveParameterImpl#getDatatype <em>Datatype</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PrimitiveParameterImpl extends ParameterImpl implements PrimitiveParameter {
   /**
-   * The default value of the '{@link #getDatatype() <em>Datatype</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getDatatype() <em>Datatype</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getDatatype()
    * @generated
    * @ordered
@@ -46,7 +44,6 @@ public class PrimitiveParameterImpl extends ParameterImpl implements PrimitivePa
   /**
    * The cached value of the '{@link #getDatatype() <em>Datatype</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getDatatype()
    * @generated
    * @ordered
@@ -55,7 +52,6 @@ public class PrimitiveParameterImpl extends ParameterImpl implements PrimitivePa
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PrimitiveParameterImpl() {
@@ -64,7 +60,6 @@ public class PrimitiveParameterImpl extends ParameterImpl implements PrimitivePa
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -74,7 +69,6 @@ public class PrimitiveParameterImpl extends ParameterImpl implements PrimitivePa
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getDatatype() {
@@ -83,86 +77,78 @@ public class PrimitiveParameterImpl extends ParameterImpl implements PrimitivePa
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDatatype(String newDatatype) {
     String oldDatatype = datatype;
     datatype = newDatatype;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET,
-          PLMPackage.PRIMITIVE_PARAMETER__DATATYPE, oldDatatype, datatype));
+      eNotify(new ENotificationImpl(this, Notification.SET, PLMPackage.PRIMITIVE_PARAMETER__DATATYPE, oldDatatype, datatype));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.PRIMITIVE_PARAMETER__DATATYPE:
-      return getDatatype();
+      case PLMPackage.PRIMITIVE_PARAMETER__DATATYPE:
+        return getDatatype();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.PRIMITIVE_PARAMETER__DATATYPE:
-      setDatatype((String) newValue);
-      return;
+      case PLMPackage.PRIMITIVE_PARAMETER__DATATYPE:
+        setDatatype((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.PRIMITIVE_PARAMETER__DATATYPE:
-      setDatatype(DATATYPE_EDEFAULT);
-      return;
+      case PLMPackage.PRIMITIVE_PARAMETER__DATATYPE:
+        setDatatype(DATATYPE_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.PRIMITIVE_PARAMETER__DATATYPE:
-      return DATATYPE_EDEFAULT == null ? datatype != null : !DATATYPE_EDEFAULT.equals(datatype);
+      case PLMPackage.PRIMITIVE_PARAMETER__DATATYPE:
+        return DATATYPE_EDEFAULT == null ? datatype != null : !DATATYPE_EDEFAULT.equals(datatype);
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString() {
-    if (eIsProxy())
-      return super.toString();
+    if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (datatype: ");
     result.append(datatype);
     result.append(')');

@@ -29,7 +29,7 @@ public class AttributeEditHelper extends PLMBaseEditHelper {
 
   /**
    * This method is responsible to clean up all elements to which the deleted
-   * elment is connected.
+   * element is connected.
    *
    * These include - Inheritance, Connection and Classification - Links to remote
    * model elements

@@ -50,24 +50,23 @@ import org.melanee.core.models.plm.PLM.Supertype;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
   /**
-   * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public static PLMFactory init() {
     try {
-      PLMFactory thePLMFactory = (PLMFactory) EPackage.Registry.INSTANCE
-          .getEFactory("http://melanee.org/PLM");
+      PLMFactory thePLMFactory = (PLMFactory)EPackage.Registry.INSTANCE.getEFactory("http://melanee.org/PLM"); 
       if (thePLMFactory != null) {
         return thePLMFactory;
       }
-    } catch (Exception exception) {
+    }
+    catch (Exception exception) {
       EcorePlugin.INSTANCE.log(exception);
     }
     return new PLMFactoryImpl();
@@ -85,97 +84,72 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public EObject create(EClass eClass) {
     switch (eClass.getClassifierID()) {
-    case PLMPackage.DOMAIN:
-      return createDomain();
-    case PLMPackage.LEVEL:
-      return createLevel();
-    case PLMPackage.DEEP_MODEL:
-      return createDeepModel();
-    case PLMPackage.INHERITANCE:
-      return createInheritance();
-    case PLMPackage.SUPERTYPE:
-      return createSupertype();
-    case PLMPackage.SUBTYPE:
-      return createSubtype();
-    case PLMPackage.CLASSIFICATION:
-      return createClassification();
-    case PLMPackage.ENTITY:
-      return createEntity();
-    case PLMPackage.CONNECTION:
-      return createConnection();
-    case PLMPackage.CONNECTION_END:
-      return createConnectionEnd();
-    case PLMPackage.LML_VISUALIZER:
-      return createLMLVisualizer();
-    case PLMPackage.ATTRIBUTE:
-      return createAttribute();
-    case PLMPackage.METHOD:
-      return createMethod();
-    case PLMPackage.ENUMERATION:
-      return createEnumeration();
-    case PLMPackage.CLABJECT_PARAMETER:
-      return createClabjectParameter();
-    case PLMPackage.PRIMITIVE_PARAMETER:
-      return createPrimitiveParameter();
-    case PLMPackage.MULTIPLICITY:
-      return createMultiplicity();
-    case PLMPackage.PACKAGE:
-      return createPackage();
-    default:
-      throw new IllegalArgumentException(
-          "The class '" + eClass.getName() + "' is not a valid classifier");
+      case PLMPackage.DOMAIN: return createDomain();
+      case PLMPackage.LEVEL: return createLevel();
+      case PLMPackage.DEEP_MODEL: return createDeepModel();
+      case PLMPackage.INHERITANCE: return createInheritance();
+      case PLMPackage.SUPERTYPE: return createSupertype();
+      case PLMPackage.SUBTYPE: return createSubtype();
+      case PLMPackage.CLASSIFICATION: return createClassification();
+      case PLMPackage.ENTITY: return createEntity();
+      case PLMPackage.CONNECTION: return createConnection();
+      case PLMPackage.CONNECTION_END: return createConnectionEnd();
+      case PLMPackage.LML_VISUALIZER: return createLMLVisualizer();
+      case PLMPackage.ATTRIBUTE: return createAttribute();
+      case PLMPackage.METHOD: return createMethod();
+      case PLMPackage.ENUMERATION: return createEnumeration();
+      case PLMPackage.CLABJECT_PARAMETER: return createClabjectParameter();
+      case PLMPackage.PRIMITIVE_PARAMETER: return createPrimitiveParameter();
+      case PLMPackage.MULTIPLICITY: return createMultiplicity();
+      case PLMPackage.PACKAGE: return createPackage();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object createFromString(EDataType eDataType, String initialValue) {
     switch (eDataType.getClassifierID()) {
-    case PLMPackage.CONNECTION_END_KIND:
-      return createConnectionEndKindFromString(eDataType, initialValue);
-    case PLMPackage.CLASSIFICATION_KIND:
-      return createClassificationKindFromString(eDataType, initialValue);
-    case PLMPackage.COMPLIANCE_KIND:
-      return createComplianceKindFromString(eDataType, initialValue);
-    default:
-      throw new IllegalArgumentException(
-          "The datatype '" + eDataType.getName() + "' is not a valid classifier");
+      case PLMPackage.CONNECTION_END_KIND:
+        return createConnectionEndKindFromString(eDataType, initialValue);
+      case PLMPackage.CLASSIFICATION_KIND:
+        return createClassificationKindFromString(eDataType, initialValue);
+      case PLMPackage.COMPLIANCE_KIND:
+        return createComplianceKindFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String convertToString(EDataType eDataType, Object instanceValue) {
     switch (eDataType.getClassifierID()) {
-    case PLMPackage.CONNECTION_END_KIND:
-      return convertConnectionEndKindToString(eDataType, instanceValue);
-    case PLMPackage.CLASSIFICATION_KIND:
-      return convertClassificationKindToString(eDataType, instanceValue);
-    case PLMPackage.COMPLIANCE_KIND:
-      return convertComplianceKindToString(eDataType, instanceValue);
-    default:
-      throw new IllegalArgumentException(
-          "The datatype '" + eDataType.getName() + "' is not a valid classifier");
+      case PLMPackage.CONNECTION_END_KIND:
+        return convertConnectionEndKindToString(eDataType, instanceValue);
+      case PLMPackage.CLASSIFICATION_KIND:
+        return convertClassificationKindToString(eDataType, instanceValue);
+      case PLMPackage.COMPLIANCE_KIND:
+        return convertComplianceKindToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Domain createDomain() {
@@ -185,7 +159,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Level createLevel() {
@@ -195,7 +168,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public DeepModel createDeepModel() {
@@ -205,7 +177,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Inheritance createInheritance() {
@@ -215,7 +186,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Supertype createSupertype() {
@@ -225,7 +195,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Subtype createSubtype() {
@@ -235,7 +204,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Classification createClassification() {
@@ -245,7 +213,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Entity createEntity() {
@@ -255,7 +222,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Connection createConnection() {
@@ -265,7 +231,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ConnectionEnd createConnectionEnd() {
@@ -275,7 +240,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public LMLVisualizer createLMLVisualizer() {
@@ -285,7 +249,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Attribute createAttribute() {
@@ -295,7 +258,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Method createMethod() {
@@ -305,7 +267,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Enumeration createEnumeration() {
@@ -315,7 +276,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ClabjectParameter createClabjectParameter() {
@@ -325,7 +285,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PrimitiveParameter createPrimitiveParameter() {
@@ -335,7 +294,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Multiplicity createMultiplicity() {
@@ -345,7 +303,6 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public org.melanee.core.models.plm.PLM.Package createPackage() {
@@ -355,21 +312,17 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ConnectionEndKind createConnectionEndKindFromString(EDataType eDataType,
       String initialValue) {
     ConnectionEndKind result = ConnectionEndKind.get(initialValue);
-    if (result == null)
-      throw new IllegalArgumentException("The value '" + initialValue
-          + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String convertConnectionEndKindToString(EDataType eDataType, Object instanceValue) {
@@ -378,21 +331,17 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ClassificationKind createClassificationKindFromString(EDataType eDataType,
       String initialValue) {
     ClassificationKind result = ClassificationKind.get(initialValue);
-    if (result == null)
-      throw new IllegalArgumentException("The value '" + initialValue
-          + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String convertClassificationKindToString(EDataType eDataType, Object instanceValue) {
@@ -401,20 +350,16 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ComplianceKind createComplianceKindFromString(EDataType eDataType, String initialValue) {
     ComplianceKind result = ComplianceKind.get(initialValue);
-    if (result == null)
-      throw new IllegalArgumentException("The value '" + initialValue
-          + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String convertComplianceKindToString(EDataType eDataType, Object instanceValue) {
@@ -423,16 +368,14 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PLMPackage getPLMPackage() {
-    return (PLMPackage) getEPackage();
+    return (PLMPackage)getEPackage();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @deprecated
    * @generated
    */
@@ -442,39 +385,32 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
   }
 
   /**
-   * This methods creates a clabject from a template. All features and
-   * LMLVisualizers are copied to the new clabject and the potency is calculated
-   * base on the new clabjects parent. In case the newClabject is on the level
-   * below of template a Classification relationship is created. Does not copy
-   * bounds.
+   * This methods creates a clabject from a template. All features and LMLVisualizers
+   * are copied to the new clabject and the potency is calculated base on the new
+   * clabjects parent. In case the newClabject is on the level below of template a
+   * Classification relationship is created. Does not copy bounds.
    * 
-   * @param template
-   *          the clabject which hold all values for creation
-   * @param newParent
-   *          the parent in which the clabject is placed in
+   * @param template the clabject which hold all values for creation
+   * @param newParent the parent in which the clabject is placed in 
    * 
    *          <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
 
   public Clabject createClabjectFromTemplate(Clabject template, Element newParent) {
-    return createClabjectFromTemplate(template, newParent, false, true);
+    return createClabjectFromTemplate(template, newParent, false, true);	
   }
 
   /**
-   * This methods creates a clabject from a template. All features and
-   * LMLVisualizers are copied to the new clabject and the potency is calculated
-   * base on the new clabjects parent. In case the newClabject is on the level
-   * below of template a Classification relationship is created
+   * This methods creates a clabject from a template. All features and LMLVisualizers
+   * are copied to the new clabject and the potency is calculated base on the new
+   * clabjects parent. In case the newClabject is on the level below of template a
+   * Classification relationship is created
    * 
-   * @param template
-   *          the clabject which hold all values for creation
-   * @param newParent
-   *          the parent in which the clabject is placed in
-   * @param copyLocation
-   *          copy X/Y location
-   * @param copySize
-   *          width and height
+   * @param template the clabject which hold all values for creation
+   * @param newParent the parent in which the clabject is placed in 
+   * @param copyLocation copy X/Y location
+   * @param copySize width and height
    * 
    *          <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -482,13 +418,12 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   public Clabject createClabjectFromTemplate(Clabject template, Element newParent,
       boolean copyLocation, boolean copySize) {
-    if (template.getPotency() == 0 || newParent == null)
+    if(template.getPotency() == 0 || newParent == null)
       return null;
-
-    Clabject result = template instanceof Entity ? PLMFactory.eINSTANCE.createEntity()
-        : PLMFactory.eINSTANCE.createConnection();
+      
+    Clabject result = template instanceof Entity ? PLMFactory.eINSTANCE.createEntity() : PLMFactory.eINSTANCE.createConnection();
     configureClabject(template, result, newParent, copyLocation, copySize);
-    return result;
+    return result;	
   }
 
   /**
@@ -632,132 +567,144 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
   public void configureClabject(Clabject template, Clabject newClabject, Element newParent,
       boolean initializeAttributes, boolean copyLocation, boolean copySize) {
 
-    // No new Parent is provided for clabject and it has not been set yet.
+    //No new Parent is provided for clabject and it has not been set yet.
     if (newParent == null && newClabject.eContainer() != null)
-      newParent = (Element) newClabject.eContainer();
-
-    // Add the Entity to the newParent if not already done
-    if (newParent != null && newParent != newClabject.eContainer())
+      newParent = (Element)newClabject.eContainer();
+    
+    //Add the Entity to the newParent if not already done
+    if (newParent != null 
+        && newParent != newClabject.eContainer())
       if (newParent instanceof Level)
-        ((Level) newParent).getContent().add(newClabject);
+        ((Level)newParent).getContent().add(newClabject);
       else if (newParent instanceof Clabject)
-        ((Clabject) newParent).getContent().add(newClabject);
-
-    // ******************************
+        ((Clabject)newParent).getContent().add(newClabject);
+    
+    //******************************
     // Copy traits
-    // ******************************
-    // Level is now derived
-    // if (newParent != null)
-    // newClabject.setLevel(newParent.getLevel());
-
-    // ******************************
+    //******************************
+    //Level is now derived
+    //if (newParent != null)
+    //	newClabject.setLevel(newParent.getLevel());
+    
+    //******************************
     // Copy LML Visualizers
-    // ******************************
-    if (template.getVisualizer().size() > 0) {
-      // Quick hack to get a visualizer from type in
+    //******************************
+    if (template.getVisualizer().size() > 0){
+      //Quick hack to get a visualizer from type in
       LMLVisualizer instanceVisualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
       LMLVisualizer typeVisualizer = template.getVisualizer().get(0);
-
-      /*
-       * instanceVisualizer.setTemplate(typeVisualizer.getTemplate());
-       * instanceVisualizer.setDurability( //This check is to simple needs to be
-       * enhanced once the visualizer //durability is fully supported
-       * typeVisualizer.getDurability() == 0 || typeVisualizer.getDurability() == -1 ?
-       * typeVisualizer.getDurability() : typeVisualizer.getDurability() - 1 );
-       */
-
+          
+      /*instanceVisualizer.setTemplate(typeVisualizer.getTemplate());
+      instanceVisualizer.setDurability(
+        //This check is to simple needs to be enhanced once the visualizer
+        //durability is fully supported
+        typeVisualizer.getDurability() == 0 
+          || typeVisualizer.getDurability() == -1 ?
+              typeVisualizer.getDurability() 
+                : typeVisualizer.getDurability() - 1
+      );*/
+        
       instanceVisualizer.getAttributes().addAll(typeVisualizer.getAttributes());
-
-      if (copySize) {
+      
+      if(copySize){
         instanceVisualizer.setWidth(typeVisualizer.getWidth());
         instanceVisualizer.setHeight(typeVisualizer.getHeight());
       }
-
-      if (copyLocation) {
+      
+      if(copyLocation){
         instanceVisualizer.setXLocation(typeVisualizer.getXLocation());
         instanceVisualizer.setYLocation(typeVisualizer.getYLocation());
       }
-
+      
       newClabject.getVisualizer().clear();
       newClabject.getVisualizer().add(instanceVisualizer);
     }
-    // There is no visualizer present at the moment. This can happen in case the
+    //There is no visualizer present at the moment. This can happen in case the
     // template element is created via GMF and not initialized yet. Happens in
     // emendation service
-    else {
+    else{
       LMLVisualizer visualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
       newClabject.getVisualizer().add(visualizer);
       visualizer.getAttributes().addAll(visualizer.getDefaultVisualizationValues());
     }
-
-    // ****************************
+          
+          
+    //****************************
     // Calculate the new potency
-    // ****************************
+    //****************************
     if (template.getPotency() == -1)
       newClabject.setPotency(-1);
     else if (newParent == null)
       newClabject.setPotency(template.getPotency() - 1);
-    else {
+    else{
       int levelDifference = template.getLevelIndex() - newClabject.getLevelIndex();
       newClabject.setPotency(template.getPotency() + levelDifference);
     }
-
+          
     if (newClabject.getPotency() < -1)
       throw new RuntimeException("Clabjects with a negative potency cannot exist.");
-
-    // *****************************
+        
+          
+    //*****************************
     // Copy the features
-    // *****************************
+    //*****************************
     List<Feature> features = new LinkedList<Feature>();
-
+          
     for (Feature f : template.getAllFeatures()) {
       if (f.getDurability() == 0)
         continue;
-
+          
       Feature newFeature = createFeature(f, newClabject, initializeAttributes);
-
+          
       features.add(newFeature);
     }
-
+    
     newClabject.getFeature().addAll(features);
-
-    // ******************************************************
+        
+        
+    //******************************************************
     // Create a classification to the template if possible
-    // ******************************************************
-    if (newParent != null && template.getLevelIndex() == newClabject.getLevelIndex() - 1) {
+    //******************************************************
+    if (newParent != null &&
+        template.getLevelIndex() == newClabject.getLevelIndex() - 1){
       Classification i = PLMFactoryImpl.eINSTANCE.createClassification();
       i.setType(template);
       i.setInstance(newClabject);
       if (newParent instanceof Level)
-        ((Level) newParent).getContent().add(i);
-      else if (newParent instanceof Clabject)
-        ((Clabject) newParent).getLevel().getContent().add(i);
-
+        ((Level)newParent).getContent().add(i);
+      else if(newParent instanceof Clabject)
+        ((Clabject)newParent).getLevel().getContent().add(i);
+      
     }
-
-    // ******************************************************
+    
+    //******************************************************
     // Create a connection to the composite/aggregate
-    // ******************************************************
-    if (newParent instanceof Clabject && template.getLevelIndex() == newClabject.getLevelIndex() - 1
-        && (template.getComposite() != null || template.getAggregates().size() > 0)) {
-      // Find the connection to instantiate
+    //******************************************************
+    if (newParent instanceof Clabject
+        && template.getLevelIndex() == newClabject.getLevelIndex() - 1
+        && (
+            template.getComposite() != null
+              || template.getAggregates().size() > 0
+          )
+      ){
+      //Find the connection to instantiate
       List<Clabject> compositesAndAggregates = new ArrayList<Clabject>();
-      if (template.getComposite() != null)
+      if(template.getComposite() != null)
         compositesAndAggregates.add(template.getComposite());
       compositesAndAggregates.addAll(template.getAggregates());
-
+      
       Connection typeConnection = null;
-
-      for (Clabject c : compositesAndAggregates) {
-
-        // Found the type of the container
-        if (c.getClassificationTreeAsType().contains(newParent)) {
-
-          // Find the connection pointing to the type of the content
-          outer: for (Connection con : c.getConnections()) {
-            for (ConnectionEnd p : con.getConnectionEnd()) {
-              if (p.getDestination() == template
-                  || p.getDestination().getSubtypes().contains(template)) {
+      
+      for(Clabject c : compositesAndAggregates){
+        
+        //Found the type of the container
+        if(c.getClassificationTreeAsType().contains(newParent)){
+          
+          //Find the connection pointing to the type of the content
+          outer: for (Connection con : c.getConnections()){
+            for(ConnectionEnd p : con.getConnectionEnd()){
+              if(p.getDestination() == template
+                  || p.getDestination().getSubtypes().contains(template)){
                 typeConnection = con;
                 break outer;
               }
@@ -765,42 +712,42 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
           }
         }
       }
-
+      
       Connection c = createConnectionWithLMLVisualizer();
       configureClabject(typeConnection, c, newParent);
-
+      
       ((Clabject) newParent).getContent().add(c);
       ConnectionEnd toPart = createConnectionEnd();
       c.getConnectionEnd().add(toPart);
       toPart.setDestination(newClabject);
       ConnectionEnd toContainer = createConnectionEnd();
-      toContainer.setDestination((Clabject) newParent);
+      toContainer.setDestination((Clabject)newParent);
       c.getConnectionEnd().add(toContainer);
-
-      // instantiate the values for the connectionEnds
-      // this code assumes two connectionEnds only
-      outter: for (ConnectionEnd p : typeConnection.getConnectionEnd()) {
-
+      
+      //instantiate the values for the connectionEnds
+      //this code assumes two connectionEnds only
+      outter: for(ConnectionEnd p : typeConnection.getConnectionEnd()){
+        
         List<Clabject> destinations = new ArrayList<Clabject>();
         destinations.add(p.getDestination());
         destinations.addAll(p.getDestination().getSubtypes());
-
-        for (Clabject d : destinations) {
-          // The connectionEnd to the part was found
-          if (d.getClassificationTreeAsType().contains(newClabject)) {
+        
+        for(Clabject d : destinations){
+          //The connectionEnd to the part was found
+          if(d.getClassificationTreeAsType().contains(newClabject)){
             toPart.setNavigable(p.isNavigable());
             toPart.setLower(p.getLower());
             toPart.setUpper(p.getUpper());
             toPart.setMoniker(p.getMoniker());
             toPart.setKind(p.getKind());
             toPart.setType(p);
-
-            // continue with the next connectionEnd
+            
+            //continue with the next connectionEnd
             continue outter;
           }
         }
-
-        // The connectionEnd to the part was not found -> connectionEnd to container
+        
+        //The connectionEnd to the part was not found -> connectionEnd to container
         toContainer.setNavigable(p.isNavigable());
         toContainer.setLower(p.getLower());
         toContainer.setUpper(p.getUpper());
@@ -824,7 +771,7 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
    */
 
   public Feature createFeature(Feature template, Clabject newParent) {
-    return createFeature(template, template.getClabject(), newParent, false);
+    return createFeature(template, template.getClabject() , newParent, false);
   }
 
   /**
@@ -848,7 +795,7 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
    */
 
   public Feature createFeature(Feature template, Clabject newParent, boolean initializeAttribute) {
-    return createFeature(template, template.getClabject(), newParent, initializeAttribute, true);
+    return createFeature(template, template.getClabject() , newParent, initializeAttribute, true);
   }
 
   /**
@@ -896,70 +843,71 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
 
   public Feature createFeature(Feature template, Clabject templateParent, Clabject newParent,
       boolean initializeAttribute, boolean addNewElementToParent) {
-    Feature result = template instanceof Attribute ? PLMFactory.eINSTANCE.createAttribute()
-        : PLMFactory.eINSTANCE.createMethod();
-
+    Feature result = template instanceof Attribute ? PLMFactory.eINSTANCE.createAttribute() : PLMFactory.eINSTANCE.createMethod();
+    
     if (addNewElementToParent)
       newParent.getFeature().add(result);
-
+    
     result.setName(template.getName());
-
-    if (result instanceof Attribute && template instanceof Attribute)
-      ((Attribute) result).setValue(((Attribute) template).getValue());
-
-    // ***************************************
+    
+    
+    if(result instanceof Attribute && template instanceof Attribute)
+      ((Attribute) result).setValue(((Attribute)template).getValue());
+      
+    //***************************************
     // Calculate the durability
-    // ***************************************
+    //***************************************
     if (template.getDurability() == -1)
       result.setDurability(-1);
-    else {
+    else{
       int levelDifference = newParent.getLevelIndex();
-      // This happens if the clabject containing the feature does not belong to
-      // to a level for this case it is intended to substract one, as if
-      // the clabject is instantiated on the next level.
-      if (levelDifference != -1)
-        levelDifference = templateParent.getLevelIndex() - newParent.getLevelIndex();
+      //This happens if the clabject containing the feature does not belong to
+      //to a level for this case it is intended to substract one, as if
+      //the clabject is instantiated on the next level.
+      if(levelDifference != -1)
+       levelDifference = templateParent.getLevelIndex() - newParent.getLevelIndex();
 
       result.setDurability(template.getDurability() + levelDifference);
     }
-
+      
     if (result.getDurability() < -1)
       throw new RuntimeException("Clabjects with a negative potency cannot exist.");
 
-    // ********************
+      
+    //********************
     // Copy LMLVisualizer
-    // ********************
-    if (template.getVisualizer().size() > 0) {
-      // Quick hack to get a visualizer from type in
+    //********************
+    if (template.getVisualizer().size() > 0){
+      //Quick hack to get a visualizer from type in
       LMLVisualizer instanceVisualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
       LMLVisualizer typeVisualizer = template.getVisualizer().get(0);
-
-      /*
-       * instanceVisualizer.setTemplate(typeVisualizer.getTemplate());
-       * instanceVisualizer.setDurability( //This check is to simple needs to be
-       * enhanced once the visualizer //durability is fully supported
-       * typeVisualizer.getDurability() == 0 || typeVisualizer.getDurability() == -1 ?
-       * typeVisualizer.getDurability() : typeVisualizer.getDurability() - 1 );
-       */
-
+      
+      /*instanceVisualizer.setTemplate(typeVisualizer.getTemplate());
+      instanceVisualizer.setDurability(
+          //This check is to simple needs to be enhanced once the visualizer
+          //durability is fully supported
+          typeVisualizer.getDurability() == 0 
+            || typeVisualizer.getDurability() == -1 ?
+                typeVisualizer.getDurability() 
+                : typeVisualizer.getDurability() - 1
+        );*/
+      
       instanceVisualizer.getAttributes().addAll(typeVisualizer.getAttributes());
-
+  
       result.getVisualizer().clear();
       result.getVisualizer().add(instanceVisualizer);
     }
-    // There is no visualizer present at the moment. This can happen in case the
+    //There is no visualizer present at the moment. This can happen in case the
     // template element is created via GMF and not initialized yet. Happens in
     // emendation service
-    else {
+    else{
       LMLVisualizer visualizer = PLMFactory.eINSTANCE.createLMLVisualizer();
       result.getVisualizer().add(visualizer);
       visualizer.getAttributes().addAll(visualizer.getDefaultVisualizationValues());
     }
-
-    return result instanceof Attribute
-        ? configureAttribute((Attribute) template, templateParent, (Attribute) result, newParent,
-            initializeAttribute)
-        : configureMethod(template, result);
+    
+    
+    return result instanceof Attribute ? configureAttribute((Attribute)template, templateParent, (Attribute)result, newParent, initializeAttribute) : configureMethod(template, result); 
   }
 
   /**
@@ -988,241 +936,231 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
   private Feature configureAttribute(Attribute template, Clabject templateParent, Attribute result,
       Clabject resultParent, boolean initializeAttribute) {
     result.setDatatype(template.getDatatype());
-
-    // ***************************
+    
+    //***************************
     // Calculate mutability
-    // ***************************
+    //***************************
     if (template.getMutability() == -1)
       result.setMutability(-1);
     else if (template.getMutability() == 0
-        && templateParent.getLevelIndex() <= resultParent.getLevelIndex()) {
-      result.setMutability(0);
-    } else {
+          && templateParent.getLevelIndex() <= resultParent.getLevelIndex()){
+      result.setMutability(0); 
+    }
+    else{
       int levelDifference = resultParent.getLevelIndex();
-      // This happens if the clabject containing the feature does not belong to
-      // to a level for this case it is intended to substract one, as if
-      // the clabject is instantiated on the next level.
-      if (levelDifference != -1)
-        levelDifference = templateParent.getLevelIndex() - resultParent.getLevelIndex();
+      //This happens if the clabject containing the feature does not belong to
+      //to a level for this case it is intended to substract one, as if
+      //the clabject is instantiated on the next level.
+      if(levelDifference != -1)
+       levelDifference = templateParent.getLevelIndex() - resultParent.getLevelIndex();
 
       result.setMutability(template.getMutability() + levelDifference);
     }
-
-    // **********************************************************************************
-    // If both template and result have mutability = 0 they need to have the same
-    // value
-    // **********************************************************************************
+    
+    //**********************************************************************************
+    // If both template and result have mutability = 0 they need to have the same value
+    //**********************************************************************************
     if (template.getMutability() == 0 && result.getMutability() == 0)
       result.setValue(template.getValue());
-
-    // **********************************************************************************
+    
+    //**********************************************************************************
     // Initialize attributes
-    // **********************************************************************************
-    if (initializeAttribute && result.getValue() == null) {
+    //**********************************************************************************
+    if(initializeAttribute &&
+        result.getValue() == null ){
       List<String> primitiveDataTypes = result.getPrimitiveDataTypes();
 
-      if (!(primitiveDataTypes.contains("String") || primitiveDataTypes.contains("Real")
-          || primitiveDataTypes.contains("Integer") || primitiveDataTypes.contains("Natural")
-          || primitiveDataTypes.contains("Boolean") || primitiveDataTypes.contains("Percent")
-          || primitiveDataTypes.contains("Probability") || primitiveDataTypes.contains("Money")))
+      if(!(primitiveDataTypes.contains("String")
+          || primitiveDataTypes.contains("Real")
+          || primitiveDataTypes.contains("Integer")
+          || primitiveDataTypes.contains("Natural")
+          || primitiveDataTypes.contains("Boolean")
+          || primitiveDataTypes.contains("Percent")
+          || primitiveDataTypes.contains("Probability")
+          || primitiveDataTypes.contains("Money")))
         throw new RuntimeException("Datatypes in factory not in synch with annotation in models");
-
-      List<String> numericDatatypes = Arrays.asList("Real", "Integer", "Natural", "Percent",
-          "Probability", "Money");
-
-      if (numericDatatypes.contains(result.getDatatype()))
+      
+      List<String> numericDatatypes = Arrays.asList("Real", "Integer", "Natural", "Percent", "Probability", "Money");
+      
+      if(numericDatatypes.contains(result.getDatatype()))
         result.setValue("0");
-      else if ("String".equals(result.getDatatype()))
+      else if("String".equals(result.getDatatype()))
         result.setValue(result.getName());
-      else if ("Boolean".equals(result.getDatatype()))
+      else if("Boolean".equals(result.getDatatype()))
         result.setValue("false");
     }
-
+    
     return result;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public Level createLevelWithLMLVisualizer() {
-
-    // Execute the default factory code
-    Level newObject = createLevel();
-
-    // Add a visualizer
-    LMLVisualizer LevelVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(LevelVisualizer);
-    LevelVisualizer.getAttributes().addAll(LevelVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          Level newObject = createLevel();
+        
+          //Add a visualizer
+          LMLVisualizer LevelVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(LevelVisualizer);
+          LevelVisualizer.getAttributes().addAll(LevelVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public DeepModel createDeepModelWithLMLVisualizer() {
-
-    // Execute the default factory code
-    DeepModel newObject = createDeepModel();
-
-    // Add a visualizer
-    LMLVisualizer DeepModelVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(DeepModelVisualizer);
-    DeepModelVisualizer.getAttributes().addAll(DeepModelVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          DeepModel newObject = createDeepModel();
+        
+          //Add a visualizer
+          LMLVisualizer DeepModelVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(DeepModelVisualizer);
+          DeepModelVisualizer.getAttributes().addAll(DeepModelVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public Inheritance createInheritanceWithLMLVisualizer() {
-
-    // Execute the default factory code
-    Inheritance newObject = createInheritance();
-
-    // Add a visualizer
-    LMLVisualizer InheritanceVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(InheritanceVisualizer);
-    InheritanceVisualizer.getAttributes()
-        .addAll(InheritanceVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          Inheritance newObject = createInheritance();
+        
+          //Add a visualizer
+          LMLVisualizer InheritanceVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(InheritanceVisualizer);
+          InheritanceVisualizer.getAttributes().addAll(InheritanceVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public Classification createClassificationWithLMLVisualizer() {
-
-    // Execute the default factory code
-    Classification newObject = createClassification();
-
-    // Add a visualizer
-    LMLVisualizer ClassificationVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(ClassificationVisualizer);
-    ClassificationVisualizer.getAttributes()
-        .addAll(ClassificationVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          Classification newObject = createClassification();
+        
+          //Add a visualizer
+          LMLVisualizer ClassificationVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(ClassificationVisualizer);
+          ClassificationVisualizer.getAttributes().addAll(ClassificationVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public Entity createEntityWithLMLVisualizer() {
-
-    // Execute the default factory code
-    Entity newObject = createEntity();
-
-    // Add a visualizer
-    LMLVisualizer EntityVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(EntityVisualizer);
-    EntityVisualizer.getAttributes().addAll(EntityVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          Entity newObject = createEntity();
+        
+          //Add a visualizer
+          LMLVisualizer EntityVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(EntityVisualizer);
+          EntityVisualizer.getAttributes().addAll(EntityVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public Connection createConnectionWithLMLVisualizer() {
-
-    // Execute the default factory code
-    Connection newObject = createConnection();
-
-    // Add a visualizer
-    LMLVisualizer ConnectionVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(ConnectionVisualizer);
-    ConnectionVisualizer.getAttributes()
-        .addAll(ConnectionVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          Connection newObject = createConnection();
+        
+          //Add a visualizer
+          LMLVisualizer ConnectionVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(ConnectionVisualizer);
+          ConnectionVisualizer.getAttributes().addAll(ConnectionVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public Attribute createAttributeWithLMLVisualizer() {
-
-    // Execute the default factory code
-    Attribute newObject = createAttribute();
-
-    // Add a visualizer
-    LMLVisualizer AttributeVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(AttributeVisualizer);
-    AttributeVisualizer.getAttributes().addAll(AttributeVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          Attribute newObject = createAttribute();
+        
+          //Add a visualizer
+          LMLVisualizer AttributeVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(AttributeVisualizer);
+          AttributeVisualizer.getAttributes().addAll(AttributeVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public Method createMethodWithLMLVisualizer() {
-
-    // Execute the default factory code
-    Method newObject = createMethod();
-
-    // Add a visualizer
-    LMLVisualizer MethodVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(MethodVisualizer);
-    MethodVisualizer.getAttributes().addAll(MethodVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          Method newObject = createMethod();
+        
+          //Add a visualizer
+          LMLVisualizer MethodVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(MethodVisualizer);
+          MethodVisualizer.getAttributes().addAll(MethodVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public Enumeration createEnumerationWithLMLVisualizer() {
-
-    // Execute the default factory code
-    Enumeration newObject = createEnumeration();
-
-    // Add a visualizer
-    LMLVisualizer EnumerationVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(EnumerationVisualizer);
-    EnumerationVisualizer.getAttributes()
-        .addAll(EnumerationVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          Enumeration newObject = createEnumeration();
+        
+          //Add a visualizer
+          LMLVisualizer EnumerationVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(EnumerationVisualizer);
+          EnumerationVisualizer.getAttributes().addAll(EnumerationVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+       	* @generated
+       	*/
   public org.melanee.core.models.plm.PLM.Package createPackageWithLMLVisualizer() {
-
-    // Execute the default factory code
-    org.melanee.core.models.plm.PLM.Package newObject = createPackage();
-
-    // Add a visualizer
-    LMLVisualizer PackageVisualizer = createLMLVisualizer();
-    newObject.getVisualizer().add(PackageVisualizer);
-    PackageVisualizer.getAttributes().addAll(PackageVisualizer.getDefaultVisualizationValues());
-
-    return newObject;
-  }
+      
+          //Execute the default factory code
+          org.melanee.core.models.plm.PLM.Package newObject = createPackage();
+        
+          //Add a visualizer
+          LMLVisualizer PackageVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(PackageVisualizer);
+          PackageVisualizer.getAttributes().addAll(PackageVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
 
 } // PLMFactoryImpl

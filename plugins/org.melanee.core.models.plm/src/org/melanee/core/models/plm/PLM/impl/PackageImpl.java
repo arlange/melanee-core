@@ -32,8 +32,7 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.PackageImpl#getContent
- * <em>Content</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.PackageImpl#getContent <em>Content</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,9 +40,8 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
 public class PackageImpl extends OwnedElementImpl
     implements org.melanee.core.models.plm.PLM.Package {
   /**
-   * The cached value of the '{@link #getContent() <em>Content</em>}' containment
-   * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getContent() <em>Content</em>}' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getContent()
    * @generated
    * @ordered
@@ -52,7 +50,6 @@ public class PackageImpl extends OwnedElementImpl
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PackageImpl() {
@@ -61,7 +58,6 @@ public class PackageImpl extends OwnedElementImpl
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -71,88 +67,81 @@ public class PackageImpl extends OwnedElementImpl
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<OwnedElement> getContent() {
     if (content == null) {
-      content = new EObjectContainmentEList<OwnedElement>(OwnedElement.class, this,
-          PLMPackage.PACKAGE__CONTENT);
+      content = new EObjectContainmentEList<OwnedElement>(OwnedElement.class, this, PLMPackage.PACKAGE__CONTENT);
     }
     return content;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
       NotificationChain msgs) {
     switch (featureID) {
-    case PLMPackage.PACKAGE__CONTENT:
-      return ((InternalEList<?>) getContent()).basicRemove(otherEnd, msgs);
+      case PLMPackage.PACKAGE__CONTENT:
+        return ((InternalEList<?>)getContent()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.PACKAGE__CONTENT:
-      return getContent();
+      case PLMPackage.PACKAGE__CONTENT:
+        return getContent();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.PACKAGE__CONTENT:
-      getContent().clear();
-      getContent().addAll((Collection<? extends OwnedElement>) newValue);
-      return;
+      case PLMPackage.PACKAGE__CONTENT:
+        getContent().clear();
+        getContent().addAll((Collection<? extends OwnedElement>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.PACKAGE__CONTENT:
-      getContent().clear();
-      return;
+      case PLMPackage.PACKAGE__CONTENT:
+        getContent().clear();
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.PACKAGE__CONTENT:
-      return content != null && !content.isEmpty();
+      case PLMPackage.PACKAGE__CONTENT:
+        return content != null && !content.isEmpty();
     }
     return super.eIsSet(featureID);
   }

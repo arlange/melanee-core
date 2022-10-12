@@ -28,54 +28,46 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
  * @see org.melanee.core.models.plm.PLM.PLMFactory
- * @model kind="package" annotation="http://www.eclipse.org/emf/2002/Ecore
- *        invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL'
- *        settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL'
- *        validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL'"
- *        annotation="http://melanee.org/PLM/Datatypes String='.*'
- *        Real='-?\\d*(\\.\\d*)?' Integer='-?\\d*' Natural='\\d*'
- *        Boolean='true|false' Character='.' Percent='\\d{1,3}(\\.\\d*)?'
- *        Probability='0?\\.(\\d*)?' Money='-?\\d*(\\.\\d{1,2})?' void=''"
+ * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL'"
+ *        annotation="http://melanee.org/PLM/Datatypes String='.*' Real='-?\\d*(\\.\\d*)?' Integer='-?\\d*' Natural='\\d*' Boolean='true|false' Character='.' Percent='\\d{1,3}(\\.\\d*)?' Probability='0?\\.(\\d*)?' Money='-?\\d*(\\.\\d{1,2})?' void='' Terminal='\\d*' Separator='.'"
  *        annotation="http://melanee.org/PLM/Version plmVersion='2.1'"
  * @generated
  */
 public interface PLMPackage extends EPackage {
   /**
-   * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The package name.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   String eNAME = "PLM";
 
   /**
-   * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The package namespace URI.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   String eNS_URI = "http://melanee.org/PLM";
 
   /**
-   * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The package namespace name.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   String eNS_PREFIX = "PLM";
 
   /**
-   * The singleton instance of the package. <!-- begin-user-doc --> <!--
+   * The singleton instance of the package.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   PLMPackage eINSTANCE = org.melanee.core.models.plm.PLM.impl.PLMPackageImpl.init();
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.DomainImpl <em>Domain</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.DomainImpl <em>Domain</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.DomainImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getDomain()
    * @generated
@@ -83,18 +75,17 @@ public interface PLMPackage extends EPackage {
   int DOMAIN = 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int DOMAIN__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Deep Model</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Deep Model</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -128,19 +119,17 @@ public interface PLMPackage extends EPackage {
   int DOMAIN_FEATURE_COUNT = 4;
 
   /**
-   * The number of operations of the '<em>Domain</em>' class. <!-- begin-user-doc
+   * The number of operations of the '<em>Domain</em>' class.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int DOMAIN_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.ElementImpl <em>Element</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.ElementImpl <em>Element</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.ElementImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getElement()
    * @generated
@@ -148,18 +137,17 @@ public interface PLMPackage extends EPackage {
   int ELEMENT = 1;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ELEMENT__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -168,16 +156,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ELEMENT__BEHAVIOR = 2;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -193,19 +179,17 @@ public interface PLMPackage extends EPackage {
   int ELEMENT_FEATURE_COUNT = 4;
 
   /**
-   * The number of operations of the '<em>Element</em>' class. <!-- begin-user-doc
+   * The number of operations of the '<em>Element</em>' class.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ELEMENT_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.LevelImpl <em>Level</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.LevelImpl <em>Level</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.LevelImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getLevel()
    * @generated
@@ -213,18 +197,17 @@ public interface PLMPackage extends EPackage {
   int LEVEL = 2;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int LEVEL__NAME = ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -233,16 +216,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int LEVEL__BEHAVIOR = ELEMENT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -251,7 +232,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Content</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -339,9 +319,9 @@ public interface PLMPackage extends EPackage {
   int LEVEL___GET_CLASSIFYING_LEVEL = ELEMENT_OPERATION_COUNT + 7;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -366,19 +346,17 @@ public interface PLMPackage extends EPackage {
   int LEVEL___IS_LEAF_LEVEL = ELEMENT_OPERATION_COUNT + 10;
 
   /**
-   * The number of operations of the '<em>Level</em>' class. <!-- begin-user-doc
+   * The number of operations of the '<em>Level</em>' class.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int LEVEL_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 11;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.DeepModelImpl <em>Deep
-   * Model</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.DeepModelImpl <em>Deep Model</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.DeepModelImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getDeepModel()
    * @generated
@@ -386,18 +364,17 @@ public interface PLMPackage extends EPackage {
   int DEEP_MODEL = 3;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int DEEP_MODEL__NAME = ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -406,16 +383,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int DEEP_MODEL__BEHAVIOR = ELEMENT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -424,16 +399,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Content</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int DEEP_MODEL__CONTENT = ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Enumeration</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Enumeration</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -467,9 +440,8 @@ public interface PLMPackage extends EPackage {
   int DEEP_MODEL___GET_PRIMITIVE_DATATYPES = ELEMENT_OPERATION_COUNT + 1;
 
   /**
-   * The operation id for the '<em>Get Regex For Primitive Datatype</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Regex For Primitive Datatype</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -494,10 +466,8 @@ public interface PLMPackage extends EPackage {
   int DEEP_MODEL_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 4;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.OwnedElementImpl <em>Owned
-   * Element</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.OwnedElementImpl <em>Owned Element</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.OwnedElementImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getOwnedElement()
    * @generated
@@ -505,18 +475,17 @@ public interface PLMPackage extends EPackage {
   int OWNED_ELEMENT = 4;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int OWNED_ELEMENT__NAME = ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -525,16 +494,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int OWNED_ELEMENT__BEHAVIOR = ELEMENT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -550,9 +517,9 @@ public interface PLMPackage extends EPackage {
   int OWNED_ELEMENT_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -568,10 +535,8 @@ public interface PLMPackage extends EPackage {
   int OWNED_ELEMENT_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 1;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.CorrelationImpl
-   * <em>Correlation</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.CorrelationImpl <em>Correlation</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.CorrelationImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getCorrelation()
    * @generated
@@ -579,18 +544,17 @@ public interface PLMPackage extends EPackage {
   int CORRELATION = 5;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CORRELATION__NAME = OWNED_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -599,16 +563,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CORRELATION__BEHAVIOR = OWNED_ELEMENT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -624,9 +586,9 @@ public interface PLMPackage extends EPackage {
   int CORRELATION_FEATURE_COUNT = OWNED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -642,10 +604,8 @@ public interface PLMPackage extends EPackage {
   int CORRELATION_OPERATION_COUNT = OWNED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.InheritanceImpl
-   * <em>Inheritance</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.InheritanceImpl <em>Inheritance</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.InheritanceImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getInheritance()
    * @generated
@@ -653,18 +613,17 @@ public interface PLMPackage extends EPackage {
   int INHERITANCE = 6;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int INHERITANCE__NAME = CORRELATION__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -673,25 +632,22 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int INHERITANCE__BEHAVIOR = CORRELATION__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int INHERITANCE__CONSTRAINT = CORRELATION__CONSTRAINT;
 
   /**
-   * The feature id for the '<em><b>Supertype</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Supertype</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -700,7 +656,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Subtype</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -734,9 +689,9 @@ public interface PLMPackage extends EPackage {
   int INHERITANCE_FEATURE_COUNT = CORRELATION_FEATURE_COUNT + 4;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -770,9 +725,9 @@ public interface PLMPackage extends EPackage {
   int INHERITANCE___IS_INTERSECTION = CORRELATION_OPERATION_COUNT + 2;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -788,10 +743,8 @@ public interface PLMPackage extends EPackage {
   int INHERITANCE_OPERATION_COUNT = CORRELATION_OPERATION_COUNT + 4;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.SupertypeImpl
-   * <em>Supertype</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.SupertypeImpl <em>Supertype</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.SupertypeImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getSupertype()
    * @generated
@@ -810,7 +763,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Inheritance</b></em>' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -835,10 +787,8 @@ public interface PLMPackage extends EPackage {
   int SUPERTYPE_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.SubtypeImpl <em>Subtype</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.SubtypeImpl <em>Subtype</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.SubtypeImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getSubtype()
    * @generated
@@ -857,7 +807,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Inheritance</b></em>' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -873,9 +822,9 @@ public interface PLMPackage extends EPackage {
   int SUBTYPE_FEATURE_COUNT = 2;
 
   /**
-   * The number of operations of the '<em>Subtype</em>' class. <!-- begin-user-doc
+   * The number of operations of the '<em>Subtype</em>' class.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -894,18 +843,17 @@ public interface PLMPackage extends EPackage {
   int CLASSIFICATION = 9;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CLASSIFICATION__NAME = CORRELATION__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -914,16 +862,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CLASSIFICATION__BEHAVIOR = CORRELATION__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -939,18 +885,18 @@ public interface PLMPackage extends EPackage {
   int CLASSIFICATION__INSTANCE = CORRELATION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' reference. <!-- begin-user-doc
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CLASSIFICATION__TYPE = CORRELATION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Kind</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Kind</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -959,25 +905,24 @@ public interface PLMPackage extends EPackage {
   /**
    * The number of structural features of the '<em>Classification</em>' class.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CLASSIFICATION_FEATURE_COUNT = CORRELATION_FEATURE_COUNT + 3;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CLASSIFICATION___GET_LEVEL = CORRELATION___GET_LEVEL;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -993,10 +938,8 @@ public interface PLMPackage extends EPackage {
   int CLASSIFICATION_OPERATION_COUNT = CORRELATION_OPERATION_COUNT + 1;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.ClabjectImpl <em>Clabject</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.ClabjectImpl <em>Clabject</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.ClabjectImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getClabject()
    * @generated
@@ -1004,18 +947,17 @@ public interface PLMPackage extends EPackage {
   int CLABJECT = 10;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CLABJECT__NAME = OWNED_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1024,16 +966,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CLABJECT__BEHAVIOR = OWNED_ELEMENT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1060,7 +1000,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Content</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1069,7 +1008,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Feature</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1085,9 +1023,9 @@ public interface PLMPackage extends EPackage {
   int CLABJECT_FEATURE_COUNT = OWNED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1157,9 +1095,8 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___GET_HOLLOW_SUPERTYPES = OWNED_ELEMENT_OPERATION_COUNT + 6;
 
   /**
-   * The operation id for the '<em>Get Classifications As Instance</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classifications As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1168,7 +1105,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Classifications As Type</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1184,9 +1120,9 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___GET_INSTANCES = OWNED_ELEMENT_OPERATION_COUNT + 9;
 
   /**
-   * The operation id for the '<em>Get Types</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Types</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1211,18 +1147,16 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___GET_LEVEL_TYPES = OWNED_ELEMENT_OPERATION_COUNT + 12;
 
   /**
-   * The operation id for the '<em>Get Defined Classification Tree As
-   * Instance</em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Classification Tree As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_INSTANCE = OWNED_ELEMENT_OPERATION_COUNT + 13;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Instance</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1238,36 +1172,32 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___GET_DEFINED_INSTANCES = OWNED_ELEMENT_OPERATION_COUNT + 15;
 
   /**
-   * The operation id for the '<em>Get Defined Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_TYPE = OWNED_ELEMENT_OPERATION_COUNT + 16;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE = OWNED_ELEMENT_OPERATION_COUNT + 17;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE__INT = OWNED_ELEMENT_OPERATION_COUNT + 18;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1303,7 +1233,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Defined Attribute By Name</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1337,9 +1266,9 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___IS_INSTANCE_OF__CLABJECT = OWNED_ELEMENT_OPERATION_COUNT + 26;
 
   /**
-   * The operation id for the '<em>Is Type Of</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Is Type Of</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1373,9 +1302,9 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___GET_AGGREGATES = OWNED_ELEMENT_OPERATION_COUNT + 30;
 
   /**
-   * The operation id for the '<em>Get Parts</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Parts</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1429,7 +1358,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Level Incomplete Types</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1481,18 +1409,18 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___GET_DOMAIN_FOR_CONNECTION__CONNECTION = OWNED_ELEMENT_OPERATION_COUNT + 42;
 
   /**
-   * The operation id for the '<em>Get Possible Domain Specific Visualizers</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Possible Domain Specific Visualizers</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @deprecated See {@link org.melanee.core.models.plm.PLM.Clabject#getPossibleDomainSpecificVisualizers() model documentation} for details.
    * @generated
    * @ordered
    */
-  int CLABJECT___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS = OWNED_ELEMENT_OPERATION_COUNT + 43;
+  @Deprecated
+		int CLABJECT___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS = OWNED_ELEMENT_OPERATION_COUNT + 43;
 
   /**
    * The operation id for the '<em>Get Inheritances As Subtype</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1501,7 +1429,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Inheritances As Supertype</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1550,48 +1477,45 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CLABJECT___GET_DOMAIN_FOR_MONIKER__STRING = OWNED_ELEMENT_OPERATION_COUNT + 50;
+  @Deprecated
+		int CLABJECT___GET_DOMAIN_FOR_MONIKER__STRING = OWNED_ELEMENT_OPERATION_COUNT + 50;
 
   /**
-   * The operation id for the '<em>Get All Navigations For Moniker</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get All Navigations For Moniker</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CLABJECT___GET_ALL_NAVIGATIONS_FOR_MONIKER__STRING = OWNED_ELEMENT_OPERATION_COUNT + 51;
 
   /**
-   * The operation id for the '<em>Get All Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get All Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CLABJECT___GET_ALL_NAVIGATIONS_AS_DESTINATION = OWNED_ELEMENT_OPERATION_COUNT + 52;
 
   /**
-   * The operation id for the '<em>Get Defined Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CLABJECT___GET_DEFINED_NAVIGATIONS_AS_DESTINATION = OWNED_ELEMENT_OPERATION_COUNT + 53;
 
   /**
-   * The operation id for the '<em>Get Inherited Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Inherited Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CLABJECT___GET_INHERITED_NAVIGATIONS_AS_DESTINATION = OWNED_ELEMENT_OPERATION_COUNT + 54;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1634,9 +1558,8 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___GET_ATTRIBUTE_BY_NAME__STRING = OWNED_ELEMENT_OPERATION_COUNT + 59;
 
   /**
-   * The operation id for the '<em>Violates Multiplicity Constraints</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Violates Multiplicity Constraints</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1670,10 +1593,8 @@ public interface PLMPackage extends EPackage {
   int CLABJECT_OPERATION_COUNT = OWNED_ELEMENT_OPERATION_COUNT + 63;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.FeatureImpl <em>Feature</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.FeatureImpl <em>Feature</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.FeatureImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getFeature()
    * @generated
@@ -1681,18 +1602,17 @@ public interface PLMPackage extends EPackage {
   int FEATURE = 11;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int FEATURE__NAME = ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1701,16 +1621,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int FEATURE__BEHAVIOR = ELEMENT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1753,28 +1671,26 @@ public interface PLMPackage extends EPackage {
   int FEATURE___GET_DURABILITY_AS_STRING = ELEMENT_OPERATION_COUNT + 1;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int FEATURE___REPRESENT = ELEMENT_OPERATION_COUNT + 2;
 
   /**
-   * The number of operations of the '<em>Feature</em>' class. <!-- begin-user-doc
+   * The number of operations of the '<em>Feature</em>' class.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int FEATURE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 3;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.EntityImpl <em>Entity</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.EntityImpl <em>Entity</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.EntityImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getEntity()
    * @generated
@@ -1782,18 +1698,17 @@ public interface PLMPackage extends EPackage {
   int ENTITY = 12;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ENTITY__NAME = CLABJECT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1802,16 +1717,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ENTITY__BEHAVIOR = CLABJECT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1838,7 +1751,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Content</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1847,7 +1759,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Feature</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1863,9 +1774,9 @@ public interface PLMPackage extends EPackage {
   int ENTITY_FEATURE_COUNT = CLABJECT_FEATURE_COUNT + 0;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1935,9 +1846,8 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_HOLLOW_SUPERTYPES = CLABJECT___GET_HOLLOW_SUPERTYPES;
 
   /**
-   * The operation id for the '<em>Get Classifications As Instance</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classifications As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -1946,7 +1856,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Classifications As Type</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1962,9 +1871,9 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_INSTANCES = CLABJECT___GET_INSTANCES;
 
   /**
-   * The operation id for the '<em>Get Types</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Types</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -1989,18 +1898,16 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_LEVEL_TYPES = CLABJECT___GET_LEVEL_TYPES;
 
   /**
-   * The operation id for the '<em>Get Defined Classification Tree As
-   * Instance</em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Classification Tree As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int ENTITY___GET_DEFINED_CLASSIFICATION_TREE_AS_INSTANCE = CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_INSTANCE;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Instance</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2016,36 +1923,32 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_DEFINED_INSTANCES = CLABJECT___GET_DEFINED_INSTANCES;
 
   /**
-   * The operation id for the '<em>Get Defined Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int ENTITY___GET_DEFINED_CLASSIFICATION_TREE_AS_TYPE = CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_TYPE;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int ENTITY___GET_CLASSIFICATION_TREE_AS_TYPE = CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int ENTITY___GET_CLASSIFICATION_TREE_AS_TYPE__INT = CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE__INT;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2081,7 +1984,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Defined Attribute By Name</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2115,9 +2017,9 @@ public interface PLMPackage extends EPackage {
   int ENTITY___IS_INSTANCE_OF__CLABJECT = CLABJECT___IS_INSTANCE_OF__CLABJECT;
 
   /**
-   * The operation id for the '<em>Is Type Of</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Is Type Of</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2151,9 +2053,9 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_AGGREGATES = CLABJECT___GET_AGGREGATES;
 
   /**
-   * The operation id for the '<em>Get Parts</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Parts</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2207,7 +2109,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Level Incomplete Types</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2259,18 +2160,18 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_DOMAIN_FOR_CONNECTION__CONNECTION = CLABJECT___GET_DOMAIN_FOR_CONNECTION__CONNECTION;
 
   /**
-   * The operation id for the '<em>Get Possible Domain Specific Visualizers</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Possible Domain Specific Visualizers</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @deprecated See {@link org.melanee.core.models.plm.PLM.Clabject#getPossibleDomainSpecificVisualizers() model documentation} for details.
    * @generated
    * @ordered
    */
-  int ENTITY___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS = CLABJECT___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS;
+  @Deprecated
+		int ENTITY___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS = CLABJECT___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS;
 
   /**
    * The operation id for the '<em>Get Inheritances As Subtype</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2279,7 +2180,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Inheritances As Supertype</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2328,39 +2228,36 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ENTITY___GET_DOMAIN_FOR_MONIKER__STRING = CLABJECT___GET_DOMAIN_FOR_MONIKER__STRING;
+  @Deprecated
+		int ENTITY___GET_DOMAIN_FOR_MONIKER__STRING = CLABJECT___GET_DOMAIN_FOR_MONIKER__STRING;
 
   /**
-   * The operation id for the '<em>Get All Navigations For Moniker</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get All Navigations For Moniker</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int ENTITY___GET_ALL_NAVIGATIONS_FOR_MONIKER__STRING = CLABJECT___GET_ALL_NAVIGATIONS_FOR_MONIKER__STRING;
 
   /**
-   * The operation id for the '<em>Get All Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get All Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int ENTITY___GET_ALL_NAVIGATIONS_AS_DESTINATION = CLABJECT___GET_ALL_NAVIGATIONS_AS_DESTINATION;
 
   /**
-   * The operation id for the '<em>Get Defined Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int ENTITY___GET_DEFINED_NAVIGATIONS_AS_DESTINATION = CLABJECT___GET_DEFINED_NAVIGATIONS_AS_DESTINATION;
 
   /**
-   * The operation id for the '<em>Get Inherited Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Inherited Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2403,9 +2300,8 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_ATTRIBUTE_BY_NAME__STRING = CLABJECT___GET_ATTRIBUTE_BY_NAME__STRING;
 
   /**
-   * The operation id for the '<em>Violates Multiplicity Constraints</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Violates Multiplicity Constraints</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2430,28 +2326,26 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_OWNED_CLABJECTS = CLABJECT___GET_OWNED_CLABJECTS;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ENTITY___REPRESENT = CLABJECT_OPERATION_COUNT + 0;
 
   /**
-   * The number of operations of the '<em>Entity</em>' class. <!-- begin-user-doc
+   * The number of operations of the '<em>Entity</em>' class.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ENTITY_OPERATION_COUNT = CLABJECT_OPERATION_COUNT + 1;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.ConnectionImpl
-   * <em>Connection</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.ConnectionImpl <em>Connection</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.ConnectionImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getConnection()
    * @generated
@@ -2459,18 +2353,17 @@ public interface PLMPackage extends EPackage {
   int CONNECTION = 13;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION__NAME = CLABJECT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2479,16 +2372,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION__BEHAVIOR = CLABJECT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2515,7 +2406,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Content</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2524,16 +2414,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Feature</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION__FEATURE = CLABJECT__FEATURE;
 
   /**
-   * The feature id for the '<em><b>Connection End</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Connection End</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2549,9 +2437,9 @@ public interface PLMPackage extends EPackage {
   int CONNECTION_FEATURE_COUNT = CLABJECT_FEATURE_COUNT + 1;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2621,9 +2509,8 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_HOLLOW_SUPERTYPES = CLABJECT___GET_HOLLOW_SUPERTYPES;
 
   /**
-   * The operation id for the '<em>Get Classifications As Instance</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classifications As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2632,7 +2519,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Classifications As Type</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2648,9 +2534,9 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_INSTANCES = CLABJECT___GET_INSTANCES;
 
   /**
-   * The operation id for the '<em>Get Types</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Types</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2675,18 +2561,16 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_LEVEL_TYPES = CLABJECT___GET_LEVEL_TYPES;
 
   /**
-   * The operation id for the '<em>Get Defined Classification Tree As
-   * Instance</em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Classification Tree As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CONNECTION___GET_DEFINED_CLASSIFICATION_TREE_AS_INSTANCE = CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_INSTANCE;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Instance</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Instance</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2702,36 +2586,32 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_DEFINED_INSTANCES = CLABJECT___GET_DEFINED_INSTANCES;
 
   /**
-   * The operation id for the '<em>Get Defined Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CONNECTION___GET_DEFINED_CLASSIFICATION_TREE_AS_TYPE = CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_TYPE;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CONNECTION___GET_CLASSIFICATION_TREE_AS_TYPE = CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CONNECTION___GET_CLASSIFICATION_TREE_AS_TYPE__INT = CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE__INT;
 
   /**
-   * The operation id for the '<em>Get Classification Tree As Type</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Classification Tree As Type</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -2767,7 +2647,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Defined Attribute By Name</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2801,9 +2680,9 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___IS_INSTANCE_OF__CLABJECT = CLABJECT___IS_INSTANCE_OF__CLABJECT;
 
   /**
-   * The operation id for the '<em>Is Type Of</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Is Type Of</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2837,9 +2716,9 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_AGGREGATES = CLABJECT___GET_AGGREGATES;
 
   /**
-   * The operation id for the '<em>Get Parts</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Parts</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2893,7 +2772,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Level Incomplete Types</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2945,18 +2823,18 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_DOMAIN_FOR_CONNECTION__CONNECTION = CLABJECT___GET_DOMAIN_FOR_CONNECTION__CONNECTION;
 
   /**
-   * The operation id for the '<em>Get Possible Domain Specific Visualizers</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Possible Domain Specific Visualizers</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @deprecated See {@link org.melanee.core.models.plm.PLM.Clabject#getPossibleDomainSpecificVisualizers() model documentation} for details.
    * @generated
    * @ordered
    */
-  int CONNECTION___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS = CLABJECT___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS;
+  @Deprecated
+		int CONNECTION___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS = CLABJECT___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS;
 
   /**
    * The operation id for the '<em>Get Inheritances As Subtype</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -2965,7 +2843,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Inheritances As Supertype</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3014,39 +2891,36 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION___GET_DOMAIN_FOR_MONIKER__STRING = CLABJECT___GET_DOMAIN_FOR_MONIKER__STRING;
+  @Deprecated
+		int CONNECTION___GET_DOMAIN_FOR_MONIKER__STRING = CLABJECT___GET_DOMAIN_FOR_MONIKER__STRING;
 
   /**
-   * The operation id for the '<em>Get All Navigations For Moniker</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get All Navigations For Moniker</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CONNECTION___GET_ALL_NAVIGATIONS_FOR_MONIKER__STRING = CLABJECT___GET_ALL_NAVIGATIONS_FOR_MONIKER__STRING;
 
   /**
-   * The operation id for the '<em>Get All Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get All Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CONNECTION___GET_ALL_NAVIGATIONS_AS_DESTINATION = CLABJECT___GET_ALL_NAVIGATIONS_AS_DESTINATION;
 
   /**
-   * The operation id for the '<em>Get Defined Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Defined Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int CONNECTION___GET_DEFINED_NAVIGATIONS_AS_DESTINATION = CLABJECT___GET_DEFINED_NAVIGATIONS_AS_DESTINATION;
 
   /**
-   * The operation id for the '<em>Get Inherited Navigations As Destination</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Inherited Navigations As Destination</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3089,9 +2963,8 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_ATTRIBUTE_BY_NAME__STRING = CLABJECT___GET_ATTRIBUTE_BY_NAME__STRING;
 
   /**
-   * The operation id for the '<em>Violates Multiplicity Constraints</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Violates Multiplicity Constraints</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3116,9 +2989,9 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_OWNED_CLABJECTS = CLABJECT___GET_OWNED_CLABJECTS;
 
   /**
-   * The operation id for the '<em>Get Domain</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Domain</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3161,9 +3034,9 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___GET_MONIKER = CLABJECT_OPERATION_COUNT + 4;
 
   /**
-   * The operation id for the '<em>Get Domain</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Domain</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3172,7 +3045,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Moniker For Participant</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3206,9 +3078,9 @@ public interface PLMPackage extends EPackage {
   int CONNECTION___IS_NAVIGABLE_FOR_MONIKER__STRING = CLABJECT_OPERATION_COUNT + 9;
 
   /**
-   * The operation id for the '<em>Get Order</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Order</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3217,7 +3089,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Inherited Connection End</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3235,16 +3106,15 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Participant For Moniker</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION___GET_PARTICIPANT_FOR_MONIKER__STRING = CLABJECT_OPERATION_COUNT + 13;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3260,10 +3130,8 @@ public interface PLMPackage extends EPackage {
   int CONNECTION_OPERATION_COUNT = CLABJECT_OPERATION_COUNT + 15;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.PropertyImpl <em>Property</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.PropertyImpl <em>Property</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.PropertyImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getProperty()
    * @generated
@@ -3271,13 +3139,22 @@ public interface PLMPackage extends EPackage {
   int PROPERTY = 16;
 
   /**
+   * The feature id for the '<em><b>Parsing Order</b></em>' attribute.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+	int PROPERTY__PARSING_ORDER = 0;
+
+		/**
    * The number of structural features of the '<em>Property</em>' class. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = 0;
+  int PROPERTY_FEATURE_COUNT = 1;
 
   /**
    * The number of operations of the '<em>Property</em>' class. <!--
@@ -3289,10 +3166,8 @@ public interface PLMPackage extends EPackage {
   int PROPERTY_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl <em>Connection
-   * End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl <em>Connection End</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getConnectionEnd()
    * @generated
@@ -3300,18 +3175,27 @@ public interface PLMPackage extends EPackage {
   int CONNECTION_END = 14;
 
   /**
-   * The feature id for the '<em><b>Lower</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Parsing Order</b></em>' attribute.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+	int CONNECTION_END__PARSING_ORDER = PROPERTY__PARSING_ORDER;
+
+		/**
+   * The feature id for the '<em><b>Lower</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION_END__LOWER = PROPERTY_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Upper</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Upper</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3354,27 +3238,26 @@ public interface PLMPackage extends EPackage {
   int CONNECTION_END__MONIKER = PROPERTY_FEATURE_COUNT + 5;
 
   /**
-   * The feature id for the '<em><b>Kind</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Kind</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION_END__KIND = PROPERTY_FEATURE_COUNT + 6;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' reference. <!-- begin-user-doc
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION_END__TYPE = PROPERTY_FEATURE_COUNT + 7;
 
   /**
-   * The feature id for the '<em><b>Multiplicity</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Multiplicity</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3383,16 +3266,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The number of structural features of the '<em>Connection End</em>' class.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION_END_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 9;
 
   /**
-   * The operation id for the '<em>Get Human Readable Connection End Name</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Human Readable Connection End Name</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3408,18 +3289,18 @@ public interface PLMPackage extends EPackage {
   int CONNECTION_END___HAS_DEFAULT_MONIKER = PROPERTY_OPERATION_COUNT + 1;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int CONNECTION_END___REPRESENT = PROPERTY_OPERATION_COUNT + 2;
 
   /**
-   * The operation id for the '<em>Moniker</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Moniker</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3444,9 +3325,9 @@ public interface PLMPackage extends EPackage {
   int CONNECTION_END___GET_CONNECTION_END_NAME = PROPERTY_OPERATION_COUNT + 5;
 
   /**
-   * The operation id for the '<em>Conforms</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Conforms</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3462,10 +3343,8 @@ public interface PLMPackage extends EPackage {
   int CONNECTION_END_OPERATION_COUNT = PROPERTY_OPERATION_COUNT + 7;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.LMLVisualizerImpl <em>LML
-   * Visualizer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.LMLVisualizerImpl <em>LML Visualizer</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.LMLVisualizerImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getLMLVisualizer()
    * @generated
@@ -3482,18 +3361,17 @@ public interface PLMPackage extends EPackage {
   int LML_VISUALIZER__ATTRIBUTES = 0;
 
   /**
-   * The feature id for the '<em><b>Dsl Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Dsl Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int LML_VISUALIZER__DSL_VISUALIZER = 1;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3518,9 +3396,9 @@ public interface PLMPackage extends EPackage {
   int LML_VISUALIZER__YLOCATION = 4;
 
   /**
-   * The feature id for the '<em><b>Width</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Width</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3538,16 +3416,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The number of structural features of the '<em>LML Visualizer</em>' class.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int LML_VISUALIZER_FEATURE_COUNT = 7;
 
   /**
-   * The operation id for the '<em>Get Default Visualization Values</em>'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The operation id for the '<em>Get Default Visualization Values</em>' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3590,10 +3466,8 @@ public interface PLMPackage extends EPackage {
   int LML_VISUALIZER_OPERATION_COUNT = 4;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl
-   * <em>Attribute</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl <em>Attribute</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.AttributeImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getAttribute()
    * @generated
@@ -3601,18 +3475,17 @@ public interface PLMPackage extends EPackage {
   int ATTRIBUTE = 17;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ATTRIBUTE__NAME = FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3621,16 +3494,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ATTRIBUTE__BEHAVIOR = FEATURE__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3646,13 +3517,22 @@ public interface PLMPackage extends EPackage {
   int ATTRIBUTE__DURABILITY = FEATURE__DURABILITY;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Parsing Order</b></em>' attribute.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__VALUE = FEATURE_FEATURE_COUNT + 0;
+	int ATTRIBUTE__PARSING_ORDER = FEATURE_FEATURE_COUNT + 0;
+
+		/**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__VALUE = FEATURE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Mutability</b></em>' attribute. <!--
@@ -3661,7 +3541,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__MUTABILITY = FEATURE_FEATURE_COUNT + 1;
+  int ATTRIBUTE__MUTABILITY = FEATURE_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Datatype</b></em>' attribute. <!--
@@ -3670,7 +3550,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__DATATYPE = FEATURE_FEATURE_COUNT + 2;
+  int ATTRIBUTE__DATATYPE = FEATURE_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class. <!--
@@ -3679,7 +3559,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 3;
+  int ATTRIBUTE_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 4;
 
   /**
    * The operation id for the '<em>Get Clabject</em>' operation. <!--
@@ -3709,9 +3589,9 @@ public interface PLMPackage extends EPackage {
   int ATTRIBUTE___GET_MUTABILITY_AS_STRING = FEATURE_OPERATION_COUNT + 0;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3738,7 +3618,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The operation id for the '<em>Get Enumeration Data Types</em>' operation.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -3781,10 +3660,8 @@ public interface PLMPackage extends EPackage {
   int ATTRIBUTE_OPERATION_COUNT = FEATURE_OPERATION_COUNT + 8;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.MethodImpl <em>Method</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.MethodImpl <em>Method</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.MethodImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getMethod()
    * @generated
@@ -3792,18 +3669,17 @@ public interface PLMPackage extends EPackage {
   int METHOD = 18;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int METHOD__NAME = FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3812,16 +3688,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int METHOD__BEHAVIOR = FEATURE__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3837,18 +3711,17 @@ public interface PLMPackage extends EPackage {
   int METHOD__DURABILITY = FEATURE__DURABILITY;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Body</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int METHOD__BODY = FEATURE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Parameter</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3882,46 +3755,44 @@ public interface PLMPackage extends EPackage {
   int METHOD___GET_DURABILITY_AS_STRING = FEATURE___GET_DURABILITY_AS_STRING;
 
   /**
-   * The operation id for the '<em>Represent</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Represent</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int METHOD___REPRESENT = FEATURE_OPERATION_COUNT + 0;
 
   /**
-   * The operation id for the '<em>Get Input</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Input</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int METHOD___GET_INPUT = FEATURE_OPERATION_COUNT + 1;
 
   /**
-   * The operation id for the '<em>Get Output</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Output</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int METHOD___GET_OUTPUT = FEATURE_OPERATION_COUNT + 2;
 
   /**
-   * The number of operations of the '<em>Method</em>' class. <!-- begin-user-doc
+   * The number of operations of the '<em>Method</em>' class.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int METHOD_OPERATION_COUNT = FEATURE_OPERATION_COUNT + 3;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.EnumerationImpl
-   * <em>Enumeration</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.EnumerationImpl <em>Enumeration</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.EnumerationImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getEnumeration()
    * @generated
@@ -3929,18 +3800,17 @@ public interface PLMPackage extends EPackage {
   int ENUMERATION = 19;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ENUMERATION__NAME = ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3949,16 +3819,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ENUMERATION__BEHAVIOR = ELEMENT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -3992,10 +3860,8 @@ public interface PLMPackage extends EPackage {
   int ENUMERATION_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.ParameterImpl
-   * <em>Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.ParameterImpl <em>Parameter</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.ParameterImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getParameter()
    * @generated
@@ -4003,9 +3869,9 @@ public interface PLMPackage extends EPackage {
   int PARAMETER = 20;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4057,11 +3923,9 @@ public interface PLMPackage extends EPackage {
   int PARAMETER_OPERATION_COUNT = 1;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.ClabjectParameterImpl
-   * <em>Clabject Parameter</em>}' class. <!-- begin-user-doc --> <!--
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.ClabjectParameterImpl <em>Clabject Parameter</em>}' class.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see org.melanee.core.models.plm.PLM.impl.ClabjectParameterImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getClabjectParameter()
    * @generated
@@ -4069,9 +3933,9 @@ public interface PLMPackage extends EPackage {
   int CLABJECT_PARAMETER = 21;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4107,7 +3971,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The number of structural features of the '<em>Clabject Parameter</em>' class.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4132,11 +3995,9 @@ public interface PLMPackage extends EPackage {
   int CLABJECT_PARAMETER_OPERATION_COUNT = PARAMETER_OPERATION_COUNT + 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.PrimitiveParameterImpl
-   * <em>Primitive Parameter</em>}' class. <!-- begin-user-doc --> <!--
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.PrimitiveParameterImpl <em>Primitive Parameter</em>}' class.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see org.melanee.core.models.plm.PLM.impl.PrimitiveParameterImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getPrimitiveParameter()
    * @generated
@@ -4144,9 +4005,9 @@ public interface PLMPackage extends EPackage {
   int PRIMITIVE_PARAMETER = 22;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4180,9 +4041,8 @@ public interface PLMPackage extends EPackage {
   int PRIMITIVE_PARAMETER__DATATYPE = PARAMETER_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Primitive Parameter</em>'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The number of structural features of the '<em>Primitive Parameter</em>' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -4207,10 +4067,8 @@ public interface PLMPackage extends EPackage {
   int PRIMITIVE_PARAMETER_OPERATION_COUNT = PARAMETER_OPERATION_COUNT + 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl
-   * <em>Multiplicity</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl <em>Multiplicity</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.MultiplicityImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getMultiplicity()
    * @generated
@@ -4218,18 +4076,18 @@ public interface PLMPackage extends EPackage {
   int MULTIPLICITY = 23;
 
   /**
-   * The feature id for the '<em><b>Lower</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Lower</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int MULTIPLICITY__LOWER = 0;
 
   /**
-   * The feature id for the '<em><b>Upper</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Upper</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4247,7 +4105,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Connectionend</b></em>' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4272,10 +4129,8 @@ public interface PLMPackage extends EPackage {
   int MULTIPLICITY_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.PackageImpl <em>Package</em>}'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.PackageImpl <em>Package</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.impl.PackageImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getPackage()
    * @generated
@@ -4283,18 +4138,17 @@ public interface PLMPackage extends EPackage {
   int PACKAGE = 24;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int PACKAGE__NAME = OWNED_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Visualizer</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -4303,16 +4157,14 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int PACKAGE__BEHAVIOR = OWNED_ELEMENT__BEHAVIOR;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference
-   * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -4321,7 +4173,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The feature id for the '<em><b>Content</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4337,29 +4188,27 @@ public interface PLMPackage extends EPackage {
   int PACKAGE_FEATURE_COUNT = OWNED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The operation id for the '<em>Get Level</em>' operation. <!-- begin-user-doc
+   * The operation id for the '<em>Get Level</em>' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int PACKAGE___GET_LEVEL = OWNED_ELEMENT___GET_LEVEL;
 
   /**
-   * The number of operations of the '<em>Package</em>' class. <!-- begin-user-doc
+   * The number of operations of the '<em>Package</em>' class.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int PACKAGE_OPERATION_COUNT = OWNED_ELEMENT_OPERATION_COUNT + 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl
-   * <em>Abstract DSL Visualizer</em>}' class. <!-- begin-user-doc --> <!--
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl <em>Abstract DSL Visualizer</em>}' class.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getAbstractDSLVisualizer()
    * @generated
@@ -4385,18 +4234,17 @@ public interface PLMPackage extends EPackage {
   int ABSTRACT_DSL_VISUALIZER__NOTATION = 1;
 
   /**
-   * The number of structural features of the '<em>Abstract DSL Visualizer</em>'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The number of structural features of the '<em>Abstract DSL Visualizer</em>' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int ABSTRACT_DSL_VISUALIZER_FEATURE_COUNT = 2;
 
   /**
-   * The operation id for the '<em>Format</em>' operation. <!-- begin-user-doc -->
+   * The operation id for the '<em>Format</em>' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4405,7 +4253,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The number of operations of the '<em>Abstract DSL Visualizer</em>' class.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4424,9 +4271,9 @@ public interface PLMPackage extends EPackage {
   int ABSTRACT_BEHAVIOR = 26;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4435,7 +4282,6 @@ public interface PLMPackage extends EPackage {
   /**
    * The number of structural features of the '<em>Abstract Behavior</em>' class.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
@@ -4451,11 +4297,9 @@ public interface PLMPackage extends EPackage {
   int ABSTRACT_BEHAVIOR_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.impl.AbstractConstraintImpl
-   * <em>Abstract Constraint</em>}' class. <!-- begin-user-doc --> <!--
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.AbstractConstraintImpl <em>Abstract Constraint</em>}' class.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see org.melanee.core.models.plm.PLM.impl.AbstractConstraintImpl
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getAbstractConstraint()
    * @generated
@@ -4463,18 +4307,17 @@ public interface PLMPackage extends EPackage {
   int ABSTRACT_CONSTRAINT = 27;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @generated
    * @ordered
    */
   int ABSTRACT_CONSTRAINT__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Abstract Constraint</em>'
-   * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The number of structural features of the '<em>Abstract Constraint</em>' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
@@ -4490,10 +4333,8 @@ public interface PLMPackage extends EPackage {
   int ABSTRACT_CONSTRAINT_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEndKind <em>Connection End
-   * Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.ConnectionEndKind <em>Connection End Kind</em>}' enum.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.ConnectionEndKind
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getConnectionEndKind()
    * @generated
@@ -4501,10 +4342,8 @@ public interface PLMPackage extends EPackage {
   int CONNECTION_END_KIND = 28;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.ClassificationKind <em>Classification
-   * Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.ClassificationKind <em>Classification Kind</em>}' enum.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.ClassificationKind
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getClassificationKind()
    * @generated
@@ -4512,10 +4351,8 @@ public interface PLMPackage extends EPackage {
   int CLASSIFICATION_KIND = 29;
 
   /**
-   * The meta object id for the
-   * '{@link org.melanee.core.models.plm.PLM.ComplianceKind <em>Compliance
-   * Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '{@link org.melanee.core.models.plm.PLM.ComplianceKind <em>Compliance Kind</em>}' enum.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.melanee.core.models.plm.PLM.ComplianceKind
    * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getComplianceKind()
    * @generated
@@ -4546,12 +4383,9 @@ public interface PLMPackage extends EPackage {
   EAttribute getDomain_Name();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Domain#getDeepModel <em>Deep
-   * Model</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list '<em>Deep
-   *         Model</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Domain#getDeepModel <em>Deep Model</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Deep Model</em>'.
    * @see org.melanee.core.models.plm.PLM.Domain#getDeepModel()
    * @see #getDomain()
    * @generated
@@ -4559,10 +4393,8 @@ public interface PLMPackage extends EPackage {
   EReference getDomain_DeepModel();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Domain#getPlmVersion <em>Plm
-   * Version</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Domain#getPlmVersion <em>Plm Version</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Plm Version</em>'.
    * @see org.melanee.core.models.plm.PLM.Domain#getPlmVersion()
    * @see #getDomain()
@@ -4571,10 +4403,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getDomain_PlmVersion();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Domain#getComplianceKind
-   * <em>Compliance Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Domain#getComplianceKind <em>Compliance Kind</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Compliance Kind</em>'.
    * @see org.melanee.core.models.plm.PLM.Domain#getComplianceKind()
    * @see #getDomain()
@@ -4606,12 +4436,9 @@ public interface PLMPackage extends EPackage {
   EAttribute getElement_Name();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Element#getVisualizer
-   * <em>Visualizer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Visualizer</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Element#getVisualizer <em>Visualizer</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Visualizer</em>'.
    * @see org.melanee.core.models.plm.PLM.Element#getVisualizer()
    * @see #getElement()
    * @generated
@@ -4619,12 +4446,9 @@ public interface PLMPackage extends EPackage {
   EReference getElement_Visualizer();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Element#getBehavior
-   * <em>Behavior</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Behavior</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Element#getBehavior <em>Behavior</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Behavior</em>'.
    * @see org.melanee.core.models.plm.PLM.Element#getBehavior()
    * @see #getElement()
    * @generated
@@ -4632,12 +4456,9 @@ public interface PLMPackage extends EPackage {
   EReference getElement_Behavior();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Element#getConstraint
-   * <em>Constraint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Constraint</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Element#getConstraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Constraint</em>'.
    * @see org.melanee.core.models.plm.PLM.Element#getConstraint()
    * @see #getElement()
    * @generated
@@ -4656,12 +4477,9 @@ public interface PLMPackage extends EPackage {
   EClass getLevel();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Level#getContent <em>Content</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Level#getContent <em>Content</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Content</em>'.
+   * @return the meta object for the containment reference list '<em>Content</em>'.
    * @see org.melanee.core.models.plm.PLM.Level#getContent()
    * @see #getLevel()
    * @generated
@@ -4681,10 +4499,8 @@ public interface PLMPackage extends EPackage {
   EOperation getLevel__GetAllInheritances();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Level#getClabjects() <em>Get
-   * Clabjects</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Level#getClabjects() <em>Get Clabjects</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Clabjects</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Level#getClabjects()
    * @generated
@@ -4692,10 +4508,8 @@ public interface PLMPackage extends EPackage {
   EOperation getLevel__GetClabjects();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Level#getEntities() <em>Get
-   * Entities</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Level#getEntities() <em>Get Entities</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Entities</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Level#getEntities()
    * @generated
@@ -4703,10 +4517,8 @@ public interface PLMPackage extends EPackage {
   EOperation getLevel__GetEntities();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Level#getConnections() <em>Get
-   * Connections</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Level#getConnections() <em>Get Connections</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Connections</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Level#getConnections()
    * @generated
@@ -4726,10 +4538,8 @@ public interface PLMPackage extends EPackage {
   EOperation getLevel__GetClassifications();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Level#getDeepModel() <em>Get Deep
-   * Model</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Level#getDeepModel() <em>Get Deep Model</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Deep Model</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Level#getDeepModel()
    * @generated
@@ -4761,10 +4571,8 @@ public interface PLMPackage extends EPackage {
   EOperation getLevel__GetClassifyingLevel();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Level#getLevel() <em>Get Level</em>}'
-   * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Level#getLevel() <em>Get Level</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Level</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Level#getLevel()
    * @generated
@@ -4772,10 +4580,8 @@ public interface PLMPackage extends EPackage {
   EOperation getLevel__GetLevel();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Level#isRootLevel() <em>Is Root
-   * Level</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Level#isRootLevel() <em>Is Root Level</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Is Root Level</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Level#isRootLevel()
    * @generated
@@ -4783,10 +4589,8 @@ public interface PLMPackage extends EPackage {
   EOperation getLevel__IsRootLevel();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Level#isLeafLevel() <em>Is Leaf
-   * Level</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Level#isLeafLevel() <em>Is Leaf Level</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Is Leaf Level</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Level#isLeafLevel()
    * @generated
@@ -4805,12 +4609,9 @@ public interface PLMPackage extends EPackage {
   EClass getDeepModel();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.DeepModel#getContent
-   * <em>Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Content</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.DeepModel#getContent <em>Content</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Content</em>'.
    * @see org.melanee.core.models.plm.PLM.DeepModel#getContent()
    * @see #getDeepModel()
    * @generated
@@ -4818,12 +4619,9 @@ public interface PLMPackage extends EPackage {
   EReference getDeepModel_Content();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.DeepModel#getEnumeration
-   * <em>Enumeration</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Enumeration</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.DeepModel#getEnumeration <em>Enumeration</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Enumeration</em>'.
    * @see org.melanee.core.models.plm.PLM.DeepModel#getEnumeration()
    * @see #getDeepModel()
    * @generated
@@ -4831,11 +4629,9 @@ public interface PLMPackage extends EPackage {
   EReference getDeepModel_Enumeration();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.DeepModel#getLevelAtIndex(int)
-   * <em>Get Level At Index</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.DeepModel#getLevelAtIndex(int) <em>Get Level At Index</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Level At Index</em>' operation.
    * @see org.melanee.core.models.plm.PLM.DeepModel#getLevelAtIndex(int)
    * @generated
@@ -4843,11 +4639,9 @@ public interface PLMPackage extends EPackage {
   EOperation getDeepModel__GetLevelAtIndex__int();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.DeepModel#getPrimitiveDatatypes()
-   * <em>Get Primitive Datatypes</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.DeepModel#getPrimitiveDatatypes() <em>Get Primitive Datatypes</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Primitive Datatypes</em>' operation.
    * @see org.melanee.core.models.plm.PLM.DeepModel#getPrimitiveDatatypes()
    * @generated
@@ -4855,23 +4649,18 @@ public interface PLMPackage extends EPackage {
   EOperation getDeepModel__GetPrimitiveDatatypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.DeepModel#getRegexForPrimitiveDatatype(java.lang.String)
-   * <em>Get Regex For Primitive Datatype</em>}' operation. <!-- begin-user-doc
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.DeepModel#getRegexForPrimitiveDatatype(java.lang.String) <em>Get Regex For Primitive Datatype</em>}' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Regex For Primitive Datatype</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Regex For Primitive Datatype</em>' operation.
    * @see org.melanee.core.models.plm.PLM.DeepModel#getRegexForPrimitiveDatatype(java.lang.String)
    * @generated
    */
   EOperation getDeepModel__GetRegexForPrimitiveDatatype__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.DeepModel#getAllDatatypes() <em>Get
-   * All Datatypes</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.DeepModel#getAllDatatypes() <em>Get All Datatypes</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get All Datatypes</em>' operation.
    * @see org.melanee.core.models.plm.PLM.DeepModel#getAllDatatypes()
    * @generated
@@ -4879,10 +4668,8 @@ public interface PLMPackage extends EPackage {
   EOperation getDeepModel__GetAllDatatypes();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.OwnedElement <em>Owned
-   * Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.OwnedElement <em>Owned Element</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>Owned Element</em>'.
    * @see org.melanee.core.models.plm.PLM.OwnedElement
    * @generated
@@ -4890,10 +4677,8 @@ public interface PLMPackage extends EPackage {
   EClass getOwnedElement();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.OwnedElement#getLevel() <em>Get
-   * Level</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.OwnedElement#getLevel() <em>Get Level</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Level</em>' operation.
    * @see org.melanee.core.models.plm.PLM.OwnedElement#getLevel()
    * @generated
@@ -4901,10 +4686,8 @@ public interface PLMPackage extends EPackage {
   EOperation getOwnedElement__GetLevel();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.Correlation <em>Correlation</em>}'.
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.Correlation <em>Correlation</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the meta object for class '<em>Correlation</em>'.
    * @see org.melanee.core.models.plm.PLM.Correlation
    * @generated
@@ -4912,10 +4695,8 @@ public interface PLMPackage extends EPackage {
   EClass getCorrelation();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance <em>Inheritance</em>}'.
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.Inheritance <em>Inheritance</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the meta object for class '<em>Inheritance</em>'.
    * @see org.melanee.core.models.plm.PLM.Inheritance
    * @generated
@@ -4923,12 +4704,9 @@ public interface PLMPackage extends EPackage {
   EClass getInheritance();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertype
-   * <em>Supertype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Supertype</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertype <em>Supertype</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Supertype</em>'.
    * @see org.melanee.core.models.plm.PLM.Inheritance#getSupertype()
    * @see #getInheritance()
    * @generated
@@ -4936,12 +4714,9 @@ public interface PLMPackage extends EPackage {
   EReference getInheritance_Supertype();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtype
-   * <em>Subtype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Subtype</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtype <em>Subtype</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Subtype</em>'.
    * @see org.melanee.core.models.plm.PLM.Inheritance#getSubtype()
    * @see #getInheritance()
    * @generated
@@ -4949,10 +4724,8 @@ public interface PLMPackage extends EPackage {
   EReference getInheritance_Subtype();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#getDisjoint
-   * <em>Disjoint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Inheritance#getDisjoint <em>Disjoint</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Disjoint</em>'.
    * @see org.melanee.core.models.plm.PLM.Inheritance#getDisjoint()
    * @see #getInheritance()
@@ -4961,10 +4734,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getInheritance_Disjoint();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#getComplete
-   * <em>Complete</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Inheritance#getComplete <em>Complete</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Complete</em>'.
    * @see org.melanee.core.models.plm.PLM.Inheritance#getComplete()
    * @see #getInheritance()
@@ -4973,10 +4744,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getInheritance_Complete();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#isDisjoint() <em>Is
-   * Disjoint</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Inheritance#isDisjoint() <em>Is Disjoint</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Is Disjoint</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Inheritance#isDisjoint()
    * @generated
@@ -4984,10 +4753,8 @@ public interface PLMPackage extends EPackage {
   EOperation getInheritance__IsDisjoint();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#isComplete() <em>Is
-   * Complete</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Inheritance#isComplete() <em>Is Complete</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Is Complete</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Inheritance#isComplete()
    * @generated
@@ -4995,10 +4762,8 @@ public interface PLMPackage extends EPackage {
   EOperation getInheritance__IsComplete();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#isIntersection() <em>Is
-   * Intersection</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Inheritance#isIntersection() <em>Is Intersection</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Is Intersection</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Inheritance#isIntersection()
    * @generated
@@ -5006,10 +4771,8 @@ public interface PLMPackage extends EPackage {
   EOperation getInheritance__IsIntersection();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Inheritance#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Inheritance#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Inheritance#represent()
    * @generated
@@ -5028,10 +4791,8 @@ public interface PLMPackage extends EPackage {
   EClass getSupertype();
 
   /**
-   * Returns the meta object for the reference
-   * '{@link org.melanee.core.models.plm.PLM.Supertype#getSupertype
-   * <em>Supertype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the reference '{@link org.melanee.core.models.plm.PLM.Supertype#getSupertype <em>Supertype</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Supertype</em>'.
    * @see org.melanee.core.models.plm.PLM.Supertype#getSupertype()
    * @see #getSupertype()
@@ -5040,10 +4801,8 @@ public interface PLMPackage extends EPackage {
   EReference getSupertype_Supertype();
 
   /**
-   * Returns the meta object for the container reference
-   * '{@link org.melanee.core.models.plm.PLM.Supertype#getInheritance
-   * <em>Inheritance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the container reference '{@link org.melanee.core.models.plm.PLM.Supertype#getInheritance <em>Inheritance</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the container reference '<em>Inheritance</em>'.
    * @see org.melanee.core.models.plm.PLM.Supertype#getInheritance()
    * @see #getSupertype()
@@ -5063,10 +4822,8 @@ public interface PLMPackage extends EPackage {
   EClass getSubtype();
 
   /**
-   * Returns the meta object for the reference
-   * '{@link org.melanee.core.models.plm.PLM.Subtype#getSubtype
-   * <em>Subtype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the reference '{@link org.melanee.core.models.plm.PLM.Subtype#getSubtype <em>Subtype</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Subtype</em>'.
    * @see org.melanee.core.models.plm.PLM.Subtype#getSubtype()
    * @see #getSubtype()
@@ -5075,10 +4832,8 @@ public interface PLMPackage extends EPackage {
   EReference getSubtype_Subtype();
 
   /**
-   * Returns the meta object for the container reference
-   * '{@link org.melanee.core.models.plm.PLM.Subtype#getInheritance
-   * <em>Inheritance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the container reference '{@link org.melanee.core.models.plm.PLM.Subtype#getInheritance <em>Inheritance</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the container reference '<em>Inheritance</em>'.
    * @see org.melanee.core.models.plm.PLM.Subtype#getInheritance()
    * @see #getSubtype()
@@ -5087,10 +4842,8 @@ public interface PLMPackage extends EPackage {
   EReference getSubtype_Inheritance();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.Classification
-   * <em>Classification</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.Classification <em>Classification</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>Classification</em>'.
    * @see org.melanee.core.models.plm.PLM.Classification
    * @generated
@@ -5098,10 +4851,8 @@ public interface PLMPackage extends EPackage {
   EClass getClassification();
 
   /**
-   * Returns the meta object for the reference
-   * '{@link org.melanee.core.models.plm.PLM.Classification#getInstance
-   * <em>Instance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the reference '{@link org.melanee.core.models.plm.PLM.Classification#getInstance <em>Instance</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Instance</em>'.
    * @see org.melanee.core.models.plm.PLM.Classification#getInstance()
    * @see #getClassification()
@@ -5110,10 +4861,8 @@ public interface PLMPackage extends EPackage {
   EReference getClassification_Instance();
 
   /**
-   * Returns the meta object for the reference
-   * '{@link org.melanee.core.models.plm.PLM.Classification#getType
-   * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the reference '{@link org.melanee.core.models.plm.PLM.Classification#getType <em>Type</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Type</em>'.
    * @see org.melanee.core.models.plm.PLM.Classification#getType()
    * @see #getClassification()
@@ -5122,10 +4871,8 @@ public interface PLMPackage extends EPackage {
   EReference getClassification_Type();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Classification#getKind
-   * <em>Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Classification#getKind <em>Kind</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Kind</em>'.
    * @see org.melanee.core.models.plm.PLM.Classification#getKind()
    * @see #getClassification()
@@ -5134,10 +4881,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getClassification_Kind();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Classification#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Classification#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Classification#represent()
    * @generated
@@ -5156,10 +4901,8 @@ public interface PLMPackage extends EPackage {
   EClass getClabject();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getPotency
-   * <em>Potency</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Clabject#getPotency <em>Potency</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Potency</em>'.
    * @see org.melanee.core.models.plm.PLM.Clabject#getPotency()
    * @see #getClabject()
@@ -5168,10 +4911,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getClabject_Potency();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelIndex <em>Level
-   * Index</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelIndex <em>Level Index</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Level Index</em>'.
    * @see org.melanee.core.models.plm.PLM.Clabject#getLevelIndex()
    * @see #getClabject()
@@ -5180,12 +4921,9 @@ public interface PLMPackage extends EPackage {
   EAttribute getClabject_LevelIndex();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getContent
-   * <em>Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Content</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Clabject#getContent <em>Content</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Content</em>'.
    * @see org.melanee.core.models.plm.PLM.Clabject#getContent()
    * @see #getClabject()
    * @generated
@@ -5193,12 +4931,9 @@ public interface PLMPackage extends EPackage {
   EReference getClabject_Content();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getFeature
-   * <em>Feature</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Feature</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Clabject#getFeature <em>Feature</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Feature</em>'.
    * @see org.melanee.core.models.plm.PLM.Clabject#getFeature()
    * @see #getClabject()
    * @generated
@@ -5206,10 +4941,8 @@ public interface PLMPackage extends EPackage {
   EReference getClabject_Feature();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDeepModel() <em>Get Deep
-   * Model</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDeepModel() <em>Get Deep Model</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Deep Model</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDeepModel()
    * @generated
@@ -5217,10 +4950,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDeepModel();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getSupertypes() <em>Get
-   * Supertypes</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getSupertypes() <em>Get Supertypes</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Supertypes</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getSupertypes()
    * @generated
@@ -5228,11 +4959,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetSupertypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getSupertypes(org.eclipse.emf.common.util.EList)
-   * <em>Get Supertypes</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getSupertypes(org.eclipse.emf.common.util.EList) <em>Get Supertypes</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Supertypes</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getSupertypes(org.eclipse.emf.common.util.EList)
    * @generated
@@ -5240,11 +4969,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetSupertypes__EList();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDirectSupertypes()
-   * <em>Get Direct Supertypes</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDirectSupertypes() <em>Get Direct Supertypes</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Direct Supertypes</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDirectSupertypes()
    * @generated
@@ -5252,10 +4979,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDirectSupertypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getSubtypes() <em>Get
-   * Subtypes</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getSubtypes() <em>Get Subtypes</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Subtypes</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getSubtypes()
    * @generated
@@ -5275,11 +5000,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetHollowSubtypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getHollowSupertypes()
-   * <em>Get Hollow Supertypes</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getHollowSupertypes() <em>Get Hollow Supertypes</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Hollow Supertypes</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getHollowSupertypes()
    * @generated
@@ -5287,36 +5010,28 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetHollowSupertypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationsAsInstance()
-   * <em>Get Classifications As Instance</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationsAsInstance() <em>Get Classifications As Instance</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Classifications As Instance</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Classifications As Instance</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getClassificationsAsInstance()
    * @generated
    */
   EOperation getClabject__GetClassificationsAsInstance();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationsAsType()
-   * <em>Get Classifications As Type</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationsAsType() <em>Get Classifications As Type</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Classifications As Type</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Classifications As Type</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getClassificationsAsType()
    * @generated
    */
   EOperation getClabject__GetClassificationsAsType();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getInstances() <em>Get
-   * Instances</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getInstances() <em>Get Instances</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Instances</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getInstances()
    * @generated
@@ -5324,10 +5039,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetInstances();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getTypes() <em>Get
-   * Types</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getTypes() <em>Get Types</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Types</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getTypes()
    * @generated
@@ -5335,10 +5048,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetTypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDirectTypes() <em>Get
-   * Direct Types</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDirectTypes() <em>Get Direct Types</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Direct Types</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDirectTypes()
    * @generated
@@ -5346,10 +5057,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDirectTypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelTypes() <em>Get
-   * Level Types</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelTypes() <em>Get Level Types</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Level Types</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getLevelTypes()
    * @generated
@@ -5370,24 +5079,19 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDefinedClassificationTreeAsInstance();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsInstance()
-   * <em>Get Classification Tree As Instance</em>}' operation. <!-- begin-user-doc
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsInstance() <em>Get Classification Tree As Instance</em>}' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Classification Tree As
-   *         Instance</em>' operation.
+   * @return the meta object for the '<em>Get Classification Tree As Instance</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsInstance()
    * @generated
    */
   EOperation getClabject__GetClassificationTreeAsInstance();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedInstances()
-   * <em>Get Defined Instances</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedInstances() <em>Get Defined Instances</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Defined Instances</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDefinedInstances()
    * @generated
@@ -5408,50 +5112,38 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDefinedClassificationTreeAsType();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType()
-   * <em>Get Classification Tree As Type</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType() <em>Get Classification Tree As Type</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Classification Tree As Type</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Classification Tree As Type</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType()
    * @generated
    */
   EOperation getClabject__GetClassificationTreeAsType();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType(int)
-   * <em>Get Classification Tree As Type</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType(int) <em>Get Classification Tree As Type</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Classification Tree As Type</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Classification Tree As Type</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType(int)
    * @generated
    */
   EOperation getClabject__GetClassificationTreeAsType__int();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType(int, int)
-   * <em>Get Classification Tree As Type</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType(int, int) <em>Get Classification Tree As Type</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Classification Tree As Type</em>'
-   *         operation.
-   * @see org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType(int,
-   *      int)
+   * @return the meta object for the '<em>Get Classification Tree As Type</em>' operation.
+   * @see org.melanee.core.models.plm.PLM.Clabject#getClassificationTreeAsType(int, int)
    * @generated
    */
   EOperation getClabject__GetClassificationTreeAsType__int_int();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getAllFeatures() <em>Get All
-   * Features</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getAllFeatures() <em>Get All Features</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get All Features</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getAllFeatures()
    * @generated
@@ -5471,11 +5163,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetAllAttributes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedAttributes()
-   * <em>Get Defined Attributes</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedAttributes() <em>Get Defined Attributes</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Defined Attributes</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDefinedAttributes()
    * @generated
@@ -5483,23 +5173,18 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDefinedAttributes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedAttributeByName(java.lang.String)
-   * <em>Get Defined Attribute By Name</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedAttributeByName(java.lang.String) <em>Get Defined Attribute By Name</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Defined Attribute By Name</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Defined Attribute By Name</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDefinedAttributeByName(java.lang.String)
    * @generated
    */
   EOperation getClabject__GetDefinedAttributeByName__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getAllMethods() <em>Get All
-   * Methods</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getAllMethods() <em>Get All Methods</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get All Methods</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getAllMethods()
    * @generated
@@ -5519,11 +5204,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDefinedMethods();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#isInstanceOf(org.melanee.core.models.plm.PLM.Clabject)
-   * <em>Is Instance Of</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#isInstanceOf(org.melanee.core.models.plm.PLM.Clabject) <em>Is Instance Of</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Is Instance Of</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#isInstanceOf(org.melanee.core.models.plm.PLM.Clabject)
    * @generated
@@ -5543,11 +5226,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__IsTypeOf__Clabject();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#isContainerOf(org.melanee.core.models.plm.PLM.Clabject)
-   * <em>Is Container Of</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#isContainerOf(org.melanee.core.models.plm.PLM.Clabject) <em>Is Container Of</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Is Container Of</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#isContainerOf(org.melanee.core.models.plm.PLM.Clabject)
    * @generated
@@ -5555,10 +5236,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__IsContainerOf__Clabject();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getComposite() <em>Get
-   * Composite</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getComposite() <em>Get Composite</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Composite</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getComposite()
    * @generated
@@ -5566,10 +5245,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetComposite();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getAggregates() <em>Get
-   * Aggregates</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getAggregates() <em>Get Aggregates</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Aggregates</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getAggregates()
    * @generated
@@ -5577,10 +5254,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetAggregates();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getParts() <em>Get
-   * Parts</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getParts() <em>Get Parts</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Parts</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getParts()
    * @generated
@@ -5588,11 +5263,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetParts();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getPartsForMoniker(java.lang.String)
-   * <em>Get Parts For Moniker</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getPartsForMoniker(java.lang.String) <em>Get Parts For Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Parts For Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getPartsForMoniker(java.lang.String)
    * @generated
@@ -5600,11 +5273,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetPartsForMoniker__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedConnections()
-   * <em>Get Defined Connections</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedConnections() <em>Get Defined Connections</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Defined Connections</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDefinedConnections()
    * @generated
@@ -5612,10 +5283,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDefinedConnections();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getConnections() <em>Get
-   * Connections</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getConnections() <em>Get Connections</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Connections</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getConnections()
    * @generated
@@ -5623,49 +5292,38 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetConnections();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getInheritedConnections()
-   * <em>Get Inherited Connections</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getInheritedConnections() <em>Get Inherited Connections</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Inherited Connections</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Inherited Connections</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getInheritedConnections()
    * @generated
    */
   EOperation getClabject__GetInheritedConnections();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelCompleteTypes()
-   * <em>Get Level Complete Types</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelCompleteTypes() <em>Get Level Complete Types</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Level Complete Types</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Level Complete Types</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getLevelCompleteTypes()
    * @generated
    */
   EOperation getClabject__GetLevelCompleteTypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelIncompleteTypes()
-   * <em>Get Level Incomplete Types</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getLevelIncompleteTypes() <em>Get Level Incomplete Types</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Level Incomplete Types</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Level Incomplete Types</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getLevelIncompleteTypes()
    * @generated
    */
   EOperation getClabject__GetLevelIncompleteTypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getBlueprint() <em>Get
-   * Blueprint</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getBlueprint() <em>Get Blueprint</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Blueprint</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getBlueprint()
    * @generated
@@ -5673,10 +5331,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetBlueprint();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getOffspring() <em>Get
-   * Offspring</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getOffspring() <em>Get Offspring</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Offspring</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getOffspring()
    * @generated
@@ -5684,10 +5340,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetOffspring();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getIsonyms() <em>Get
-   * Isonyms</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getIsonyms() <em>Get Isonyms</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Isonyms</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getIsonyms()
    * @generated
@@ -5695,10 +5349,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetIsonyms();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getHyponyms() <em>Get
-   * Hyponyms</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getHyponyms() <em>Get Hyponyms</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Hyponyms</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getHyponyms()
    * @generated
@@ -5706,13 +5358,10 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetHyponyms();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDomainForConnection(org.melanee.core.models.plm.PLM.Connection)
-   * <em>Get Domain For Connection</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDomainForConnection(org.melanee.core.models.plm.PLM.Connection) <em>Get Domain For Connection</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Domain For Connection</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Domain For Connection</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDomainForConnection(org.melanee.core.models.plm.PLM.Connection)
    * @generated
    */
@@ -5729,40 +5378,33 @@ public interface PLMPackage extends EPackage {
    * @see org.melanee.core.models.plm.PLM.Clabject#getPossibleDomainSpecificVisualizers()
    * @generated
    */
-  EOperation getClabject__GetPossibleDomainSpecificVisualizers();
+  @Deprecated
+		EOperation getClabject__GetPossibleDomainSpecificVisualizers();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getInheritancesAsSubtype()
-   * <em>Get Inheritances As Subtype</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getInheritancesAsSubtype() <em>Get Inheritances As Subtype</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Inheritances As Subtype</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Inheritances As Subtype</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getInheritancesAsSubtype()
    * @generated
    */
   EOperation getClabject__GetInheritancesAsSubtype();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getInheritancesAsSupertype()
-   * <em>Get Inheritances As Supertype</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getInheritancesAsSupertype() <em>Get Inheritances As Supertype</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Inheritances As Supertype</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Inheritances As Supertype</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getInheritancesAsSupertype()
    * @generated
    */
   EOperation getClabject__GetInheritancesAsSupertype();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedNavigations()
-   * <em>Get Defined Navigations</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedNavigations() <em>Get Defined Navigations</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Defined Navigations</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDefinedNavigations()
    * @generated
@@ -5770,13 +5412,10 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDefinedNavigations();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getInheritedNavigations()
-   * <em>Get Inherited Navigations</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getInheritedNavigations() <em>Get Inherited Navigations</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Inherited Navigations</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Inherited Navigations</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getInheritedNavigations()
    * @generated
    */
@@ -5807,38 +5446,32 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDomainMonikers();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDomainForMoniker(java.lang.String)
-   * <em>Get Domain For Moniker</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDomainForMoniker(java.lang.String) <em>Get Domain For Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Domain For Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDomainForMoniker(java.lang.String)
+   * @deprecated
    * @generated
    */
-  EOperation getClabject__GetDomainForMoniker__String();
+  @Deprecated
+		EOperation getClabject__GetDomainForMoniker__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getAllNavigationsForMoniker(java.lang.String)
-   * <em>Get All Navigations For Moniker</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getAllNavigationsForMoniker(java.lang.String) <em>Get All Navigations For Moniker</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get All Navigations For Moniker</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get All Navigations For Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getAllNavigationsForMoniker(java.lang.String)
    * @generated
    */
   EOperation getClabject__GetAllNavigationsForMoniker__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getAllNavigationsAsDestination()
-   * <em>Get All Navigations As Destination</em>}' operation. <!-- begin-user-doc
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getAllNavigationsAsDestination() <em>Get All Navigations As Destination</em>}' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get All Navigations As Destination</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get All Navigations As Destination</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getAllNavigationsAsDestination()
    * @generated
    */
@@ -5871,10 +5504,8 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetInheritedNavigationsAsDestination();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#represent()
    * @generated
@@ -5882,11 +5513,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__Represent();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getFeatureForName(java.lang.String)
-   * <em>Get Feature For Name</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getFeatureForName(java.lang.String) <em>Get Feature For Name</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Feature For Name</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getFeatureForName(java.lang.String)
    * @generated
@@ -5906,11 +5535,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetPotencyAsString();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDisjointSiblings()
-   * <em>Get Disjoint Siblings</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDisjointSiblings() <em>Get Disjoint Siblings</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Disjoint Siblings</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDisjointSiblings()
    * @generated
@@ -5918,11 +5545,9 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetDisjointSiblings();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getAttributeByName(java.lang.String)
-   * <em>Get Attribute By Name</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getAttributeByName(java.lang.String) <em>Get Attribute By Name</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Attribute By Name</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getAttributeByName(java.lang.String)
    * @generated
@@ -5930,26 +5555,20 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetAttributeByName__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#violatesMultiplicityConstraints()
-   * <em>Violates Multiplicity Constraints</em>}' operation. <!-- begin-user-doc
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#violatesMultiplicityConstraints() <em>Violates Multiplicity Constraints</em>}' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Violates Multiplicity Constraints</em>'
-   *         operation.
+   * @return the meta object for the '<em>Violates Multiplicity Constraints</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#violatesMultiplicityConstraints()
    * @generated
    */
   EOperation getClabject__ViolatesMultiplicityConstraints();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedInheritances()
-   * <em>Get Defined Inheritances</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDefinedInheritances() <em>Get Defined Inheritances</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Defined Inheritances</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Defined Inheritances</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Clabject#getDefinedInheritances()
    * @generated
    */
@@ -5979,10 +5598,8 @@ public interface PLMPackage extends EPackage {
   EClass getFeature();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Feature#getDurability
-   * <em>Durability</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Feature#getDurability <em>Durability</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Durability</em>'.
    * @see org.melanee.core.models.plm.PLM.Feature#getDurability()
    * @see #getFeature()
@@ -5991,10 +5608,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getFeature_Durability();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Feature#getClabject() <em>Get
-   * Clabject</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Feature#getClabject() <em>Get Clabject</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Clabject</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Feature#getClabject()
    * @generated
@@ -6002,23 +5617,18 @@ public interface PLMPackage extends EPackage {
   EOperation getFeature__GetClabject();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Feature#getDurabilityAsString()
-   * <em>Get Durability As String</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Feature#getDurabilityAsString() <em>Get Durability As String</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Durability As String</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Durability As String</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Feature#getDurabilityAsString()
    * @generated
    */
   EOperation getFeature__GetDurabilityAsString();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Feature#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Feature#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Feature#represent()
    * @generated
@@ -6037,10 +5647,8 @@ public interface PLMPackage extends EPackage {
   EClass getEntity();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Entity#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Entity#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Entity#represent()
    * @generated
@@ -6048,10 +5656,8 @@ public interface PLMPackage extends EPackage {
   EOperation getEntity__Represent();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.Connection <em>Connection</em>}'.
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.Connection <em>Connection</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the meta object for class '<em>Connection</em>'.
    * @see org.melanee.core.models.plm.PLM.Connection
    * @generated
@@ -6059,12 +5665,9 @@ public interface PLMPackage extends EPackage {
   EClass getConnection();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getConnectionEnd
-   * <em>Connection End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list '<em>Connection
-   *         End</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Connection#getConnectionEnd <em>Connection End</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Connection End</em>'.
    * @see org.melanee.core.models.plm.PLM.Connection#getConnectionEnd()
    * @see #getConnection()
    * @generated
@@ -6072,10 +5675,8 @@ public interface PLMPackage extends EPackage {
   EReference getConnection_ConnectionEnd();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getDomain() <em>Get
-   * Domain</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getDomain() <em>Get Domain</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Domain</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getDomain()
    * @generated
@@ -6083,10 +5684,8 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetDomain();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getNotDomain() <em>Get Not
-   * Domain</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getNotDomain() <em>Get Not Domain</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Not Domain</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getNotDomain()
    * @generated
@@ -6094,11 +5693,9 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetNotDomain();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getHumanReadableName()
-   * <em>Get Human Readable Name</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getHumanReadableName() <em>Get Human Readable Name</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Human Readable Name</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getHumanReadableName()
    * @generated
@@ -6106,10 +5703,8 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetHumanReadableName();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getParticipants() <em>Get
-   * Participants</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getParticipants() <em>Get Participants</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Participants</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getParticipants()
    * @generated
@@ -6117,10 +5712,8 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetParticipants();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getMoniker() <em>Get
-   * Moniker</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getMoniker() <em>Get Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getMoniker()
    * @generated
@@ -6140,24 +5733,19 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetDomain__Clabject();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getMonikerForParticipant(org.melanee.core.models.plm.PLM.Clabject)
-   * <em>Get Moniker For Participant</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getMonikerForParticipant(org.melanee.core.models.plm.PLM.Clabject) <em>Get Moniker For Participant</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Moniker For Participant</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Moniker For Participant</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getMonikerForParticipant(org.melanee.core.models.plm.PLM.Clabject)
    * @generated
    */
   EOperation getConnection__GetMonikerForParticipant__Clabject();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getLowerForMoniker(java.lang.String)
-   * <em>Get Lower For Moniker</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getLowerForMoniker(java.lang.String) <em>Get Lower For Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Lower For Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getLowerForMoniker(java.lang.String)
    * @generated
@@ -6165,11 +5753,9 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetLowerForMoniker__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getUpperForMoniker(java.lang.String)
-   * <em>Get Upper For Moniker</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getUpperForMoniker(java.lang.String) <em>Get Upper For Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Upper For Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getUpperForMoniker(java.lang.String)
    * @generated
@@ -6177,23 +5763,18 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetUpperForMoniker__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#isNavigableForMoniker(java.lang.String)
-   * <em>Is Navigable For Moniker</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#isNavigableForMoniker(java.lang.String) <em>Is Navigable For Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Is Navigable For Moniker</em>'
-   *         operation.
+   * @return the meta object for the '<em>Is Navigable For Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#isNavigableForMoniker(java.lang.String)
    * @generated
    */
   EOperation getConnection__IsNavigableForMoniker__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getOrder() <em>Get
-   * Order</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getOrder() <em>Get Order</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Order</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getOrder()
    * @generated
@@ -6201,24 +5782,19 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetOrder();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getInheritedConnectionEnd()
-   * <em>Get Inherited Connection End</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getInheritedConnectionEnd() <em>Get Inherited Connection End</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Inherited Connection End</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Inherited Connection End</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getInheritedConnectionEnd()
    * @generated
    */
   EOperation getConnection__GetInheritedConnectionEnd();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getAllConnectionEnd()
-   * <em>Get All Connection End</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getAllConnectionEnd() <em>Get All Connection End</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get All Connection End</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getAllConnectionEnd()
    * @generated
@@ -6226,23 +5802,18 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__GetAllConnectionEnd();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#getParticipantForMoniker(java.lang.String)
-   * <em>Get Participant For Moniker</em>}' operation. <!-- begin-user-doc -->
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#getParticipantForMoniker(java.lang.String) <em>Get Participant For Moniker</em>}' operation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Participant For Moniker</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Participant For Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#getParticipantForMoniker(java.lang.String)
    * @generated
    */
   EOperation getConnection__GetParticipantForMoniker__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Connection#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Connection#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Connection#represent()
    * @generated
@@ -6250,10 +5821,8 @@ public interface PLMPackage extends EPackage {
   EOperation getConnection__Represent();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd <em>Connection
-   * End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.ConnectionEnd <em>Connection End</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>Connection End</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd
    * @generated
@@ -6261,10 +5830,8 @@ public interface PLMPackage extends EPackage {
   EClass getConnectionEnd();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getLower
-   * <em>Lower</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getLower <em>Lower</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Lower</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getLower()
    * @see #getConnectionEnd()
@@ -6273,10 +5840,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getConnectionEnd_Lower();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getUpper
-   * <em>Upper</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getUpper <em>Upper</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Upper</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getUpper()
    * @see #getConnectionEnd()
@@ -6285,10 +5850,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getConnectionEnd_Upper();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#isNavigable
-   * <em>Navigable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#isNavigable <em>Navigable</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Navigable</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#isNavigable()
    * @see #getConnectionEnd()
@@ -6297,10 +5860,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getConnectionEnd_Navigable();
 
   /**
-   * Returns the meta object for the reference
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getDestination
-   * <em>Destination</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the reference '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getDestination <em>Destination</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Destination</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getDestination()
    * @see #getConnectionEnd()
@@ -6309,10 +5870,8 @@ public interface PLMPackage extends EPackage {
   EReference getConnectionEnd_Destination();
 
   /**
-   * Returns the meta object for the container reference
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection
-   * <em>Connection</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the container reference '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection <em>Connection</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the container reference '<em>Connection</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getConnection()
    * @see #getConnectionEnd()
@@ -6321,10 +5880,8 @@ public interface PLMPackage extends EPackage {
   EReference getConnectionEnd_Connection();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMoniker
-   * <em>Moniker</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMoniker <em>Moniker</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Moniker</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getMoniker()
    * @see #getConnectionEnd()
@@ -6333,10 +5890,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getConnectionEnd_Moniker();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getKind
-   * <em>Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getKind <em>Kind</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Kind</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getKind()
    * @see #getConnectionEnd()
@@ -6345,10 +5900,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getConnectionEnd_Kind();
 
   /**
-   * Returns the meta object for the reference
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getType
-   * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the reference '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getType <em>Type</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Type</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getType()
    * @see #getConnectionEnd()
@@ -6357,12 +5910,9 @@ public interface PLMPackage extends EPackage {
   EReference getConnectionEnd_Type();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMultiplicity
-   * <em>Multiplicity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Multiplicity</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getMultiplicity <em>Multiplicity</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Multiplicity</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getMultiplicity()
    * @see #getConnectionEnd()
    * @generated
@@ -6383,11 +5933,9 @@ public interface PLMPackage extends EPackage {
   EOperation getConnectionEnd__GetHumanReadableConnectionEndName();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#hasDefaultMoniker()
-   * <em>Has Default Moniker</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#hasDefaultMoniker() <em>Has Default Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Has Default Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#hasDefaultMoniker()
    * @generated
@@ -6395,10 +5943,8 @@ public interface PLMPackage extends EPackage {
   EOperation getConnectionEnd__HasDefaultMoniker();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#represent()
    * @generated
@@ -6406,10 +5952,8 @@ public interface PLMPackage extends EPackage {
   EOperation getConnectionEnd__Represent();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#moniker()
-   * <em>Moniker</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#moniker() <em>Moniker</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Moniker</em>' operation.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#moniker()
    * @generated
@@ -6417,11 +5961,9 @@ public interface PLMPackage extends EPackage {
   EOperation getConnectionEnd__Moniker();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#representMultiplicity()
-   * <em>Represent Multiplicity</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#representMultiplicity() <em>Represent Multiplicity</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Represent Multiplicity</em>' operation.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#representMultiplicity()
    * @generated
@@ -6429,11 +5971,9 @@ public interface PLMPackage extends EPackage {
   EOperation getConnectionEnd__RepresentMultiplicity();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnectionEndName()
-   * <em>Get Connection End Name</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#getConnectionEndName() <em>Get Connection End Name</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Connection End Name</em>' operation.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#getConnectionEndName()
    * @generated
@@ -6441,10 +5981,8 @@ public interface PLMPackage extends EPackage {
   EOperation getConnectionEnd__GetConnectionEndName();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#conforms(org.melanee.core.models.plm.PLM.ConnectionEnd)
-   * <em>Conforms</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.ConnectionEnd#conforms(org.melanee.core.models.plm.PLM.ConnectionEnd) <em>Conforms</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Conforms</em>' operation.
    * @see org.melanee.core.models.plm.PLM.ConnectionEnd#conforms(org.melanee.core.models.plm.PLM.ConnectionEnd)
    * @generated
@@ -6452,10 +5990,8 @@ public interface PLMPackage extends EPackage {
   EOperation getConnectionEnd__Conforms__ConnectionEnd();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer <em>LML
-   * Visualizer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.LMLVisualizer <em>LML Visualizer</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>LML Visualizer</em>'.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer
    * @generated
@@ -6463,10 +5999,8 @@ public interface PLMPackage extends EPackage {
   EClass getLMLVisualizer();
 
   /**
-   * Returns the meta object for the attribute list
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getAttributes
-   * <em>Attributes</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute list '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getAttributes <em>Attributes</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Attributes</em>'.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getAttributes()
    * @see #getLMLVisualizer()
@@ -6475,12 +6009,9 @@ public interface PLMPackage extends EPackage {
   EAttribute getLMLVisualizer_Attributes();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getDslVisualizer
-   * <em>Dsl Visualizer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list '<em>Dsl
-   *         Visualizer</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getDslVisualizer <em>Dsl Visualizer</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Dsl Visualizer</em>'.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getDslVisualizer()
    * @see #getLMLVisualizer()
    * @generated
@@ -6488,10 +6019,8 @@ public interface PLMPackage extends EPackage {
   EReference getLMLVisualizer_DslVisualizer();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getName
-   * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getName <em>Name</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getName()
    * @see #getLMLVisualizer()
@@ -6500,10 +6029,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getLMLVisualizer_Name();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getXLocation
-   * <em>XLocation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getXLocation <em>XLocation</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>XLocation</em>'.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getXLocation()
    * @see #getLMLVisualizer()
@@ -6512,10 +6039,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getLMLVisualizer_XLocation();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getYLocation
-   * <em>YLocation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getYLocation <em>YLocation</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>YLocation</em>'.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getYLocation()
    * @see #getLMLVisualizer()
@@ -6524,10 +6049,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getLMLVisualizer_YLocation();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getWidth
-   * <em>Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getWidth <em>Width</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Width</em>'.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getWidth()
    * @see #getLMLVisualizer()
@@ -6536,10 +6059,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getLMLVisualizer_Width();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getHeight
-   * <em>Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getHeight <em>Height</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Height</em>'.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getHeight()
    * @see #getLMLVisualizer()
@@ -6548,24 +6069,19 @@ public interface PLMPackage extends EPackage {
   EAttribute getLMLVisualizer_Height();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getDefaultVisualizationValues()
-   * <em>Get Default Visualization Values</em>}' operation. <!-- begin-user-doc
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getDefaultVisualizationValues() <em>Get Default Visualization Values</em>}' operation.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Default Visualization Values</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Default Visualization Values</em>' operation.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getDefaultVisualizationValues()
    * @generated
    */
   EOperation getLMLVisualizer__GetDefaultVisualizationValues();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getValueForKey(java.lang.String)
-   * <em>Get Value For Key</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getValueForKey(java.lang.String) <em>Get Value For Key</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Value For Key</em>' operation.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getValueForKey(java.lang.String)
    * @generated
@@ -6573,11 +6089,9 @@ public interface PLMPackage extends EPackage {
   EOperation getLMLVisualizer__GetValueForKey__String();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getContainingElement()
-   * <em>Get Containing Element</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.LMLVisualizer#getContainingElement() <em>Get Containing Element</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Containing Element</em>' operation.
    * @see org.melanee.core.models.plm.PLM.LMLVisualizer#getContainingElement()
    * @generated
@@ -6608,6 +6122,17 @@ public interface PLMPackage extends EPackage {
   EClass getProperty();
 
   /**
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Property#getParsingOrder <em>Parsing Order</em>}'.
+   * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Parsing Order</em>'.
+   * @see org.melanee.core.models.plm.PLM.Property#getParsingOrder()
+   * @see #getProperty()
+   * @generated
+   */
+	EAttribute getProperty_ParsingOrder();
+
+		/**
    * Returns the meta object for class
    * '{@link org.melanee.core.models.plm.PLM.Attribute <em>Attribute</em>}'. <!--
    * begin-user-doc --> <!-- end-user-doc -->
@@ -6619,10 +6144,8 @@ public interface PLMPackage extends EPackage {
   EClass getAttribute();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Attribute#getValue <em>Value</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the meta object for the attribute '<em>Value</em>'.
    * @see org.melanee.core.models.plm.PLM.Attribute#getValue()
    * @see #getAttribute()
@@ -6631,10 +6154,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getAttribute_Value();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getMutability
-   * <em>Mutability</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Attribute#getMutability <em>Mutability</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Mutability</em>'.
    * @see org.melanee.core.models.plm.PLM.Attribute#getMutability()
    * @see #getAttribute()
@@ -6643,10 +6164,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getAttribute_Mutability();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getDatatype
-   * <em>Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Attribute#getDatatype <em>Datatype</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Datatype</em>'.
    * @see org.melanee.core.models.plm.PLM.Attribute#getDatatype()
    * @see #getAttribute()
@@ -6655,23 +6174,18 @@ public interface PLMPackage extends EPackage {
   EAttribute getAttribute_Datatype();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getMutabilityAsString()
-   * <em>Get Mutability As String</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Attribute#getMutabilityAsString() <em>Get Mutability As String</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Mutability As String</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Mutability As String</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Attribute#getMutabilityAsString()
    * @generated
    */
   EOperation getAttribute__GetMutabilityAsString();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Attribute#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Attribute#represent()
    * @generated
@@ -6679,11 +6193,9 @@ public interface PLMPackage extends EPackage {
   EOperation getAttribute__Represent();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getPossibleDataTypes()
-   * <em>Get Possible Data Types</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Attribute#getPossibleDataTypes() <em>Get Possible Data Types</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @return the meta object for the '<em>Get Possible Data Types</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Attribute#getPossibleDataTypes()
    * @generated
@@ -6691,36 +6203,28 @@ public interface PLMPackage extends EPackage {
   EOperation getAttribute__GetPossibleDataTypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getPrimitiveDataTypes()
-   * <em>Get Primitive Data Types</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Attribute#getPrimitiveDataTypes() <em>Get Primitive Data Types</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Primitive Data Types</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Primitive Data Types</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Attribute#getPrimitiveDataTypes()
    * @generated
    */
   EOperation getAttribute__GetPrimitiveDataTypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getEnumerationDataTypes()
-   * <em>Get Enumeration Data Types</em>}' operation. <!-- begin-user-doc --> <!--
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Attribute#getEnumerationDataTypes() <em>Get Enumeration Data Types</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
-   * @return the meta object for the '<em>Get Enumeration Data Types</em>'
-   *         operation.
+   * @return the meta object for the '<em>Get Enumeration Data Types</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Attribute#getEnumerationDataTypes()
    * @generated
    */
   EOperation getAttribute__GetEnumerationDataTypes();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#isEnumeration() <em>Is
-   * Enumeration</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Attribute#isEnumeration() <em>Is Enumeration</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Is Enumeration</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Attribute#isEnumeration()
    * @generated
@@ -6728,10 +6232,8 @@ public interface PLMPackage extends EPackage {
   EOperation getAttribute__IsEnumeration();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getEnumeration() <em>Get
-   * Enumeration</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Attribute#getEnumeration() <em>Get Enumeration</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Enumeration</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Attribute#getEnumeration()
    * @generated
@@ -6739,10 +6241,8 @@ public interface PLMPackage extends EPackage {
   EOperation getAttribute__GetEnumeration();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getLiterals() <em>Get
-   * Literals</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Attribute#getLiterals() <em>Get Literals</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Literals</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Attribute#getLiterals()
    * @generated
@@ -6773,12 +6273,9 @@ public interface PLMPackage extends EPackage {
   EAttribute getMethod_Body();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Method#getParameter
-   * <em>Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Parameter</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Method#getParameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameter</em>'.
    * @see org.melanee.core.models.plm.PLM.Method#getParameter()
    * @see #getMethod()
    * @generated
@@ -6786,10 +6283,8 @@ public interface PLMPackage extends EPackage {
   EReference getMethod_Parameter();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Method#represent()
-   * <em>Represent</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Method#represent() <em>Represent</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Represent</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Method#represent()
    * @generated
@@ -6797,10 +6292,8 @@ public interface PLMPackage extends EPackage {
   EOperation getMethod__Represent();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Method#getInput() <em>Get
-   * Input</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Method#getInput() <em>Get Input</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Input</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Method#getInput()
    * @generated
@@ -6808,10 +6301,8 @@ public interface PLMPackage extends EPackage {
   EOperation getMethod__GetInput();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Method#getOutput() <em>Get
-   * Output</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Method#getOutput() <em>Get Output</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Output</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Method#getOutput()
    * @generated
@@ -6819,10 +6310,8 @@ public interface PLMPackage extends EPackage {
   EOperation getMethod__GetOutput();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.Enumeration <em>Enumeration</em>}'.
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.Enumeration <em>Enumeration</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the meta object for class '<em>Enumeration</em>'.
    * @see org.melanee.core.models.plm.PLM.Enumeration
    * @generated
@@ -6830,10 +6319,8 @@ public interface PLMPackage extends EPackage {
   EClass getEnumeration();
 
   /**
-   * Returns the meta object for the attribute list
-   * '{@link org.melanee.core.models.plm.PLM.Enumeration#getLiteral
-   * <em>Literal</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute list '{@link org.melanee.core.models.plm.PLM.Enumeration#getLiteral <em>Literal</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Literal</em>'.
    * @see org.melanee.core.models.plm.PLM.Enumeration#getLiteral()
    * @see #getEnumeration()
@@ -6853,10 +6340,8 @@ public interface PLMPackage extends EPackage {
   EClass getParameter();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Parameter#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Parameter#getName <em>Name</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the meta object for the attribute '<em>Name</em>'.
    * @see org.melanee.core.models.plm.PLM.Parameter#getName()
    * @see #getParameter()
@@ -6865,10 +6350,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getParameter_Name();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Parameter#getExpression
-   * <em>Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Parameter#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Expression</em>'.
    * @see org.melanee.core.models.plm.PLM.Parameter#getExpression()
    * @see #getParameter()
@@ -6877,10 +6360,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getParameter_Expression();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Parameter#isOutput <em>Output</em>}'.
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Parameter#isOutput <em>Output</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the meta object for the attribute '<em>Output</em>'.
    * @see org.melanee.core.models.plm.PLM.Parameter#isOutput()
    * @see #getParameter()
@@ -6889,10 +6370,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getParameter_Output();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.Parameter#getClabject() <em>Get
-   * Clabject</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Parameter#getClabject() <em>Get Clabject</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Get Clabject</em>' operation.
    * @see org.melanee.core.models.plm.PLM.Parameter#getClabject()
    * @generated
@@ -6900,10 +6379,8 @@ public interface PLMPackage extends EPackage {
   EOperation getParameter__GetClabject();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.ClabjectParameter <em>Clabject
-   * Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.ClabjectParameter <em>Clabject Parameter</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>Clabject Parameter</em>'.
    * @see org.melanee.core.models.plm.PLM.ClabjectParameter
    * @generated
@@ -6911,10 +6388,8 @@ public interface PLMPackage extends EPackage {
   EClass getClabjectParameter();
 
   /**
-   * Returns the meta object for the reference
-   * '{@link org.melanee.core.models.plm.PLM.ClabjectParameter#getDatatype
-   * <em>Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the reference '{@link org.melanee.core.models.plm.PLM.ClabjectParameter#getDatatype <em>Datatype</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Datatype</em>'.
    * @see org.melanee.core.models.plm.PLM.ClabjectParameter#getDatatype()
    * @see #getClabjectParameter()
@@ -6923,10 +6398,8 @@ public interface PLMPackage extends EPackage {
   EReference getClabjectParameter_Datatype();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.PrimitiveParameter <em>Primitive
-   * Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.PrimitiveParameter <em>Primitive Parameter</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>Primitive Parameter</em>'.
    * @see org.melanee.core.models.plm.PLM.PrimitiveParameter
    * @generated
@@ -6934,10 +6407,8 @@ public interface PLMPackage extends EPackage {
   EClass getPrimitiveParameter();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.PrimitiveParameter#getDatatype
-   * <em>Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.PrimitiveParameter#getDatatype <em>Datatype</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Datatype</em>'.
    * @see org.melanee.core.models.plm.PLM.PrimitiveParameter#getDatatype()
    * @see #getPrimitiveParameter()
@@ -6946,10 +6417,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getPrimitiveParameter_Datatype();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.Multiplicity <em>Multiplicity</em>}'.
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.Multiplicity <em>Multiplicity</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the meta object for class '<em>Multiplicity</em>'.
    * @see org.melanee.core.models.plm.PLM.Multiplicity
    * @generated
@@ -6957,10 +6426,8 @@ public interface PLMPackage extends EPackage {
   EClass getMultiplicity();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Multiplicity#getLower
-   * <em>Lower</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Multiplicity#getLower <em>Lower</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Lower</em>'.
    * @see org.melanee.core.models.plm.PLM.Multiplicity#getLower()
    * @see #getMultiplicity()
@@ -6969,10 +6436,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getMultiplicity_Lower();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Multiplicity#getUpper
-   * <em>Upper</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Multiplicity#getUpper <em>Upper</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Upper</em>'.
    * @see org.melanee.core.models.plm.PLM.Multiplicity#getUpper()
    * @see #getMultiplicity()
@@ -6981,10 +6446,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getMultiplicity_Upper();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.Multiplicity#getPotency
-   * <em>Potency</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.Multiplicity#getPotency <em>Potency</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Potency</em>'.
    * @see org.melanee.core.models.plm.PLM.Multiplicity#getPotency()
    * @see #getMultiplicity()
@@ -6993,10 +6456,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getMultiplicity_Potency();
 
   /**
-   * Returns the meta object for the container reference
-   * '{@link org.melanee.core.models.plm.PLM.Multiplicity#getConnectionend
-   * <em>Connectionend</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the container reference '{@link org.melanee.core.models.plm.PLM.Multiplicity#getConnectionend <em>Connectionend</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the container reference '<em>Connectionend</em>'.
    * @see org.melanee.core.models.plm.PLM.Multiplicity#getConnectionend()
    * @see #getMultiplicity()
@@ -7016,12 +6477,9 @@ public interface PLMPackage extends EPackage {
   EClass getPackage();
 
   /**
-   * Returns the meta object for the containment reference list
-   * '{@link org.melanee.core.models.plm.PLM.Package#getContent
-   * <em>Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the containment reference list
-   *         '<em>Content</em>'.
+   * Returns the meta object for the containment reference list '{@link org.melanee.core.models.plm.PLM.Package#getContent <em>Content</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Content</em>'.
    * @see org.melanee.core.models.plm.PLM.Package#getContent()
    * @see #getPackage()
    * @generated
@@ -7029,10 +6487,8 @@ public interface PLMPackage extends EPackage {
   EReference getPackage_Content();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer <em>Abstract
-   * DSL Visualizer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer <em>Abstract DSL Visualizer</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>Abstract DSL Visualizer</em>'.
    * @see org.melanee.core.models.plm.PLM.AbstractDSLVisualizer
    * @generated
@@ -7040,10 +6496,8 @@ public interface PLMPackage extends EPackage {
   EClass getAbstractDSLVisualizer();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#isInstanceLevel
-   * <em>Instance Level</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#isInstanceLevel <em>Instance Level</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Instance Level</em>'.
    * @see org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#isInstanceLevel()
    * @see #getAbstractDSLVisualizer()
@@ -7052,10 +6506,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getAbstractDSLVisualizer_InstanceLevel();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#getNotation
-   * <em>Notation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#getNotation <em>Notation</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Notation</em>'.
    * @see org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#getNotation()
    * @see #getAbstractDSLVisualizer()
@@ -7064,10 +6516,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getAbstractDSLVisualizer_Notation();
 
   /**
-   * Returns the meta object for the
-   * '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#format()
-   * <em>Format</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#format() <em>Format</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the '<em>Format</em>' operation.
    * @see org.melanee.core.models.plm.PLM.AbstractDSLVisualizer#format()
    * @generated
@@ -7075,10 +6525,8 @@ public interface PLMPackage extends EPackage {
   EOperation getAbstractDSLVisualizer__Format();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.AbstractBehavior <em>Abstract
-   * Behavior</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.AbstractBehavior <em>Abstract Behavior</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>Abstract Behavior</em>'.
    * @see org.melanee.core.models.plm.PLM.AbstractBehavior
    * @generated
@@ -7086,10 +6534,8 @@ public interface PLMPackage extends EPackage {
   EClass getAbstractBehavior();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.AbstractBehavior#getName
-   * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.AbstractBehavior#getName <em>Name</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
    * @see org.melanee.core.models.plm.PLM.AbstractBehavior#getName()
    * @see #getAbstractBehavior()
@@ -7098,10 +6544,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getAbstractBehavior_Name();
 
   /**
-   * Returns the meta object for class
-   * '{@link org.melanee.core.models.plm.PLM.AbstractConstraint <em>Abstract
-   * Constraint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for class '{@link org.melanee.core.models.plm.PLM.AbstractConstraint <em>Abstract Constraint</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for class '<em>Abstract Constraint</em>'.
    * @see org.melanee.core.models.plm.PLM.AbstractConstraint
    * @generated
@@ -7109,10 +6553,8 @@ public interface PLMPackage extends EPackage {
   EClass getAbstractConstraint();
 
   /**
-   * Returns the meta object for the attribute
-   * '{@link org.melanee.core.models.plm.PLM.AbstractConstraint#getName
-   * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for the attribute '{@link org.melanee.core.models.plm.PLM.AbstractConstraint#getName <em>Name</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
    * @see org.melanee.core.models.plm.PLM.AbstractConstraint#getName()
    * @see #getAbstractConstraint()
@@ -7121,10 +6563,8 @@ public interface PLMPackage extends EPackage {
   EAttribute getAbstractConstraint_Name();
 
   /**
-   * Returns the meta object for enum
-   * '{@link org.melanee.core.models.plm.PLM.ConnectionEndKind <em>Connection End
-   * Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for enum '{@link org.melanee.core.models.plm.PLM.ConnectionEndKind <em>Connection End Kind</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for enum '<em>Connection End Kind</em>'.
    * @see org.melanee.core.models.plm.PLM.ConnectionEndKind
    * @generated
@@ -7132,10 +6572,8 @@ public interface PLMPackage extends EPackage {
   EEnum getConnectionEndKind();
 
   /**
-   * Returns the meta object for enum
-   * '{@link org.melanee.core.models.plm.PLM.ClassificationKind <em>Classification
-   * Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for enum '{@link org.melanee.core.models.plm.PLM.ClassificationKind <em>Classification Kind</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for enum '<em>Classification Kind</em>'.
    * @see org.melanee.core.models.plm.PLM.ClassificationKind
    * @generated
@@ -7143,10 +6581,8 @@ public interface PLMPackage extends EPackage {
   EEnum getClassificationKind();
 
   /**
-   * Returns the meta object for enum
-   * '{@link org.melanee.core.models.plm.PLM.ComplianceKind <em>Compliance
-   * Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the meta object for enum '{@link org.melanee.core.models.plm.PLM.ComplianceKind <em>Compliance Kind</em>}'.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for enum '<em>Compliance Kind</em>'.
    * @see org.melanee.core.models.plm.PLM.ComplianceKind
    * @generated
@@ -7172,15 +6608,12 @@ public interface PLMPackage extends EPackage {
    * <li>and each data type</li>
    * </ul>
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   interface Literals {
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.DomainImpl <em>Domain</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.DomainImpl <em>Domain</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.DomainImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getDomain()
      * @generated
@@ -7190,40 +6623,34 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute DOMAIN__NAME = eINSTANCE.getDomain_Name();
 
     /**
-     * The meta object literal for the '<em><b>Deep Model</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Deep Model</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference DOMAIN__DEEP_MODEL = eINSTANCE.getDomain_DeepModel();
 
     /**
-     * The meta object literal for the '<em><b>Plm Version</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Plm Version</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute DOMAIN__PLM_VERSION = eINSTANCE.getDomain_PlmVersion();
 
     /**
-     * The meta object literal for the '<em><b>Compliance Kind</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Compliance Kind</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute DOMAIN__COMPLIANCE_KIND = eINSTANCE.getDomain_ComplianceKind();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.ElementImpl <em>Element</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.ElementImpl <em>Element</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.ElementImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getElement()
      * @generated
@@ -7233,40 +6660,34 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
 
     /**
-     * The meta object literal for the '<em><b>Visualizer</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Visualizer</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference ELEMENT__VISUALIZER = eINSTANCE.getElement_Visualizer();
 
     /**
-     * The meta object literal for the '<em><b>Behavior</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Behavior</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference ELEMENT__BEHAVIOR = eINSTANCE.getElement_Behavior();
 
     /**
-     * The meta object literal for the '<em><b>Constraint</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Constraint</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference ELEMENT__CONSTRAINT = eINSTANCE.getElement_Constraint();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.LevelImpl <em>Level</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.LevelImpl <em>Level</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.LevelImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getLevel()
      * @generated
@@ -7274,17 +6695,15 @@ public interface PLMPackage extends EPackage {
     EClass LEVEL = eINSTANCE.getLevel();
 
     /**
-     * The meta object literal for the '<em><b>Content</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Content</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference LEVEL__CONTENT = eINSTANCE.getLevel_Content();
 
     /**
-     * The meta object literal for the '<em><b>Get All Inheritances</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get All Inheritances</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation LEVEL___GET_ALL_INHERITANCES = eINSTANCE.getLevel__GetAllInheritances();
@@ -7292,7 +6711,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Clabjects</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation LEVEL___GET_CLABJECTS = eINSTANCE.getLevel__GetClabjects();
@@ -7300,7 +6718,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Entities</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation LEVEL___GET_ENTITIES = eINSTANCE.getLevel__GetEntities();
@@ -7308,15 +6725,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Connections</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation LEVEL___GET_CONNECTIONS = eINSTANCE.getLevel__GetConnections();
 
     /**
-     * The meta object literal for the '<em><b>Get Classifications</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classifications</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation LEVEL___GET_CLASSIFICATIONS = eINSTANCE.getLevel__GetClassifications();
@@ -7324,23 +6739,20 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Deep Model</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation LEVEL___GET_DEEP_MODEL = eINSTANCE.getLevel__GetDeepModel();
 
     /**
-     * The meta object literal for the '<em><b>Get Classified Level</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classified Level</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation LEVEL___GET_CLASSIFIED_LEVEL = eINSTANCE.getLevel__GetClassifiedLevel();
 
     /**
-     * The meta object literal for the '<em><b>Get Classifying Level</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classifying Level</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation LEVEL___GET_CLASSIFYING_LEVEL = eINSTANCE.getLevel__GetClassifyingLevel();
@@ -7356,7 +6768,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Is Root Level</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation LEVEL___IS_ROOT_LEVEL = eINSTANCE.getLevel__IsRootLevel();
@@ -7364,16 +6775,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Is Leaf Level</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation LEVEL___IS_LEAF_LEVEL = eINSTANCE.getLevel__IsLeafLevel();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.DeepModelImpl <em>Deep
-     * Model</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.DeepModelImpl <em>Deep Model</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.DeepModelImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getDeepModel()
      * @generated
@@ -7381,61 +6789,50 @@ public interface PLMPackage extends EPackage {
     EClass DEEP_MODEL = eINSTANCE.getDeepModel();
 
     /**
-     * The meta object literal for the '<em><b>Content</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Content</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference DEEP_MODEL__CONTENT = eINSTANCE.getDeepModel_Content();
 
     /**
-     * The meta object literal for the '<em><b>Enumeration</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Enumeration</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference DEEP_MODEL__ENUMERATION = eINSTANCE.getDeepModel_Enumeration();
 
     /**
-     * The meta object literal for the '<em><b>Get Level At Index</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Level At Index</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation DEEP_MODEL___GET_LEVEL_AT_INDEX__INT = eINSTANCE
-        .getDeepModel__GetLevelAtIndex__int();
+    EOperation DEEP_MODEL___GET_LEVEL_AT_INDEX__INT = eINSTANCE.getDeepModel__GetLevelAtIndex__int();
 
     /**
-     * The meta object literal for the '<em><b>Get Primitive Datatypes</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Primitive Datatypes</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation DEEP_MODEL___GET_PRIMITIVE_DATATYPES = eINSTANCE
-        .getDeepModel__GetPrimitiveDatatypes();
+    EOperation DEEP_MODEL___GET_PRIMITIVE_DATATYPES = eINSTANCE.getDeepModel__GetPrimitiveDatatypes();
 
     /**
-     * The meta object literal for the '<em><b>Get Regex For Primitive
-     * Datatype</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Regex For Primitive Datatype</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation DEEP_MODEL___GET_REGEX_FOR_PRIMITIVE_DATATYPE__STRING = eINSTANCE
-        .getDeepModel__GetRegexForPrimitiveDatatype__String();
+    EOperation DEEP_MODEL___GET_REGEX_FOR_PRIMITIVE_DATATYPE__STRING = eINSTANCE.getDeepModel__GetRegexForPrimitiveDatatype__String();
 
     /**
-     * The meta object literal for the '<em><b>Get All Datatypes</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get All Datatypes</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation DEEP_MODEL___GET_ALL_DATATYPES = eINSTANCE.getDeepModel__GetAllDatatypes();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.OwnedElementImpl <em>Owned
-     * Element</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.OwnedElementImpl <em>Owned Element</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.OwnedElementImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getOwnedElement()
      * @generated
@@ -7451,10 +6848,8 @@ public interface PLMPackage extends EPackage {
     EOperation OWNED_ELEMENT___GET_LEVEL = eINSTANCE.getOwnedElement__GetLevel();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.CorrelationImpl
-     * <em>Correlation</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.CorrelationImpl <em>Correlation</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.CorrelationImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getCorrelation()
      * @generated
@@ -7462,10 +6857,8 @@ public interface PLMPackage extends EPackage {
     EClass CORRELATION = eINSTANCE.getCorrelation();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.InheritanceImpl
-     * <em>Inheritance</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.InheritanceImpl <em>Inheritance</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.InheritanceImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getInheritance()
      * @generated
@@ -7473,17 +6866,15 @@ public interface PLMPackage extends EPackage {
     EClass INHERITANCE = eINSTANCE.getInheritance();
 
     /**
-     * The meta object literal for the '<em><b>Supertype</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Supertype</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference INHERITANCE__SUPERTYPE = eINSTANCE.getInheritance_Supertype();
 
     /**
-     * The meta object literal for the '<em><b>Subtype</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Subtype</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference INHERITANCE__SUBTYPE = eINSTANCE.getInheritance_Subtype();
@@ -7491,7 +6882,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Disjoint</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute INHERITANCE__DISJOINT = eINSTANCE.getInheritance_Disjoint();
@@ -7499,7 +6889,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Complete</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute INHERITANCE__COMPLETE = eINSTANCE.getInheritance_Complete();
@@ -7523,7 +6912,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Is Intersection</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation INHERITANCE___IS_INTERSECTION = eINSTANCE.getInheritance__IsIntersection();
@@ -7537,10 +6925,8 @@ public interface PLMPackage extends EPackage {
     EOperation INHERITANCE___REPRESENT = eINSTANCE.getInheritance__Represent();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.SupertypeImpl
-     * <em>Supertype</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.SupertypeImpl <em>Supertype</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.SupertypeImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getSupertype()
      * @generated
@@ -7548,26 +6934,22 @@ public interface PLMPackage extends EPackage {
     EClass SUPERTYPE = eINSTANCE.getSupertype();
 
     /**
-     * The meta object literal for the '<em><b>Supertype</b></em>' reference
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Supertype</b></em>' reference feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference SUPERTYPE__SUPERTYPE = eINSTANCE.getSupertype_Supertype();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance</b></em>' container
-     * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Inheritance</b></em>' container reference feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference SUPERTYPE__INHERITANCE = eINSTANCE.getSupertype_Inheritance();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.SubtypeImpl <em>Subtype</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.SubtypeImpl <em>Subtype</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.SubtypeImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getSubtype()
      * @generated
@@ -7577,15 +6959,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Subtype</b></em>' reference feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EReference SUBTYPE__SUBTYPE = eINSTANCE.getSubtype_Subtype();
 
     /**
-     * The meta object literal for the '<em><b>Inheritance</b></em>' container
-     * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Inheritance</b></em>' container reference feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference SUBTYPE__INHERITANCE = eINSTANCE.getSubtype_Inheritance();
@@ -7605,7 +6985,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Instance</b></em>' reference feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EReference CLASSIFICATION__INSTANCE = eINSTANCE.getClassification_Instance();
@@ -7613,7 +6992,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Type</b></em>' reference feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EReference CLASSIFICATION__TYPE = eINSTANCE.getClassification_Type();
@@ -7621,7 +6999,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute CLASSIFICATION__KIND = eINSTANCE.getClassification_Kind();
@@ -7635,10 +7012,8 @@ public interface PLMPackage extends EPackage {
     EOperation CLASSIFICATION___REPRESENT = eINSTANCE.getClassification__Represent();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.ClabjectImpl <em>Clabject</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.ClabjectImpl <em>Clabject</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.ClabjectImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getClabject()
      * @generated
@@ -7648,31 +7023,27 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Potency</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute CLABJECT__POTENCY = eINSTANCE.getClabject_Potency();
 
     /**
-     * The meta object literal for the '<em><b>Level Index</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Level Index</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute CLABJECT__LEVEL_INDEX = eINSTANCE.getClabject_LevelIndex();
 
     /**
-     * The meta object literal for the '<em><b>Content</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Content</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference CLABJECT__CONTENT = eINSTANCE.getClabject_Content();
 
     /**
-     * The meta object literal for the '<em><b>Feature</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Feature</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference CLABJECT__FEATURE = eINSTANCE.getClabject_Feature();
@@ -7680,7 +7051,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Deep Model</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_DEEP_MODEL = eINSTANCE.getClabject__GetDeepModel();
@@ -7688,7 +7058,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Supertypes</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_SUPERTYPES = eINSTANCE.getClabject__GetSupertypes();
@@ -7696,15 +7065,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Supertypes</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_SUPERTYPES__ELIST = eINSTANCE.getClabject__GetSupertypes__EList();
 
     /**
-     * The meta object literal for the '<em><b>Get Direct Supertypes</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Direct Supertypes</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_DIRECT_SUPERTYPES = eINSTANCE.getClabject__GetDirectSupertypes();
@@ -7712,49 +7079,41 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Subtypes</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_SUBTYPES = eINSTANCE.getClabject__GetSubtypes();
 
     /**
-     * The meta object literal for the '<em><b>Get Hollow Subtypes</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Hollow Subtypes</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_HOLLOW_SUBTYPES = eINSTANCE.getClabject__GetHollowSubtypes();
 
     /**
-     * The meta object literal for the '<em><b>Get Hollow Supertypes</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Hollow Supertypes</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_HOLLOW_SUPERTYPES = eINSTANCE.getClabject__GetHollowSupertypes();
 
     /**
-     * The meta object literal for the '<em><b>Get Classifications As
-     * Instance</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classifications As Instance</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_CLASSIFICATIONS_AS_INSTANCE = eINSTANCE
-        .getClabject__GetClassificationsAsInstance();
+    EOperation CLABJECT___GET_CLASSIFICATIONS_AS_INSTANCE = eINSTANCE.getClabject__GetClassificationsAsInstance();
 
     /**
-     * The meta object literal for the '<em><b>Get Classifications As Type</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classifications As Type</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_CLASSIFICATIONS_AS_TYPE = eINSTANCE
-        .getClabject__GetClassificationsAsType();
+    EOperation CLABJECT___GET_CLASSIFICATIONS_AS_TYPE = eINSTANCE.getClabject__GetClassificationsAsType();
 
     /**
      * The meta object literal for the '<em><b>Get Instances</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_INSTANCES = eINSTANCE.getClabject__GetInstances();
@@ -7770,7 +7129,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Direct Types</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_DIRECT_TYPES = eINSTANCE.getClabject__GetDirectTypes();
@@ -7778,118 +7136,97 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Level Types</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_LEVEL_TYPES = eINSTANCE.getClabject__GetLevelTypes();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Classification Tree As
-     * Instance</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Classification Tree As Instance</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_INSTANCE = eINSTANCE
-        .getClabject__GetDefinedClassificationTreeAsInstance();
+    EOperation CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_INSTANCE = eINSTANCE.getClabject__GetDefinedClassificationTreeAsInstance();
 
     /**
-     * The meta object literal for the '<em><b>Get Classification Tree As
-     * Instance</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classification Tree As Instance</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_CLASSIFICATION_TREE_AS_INSTANCE = eINSTANCE
-        .getClabject__GetClassificationTreeAsInstance();
+    EOperation CLABJECT___GET_CLASSIFICATION_TREE_AS_INSTANCE = eINSTANCE.getClabject__GetClassificationTreeAsInstance();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Instances</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Instances</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_DEFINED_INSTANCES = eINSTANCE.getClabject__GetDefinedInstances();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Classification Tree As
-     * Type</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Classification Tree As Type</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_TYPE = eINSTANCE
-        .getClabject__GetDefinedClassificationTreeAsType();
+    EOperation CLABJECT___GET_DEFINED_CLASSIFICATION_TREE_AS_TYPE = eINSTANCE.getClabject__GetDefinedClassificationTreeAsType();
 
     /**
-     * The meta object literal for the '<em><b>Get Classification Tree As
-     * Type</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classification Tree As Type</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE = eINSTANCE
-        .getClabject__GetClassificationTreeAsType();
+    EOperation CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE = eINSTANCE.getClabject__GetClassificationTreeAsType();
 
     /**
-     * The meta object literal for the '<em><b>Get Classification Tree As
-     * Type</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classification Tree As Type</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE__INT = eINSTANCE
-        .getClabject__GetClassificationTreeAsType__int();
+    EOperation CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE__INT = eINSTANCE.getClabject__GetClassificationTreeAsType__int();
 
     /**
-     * The meta object literal for the '<em><b>Get Classification Tree As
-     * Type</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Classification Tree As Type</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE__INT_INT = eINSTANCE
-        .getClabject__GetClassificationTreeAsType__int_int();
+    EOperation CLABJECT___GET_CLASSIFICATION_TREE_AS_TYPE__INT_INT = eINSTANCE.getClabject__GetClassificationTreeAsType__int_int();
 
     /**
      * The meta object literal for the '<em><b>Get All Features</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_ALL_FEATURES = eINSTANCE.getClabject__GetAllFeatures();
 
     /**
-     * The meta object literal for the '<em><b>Get All Attributes</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get All Attributes</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_ALL_ATTRIBUTES = eINSTANCE.getClabject__GetAllAttributes();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Attributes</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Attributes</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_DEFINED_ATTRIBUTES = eINSTANCE.getClabject__GetDefinedAttributes();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Attribute By
-     * Name</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Attribute By Name</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_DEFINED_ATTRIBUTE_BY_NAME__STRING = eINSTANCE
-        .getClabject__GetDefinedAttributeByName__String();
+    EOperation CLABJECT___GET_DEFINED_ATTRIBUTE_BY_NAME__STRING = eINSTANCE.getClabject__GetDefinedAttributeByName__String();
 
     /**
      * The meta object literal for the '<em><b>Get All Methods</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_ALL_METHODS = eINSTANCE.getClabject__GetAllMethods();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Methods</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Methods</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_DEFINED_METHODS = eINSTANCE.getClabject__GetDefinedMethods();
@@ -7897,11 +7234,9 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Is Instance Of</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    EOperation CLABJECT___IS_INSTANCE_OF__CLABJECT = eINSTANCE
-        .getClabject__IsInstanceOf__Clabject();
+    EOperation CLABJECT___IS_INSTANCE_OF__CLABJECT = eINSTANCE.getClabject__IsInstanceOf__Clabject();
 
     /**
      * The meta object literal for the '<em><b>Is Type Of</b></em>' operation. <!--
@@ -7914,16 +7249,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Is Container Of</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    EOperation CLABJECT___IS_CONTAINER_OF__CLABJECT = eINSTANCE
-        .getClabject__IsContainerOf__Clabject();
+    EOperation CLABJECT___IS_CONTAINER_OF__CLABJECT = eINSTANCE.getClabject__IsContainerOf__Clabject();
 
     /**
      * The meta object literal for the '<em><b>Get Composite</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_COMPOSITE = eINSTANCE.getClabject__GetComposite();
@@ -7931,7 +7263,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Aggregates</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_AGGREGATES = eINSTANCE.getClabject__GetAggregates();
@@ -7945,18 +7276,15 @@ public interface PLMPackage extends EPackage {
     EOperation CLABJECT___GET_PARTS = eINSTANCE.getClabject__GetParts();
 
     /**
-     * The meta object literal for the '<em><b>Get Parts For Moniker</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Parts For Moniker</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_PARTS_FOR_MONIKER__STRING = eINSTANCE
-        .getClabject__GetPartsForMoniker__String();
+    EOperation CLABJECT___GET_PARTS_FOR_MONIKER__STRING = eINSTANCE.getClabject__GetPartsForMoniker__String();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Connections</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Connections</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_DEFINED_CONNECTIONS = eINSTANCE.getClabject__GetDefinedConnections();
@@ -7964,41 +7292,34 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Connections</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_CONNECTIONS = eINSTANCE.getClabject__GetConnections();
 
     /**
-     * The meta object literal for the '<em><b>Get Inherited Connections</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Inherited Connections</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_INHERITED_CONNECTIONS = eINSTANCE
-        .getClabject__GetInheritedConnections();
+    EOperation CLABJECT___GET_INHERITED_CONNECTIONS = eINSTANCE.getClabject__GetInheritedConnections();
 
     /**
-     * The meta object literal for the '<em><b>Get Level Complete Types</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Level Complete Types</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_LEVEL_COMPLETE_TYPES = eINSTANCE.getClabject__GetLevelCompleteTypes();
 
     /**
-     * The meta object literal for the '<em><b>Get Level Incomplete Types</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Level Incomplete Types</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_LEVEL_INCOMPLETE_TYPES = eINSTANCE
-        .getClabject__GetLevelIncompleteTypes();
+    EOperation CLABJECT___GET_LEVEL_INCOMPLETE_TYPES = eINSTANCE.getClabject__GetLevelIncompleteTypes();
 
     /**
      * The meta object literal for the '<em><b>Get Blueprint</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_BLUEPRINT = eINSTANCE.getClabject__GetBlueprint();
@@ -8006,7 +7327,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Offspring</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_OFFSPRING = eINSTANCE.getClabject__GetOffspring();
@@ -8022,19 +7342,16 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Hyponyms</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CLABJECT___GET_HYPONYMS = eINSTANCE.getClabject__GetHyponyms();
 
     /**
-     * The meta object literal for the '<em><b>Get Domain For Connection</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Domain For Connection</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_DOMAIN_FOR_CONNECTION__CONNECTION = eINSTANCE
-        .getClabject__GetDomainForConnection__Connection();
+    EOperation CLABJECT___GET_DOMAIN_FOR_CONNECTION__CONNECTION = eINSTANCE.getClabject__GetDomainForConnection__Connection();
 
     /**
      * The meta object literal for the '<em><b>Get Possible Domain Specific
@@ -8043,77 +7360,66 @@ public interface PLMPackage extends EPackage {
      * 
      * @generated
      */
-    EOperation CLABJECT___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS = eINSTANCE
-        .getClabject__GetPossibleDomainSpecificVisualizers();
+    @Deprecated
+				EOperation CLABJECT___GET_POSSIBLE_DOMAIN_SPECIFIC_VISUALIZERS = eINSTANCE.getClabject__GetPossibleDomainSpecificVisualizers();
 
     /**
-     * The meta object literal for the '<em><b>Get Inheritances As Subtype</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Inheritances As Subtype</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_INHERITANCES_AS_SUBTYPE = eINSTANCE
-        .getClabject__GetInheritancesAsSubtype();
+    EOperation CLABJECT___GET_INHERITANCES_AS_SUBTYPE = eINSTANCE.getClabject__GetInheritancesAsSubtype();
 
     /**
-     * The meta object literal for the '<em><b>Get Inheritances As
-     * Supertype</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Inheritances As Supertype</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_INHERITANCES_AS_SUPERTYPE = eINSTANCE
-        .getClabject__GetInheritancesAsSupertype();
+    EOperation CLABJECT___GET_INHERITANCES_AS_SUPERTYPE = eINSTANCE.getClabject__GetInheritancesAsSupertype();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Navigations</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Navigations</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_DEFINED_NAVIGATIONS = eINSTANCE.getClabject__GetDefinedNavigations();
 
     /**
-     * The meta object literal for the '<em><b>Get Inherited Navigations</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Inherited Navigations</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_INHERITED_NAVIGATIONS = eINSTANCE
-        .getClabject__GetInheritedNavigations();
+    EOperation CLABJECT___GET_INHERITED_NAVIGATIONS = eINSTANCE.getClabject__GetInheritedNavigations();
 
     /**
-     * The meta object literal for the '<em><b>Get All Navigations</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get All Navigations</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_ALL_NAVIGATIONS = eINSTANCE.getClabject__GetAllNavigations();
 
     /**
-     * The meta object literal for the '<em><b>Get Domain Monikers</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Domain Monikers</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_DOMAIN_MONIKERS = eINSTANCE.getClabject__GetDomainMonikers();
 
     /**
-     * The meta object literal for the '<em><b>Get Domain For Moniker</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Domain For Moniker</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @deprecated
      * @generated
      */
-    EOperation CLABJECT___GET_DOMAIN_FOR_MONIKER__STRING = eINSTANCE
-        .getClabject__GetDomainForMoniker__String();
+    @Deprecated
+				EOperation CLABJECT___GET_DOMAIN_FOR_MONIKER__STRING = eINSTANCE.getClabject__GetDomainForMoniker__String();
 
     /**
-     * The meta object literal for the '<em><b>Get All Navigations For
-     * Moniker</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get All Navigations For Moniker</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_ALL_NAVIGATIONS_FOR_MONIKER__STRING = eINSTANCE
-        .getClabject__GetAllNavigationsForMoniker__String();
+    EOperation CLABJECT___GET_ALL_NAVIGATIONS_FOR_MONIKER__STRING = eINSTANCE.getClabject__GetAllNavigationsForMoniker__String();
 
     /**
      * The meta object literal for the '<em><b>Get All Navigations As
@@ -8122,8 +7428,7 @@ public interface PLMPackage extends EPackage {
      * 
      * @generated
      */
-    EOperation CLABJECT___GET_ALL_NAVIGATIONS_AS_DESTINATION = eINSTANCE
-        .getClabject__GetAllNavigationsAsDestination();
+    EOperation CLABJECT___GET_ALL_NAVIGATIONS_AS_DESTINATION = eINSTANCE.getClabject__GetAllNavigationsAsDestination();
 
     /**
      * The meta object literal for the '<em><b>Get Defined Navigations As
@@ -8132,8 +7437,7 @@ public interface PLMPackage extends EPackage {
      * 
      * @generated
      */
-    EOperation CLABJECT___GET_DEFINED_NAVIGATIONS_AS_DESTINATION = eINSTANCE
-        .getClabject__GetDefinedNavigationsAsDestination();
+    EOperation CLABJECT___GET_DEFINED_NAVIGATIONS_AS_DESTINATION = eINSTANCE.getClabject__GetDefinedNavigationsAsDestination();
 
     /**
      * The meta object literal for the '<em><b>Get Inherited Navigations As
@@ -8142,8 +7446,7 @@ public interface PLMPackage extends EPackage {
      * 
      * @generated
      */
-    EOperation CLABJECT___GET_INHERITED_NAVIGATIONS_AS_DESTINATION = eINSTANCE
-        .getClabject__GetInheritedNavigationsAsDestination();
+    EOperation CLABJECT___GET_INHERITED_NAVIGATIONS_AS_DESTINATION = eINSTANCE.getClabject__GetInheritedNavigationsAsDestination();
 
     /**
      * The meta object literal for the '<em><b>Represent</b></em>' operation. <!--
@@ -8154,38 +7457,32 @@ public interface PLMPackage extends EPackage {
     EOperation CLABJECT___REPRESENT = eINSTANCE.getClabject__Represent();
 
     /**
-     * The meta object literal for the '<em><b>Get Feature For Name</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Feature For Name</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_FEATURE_FOR_NAME__STRING = eINSTANCE
-        .getClabject__GetFeatureForName__String();
+    EOperation CLABJECT___GET_FEATURE_FOR_NAME__STRING = eINSTANCE.getClabject__GetFeatureForName__String();
 
     /**
-     * The meta object literal for the '<em><b>Get Potency As String</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Potency As String</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_POTENCY_AS_STRING = eINSTANCE.getClabject__GetPotencyAsString();
 
     /**
-     * The meta object literal for the '<em><b>Get Disjoint Siblings</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Disjoint Siblings</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_DISJOINT_SIBLINGS = eINSTANCE.getClabject__GetDisjointSiblings();
 
     /**
-     * The meta object literal for the '<em><b>Get Attribute By Name</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Attribute By Name</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_ATTRIBUTE_BY_NAME__STRING = eINSTANCE
-        .getClabject__GetAttributeByName__String();
+    EOperation CLABJECT___GET_ATTRIBUTE_BY_NAME__STRING = eINSTANCE.getClabject__GetAttributeByName__String();
 
     /**
      * The meta object literal for the '<em><b>Violates Multiplicity
@@ -8194,31 +7491,25 @@ public interface PLMPackage extends EPackage {
      * 
      * @generated
      */
-    EOperation CLABJECT___VIOLATES_MULTIPLICITY_CONSTRAINTS = eINSTANCE
-        .getClabject__ViolatesMultiplicityConstraints();
+    EOperation CLABJECT___VIOLATES_MULTIPLICITY_CONSTRAINTS = eINSTANCE.getClabject__ViolatesMultiplicityConstraints();
 
     /**
-     * The meta object literal for the '<em><b>Get Defined Inheritances</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Defined Inheritances</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CLABJECT___GET_DEFINED_INHERITANCES = eINSTANCE
-        .getClabject__GetDefinedInheritances();
+    EOperation CLABJECT___GET_DEFINED_INHERITANCES = eINSTANCE.getClabject__GetDefinedInheritances();
 
     /**
-     * The meta object literal for the '<em><b>Get Owned Clabjects</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Owned Clabjects</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CLABJECT___GET_OWNED_CLABJECTS = eINSTANCE.getClabject__GetOwnedClabjects();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.FeatureImpl <em>Feature</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.FeatureImpl <em>Feature</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.FeatureImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getFeature()
      * @generated
@@ -8226,9 +7517,8 @@ public interface PLMPackage extends EPackage {
     EClass FEATURE = eINSTANCE.getFeature();
 
     /**
-     * The meta object literal for the '<em><b>Durability</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Durability</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute FEATURE__DURABILITY = eINSTANCE.getFeature_Durability();
@@ -8236,15 +7526,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Clabject</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation FEATURE___GET_CLABJECT = eINSTANCE.getFeature__GetClabject();
 
     /**
-     * The meta object literal for the '<em><b>Get Durability As String</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Durability As String</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation FEATURE___GET_DURABILITY_AS_STRING = eINSTANCE.getFeature__GetDurabilityAsString();
@@ -8258,10 +7546,8 @@ public interface PLMPackage extends EPackage {
     EOperation FEATURE___REPRESENT = eINSTANCE.getFeature__Represent();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.EntityImpl <em>Entity</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.EntityImpl <em>Entity</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.EntityImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getEntity()
      * @generated
@@ -8277,10 +7563,8 @@ public interface PLMPackage extends EPackage {
     EOperation ENTITY___REPRESENT = eINSTANCE.getEntity__Represent();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.ConnectionImpl
-     * <em>Connection</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.ConnectionImpl <em>Connection</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.ConnectionImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getConnection()
      * @generated
@@ -8288,9 +7572,8 @@ public interface PLMPackage extends EPackage {
     EClass CONNECTION = eINSTANCE.getConnection();
 
     /**
-     * The meta object literal for the '<em><b>Connection End</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Connection End</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference CONNECTION__CONNECTION_END = eINSTANCE.getConnection_ConnectionEnd();
@@ -8306,24 +7589,20 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Not Domain</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CONNECTION___GET_NOT_DOMAIN = eINSTANCE.getConnection__GetNotDomain();
 
     /**
-     * The meta object literal for the '<em><b>Get Human Readable Name</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Human Readable Name</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION___GET_HUMAN_READABLE_NAME = eINSTANCE
-        .getConnection__GetHumanReadableName();
+    EOperation CONNECTION___GET_HUMAN_READABLE_NAME = eINSTANCE.getConnection__GetHumanReadableName();
 
     /**
      * The meta object literal for the '<em><b>Get Participants</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation CONNECTION___GET_PARTICIPANTS = eINSTANCE.getConnection__GetParticipants();
@@ -8345,40 +7624,32 @@ public interface PLMPackage extends EPackage {
     EOperation CONNECTION___GET_DOMAIN__CLABJECT = eINSTANCE.getConnection__GetDomain__Clabject();
 
     /**
-     * The meta object literal for the '<em><b>Get Moniker For Participant</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Moniker For Participant</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION___GET_MONIKER_FOR_PARTICIPANT__CLABJECT = eINSTANCE
-        .getConnection__GetMonikerForParticipant__Clabject();
+    EOperation CONNECTION___GET_MONIKER_FOR_PARTICIPANT__CLABJECT = eINSTANCE.getConnection__GetMonikerForParticipant__Clabject();
 
     /**
-     * The meta object literal for the '<em><b>Get Lower For Moniker</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Lower For Moniker</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION___GET_LOWER_FOR_MONIKER__STRING = eINSTANCE
-        .getConnection__GetLowerForMoniker__String();
+    EOperation CONNECTION___GET_LOWER_FOR_MONIKER__STRING = eINSTANCE.getConnection__GetLowerForMoniker__String();
 
     /**
-     * The meta object literal for the '<em><b>Get Upper For Moniker</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Upper For Moniker</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION___GET_UPPER_FOR_MONIKER__STRING = eINSTANCE
-        .getConnection__GetUpperForMoniker__String();
+    EOperation CONNECTION___GET_UPPER_FOR_MONIKER__STRING = eINSTANCE.getConnection__GetUpperForMoniker__String();
 
     /**
-     * The meta object literal for the '<em><b>Is Navigable For Moniker</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Is Navigable For Moniker</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION___IS_NAVIGABLE_FOR_MONIKER__STRING = eINSTANCE
-        .getConnection__IsNavigableForMoniker__String();
+    EOperation CONNECTION___IS_NAVIGABLE_FOR_MONIKER__STRING = eINSTANCE.getConnection__IsNavigableForMoniker__String();
 
     /**
      * The meta object literal for the '<em><b>Get Order</b></em>' operation. <!--
@@ -8389,30 +7660,25 @@ public interface PLMPackage extends EPackage {
     EOperation CONNECTION___GET_ORDER = eINSTANCE.getConnection__GetOrder();
 
     /**
-     * The meta object literal for the '<em><b>Get Inherited Connection
-     * End</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Inherited Connection End</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION___GET_INHERITED_CONNECTION_END = eINSTANCE
-        .getConnection__GetInheritedConnectionEnd();
+    EOperation CONNECTION___GET_INHERITED_CONNECTION_END = eINSTANCE.getConnection__GetInheritedConnectionEnd();
 
     /**
-     * The meta object literal for the '<em><b>Get All Connection End</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get All Connection End</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation CONNECTION___GET_ALL_CONNECTION_END = eINSTANCE.getConnection__GetAllConnectionEnd();
 
     /**
-     * The meta object literal for the '<em><b>Get Participant For Moniker</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Participant For Moniker</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION___GET_PARTICIPANT_FOR_MONIKER__STRING = eINSTANCE
-        .getConnection__GetParticipantForMoniker__String();
+    EOperation CONNECTION___GET_PARTICIPANT_FOR_MONIKER__STRING = eINSTANCE.getConnection__GetParticipantForMoniker__String();
 
     /**
      * The meta object literal for the '<em><b>Represent</b></em>' operation. <!--
@@ -8423,10 +7689,8 @@ public interface PLMPackage extends EPackage {
     EOperation CONNECTION___REPRESENT = eINSTANCE.getConnection__Represent();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl <em>Connection
-     * End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl <em>Connection End</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.ConnectionEndImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getConnectionEnd()
      * @generated
@@ -8436,7 +7700,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute CONNECTION_END__LOWER = eINSTANCE.getConnectionEnd_Lower();
@@ -8444,31 +7707,27 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute CONNECTION_END__UPPER = eINSTANCE.getConnectionEnd_Upper();
 
     /**
-     * The meta object literal for the '<em><b>Navigable</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Navigable</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute CONNECTION_END__NAVIGABLE = eINSTANCE.getConnectionEnd_Navigable();
 
     /**
-     * The meta object literal for the '<em><b>Destination</b></em>' reference
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Destination</b></em>' reference feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference CONNECTION_END__DESTINATION = eINSTANCE.getConnectionEnd_Destination();
 
     /**
-     * The meta object literal for the '<em><b>Connection</b></em>' container
-     * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Connection</b></em>' container reference feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference CONNECTION_END__CONNECTION = eINSTANCE.getConnectionEnd_Connection();
@@ -8476,7 +7735,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Moniker</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute CONNECTION_END__MONIKER = eINSTANCE.getConnectionEnd_Moniker();
@@ -8484,7 +7742,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute CONNECTION_END__KIND = eINSTANCE.getConnectionEnd_Kind();
@@ -8492,36 +7749,30 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Type</b></em>' reference feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EReference CONNECTION_END__TYPE = eINSTANCE.getConnectionEnd_Type();
 
     /**
-     * The meta object literal for the '<em><b>Multiplicity</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Multiplicity</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference CONNECTION_END__MULTIPLICITY = eINSTANCE.getConnectionEnd_Multiplicity();
 
     /**
-     * The meta object literal for the '<em><b>Get Human Readable Connection End
-     * Name</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Human Readable Connection End Name</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION_END___GET_HUMAN_READABLE_CONNECTION_END_NAME = eINSTANCE
-        .getConnectionEnd__GetHumanReadableConnectionEndName();
+    EOperation CONNECTION_END___GET_HUMAN_READABLE_CONNECTION_END_NAME = eINSTANCE.getConnectionEnd__GetHumanReadableConnectionEndName();
 
     /**
-     * The meta object literal for the '<em><b>Has Default Moniker</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Has Default Moniker</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION_END___HAS_DEFAULT_MONIKER = eINSTANCE
-        .getConnectionEnd__HasDefaultMoniker();
+    EOperation CONNECTION_END___HAS_DEFAULT_MONIKER = eINSTANCE.getConnectionEnd__HasDefaultMoniker();
 
     /**
      * The meta object literal for the '<em><b>Represent</b></em>' operation. <!--
@@ -8540,22 +7791,18 @@ public interface PLMPackage extends EPackage {
     EOperation CONNECTION_END___MONIKER = eINSTANCE.getConnectionEnd__Moniker();
 
     /**
-     * The meta object literal for the '<em><b>Represent Multiplicity</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Represent Multiplicity</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION_END___REPRESENT_MULTIPLICITY = eINSTANCE
-        .getConnectionEnd__RepresentMultiplicity();
+    EOperation CONNECTION_END___REPRESENT_MULTIPLICITY = eINSTANCE.getConnectionEnd__RepresentMultiplicity();
 
     /**
-     * The meta object literal for the '<em><b>Get Connection End Name</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Connection End Name</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation CONNECTION_END___GET_CONNECTION_END_NAME = eINSTANCE
-        .getConnectionEnd__GetConnectionEndName();
+    EOperation CONNECTION_END___GET_CONNECTION_END_NAME = eINSTANCE.getConnectionEnd__GetConnectionEndName();
 
     /**
      * The meta object literal for the '<em><b>Conforms</b></em>' operation. <!--
@@ -8563,14 +7810,11 @@ public interface PLMPackage extends EPackage {
      * 
      * @generated
      */
-    EOperation CONNECTION_END___CONFORMS__CONNECTIONEND = eINSTANCE
-        .getConnectionEnd__Conforms__ConnectionEnd();
+    EOperation CONNECTION_END___CONFORMS__CONNECTIONEND = eINSTANCE.getConnectionEnd__Conforms__ConnectionEnd();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.LMLVisualizerImpl <em>LML
-     * Visualizer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.LMLVisualizerImpl <em>LML Visualizer</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.LMLVisualizerImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getLMLVisualizer()
      * @generated
@@ -8578,17 +7822,15 @@ public interface PLMPackage extends EPackage {
     EClass LML_VISUALIZER = eINSTANCE.getLMLVisualizer();
 
     /**
-     * The meta object literal for the '<em><b>Attributes</b></em>' attribute list
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Attributes</b></em>' attribute list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute LML_VISUALIZER__ATTRIBUTES = eINSTANCE.getLMLVisualizer_Attributes();
 
     /**
-     * The meta object literal for the '<em><b>Dsl Visualizer</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Dsl Visualizer</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference LML_VISUALIZER__DSL_VISUALIZER = eINSTANCE.getLMLVisualizer_DslVisualizer();
@@ -8596,23 +7838,20 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute LML_VISUALIZER__NAME = eINSTANCE.getLMLVisualizer_Name();
 
     /**
-     * The meta object literal for the '<em><b>XLocation</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>XLocation</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute LML_VISUALIZER__XLOCATION = eINSTANCE.getLMLVisualizer_XLocation();
 
     /**
-     * The meta object literal for the '<em><b>YLocation</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>YLocation</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute LML_VISUALIZER__YLOCATION = eINSTANCE.getLMLVisualizer_YLocation();
@@ -8620,7 +7859,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute LML_VISUALIZER__WIDTH = eINSTANCE.getLMLVisualizer_Width();
@@ -8628,37 +7866,30 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute LML_VISUALIZER__HEIGHT = eINSTANCE.getLMLVisualizer_Height();
 
     /**
-     * The meta object literal for the '<em><b>Get Default Visualization
-     * Values</b></em>' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Default Visualization Values</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation LML_VISUALIZER___GET_DEFAULT_VISUALIZATION_VALUES = eINSTANCE
-        .getLMLVisualizer__GetDefaultVisualizationValues();
+    EOperation LML_VISUALIZER___GET_DEFAULT_VISUALIZATION_VALUES = eINSTANCE.getLMLVisualizer__GetDefaultVisualizationValues();
 
     /**
-     * The meta object literal for the '<em><b>Get Value For Key</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Value For Key</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation LML_VISUALIZER___GET_VALUE_FOR_KEY__STRING = eINSTANCE
-        .getLMLVisualizer__GetValueForKey__String();
+    EOperation LML_VISUALIZER___GET_VALUE_FOR_KEY__STRING = eINSTANCE.getLMLVisualizer__GetValueForKey__String();
 
     /**
-     * The meta object literal for the '<em><b>Get Containing Element</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Containing Element</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation LML_VISUALIZER___GET_CONTAINING_ELEMENT = eINSTANCE
-        .getLMLVisualizer__GetContainingElement();
+    EOperation LML_VISUALIZER___GET_CONTAINING_ELEMENT = eINSTANCE.getLMLVisualizer__GetContainingElement();
 
     /**
      * The meta object literal for the '<em><b>EOperation0</b></em>' operation. <!--
@@ -8669,10 +7900,8 @@ public interface PLMPackage extends EPackage {
     EOperation LML_VISUALIZER___EOPERATION0 = eINSTANCE.getLMLVisualizer__EOperation0();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.PropertyImpl <em>Property</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.PropertyImpl <em>Property</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.PropertyImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getProperty()
      * @generated
@@ -8680,10 +7909,16 @@ public interface PLMPackage extends EPackage {
     EClass PROPERTY = eINSTANCE.getProperty();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl
-     * <em>Attribute</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Parsing Order</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+     * @generated
+     */
+		EAttribute PROPERTY__PARSING_ORDER = eINSTANCE.getProperty_ParsingOrder();
+
+				/**
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.AttributeImpl <em>Attribute</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.AttributeImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getAttribute()
      * @generated
@@ -8693,15 +7928,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute ATTRIBUTE__VALUE = eINSTANCE.getAttribute_Value();
 
     /**
-     * The meta object literal for the '<em><b>Mutability</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Mutability</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute ATTRIBUTE__MUTABILITY = eINSTANCE.getAttribute_Mutability();
@@ -8709,19 +7942,16 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Datatype</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute ATTRIBUTE__DATATYPE = eINSTANCE.getAttribute_Datatype();
 
     /**
-     * The meta object literal for the '<em><b>Get Mutability As String</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Mutability As String</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation ATTRIBUTE___GET_MUTABILITY_AS_STRING = eINSTANCE
-        .getAttribute__GetMutabilityAsString();
+    EOperation ATTRIBUTE___GET_MUTABILITY_AS_STRING = eINSTANCE.getAttribute__GetMutabilityAsString();
 
     /**
      * The meta object literal for the '<em><b>Represent</b></em>' operation. <!--
@@ -8732,35 +7962,29 @@ public interface PLMPackage extends EPackage {
     EOperation ATTRIBUTE___REPRESENT = eINSTANCE.getAttribute__Represent();
 
     /**
-     * The meta object literal for the '<em><b>Get Possible Data Types</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Possible Data Types</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EOperation ATTRIBUTE___GET_POSSIBLE_DATA_TYPES = eINSTANCE.getAttribute__GetPossibleDataTypes();
 
     /**
-     * The meta object literal for the '<em><b>Get Primitive Data Types</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Primitive Data Types</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation ATTRIBUTE___GET_PRIMITIVE_DATA_TYPES = eINSTANCE
-        .getAttribute__GetPrimitiveDataTypes();
+    EOperation ATTRIBUTE___GET_PRIMITIVE_DATA_TYPES = eINSTANCE.getAttribute__GetPrimitiveDataTypes();
 
     /**
-     * The meta object literal for the '<em><b>Get Enumeration Data Types</b></em>'
-     * operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Get Enumeration Data Types</b></em>' operation.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EOperation ATTRIBUTE___GET_ENUMERATION_DATA_TYPES = eINSTANCE
-        .getAttribute__GetEnumerationDataTypes();
+    EOperation ATTRIBUTE___GET_ENUMERATION_DATA_TYPES = eINSTANCE.getAttribute__GetEnumerationDataTypes();
 
     /**
      * The meta object literal for the '<em><b>Is Enumeration</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation ATTRIBUTE___IS_ENUMERATION = eINSTANCE.getAttribute__IsEnumeration();
@@ -8768,7 +7992,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Enumeration</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation ATTRIBUTE___GET_ENUMERATION = eINSTANCE.getAttribute__GetEnumeration();
@@ -8776,16 +7999,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Literals</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation ATTRIBUTE___GET_LITERALS = eINSTANCE.getAttribute__GetLiterals();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.MethodImpl <em>Method</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.MethodImpl <em>Method</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.MethodImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getMethod()
      * @generated
@@ -8795,15 +8015,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute METHOD__BODY = eINSTANCE.getMethod_Body();
 
     /**
-     * The meta object literal for the '<em><b>Parameter</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Parameter</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference METHOD__PARAMETER = eINSTANCE.getMethod_Parameter();
@@ -8833,10 +8051,8 @@ public interface PLMPackage extends EPackage {
     EOperation METHOD___GET_OUTPUT = eINSTANCE.getMethod__GetOutput();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.EnumerationImpl
-     * <em>Enumeration</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.EnumerationImpl <em>Enumeration</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.EnumerationImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getEnumeration()
      * @generated
@@ -8844,18 +8060,15 @@ public interface PLMPackage extends EPackage {
     EClass ENUMERATION = eINSTANCE.getEnumeration();
 
     /**
-     * The meta object literal for the '<em><b>Literal</b></em>' attribute list
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Literal</b></em>' attribute list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute ENUMERATION__LITERAL = eINSTANCE.getEnumeration_Literal();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.ParameterImpl
-     * <em>Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.ParameterImpl <em>Parameter</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.ParameterImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getParameter()
      * @generated
@@ -8865,15 +8078,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
 
     /**
-     * The meta object literal for the '<em><b>Expression</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EAttribute PARAMETER__EXPRESSION = eINSTANCE.getParameter_Expression();
@@ -8881,7 +8092,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Output</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute PARAMETER__OUTPUT = eINSTANCE.getParameter_Output();
@@ -8889,17 +8099,14 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Get Clabject</b></em>' operation.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EOperation PARAMETER___GET_CLABJECT = eINSTANCE.getParameter__GetClabject();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.ClabjectParameterImpl
-     * <em>Clabject Parameter</em>}' class. <!-- begin-user-doc --> <!--
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.ClabjectParameterImpl <em>Clabject Parameter</em>}' class.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see org.melanee.core.models.plm.PLM.impl.ClabjectParameterImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getClabjectParameter()
      * @generated
@@ -8909,17 +8116,14 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Datatype</b></em>' reference feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EReference CLABJECT_PARAMETER__DATATYPE = eINSTANCE.getClabjectParameter_Datatype();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.PrimitiveParameterImpl
-     * <em>Primitive Parameter</em>}' class. <!-- begin-user-doc --> <!--
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.PrimitiveParameterImpl <em>Primitive Parameter</em>}' class.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see org.melanee.core.models.plm.PLM.impl.PrimitiveParameterImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getPrimitiveParameter()
      * @generated
@@ -8929,16 +8133,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Datatype</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute PRIMITIVE_PARAMETER__DATATYPE = eINSTANCE.getPrimitiveParameter_Datatype();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl
-     * <em>Multiplicity</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.MultiplicityImpl <em>Multiplicity</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.MultiplicityImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getMultiplicity()
      * @generated
@@ -8948,7 +8149,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute MULTIPLICITY__LOWER = eINSTANCE.getMultiplicity_Lower();
@@ -8956,7 +8156,6 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute MULTIPLICITY__UPPER = eINSTANCE.getMultiplicity_Upper();
@@ -8964,24 +8163,20 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Potency</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute MULTIPLICITY__POTENCY = eINSTANCE.getMultiplicity_Potency();
 
     /**
-     * The meta object literal for the '<em><b>Connectionend</b></em>' container
-     * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Connectionend</b></em>' container reference feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference MULTIPLICITY__CONNECTIONEND = eINSTANCE.getMultiplicity_Connectionend();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.PackageImpl <em>Package</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.PackageImpl <em>Package</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.impl.PackageImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getPackage()
      * @generated
@@ -8989,19 +8184,16 @@ public interface PLMPackage extends EPackage {
     EClass PACKAGE = eINSTANCE.getPackage();
 
     /**
-     * The meta object literal for the '<em><b>Content</b></em>' containment
-     * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Content</b></em>' containment reference list feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     EReference PACKAGE__CONTENT = eINSTANCE.getPackage_Content();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl
-     * <em>Abstract DSL Visualizer</em>}' class. <!-- begin-user-doc --> <!--
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl <em>Abstract DSL Visualizer</em>}' class.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see org.melanee.core.models.plm.PLM.impl.AbstractDSLVisualizerImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getAbstractDSLVisualizer()
      * @generated
@@ -9009,18 +8201,15 @@ public interface PLMPackage extends EPackage {
     EClass ABSTRACT_DSL_VISUALIZER = eINSTANCE.getAbstractDSLVisualizer();
 
     /**
-     * The meta object literal for the '<em><b>Instance Level</b></em>' attribute
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em><b>Instance Level</b></em>' attribute feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL = eINSTANCE
-        .getAbstractDSLVisualizer_InstanceLevel();
+    EAttribute ABSTRACT_DSL_VISUALIZER__INSTANCE_LEVEL = eINSTANCE.getAbstractDSLVisualizer_InstanceLevel();
 
     /**
      * The meta object literal for the '<em><b>Notation</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute ABSTRACT_DSL_VISUALIZER__NOTATION = eINSTANCE.getAbstractDSLVisualizer_Notation();
@@ -9048,17 +8237,14 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute ABSTRACT_BEHAVIOR__NAME = eINSTANCE.getAbstractBehavior_Name();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.impl.AbstractConstraintImpl
-     * <em>Abstract Constraint</em>}' class. <!-- begin-user-doc --> <!--
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.AbstractConstraintImpl <em>Abstract Constraint</em>}' class.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see org.melanee.core.models.plm.PLM.impl.AbstractConstraintImpl
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getAbstractConstraint()
      * @generated
@@ -9068,16 +8254,13 @@ public interface PLMPackage extends EPackage {
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     EAttribute ABSTRACT_CONSTRAINT__NAME = eINSTANCE.getAbstractConstraint_Name();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.ConnectionEndKind <em>Connection End
-     * Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.ConnectionEndKind <em>Connection End Kind</em>}' enum.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.ConnectionEndKind
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getConnectionEndKind()
      * @generated
@@ -9085,10 +8268,8 @@ public interface PLMPackage extends EPackage {
     EEnum CONNECTION_END_KIND = eINSTANCE.getConnectionEndKind();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.ClassificationKind <em>Classification
-     * Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.ClassificationKind <em>Classification Kind</em>}' enum.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.ClassificationKind
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getClassificationKind()
      * @generated
@@ -9096,10 +8277,8 @@ public interface PLMPackage extends EPackage {
     EEnum CLASSIFICATION_KIND = eINSTANCE.getClassificationKind();
 
     /**
-     * The meta object literal for the
-     * '{@link org.melanee.core.models.plm.PLM.ComplianceKind <em>Compliance
-     * Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.ComplianceKind <em>Compliance Kind</em>}' enum.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.melanee.core.models.plm.PLM.ComplianceKind
      * @see org.melanee.core.models.plm.PLM.impl.PLMPackageImpl#getComplianceKind()
      * @generated

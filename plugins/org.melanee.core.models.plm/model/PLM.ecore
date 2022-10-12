@@ -17,6 +17,8 @@
     <details key="Probability" value="0?\.(\d*)?"/>
     <details key="Money" value="-?\d*(\.\d{1,2})?"/>
     <details key="void" value=""/>
+    <details key="Terminal" value="\d*"/>
+    <details key="Separator" value="."/>
   </eAnnotations>
   <eAnnotations source="http://melanee.org/PLM/Version">
     <details key="plmVersion" value="2.1"/>
@@ -204,7 +206,7 @@
     </eOperations>
     <eOperations name="isIntersection" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
-        <details key="body" value="not (self.intersection.oclIsUndefined() or self.intersection = false)"/>
+        <details key="body" value="(not (self.intersection.oclIsUndefined() or self.intersection = false))"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="returns true if the generalization is an intersection, false otherwise"/>
@@ -1076,7 +1078,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="-1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parsingOrder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//Feature #//Property">
     <eOperations name="getMutabilityAsString" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">

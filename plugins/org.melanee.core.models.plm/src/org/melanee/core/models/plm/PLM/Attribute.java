@@ -20,12 +20,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.Attribute#getValue
- * <em>Value</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Attribute#getMutability
- * <em>Mutability</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.Attribute#getDatatype
- * <em>Datatype</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Attribute#getValue <em>Value</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Attribute#getMutability <em>Mutability</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Attribute#getDatatype <em>Datatype</em>}</li>
  * </ul>
  *
  * @see org.melanee.core.models.plm.PLM.PLMPackage#getAttribute()
@@ -51,12 +48,9 @@ public interface Attribute extends Feature, Property {
   String getValue();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getValue <em>Value</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Value</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Attribute#getValue <em>Value</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value</em>' attribute.
    * @see #getValue()
    * @generated
    */
@@ -110,12 +104,9 @@ public interface Attribute extends Feature, Property {
   String getDatatype();
 
   /**
-   * Sets the value of the
-   * '{@link org.melanee.core.models.plm.PLM.Attribute#getDatatype
-   * <em>Datatype</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Datatype</em>' attribute.
+   * Sets the value of the '{@link org.melanee.core.models.plm.PLM.Attribute#getDatatype <em>Datatype</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Datatype</em>' attribute.
    * @see #getDatatype()
    * @generated
    */

@@ -39,19 +39,16 @@ import org.melanee.core.models.plm.PLM.PLMPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.DeepModelImpl#getContent
- * <em>Content</em>}</li>
- * <li>{@link org.melanee.core.models.plm.PLM.impl.DeepModelImpl#getEnumeration
- * <em>Enumeration</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.DeepModelImpl#getContent <em>Content</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.impl.DeepModelImpl#getEnumeration <em>Enumeration</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class DeepModelImpl extends ElementImpl implements DeepModel {
   /**
-   * The cached value of the '{@link #getContent() <em>Content</em>}' containment
-   * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getContent() <em>Content</em>}' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getContent()
    * @generated
    * @ordered
@@ -59,9 +56,8 @@ public class DeepModelImpl extends ElementImpl implements DeepModel {
   protected EList<Level> content;
 
   /**
-   * The cached value of the '{@link #getEnumeration() <em>Enumeration</em>}'
-   * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getEnumeration() <em>Enumeration</em>}' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getEnumeration()
    * @generated
    * @ordered
@@ -70,7 +66,6 @@ public class DeepModelImpl extends ElementImpl implements DeepModel {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected DeepModelImpl() {
@@ -79,7 +74,6 @@ public class DeepModelImpl extends ElementImpl implements DeepModel {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -89,26 +83,22 @@ public class DeepModelImpl extends ElementImpl implements DeepModel {
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Level> getContent() {
     if (content == null) {
-      content = new EObjectContainmentEList<Level>(Level.class, this,
-          PLMPackage.DEEP_MODEL__CONTENT);
+      content = new EObjectContainmentEList<Level>(Level.class, this, PLMPackage.DEEP_MODEL__CONTENT);
     }
     return content;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Enumeration> getEnumeration() {
     if (enumeration == null) {
-      enumeration = new EObjectContainmentEList<Enumeration>(Enumeration.class, this,
-          PLMPackage.DEEP_MODEL__ENUMERATION);
+      enumeration = new EObjectContainmentEList<Enumeration>(Enumeration.class, this, PLMPackage.DEEP_MODEL__ENUMERATION);
     }
     return enumeration;
   }
@@ -122,206 +112,189 @@ public class DeepModelImpl extends ElementImpl implements DeepModel {
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_LEVEL_AT_INDEX_INT__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.DEEP_MODEL___GET_LEVEL_AT_INDEX__INT)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_LEVEL_AT_INDEX_INT__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.DEEP_MODEL___GET_LEVEL_AT_INDEX__INT).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Level getLevelAtIndex(int level) {
     try {
-      return (Level) GET_LEVEL_AT_INDEX_INT__EINVOCATION_DELEGATE.dynamicInvoke(this,
-          new BasicEList.UnmodifiableEList<Object>(1, new Object[] { level }));
-    } catch (InvocationTargetException ite) {
+      return (Level)GET_LEVEL_AT_INDEX_INT__EINVOCATION_DELEGATE.dynamicInvoke(this, new BasicEList.UnmodifiableEList<Object>(1, new Object[]{level}));
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getPrimitiveDatatypes()
-   * <em>Get Primitive Datatypes</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getPrimitiveDatatypes() <em>Get Primitive Datatypes</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPrimitiveDatatypes()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_PRIMITIVE_DATATYPES__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.DEEP_MODEL___GET_PRIMITIVE_DATATYPES)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_PRIMITIVE_DATATYPES__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.DEEP_MODEL___GET_PRIMITIVE_DATATYPES).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   public EList<String> getPrimitiveDatatypes() {
     try {
-      return (EList<String>) GET_PRIMITIVE_DATATYPES__EINVOCATION_DELEGATE.dynamicInvoke(this,
-          null);
-    } catch (InvocationTargetException ite) {
+      return (EList<String>)GET_PRIMITIVE_DATATYPES__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the
-   * '{@link #getRegexForPrimitiveDatatype(java.lang.String) <em>Get Regex For
-   * Primitive Datatype</em>}' operation. <!-- begin-user-doc --> <!--
+   * The cached invocation delegate for the '{@link #getRegexForPrimitiveDatatype(java.lang.String) <em>Get Regex For Primitive Datatype</em>}' operation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getRegexForPrimitiveDatatype(java.lang.String)
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_REGEX_FOR_PRIMITIVE_DATATYPE_STRING__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.DEEP_MODEL___GET_REGEX_FOR_PRIMITIVE_DATATYPE__STRING)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_REGEX_FOR_PRIMITIVE_DATATYPE_STRING__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.DEEP_MODEL___GET_REGEX_FOR_PRIMITIVE_DATATYPE__STRING).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getRegexForPrimitiveDatatype(String type) {
     try {
-      return (String) GET_REGEX_FOR_PRIMITIVE_DATATYPE_STRING__EINVOCATION_DELEGATE
-          .dynamicInvoke(this, new BasicEList.UnmodifiableEList<Object>(1, new Object[] { type }));
-    } catch (InvocationTargetException ite) {
+      return (String)GET_REGEX_FOR_PRIMITIVE_DATATYPE_STRING__EINVOCATION_DELEGATE.dynamicInvoke(this, new BasicEList.UnmodifiableEList<Object>(1, new Object[]{type}));
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
-   * The cached invocation delegate for the '{@link #getAllDatatypes() <em>Get All
-   * Datatypes</em>}' operation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached invocation delegate for the '{@link #getAllDatatypes() <em>Get All Datatypes</em>}' operation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getAllDatatypes()
    * @generated
    * @ordered
    */
-  protected static final EOperation.Internal.InvocationDelegate GET_ALL_DATATYPES__EINVOCATION_DELEGATE = ((EOperation.Internal) PLMPackage.Literals.DEEP_MODEL___GET_ALL_DATATYPES)
-      .getInvocationDelegate();
+  protected static final EOperation.Internal.InvocationDelegate GET_ALL_DATATYPES__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.DEEP_MODEL___GET_ALL_DATATYPES).getInvocationDelegate();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   public EList<String> getAllDatatypes() {
     try {
-      return (EList<String>) GET_ALL_DATATYPES__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-    } catch (InvocationTargetException ite) {
+      return (EList<String>)GET_ALL_DATATYPES__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
       throw new WrappedException(ite);
     }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
       NotificationChain msgs) {
     switch (featureID) {
-    case PLMPackage.DEEP_MODEL__CONTENT:
-      return ((InternalEList<?>) getContent()).basicRemove(otherEnd, msgs);
-    case PLMPackage.DEEP_MODEL__ENUMERATION:
-      return ((InternalEList<?>) getEnumeration()).basicRemove(otherEnd, msgs);
+      case PLMPackage.DEEP_MODEL__CONTENT:
+        return ((InternalEList<?>)getContent()).basicRemove(otherEnd, msgs);
+      case PLMPackage.DEEP_MODEL__ENUMERATION:
+        return ((InternalEList<?>)getEnumeration()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-    case PLMPackage.DEEP_MODEL__CONTENT:
-      return getContent();
-    case PLMPackage.DEEP_MODEL__ENUMERATION:
-      return getEnumeration();
+      case PLMPackage.DEEP_MODEL__CONTENT:
+        return getContent();
+      case PLMPackage.DEEP_MODEL__ENUMERATION:
+        return getEnumeration();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-    case PLMPackage.DEEP_MODEL__CONTENT:
-      getContent().clear();
-      getContent().addAll((Collection<? extends Level>) newValue);
-      return;
-    case PLMPackage.DEEP_MODEL__ENUMERATION:
-      getEnumeration().clear();
-      getEnumeration().addAll((Collection<? extends Enumeration>) newValue);
-      return;
+      case PLMPackage.DEEP_MODEL__CONTENT:
+        getContent().clear();
+        getContent().addAll((Collection<? extends Level>)newValue);
+        return;
+      case PLMPackage.DEEP_MODEL__ENUMERATION:
+        getEnumeration().clear();
+        getEnumeration().addAll((Collection<? extends Enumeration>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-    case PLMPackage.DEEP_MODEL__CONTENT:
-      getContent().clear();
-      return;
-    case PLMPackage.DEEP_MODEL__ENUMERATION:
-      getEnumeration().clear();
-      return;
+      case PLMPackage.DEEP_MODEL__CONTENT:
+        getContent().clear();
+        return;
+      case PLMPackage.DEEP_MODEL__ENUMERATION:
+        getEnumeration().clear();
+        return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-    case PLMPackage.DEEP_MODEL__CONTENT:
-      return content != null && !content.isEmpty();
-    case PLMPackage.DEEP_MODEL__ENUMERATION:
-      return enumeration != null && !enumeration.isEmpty();
+      case PLMPackage.DEEP_MODEL__CONTENT:
+        return content != null && !content.isEmpty();
+      case PLMPackage.DEEP_MODEL__ENUMERATION:
+        return enumeration != null && !enumeration.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
     switch (operationID) {
-    case PLMPackage.DEEP_MODEL___GET_LEVEL_AT_INDEX__INT:
-      return getLevelAtIndex((Integer) arguments.get(0));
-    case PLMPackage.DEEP_MODEL___GET_PRIMITIVE_DATATYPES:
-      return getPrimitiveDatatypes();
-    case PLMPackage.DEEP_MODEL___GET_REGEX_FOR_PRIMITIVE_DATATYPE__STRING:
-      return getRegexForPrimitiveDatatype((String) arguments.get(0));
-    case PLMPackage.DEEP_MODEL___GET_ALL_DATATYPES:
-      return getAllDatatypes();
+      case PLMPackage.DEEP_MODEL___GET_LEVEL_AT_INDEX__INT:
+        return getLevelAtIndex((Integer)arguments.get(0));
+      case PLMPackage.DEEP_MODEL___GET_PRIMITIVE_DATATYPES:
+        return getPrimitiveDatatypes();
+      case PLMPackage.DEEP_MODEL___GET_REGEX_FOR_PRIMITIVE_DATATYPE__STRING:
+        return getRegexForPrimitiveDatatype((String)arguments.get(0));
+      case PLMPackage.DEEP_MODEL___GET_ALL_DATATYPES:
+        return getAllDatatypes();
     }
     return super.eInvoke(operationID, arguments);
   }
