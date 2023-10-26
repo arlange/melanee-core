@@ -1053,4 +1053,16 @@ public interface Clabject extends OwnedElement {
    */
   EList<Clabject> getOwnedClabjects();
 
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * returns the direct type of a clabject based on the classification relationship
+   * <!-- end-model-doc -->
+   * @model kind="operation"
+   *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='self.getClassificationsAsInstance().type-&gt;asOrderedSet()-&gt;first()'"
+   * @generated
+   */
+  Clabject getDirectType();
+
 } // Clabject

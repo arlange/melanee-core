@@ -1669,6 +1669,30 @@ public abstract class ClabjectImpl extends OwnedElementImpl implements Clabject 
   }
 
   /**
+   * The cached invocation delegate for the '{@link #getDirectType() <em>Get Direct Type</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDirectType()
+   * @generated
+   * @ordered
+   */
+  protected static final EOperation.Internal.InvocationDelegate GET_DIRECT_TYPE__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.CLABJECT___GET_DIRECT_TYPE).getInvocationDelegate();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Clabject getDirectType() {
+    try {
+      return (Clabject)GET_DIRECT_TYPE__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
+      throw new WrappedException(ite);
+    }
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -1899,6 +1923,8 @@ public abstract class ClabjectImpl extends OwnedElementImpl implements Clabject 
         return getDefinedInheritances();
       case PLMPackage.CLABJECT___GET_OWNED_CLABJECTS:
         return getOwnedClabjects();
+      case PLMPackage.CLABJECT___GET_DIRECT_TYPE:
+        return getDirectType();
     }
     return super.eInvoke(operationID, arguments);
   }

@@ -2,7 +2,6 @@ package org.melanee.core.tests.plm;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 import org.melanee.core.models.plm.PLM.Attribute;
 import org.melanee.core.models.plm.PLM.Clabject;
@@ -357,6 +356,7 @@ public class ClabjectTest {
     // }
 
     assertTrue("The Result of c.getInstances() should be d", c.getInstances().contains(d));
+    assertTrue("The result of d.getDirectType() should be c", d.getDirectType() == c);
 
   }
 

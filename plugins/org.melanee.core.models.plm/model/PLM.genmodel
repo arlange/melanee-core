@@ -455,6 +455,9 @@
       <genOperations>
         <ecoreOperation href="PLM.ecore#//Clabject/getOwnedClabjects"/>
       </genOperations>
+      <genOperations>
+        <ecoreOperation href="PLM.ecore#//Clabject/getDirectType"/>
+      </genOperations>
     </genClasses>
     <genClasses image="false">
       <ecoreClass href="PLM.ecore#//Feature"/>

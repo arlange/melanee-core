@@ -1277,6 +1277,15 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EOperation getClabject__GetDirectType() {
+    return clabjectEClass.getEOperations().get(63);
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -2251,6 +2260,7 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
     createEOperation(clabjectEClass, CLABJECT___VIOLATES_MULTIPLICITY_CONSTRAINTS);
     createEOperation(clabjectEClass, CLABJECT___GET_DEFINED_INHERITANCES);
     createEOperation(clabjectEClass, CLABJECT___GET_OWNED_CLABJECTS);
+    createEOperation(clabjectEClass, CLABJECT___GET_DIRECT_TYPE);
 
     featureEClass = createEClass(FEATURE);
     createEAttribute(featureEClass, FEATURE__DURABILITY);
@@ -2652,6 +2662,8 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
     initEOperation(getClabject__GetDefinedInheritances(), this.getInheritance(), "getDefinedInheritances", 0, -1, IS_UNIQUE, IS_ORDERED);
 
     initEOperation(getClabject__GetOwnedClabjects(), this.getClabject(), "getOwnedClabjects", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+    initEOperation(getClabject__GetDirectType(), this.getClabject(), "getDirectType", 0, 1, IS_UNIQUE, IS_ORDERED);
 
     initEClass(featureEClass, Feature.class, "Feature", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFeature_Durability(), ecorePackage.getEInt(), "durability", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3423,6 +3435,12 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
        source,
        new String[] {
          "body", "self.content->select(oclIsKindOf(Clabject)).oclAsType(Clabject)->asOrderedSet()"
+       });
+    addAnnotation
+      (getClabject__GetDirectType(),
+       source,
+       new String[] {
+         "body", "self.getClassificationsAsInstance().type->asOrderedSet()->first()"
        });
     addAnnotation
       (getClabject_LevelIndex(),

@@ -1584,13 +1584,22 @@ public interface PLMPackage extends EPackage {
   int CLABJECT___GET_OWNED_CLABJECTS = OWNED_ELEMENT_OPERATION_COUNT + 62;
 
   /**
+   * The operation id for the '<em>Get Direct Type</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLABJECT___GET_DIRECT_TYPE = OWNED_ELEMENT_OPERATION_COUNT + 63;
+
+  /**
    * The number of operations of the '<em>Clabject</em>' class. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    * @ordered
    */
-  int CLABJECT_OPERATION_COUNT = OWNED_ELEMENT_OPERATION_COUNT + 63;
+  int CLABJECT_OPERATION_COUNT = OWNED_ELEMENT_OPERATION_COUNT + 64;
 
   /**
    * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.FeatureImpl <em>Feature</em>}' class.
@@ -2326,6 +2335,15 @@ public interface PLMPackage extends EPackage {
   int ENTITY___GET_OWNED_CLABJECTS = CLABJECT___GET_OWNED_CLABJECTS;
 
   /**
+   * The operation id for the '<em>Get Direct Type</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY___GET_DIRECT_TYPE = CLABJECT___GET_DIRECT_TYPE;
+
+  /**
    * The operation id for the '<em>Represent</em>' operation.
    * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
@@ -2987,6 +3005,15 @@ public interface PLMPackage extends EPackage {
    * @ordered
    */
   int CONNECTION___GET_OWNED_CLABJECTS = CLABJECT___GET_OWNED_CLABJECTS;
+
+  /**
+   * The operation id for the '<em>Get Direct Type</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONNECTION___GET_DIRECT_TYPE = CLABJECT___GET_DIRECT_TYPE;
 
   /**
    * The operation id for the '<em>Get Domain</em>' operation.
@@ -5587,6 +5614,16 @@ public interface PLMPackage extends EPackage {
   EOperation getClabject__GetOwnedClabjects();
 
   /**
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Clabject#getDirectType() <em>Get Direct Type</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the '<em>Get Direct Type</em>' operation.
+   * @see org.melanee.core.models.plm.PLM.Clabject#getDirectType()
+   * @generated
+   */
+  EOperation getClabject__GetDirectType();
+
+  /**
    * Returns the meta object for class
    * '{@link org.melanee.core.models.plm.PLM.Feature <em>Feature</em>}'. <!--
    * begin-user-doc --> <!-- end-user-doc -->
@@ -7506,6 +7543,14 @@ public interface PLMPackage extends EPackage {
      * @generated
      */
     EOperation CLABJECT___GET_OWNED_CLABJECTS = eINSTANCE.getClabject__GetOwnedClabjects();
+
+    /**
+     * The meta object literal for the '<em><b>Get Direct Type</b></em>' operation.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EOperation CLABJECT___GET_DIRECT_TYPE = eINSTANCE.getClabject__GetDirectType();
 
     /**
      * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.FeatureImpl <em>Feature</em>}' class.
