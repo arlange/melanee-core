@@ -1382,7 +1382,7 @@ public class PLMEditor extends MultiPageEditorPart implements IEditingDomainProv
    */
   public IPropertySheetPage getPropertySheetPage() {
     PropertySheetPage propertySheetPage =
-      new ExtendedPropertySheetPage(editingDomain, ExtendedPropertySheetPage.Decoration.NONE, null) {
+      new ExtendedPropertySheetPage(editingDomain) {
         @Override
         public void setSelectionToViewer(List<?> selection) {
           PLMEditor.this.setSelectionToViewer(selection);

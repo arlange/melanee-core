@@ -259,6 +259,11 @@ public class DomainItemProvider extends ItemProviderAdapter
     newChildDescriptors.add
       (createChildParameter
         (PLMPackage.Literals.DOMAIN__DEEP_MODEL,
+         PLMFactory.eINSTANCE.createConnectionEnd()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (PLMPackage.Literals.DOMAIN__DEEP_MODEL,
          PLMFactory.eINSTANCE.createAttribute()));
 
     newChildDescriptors.add

@@ -9,7 +9,8 @@ Bundle-Activator: org.melanee.core.models.plm.PLM.provider.PLMEditPlugin$Impleme
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.melanee.core.models.plm.PLM.provider
+Export-Package: org.melanee.core.models.plm.PLM.provider,
+ PLM.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.melanee.core.models.plm;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport

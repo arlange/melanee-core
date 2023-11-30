@@ -205,6 +205,7 @@ public class PLMSwitch<T> extends Switch<T> {
         ConnectionEnd connectionEnd = (ConnectionEnd)theEObject;
         T result = caseConnectionEnd(connectionEnd);
         if (result == null) result = caseProperty(connectionEnd);
+        if (result == null) result = caseElement(connectionEnd);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

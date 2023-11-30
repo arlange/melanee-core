@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.melanee.core.models.plm.PLM.Clabject;
 import org.melanee.core.models.plm.PLM.Inheritance;
 import org.melanee.core.models.plm.PLM.PLMPackage;
 import org.melanee.core.models.plm.PLM.Subtype;
@@ -270,6 +271,56 @@ public class InheritanceImpl extends CorrelationImpl implements Inheritance {
   }
 
   /**
+   * The cached invocation delegate for the '{@link #getSupertypes() <em>Get Supertypes</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSupertypes()
+   * @generated
+   * @ordered
+   */
+  protected static final EOperation.Internal.InvocationDelegate GET_SUPERTYPES__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.INHERITANCE___GET_SUPERTYPES).getInvocationDelegate();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  public EList<Clabject> getSupertypes() {
+    try {
+      return (EList<Clabject>)GET_SUPERTYPES__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
+      throw new WrappedException(ite);
+    }
+  }
+
+  /**
+   * The cached invocation delegate for the '{@link #getSubtypes() <em>Get Subtypes</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSubtypes()
+   * @generated
+   * @ordered
+   */
+  protected static final EOperation.Internal.InvocationDelegate GET_SUBTYPES__EINVOCATION_DELEGATE = ((EOperation.Internal)PLMPackage.Literals.INHERITANCE___GET_SUBTYPES).getInvocationDelegate();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  public EList<Clabject> getSubtypes() {
+    try {
+      return (EList<Clabject>)GET_SUBTYPES__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
+    }
+    catch (InvocationTargetException ite) {
+      throw new WrappedException(ite);
+    }
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -404,6 +455,10 @@ public class InheritanceImpl extends CorrelationImpl implements Inheritance {
         return isIntersection();
       case PLMPackage.INHERITANCE___REPRESENT:
         return represent();
+      case PLMPackage.INHERITANCE___GET_SUPERTYPES:
+        return getSupertypes();
+      case PLMPackage.INHERITANCE___GET_SUBTYPES:
+        return getSubtypes();
     }
     return super.eInvoke(operationID, arguments);
   }

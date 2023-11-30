@@ -220,6 +220,22 @@
         <details key="documentation" value="returns a human readable string representation of the generalization. If the name is set, the name is returned.&#xA;It the name is not set, a meaningful string is constructed from the defined inheritance."/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getSupertypes" upperBound="-1" eType="#//Clabject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.supertype.supertype->asOrderedSet()&#xA;"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="resturns the list of all the supertypes of the Inheritance"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getSubtypes" upperBound="-1" eType="#//Clabject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+        <details key="body" value="self.subtype.subtype->asOrderedSet()&#xA;"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="returns the list of all subtypes of the Inheritance"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="supertype" lowerBound="1"
         upperBound="-1" eType="#//Supertype" containment="true" eOpposite="#//Supertype/inheritance"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subtype" lowerBound="1"
@@ -345,7 +361,7 @@
         <details key="body" value="let directTypes:OrderedSet(Clabject) = self.getClassificationsAsInstance().type->asOrderedSet()&#xD;&#xA;in&#xD;&#xA;&#x9;directTypes->union(directTypes.getSupertypes()->asOrderedSet())->asOrderedSet()"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="returns all the clabjects that are atype of the clabject based on classification elements.&#xD;&#xA;A clabject t is a model type of i if there exists a classification c with c.type = t or a subtype of t and c.instance = i or a supertype of i"/>
+        <details key="documentation" value="returns all the clabjects that are atype of the clabject based on classification elements.&#xA;A clabject t is a model type of i if there exists a classification c with c.type = t or a subtype of t and c.instance = i or a supertype of i"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getDirectTypes" upperBound="-1" eType="#//Clabject">
@@ -377,7 +393,7 @@
         <details key="body" value="let directResult:OrderedSet(Clabject) = &#xD;&#xA;&#x9;self.getSupertypes()->append(self).getTypes()->asOrderedSet()&#xD;&#xA;in&#xD;&#xA;&#x9;directResult->union(directResult.getTypes()->asOrderedSet())->asOrderedSet()"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="returns the clabjects reachable from the clabject through classifications in the type direction.&#xD;&#xA;In other words, all the model instances recursively including their model instances."/>
+        <details key="documentation" value="returns the clabjects reachable from the clabject through classifications in the type direction.&#xA;In other words, all the model instances recursively including their model instances."/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getDefinedInstances" upperBound="-1" eType="#//Clabject">
@@ -748,7 +764,7 @@
     </eOperations>
     <eOperations name="getAttributeByName" eType="#//Attribute">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
-        <details key="body" value="let foundAttributes:OrderedSet(Attribute) =&#x9;&#xD;&#xA;&#x9;self.getAllAttributes()->select(a | a.name = name)&#xD;&#xA;in &#xD;&#xA;&#x9;if (foundAttributes->size() > 0) then &#xD;&#xA;&#x9;&#x9;foundAttributes->first()&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;&#x9;null&#xD;&#xA;&#x9;endif"/>
+        <details key="body" value="let foundAttributes:OrderedSet(Attribute) =&#x9;&#xA;&#x9;self.getAllAttributes()->select(a | a.name = name)&#xA;in &#xA;&#x9;if (foundAttributes->size() > 0) then &#xA;&#x9;&#x9;foundAttributes->first()&#xA;&#x9;else&#xA;&#x9;&#x9;null&#xA;&#x9;endif"/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Searches for an Attribute with given name. Inherited attributes are considered if not overriden."/>
@@ -970,7 +986,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectionEnd" upperBound="-1"
         eType="#//ConnectionEnd" containment="true" eOpposite="#//ConnectionEnd/connection"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectionEnd" eSuperTypes="#//Property">
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionEnd" eSuperTypes="#//Property #//Element">
     <eOperations name="getHumanReadableConnectionEndName" ordered="false" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">

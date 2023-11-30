@@ -734,13 +734,31 @@ public interface PLMPackage extends EPackage {
   int INHERITANCE___REPRESENT = CORRELATION_OPERATION_COUNT + 3;
 
   /**
+   * The operation id for the '<em>Get Supertypes</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INHERITANCE___GET_SUPERTYPES = CORRELATION_OPERATION_COUNT + 4;
+
+  /**
+   * The operation id for the '<em>Get Subtypes</em>' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INHERITANCE___GET_SUBTYPES = CORRELATION_OPERATION_COUNT + 5;
+
+  /**
    * The number of operations of the '<em>Inheritance</em>' class. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    * @ordered
    */
-  int INHERITANCE_OPERATION_COUNT = CORRELATION_OPERATION_COUNT + 4;
+  int INHERITANCE_OPERATION_COUNT = CORRELATION_OPERATION_COUNT + 6;
 
   /**
    * The meta object id for the '{@link org.melanee.core.models.plm.PLM.impl.SupertypeImpl <em>Supertype</em>}' class.
@@ -3211,13 +3229,49 @@ public interface PLMPackage extends EPackage {
 	int CONNECTION_END__PARSING_ORDER = PROPERTY__PARSING_ORDER;
 
 		/**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONNECTION_END__NAME = PROPERTY_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Visualizer</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONNECTION_END__VISUALIZER = PROPERTY_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Behavior</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONNECTION_END__BEHAVIOR = PROPERTY_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONNECTION_END__CONSTRAINT = PROPERTY_FEATURE_COUNT + 3;
+
+    /**
    * The feature id for the '<em><b>Lower</b></em>' attribute.
    * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONNECTION_END__LOWER = PROPERTY_FEATURE_COUNT + 0;
+  int CONNECTION_END__LOWER = PROPERTY_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Upper</b></em>' attribute.
@@ -3226,7 +3280,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END__UPPER = PROPERTY_FEATURE_COUNT + 1;
+  int CONNECTION_END__UPPER = PROPERTY_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Navigable</b></em>' attribute. <!--
@@ -3235,7 +3289,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END__NAVIGABLE = PROPERTY_FEATURE_COUNT + 2;
+  int CONNECTION_END__NAVIGABLE = PROPERTY_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Destination</b></em>' reference. <!--
@@ -3244,7 +3298,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END__DESTINATION = PROPERTY_FEATURE_COUNT + 3;
+  int CONNECTION_END__DESTINATION = PROPERTY_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Connection</b></em>' container reference. <!--
@@ -3253,7 +3307,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END__CONNECTION = PROPERTY_FEATURE_COUNT + 4;
+  int CONNECTION_END__CONNECTION = PROPERTY_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Moniker</b></em>' attribute. <!--
@@ -3262,7 +3316,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END__MONIKER = PROPERTY_FEATURE_COUNT + 5;
+  int CONNECTION_END__MONIKER = PROPERTY_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -3271,7 +3325,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END__KIND = PROPERTY_FEATURE_COUNT + 6;
+  int CONNECTION_END__KIND = PROPERTY_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -3280,7 +3334,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END__TYPE = PROPERTY_FEATURE_COUNT + 7;
+  int CONNECTION_END__TYPE = PROPERTY_FEATURE_COUNT + 11;
 
   /**
    * The feature id for the '<em><b>Multiplicity</b></em>' containment reference list.
@@ -3288,7 +3342,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END__MULTIPLICITY = PROPERTY_FEATURE_COUNT + 8;
+  int CONNECTION_END__MULTIPLICITY = PROPERTY_FEATURE_COUNT + 12;
 
   /**
    * The number of structural features of the '<em>Connection End</em>' class.
@@ -3296,7 +3350,7 @@ public interface PLMPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONNECTION_END_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 9;
+  int CONNECTION_END_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 13;
 
   /**
    * The operation id for the '<em>Get Human Readable Connection End Name</em>' operation.
@@ -4805,6 +4859,26 @@ public interface PLMPackage extends EPackage {
    * @generated
    */
   EOperation getInheritance__Represent();
+
+  /**
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertypes() <em>Get Supertypes</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the '<em>Get Supertypes</em>' operation.
+   * @see org.melanee.core.models.plm.PLM.Inheritance#getSupertypes()
+   * @generated
+   */
+  EOperation getInheritance__GetSupertypes();
+
+  /**
+   * Returns the meta object for the '{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtypes() <em>Get Subtypes</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the '<em>Get Subtypes</em>' operation.
+   * @see org.melanee.core.models.plm.PLM.Inheritance#getSubtypes()
+   * @generated
+   */
+  EOperation getInheritance__GetSubtypes();
 
   /**
    * Returns the meta object for class
@@ -6960,6 +7034,22 @@ public interface PLMPackage extends EPackage {
      * @generated
      */
     EOperation INHERITANCE___REPRESENT = eINSTANCE.getInheritance__Represent();
+
+    /**
+     * The meta object literal for the '<em><b>Get Supertypes</b></em>' operation.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EOperation INHERITANCE___GET_SUPERTYPES = eINSTANCE.getInheritance__GetSupertypes();
+
+    /**
+     * The meta object literal for the '<em><b>Get Subtypes</b></em>' operation.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EOperation INHERITANCE___GET_SUBTYPES = eINSTANCE.getInheritance__GetSubtypes();
 
     /**
      * The meta object literal for the '{@link org.melanee.core.models.plm.PLM.impl.SupertypeImpl <em>Supertype</em>}' class.

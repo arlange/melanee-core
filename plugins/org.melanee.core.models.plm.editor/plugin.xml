@@ -33,5 +33,4 @@
             contributorClass="org.melanee.core.models.plm.PLM.presentation.PLMActionBarContributor">
       </editor>
    </extension>
-
 </plugin>

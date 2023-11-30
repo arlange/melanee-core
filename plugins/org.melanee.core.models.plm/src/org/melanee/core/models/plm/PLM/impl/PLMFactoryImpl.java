@@ -1096,6 +1096,24 @@ public class PLMFactoryImpl extends EFactoryImpl implements PLMFactory {
         }
 
   /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+       	* @generated
+       	*/
+        public ConnectionEnd createConnectionEndWithLMLVisualizer(){
+      
+          //Execute the default factory code
+          ConnectionEnd newObject = createConnectionEnd();
+        
+          //Add a visualizer
+          LMLVisualizer ConnectionEndVisualizer = createLMLVisualizer();
+          newObject.getVisualizer().add(ConnectionEndVisualizer);
+          ConnectionEndVisualizer.getAttributes().addAll(ConnectionEndVisualizer.getDefaultVisualizationValues());
+        
+          return newObject;
+        }
+
+  /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
        	* @generated
        	*/

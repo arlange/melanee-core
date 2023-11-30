@@ -473,6 +473,8 @@ public interface PLMFactory extends EFactory {
 
   public Connection createConnectionWithLMLVisualizer();
 
+  public ConnectionEnd createConnectionEndWithLMLVisualizer();
+
   public Attribute createAttributeWithLMLVisualizer();
 
   public Method createMethodWithLMLVisualizer();

@@ -26,6 +26,8 @@ import org.melanee.core.models.plm.PLM.PLMFactory;
  *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#isComplete() <em>Is Complete</em>}</li>
  *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#isIntersection() <em>Is Intersection</em>}</li>
  *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#represent() <em>Represent</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertypes() <em>Get Supertypes</em>}</li>
+ *   <li>{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtypes() <em>Get Subtypes</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -131,6 +133,32 @@ public class InheritanceTest extends CorrelationTest {
    * @generated
    */
   public void testRepresent() {
+    // TODO: implement this operation test method
+    // Ensure that you remove @generated or mark it @generated NOT
+    fail();
+  }
+
+  /**
+   * Tests the '{@link org.melanee.core.models.plm.PLM.Inheritance#getSupertypes() <em>Get Supertypes</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.melanee.core.models.plm.PLM.Inheritance#getSupertypes()
+   * @generated
+   */
+  public void testGetSupertypes() {
+    // TODO: implement this operation test method
+    // Ensure that you remove @generated or mark it @generated NOT
+    fail();
+  }
+
+  /**
+   * Tests the '{@link org.melanee.core.models.plm.PLM.Inheritance#getSubtypes() <em>Get Subtypes</em>}' operation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.melanee.core.models.plm.PLM.Inheritance#getSubtypes()
+   * @generated
+   */
+  public void testGetSubtypes() {
     // TODO: implement this operation test method
     // Ensure that you remove @generated or mark it @generated NOT
     fail();

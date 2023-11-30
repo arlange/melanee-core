@@ -56,6 +56,7 @@ public class ConnectionEndItemProvider extends PropertyItemProvider {
     if (itemPropertyDescriptors == null) {
       super.getPropertyDescriptors(object);
 
+      addNamePropertyDescriptor(object);
       addLowerPropertyDescriptor(object);
       addUpperPropertyDescriptor(object);
       addNavigablePropertyDescriptor(object);
@@ -65,6 +66,28 @@ public class ConnectionEndItemProvider extends PropertyItemProvider {
       addTypePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addNamePropertyDescriptor(Object object) {
+  itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Element_name_feature"),
+         getString("_UI_Element_name_description"),
+         PLMPackage.Literals.ELEMENT__NAME,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
   }
 
   /**
@@ -232,6 +255,9 @@ public class ConnectionEndItemProvider extends PropertyItemProvider {
   public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
     if (childrenFeatures == null) {
       super.getChildrenFeatures(object);
+      childrenFeatures.add(PLMPackage.Literals.ELEMENT__VISUALIZER);
+      childrenFeatures.add(PLMPackage.Literals.ELEMENT__BEHAVIOR);
+      childrenFeatures.add(PLMPackage.Literals.ELEMENT__CONSTRAINT);
       childrenFeatures.add(PLMPackage.Literals.CONNECTION_END__MULTIPLICITY);
     }
     return childrenFeatures;
@@ -284,6 +310,7 @@ public class ConnectionEndItemProvider extends PropertyItemProvider {
     updateChildren(notification);
 
     switch (notification.getFeatureID(ConnectionEnd.class)) {
+      case PLMPackage.CONNECTION_END__NAME:
       case PLMPackage.CONNECTION_END__LOWER:
       case PLMPackage.CONNECTION_END__UPPER:
       case PLMPackage.CONNECTION_END__NAVIGABLE:
@@ -291,6 +318,9 @@ public class ConnectionEndItemProvider extends PropertyItemProvider {
       case PLMPackage.CONNECTION_END__KIND:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
+      case PLMPackage.CONNECTION_END__VISUALIZER:
+      case PLMPackage.CONNECTION_END__BEHAVIOR:
+      case PLMPackage.CONNECTION_END__CONSTRAINT:
       case PLMPackage.CONNECTION_END__MULTIPLICITY:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
@@ -308,6 +338,11 @@ public class ConnectionEndItemProvider extends PropertyItemProvider {
   @Override
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
     super.collectNewChildDescriptors(newChildDescriptors, object);
+
+    newChildDescriptors.add
+      (createChildParameter
+        (PLMPackage.Literals.ELEMENT__VISUALIZER,
+         PLMFactory.eINSTANCE.createLMLVisualizer()));
 
     newChildDescriptors.add
       (createChildParameter

@@ -176,6 +176,12 @@
       <genOperations>
         <ecoreOperation href="PLM.ecore#//Inheritance/represent"/>
       </genOperations>
+      <genOperations>
+        <ecoreOperation href="PLM.ecore#//Inheritance/getSupertypes"/>
+      </genOperations>
+      <genOperations>
+        <ecoreOperation href="PLM.ecore#//Inheritance/getSubtypes"/>
+      </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="PLM.ecore#//Supertype"/>

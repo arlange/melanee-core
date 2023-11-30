@@ -35,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ConnectionEnd extends Property {
+public interface ConnectionEnd extends Property, Element {
   /**
    * Returns the value of the '<em><b>Lower</b></em>' attribute.
    * The default value is <code>"0"</code>.

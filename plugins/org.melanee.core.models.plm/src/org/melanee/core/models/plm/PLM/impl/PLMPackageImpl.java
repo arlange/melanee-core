@@ -641,6 +641,24 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EOperation getInheritance__GetSupertypes() {
+    return inheritanceEClass.getEOperations().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EOperation getInheritance__GetSubtypes() {
+    return inheritanceEClass.getEOperations().get(5);
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -2177,6 +2195,8 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
     createEOperation(inheritanceEClass, INHERITANCE___IS_COMPLETE);
     createEOperation(inheritanceEClass, INHERITANCE___IS_INTERSECTION);
     createEOperation(inheritanceEClass, INHERITANCE___REPRESENT);
+    createEOperation(inheritanceEClass, INHERITANCE___GET_SUPERTYPES);
+    createEOperation(inheritanceEClass, INHERITANCE___GET_SUBTYPES);
 
     supertypeEClass = createEClass(SUPERTYPE);
     createEReference(supertypeEClass, SUPERTYPE__SUPERTYPE);
@@ -2422,6 +2442,7 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
     entityEClass.getESuperTypes().add(this.getClabject());
     connectionEClass.getESuperTypes().add(this.getClabject());
     connectionEndEClass.getESuperTypes().add(this.getProperty());
+    connectionEndEClass.getESuperTypes().add(this.getElement());
     attributeEClass.getESuperTypes().add(this.getFeature());
     attributeEClass.getESuperTypes().add(this.getProperty());
     methodEClass.getESuperTypes().add(this.getFeature());
@@ -2501,6 +2522,10 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
     initEOperation(getInheritance__IsIntersection(), ecorePackage.getEBoolean(), "isIntersection", 1, 1, IS_UNIQUE, !IS_ORDERED);
 
     initEOperation(getInheritance__Represent(), ecorePackage.getEString(), "represent", 1, 1, IS_UNIQUE, !IS_ORDERED);
+
+    initEOperation(getInheritance__GetSupertypes(), this.getClabject(), "getSupertypes", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+    initEOperation(getInheritance__GetSubtypes(), this.getClabject(), "getSubtypes", 0, -1, IS_UNIQUE, IS_ORDERED);
 
     initEClass(supertypeEClass, Supertype.class, "Supertype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSupertype_Supertype(), this.getClabject(), null, "supertype", null, 1, 1, Supertype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3053,6 +3078,18 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
          "body", "if self.name.oclIsUndefined() or self.name = \'\' then\r\n\r\nlet superT : String = self.supertype->iterate(s:Clabject; res:String=\'\'| \r\n\t\tres.concat(s.represent()).concat(\',\')\r\n\t) \r\nin\r\n\r\nlet subT : String = self.subtype->iterate(s:Clabject; res:String=\'\'| \r\n\t\tres.concat(s.represent()).concat(\',\')\r\n\t)\r\nin\r\n\'[\'.concat(superT.substring(1,superT.size()-1))\r\n.concat(\']<-[\').concat(subT.substring(1,subT.size()-1)).concat(\']\')\r\n\r\nelse \r\n\tself.name\r\nendif"
        });
     addAnnotation
+      (getInheritance__GetSupertypes(),
+       source,
+       new String[] {
+         "body", "self.supertype.supertype->asOrderedSet()\n"
+       });
+    addAnnotation
+      (getInheritance__GetSubtypes(),
+       source,
+       new String[] {
+         "body", "self.subtype.subtype->asOrderedSet()\n"
+       });
+    addAnnotation
       (getClassification__Represent(),
        source,
        new String[] {
@@ -3416,7 +3453,7 @@ public class PLMPackageImpl extends EPackageImpl implements PLMPackage {
       (getClabject__GetAttributeByName__String(),
        source,
        new String[] {
-         "body", "let foundAttributes:OrderedSet(Attribute) =\t\r\n\tself.getAllAttributes()->select(a | a.name = name)\r\nin \r\n\tif (foundAttributes->size() > 0) then \r\n\t\tfoundAttributes->first()\r\n\telse\r\n\t\tnull\r\n\tendif"
+         "body", "let foundAttributes:OrderedSet(Attribute) =\t\n\tself.getAllAttributes()->select(a | a.name = name)\nin \n\tif (foundAttributes->size() > 0) then \n\t\tfoundAttributes->first()\n\telse\n\t\tnull\n\tendif"
        });
     addAnnotation
       (getClabject__ViolatesMultiplicityConstraints(),

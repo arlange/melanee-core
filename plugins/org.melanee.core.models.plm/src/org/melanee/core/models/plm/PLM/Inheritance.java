@@ -174,4 +174,28 @@ public interface Inheritance extends Correlation {
    */
   String represent();
 
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * resturns the list of all the supertypes of the Inheritance
+   * <!-- end-model-doc -->
+   * @model kind="operation"
+   *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='self.supertype.supertype-&gt;asOrderedSet()\n'"
+   * @generated
+   */
+  EList<Clabject> getSupertypes();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * returns the list of all subtypes of the Inheritance
+   * <!-- end-model-doc -->
+   * @model kind="operation"
+   *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL body='self.subtype.subtype-&gt;asOrderedSet()\n'"
+   * @generated
+   */
+  EList<Clabject> getSubtypes();
+
 } // Inheritance

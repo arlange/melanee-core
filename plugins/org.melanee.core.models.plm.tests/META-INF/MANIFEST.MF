@@ -8,7 +8,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.melanee.core.models.plm.PLM.tests
+Export-Package: org.melanee.core.models.plm.PLM.tests,
+ PLM.tests
 Require-Bundle: org.eclipse.core.runtime,
  org.melanee.core.models.plm;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
